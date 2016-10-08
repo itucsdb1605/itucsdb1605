@@ -1,9 +1,13 @@
 Database Management Systems Lecture Project
 
-Lecture Name: "Database Management Systems- Veri tabanı Yönetim Sistemleri (BLG361)"
+Lecture Name: "Database Management Systems- Veri tabanı Yönetim Sistemleri (BLG361)",
+
 Lecture Term: 2016 - 2017 Fall
+
 CRN: 12751 (Same for all group members)
+
 This is a project of BLG361 lecture in ITU and we are Group 05. There are some information about project:
+
 
 Group 05 Members:
 
@@ -16,6 +20,7 @@ Mustafa Çoban (150150702)
 Halit Uğurgelen (150130057)
 
 Hasan Hüseyin Çağlar(150110042)
+
 
 Project Information:
 
@@ -41,3 +46,8 @@ Mustafa Çoban: Jobs, groups and messages.
 Halit Uğurgelen: Influencers, topics and posts.
 
 Hasan Hüseyin Çağlar: Articles, connections and events.
+
+
+
+
+
