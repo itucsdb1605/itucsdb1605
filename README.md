@@ -1,19 +1,32 @@
-This README.md file is displayed on your project page. You should edit this 
-file to describe your project, including instructions for building and 
-running the project, pointers to the license under which you are making the 
-project available, and anything else you think would be useful for others to
-know.
+Database Management Systems Lecture Project
 
-We have created an empty license.txt file for you. Well, actually, it says,
-"<Replace this text with the license you've chosen for your project.>" We 
-recommend you edit this and include text for license terms under which you're
-making your code available. A good resource for open source licenses is the 
-[Open Source Initiative](http://opensource.org/).
+Lecture Name: "Database Management Systems- Veri tabanı Yönetim Sistemleri (BLG361)"
+Lecture Term: 2016 - 2017 Fall
+CRN: 12751 (Same for all group members)
+This is a project of BLG361 lecture in ITU and we are Group 05. There are some information about project:
 
-Be sure to update your project's profile with a short description and 
-eye-catching graphic.
+Group 05 Members:
 
-Finally, consider defining some sprints and work items in Track & Plan to give 
-interested developers a sense of your cadence and upcoming enhancements.
+Mert Yıldız (150120066)
+Şevket Cerit (15012005)
+Mustafa Çoban (150150702)
+Halit Uğurgelen (150130057)
+Hasan Hüseyin Çağlar(150110042)
 
-This file will update soon for IsteSen.
+Project Information:
+
+Project Name: "İşteSen"
+Project Topic: A career-related social media platform implementation
+Project Outline: We decided to make this project against the lack of well-designed social media platforms. Aim of the 
+project is to connect the business professionals by providing news, updates and opportunities about business. This project we will prepare will include these entities:
+Users, companies, universities, jobs, advertisements, articles, groups, messages, events, posts, influencers, topics, channels
+connections, locations.
+
+
+Responsibilities of Group Members:
+
+Mert Yıldız: Companies, universities and locations.
+Şevket Cerit: Users,channels and advertisements.
+Mustafa Çoban: Jobs, groups and messages.
+Halit Uğurgelen: Influencers, topics and posts.
+Hasan Hüseyin Çağlar: Articles, connections and events.
