@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>IsteSen HomePage</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  </head>
-  <body>
-    <h1>Hello from itucsdb1605! :)</h1>
-    <p>This is the very first paragraph of IsteSen, by caglarh.</p>
-    <p>A career-related social media platform.</p>
-    <footer>
-      <div id="datetime">{{ current_time }}</div>
-    </footer>
-  </body>
-</html>
+{% extends "logged_in_layout.html" %}
+{% block title %}Anasayfa{% endblock %}
+{% block content %}
+	<br><br><br>
+	<div class="container text-center">
+		<h4>Burada postlar görünecek.</h4>
+	</div>
+{% endblock %}
