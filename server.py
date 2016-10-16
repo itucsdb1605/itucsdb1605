@@ -18,6 +18,7 @@ def jobs_page():
     now = datetime.datetime.now()
     return render_template('jobs.html', current_time=now.ctime())
 
+
 @app.route('/universiteler')
 def uni_page():
     now = datetime.datetime.now()
@@ -27,6 +28,17 @@ def uni_page():
 def company_page():
     now = datetime.datetime.now()
     return render_template('companies.html', current_time=now.ctime())
+
+@app.route('/etkinlikler')
+def activities_page():
+    now = datetime.datetime.now()
+    return render_template('activities.html', current_time=now.ctime())
+
+@app.route('/makaleler')
+def articles_page():
+    now = datetime.datetime.now()
+    return render_template('articles.html', current_time=now.ctime())
+
 
 if __name__ == '__main__':
     VCAP_APP_PORT = os.getenv('VCAP_APP_PORT')

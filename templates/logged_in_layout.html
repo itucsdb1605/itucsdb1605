@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>İşteSen - {%block title%} {%endblock%}</title>
+    <title>İşteSen- {%block title%} {%endblock%}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
@@ -26,13 +26,19 @@
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategoriler <span class="glyphicon glyphicon-menu-down"></span></a>
 	          <ul class="dropdown-menu">
-	            <li><a href="/isilanlari"><span class="glyphicon glyphicon-search"></span>  İş İlanları</a></li>
-	            <li><a href="#"><span class="glyphicon glyphicon-calendar"></span>  Etkinlikler</a></li>
+	            <li><a href="/isilanlari"><span class="glyphicon glyphicon-search"></span> İş İlanları</a></li>
+	            <li><a href="/etkinlikler"><span class="glyphicon glyphicon-calendar"></span>  Etkinlikler</a></li>
 	            <li><a href="#"><span class="glyphicon glyphicon-bullhorn"></span>  Gruplar</a></li>
+
 	            <li><a href="/universiteler"><span class="glyphicon glyphicon-education"></span>  Üniversiteler</a></li>
 	            <li><a href="/sirketler"><span class="glyphicon glyphicon-briefcase"></span>  Şirketler</a></li>
 	            <li><a href="#"><span class="glyphicon glyphicon-book"></span>  Makaleler</a></li>
 	            <li><a href="#"><span class="glyphicon glyphicon-list"></span>  Konular</a></li>
+
+	            <li><a href="#"><span class="glyphicon glyphicon-education"></span>  Üniversiteler</a></li>
+	            <li><a href="#"><span class="glyphicon glyphicon-briefcase"></span>  Şirketler</a></li>
+	            <li><a href="/makaleler"><span class="glyphicon glyphicon-book"></span>  Makaleler</a></li>
+
 	          </ul>
 	        </li>
 	      </ul>
@@ -40,12 +46,12 @@
 	      <ul class="nav navbar-nav navbar-right">
 	 		<li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Mesajlar</a></li>
 	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kullanıcı <span class="glyphicon glyphicon-menu-down"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kullanıcılar <span class="glyphicon glyphicon-menu-down"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="#"><span class="glyphicon glyphicon-user"></span>  Profil</a></li>
 	            <li><a href="#"><span class="glyphicon glyphicon-cog"></span>  Ayarlar</a></li>
 	            <li role="separator" class="divider"></li>
-	            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>  Çıkış Yap</a></li>
+	            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Çıkış Yap</a></li>
 	          </ul>
 	        </li>
 	      </ul>
