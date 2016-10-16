@@ -1,0 +1,81 @@
+{% extends "logged_in_layout.html" %}
+{% block title %} Üniversiteler{%endblock%}
+{% block content %}
+
+<div class="jumbotron">
+ <div class="container">
+  <h1>Üniversiteler Hakkında Her Şey!</h1>
+  <p>Aradığınız üniversite hakkında mezunları, üniversitenin konumu, mezunların çalıştığı yerler gibi daha fazla bilgi edinin. </p>
+  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Arama Ekranına Geç</a></p> -->
+ </div>
+</div>
+
+
+<div class= "container">
+ <div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/QUB_090713_8728.jpg" alt="Company_add">
+      <div class="caption">
+        <h3>Üniversite ekle</h3>
+        <p>Üniversiteniz hakkında bilgiler ekleyerek katkı sağlayabilirsiniz</p>
+        <p><a href="#" class="btn btn-primary" role="button">Ekle</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://www.californiahomeschool.net/wp-content/uploads/2014/11/HIgh-School.jpg" alt="Company_delete">
+      <div class="caption">
+        <h3>Üniversite Sil</h3>
+        <p>Var olan bir üniversite bilgisini silmek için kullanabilirsiniz.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Sil</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://swiftpropel.com/wp-content/uploads/2015/03/TEAM_1b.jpg" alt="Company_search">
+      <div class="caption">
+        <h3>Üniversite Ara</h3>
+        <p>Üniversite arayarak istediğiniz üniversite hakkında detaylı bilgiye erişebilirsiniz.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Ara</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+	<div class="container text-center">
+		<br>
+		<br>
+		<h3>Üniversiteler</h3>
+		<br>
+<div class="panel panel-default">
+  <div class="panel-heading">Üniversiteler</div>
+  <table class="table">
+  <tr>
+    <th>Üniversite Adı</th>
+    <th>Konumu</th>
+    <th>Öğrenci Sayısı</th>
+  </tr>
+  <tr>
+    <td>İTÜ</td>
+    <td>İstanbul</td>
+    <td>50.000</td>
+  </tr>
+  <tr>
+    <td>ODTÜ</td>
+    <td>Ankara</td>
+    <td>35.000</td>
+  </tr>
+</table>
+</div>
+</div>
+
+
+{%endblock%}

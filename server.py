@@ -18,6 +18,16 @@ def jobs_page():
     now = datetime.datetime.now()
     return render_template('jobs.html', current_time=now.ctime())
 
+@app.route('/universiteler')
+def uni_page():
+    now = datetime.datetime.now()
+    return render_template('universities.html', current_time=now.ctime())
+
+@app.route('/sirketler')
+def company_page():
+    now = datetime.datetime.now()
+    return render_template('companies.html', current_time=now.ctime())
+
 if __name__ == '__main__':
     VCAP_APP_PORT = os.getenv('VCAP_APP_PORT')
     if VCAP_APP_PORT is not None:

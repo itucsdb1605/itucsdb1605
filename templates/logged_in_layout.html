@@ -29,9 +29,10 @@
 	            <li><a href="/isilanlari"><span class="glyphicon glyphicon-search"></span>  İş İlanları</a></li>
 	            <li><a href="#"><span class="glyphicon glyphicon-calendar"></span>  Etkinlikler</a></li>
 	            <li><a href="#"><span class="glyphicon glyphicon-bullhorn"></span>  Gruplar</a></li>
-	            <li><a href="#"><span class="glyphicon glyphicon-education"></span>  Üniversiteler</a></li>
-	            <li><a href="#"><span class="glyphicon glyphicon-briefcase"></span>  Şirketler</a></li>
+	            <li><a href="/universiteler"><span class="glyphicon glyphicon-education"></span>  Üniversiteler</a></li>
+	            <li><a href="/sirketler"><span class="glyphicon glyphicon-briefcase"></span>  Şirketler</a></li>
 	            <li><a href="#"><span class="glyphicon glyphicon-book"></span>  Makaleler</a></li>
+	            <li><a href="#"><span class="glyphicon glyphicon-list"></span>  Konular</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -53,7 +54,11 @@
 	</nav>
 
     {%block content%}{%endblock%}
+    <hr>
+
 	<footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2016 İşteSen, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       <div id="datetime">{{ current_time }}</div>
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
