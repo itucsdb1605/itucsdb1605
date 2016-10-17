@@ -52,6 +52,10 @@ def kanal_page():
     now = datetime.datetime.now()
     return render_template('kanallar.html', current_time=now.ctime())
 
+@app.route('/partners')
+def partners_page():
+    now = datetime.datetime.now()
+    return render_template('partners.html', current_time=now.ctime())
 
 if __name__ == '__main__':
     VCAP_APP_PORT = os.getenv('VCAP_APP_PORT')
