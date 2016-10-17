@@ -3,20 +3,22 @@
 {% block content %}
 	<div class="container">
 		<ul class="nav nav-tabs nav-justified">
-		    <li id="newMessage" class="active"><a href="#">Yeni Mesaj</a></li>
-			<li><a href="#">Gelen Kutusu</a></li>
-			<li><a href="#">Gönderilenler</a></li>
+		  <li id="newMessage" class="active"><a href="#">Mesaj Gönder</a></li>
+		  <li><a href="#">Gelen Kutusu<span class="badge">3</span></a></li>
+	      <li><a href="#">Gönderilenler</a></li>
 		</ul>
+		<br><br>
 		<form>
-			<br>
-			<br>
-			<input type="text" name="receiver" placeholder="Alıcı Kullanıcı Adı">
-			<br>
-			<br>
-			<textarea rows=5 cols=40 name="message" placeholder="Mesajınızı buraya yazınız."></textarea>
-			<br>
-			<br>
-			<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-message"></span>Gönder</button>
+     	  <div class="form-group">
+			<label for="username">Alıcının Kullanıcı Adı:</label>
+			<input type="text" class="form-control" id="username"></input>
+		  </div>
+
+		  <div class="form-group">
+			<label for="message">Mesaj:</label>
+			<textarea class="form-control" rows="5" placeholder="Mesajınızı buraya yazınız"></textarea>
+		  </div>
+		  <button type="submit" class="btn btn-success">Gönder</button>
 		</form>
 	</div>
 {%endblock%}
