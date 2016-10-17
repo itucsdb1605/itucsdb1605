@@ -47,6 +47,10 @@ def activities_page():
 def articles_page():
     now = datetime.datetime.now()
     return render_template('articles.html', current_time=now.ctime())
+@app.route('/kanallar')
+def kanal_page():
+    now = datetime.datetime.now()
+    return render_template('kanallar.html', current_time=now.ctime())
 
 
 if __name__ == '__main__':
