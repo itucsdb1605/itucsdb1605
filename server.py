@@ -18,6 +18,11 @@ def jobs_page():
     now = datetime.datetime.now()
     return render_template('jobs.html', current_time=now.ctime())
 
+@app.route('/messages')
+def messages_page():
+    now = datetime.datetime.now()
+    return render_template('messages.html', current_time=now.ctime())
+
 
 @app.route('/universiteler')
 def uni_page():
