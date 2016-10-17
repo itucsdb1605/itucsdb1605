@@ -1,0 +1,23 @@
+{% extends "logged_in_layout.html" %}
+{% block title %} Gruplar {%endblock%}
+{% block content %}
+	<div class="container">
+		<ul class="nav nav-tabs nav-justified">
+		  <li id="newMessage" class="active"><a href="#">Grup Oluştur</a></li>
+		  <li><a href="#">Grupları Görüntüle</a></li>
+		</ul>
+		<br><br>
+		<form>
+     	  <div class="form-group">
+			<label for="groupname">Grup İsmi: </label>
+			<input type="text" class="form-control" id="groupname"></input>
+		  </div>
+		  <div class="form-group">
+			<label for="users">Üyeler: </label>
+			<input type="text" class="form-control" id="users" placeholder="Üyelerin kullanıcı adlarını virgül ile ayırarak yazınız"></input>
+		  </div>
+
+		  <button type="submit" class="btn btn-success">Gönder</button>
+		</form>
+	</div>
+{%endblock%}
