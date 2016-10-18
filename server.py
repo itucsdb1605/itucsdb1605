@@ -58,7 +58,7 @@ def partners_page():
     return render_template('partners.html', current_time=now.ctime())
 
 @app.route('/konular')
-def kanal_page():
+def topics_page():
     now = datetime.datetime.now()
     return render_template('topics.html', current_time=now.ctime())
 
