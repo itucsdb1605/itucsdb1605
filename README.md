@@ -19,7 +19,9 @@ Mustafa Çoban (150150702)
 
 Halit Uğurgelen (150130057)
 
-Hasan Hüseyin Çağlar(150110042)
+Hasan Hüseyin Çağlar (150110042)
+
+Aydoğdu Demirci (040090545)
 
 
 Project Information:
@@ -46,6 +48,8 @@ Mustafa Çoban: Jobs, groups and messages.
 Halit Uğurgelen: Influencers, topics and posts.
 
 Hasan Hüseyin Çağlar: Articles, connections and events.
+
+Aydoğdu Demirci: New group member, not defined yet.
 
 
 
