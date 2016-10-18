@@ -60,7 +60,7 @@ def partners_page():
 @app.route('/konular')
 def kanal_page():
     now = datetime.datetime.now()
-    return render_template('konular.html', current_time=now.ctime())
+    return render_template('topics.html', current_time=now.ctime())
 
 if __name__ == '__main__':
     VCAP_APP_PORT = os.getenv('VCAP_APP_PORT')
