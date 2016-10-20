@@ -1,5 +1,5 @@
 applications:
-- services
+- services:
   - ElephantSQL-gd
   disk_quota: 1024M
   host: itucsdb1605
