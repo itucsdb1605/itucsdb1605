@@ -190,6 +190,32 @@ class INIT:
                         ('Mustafa COBAN', 'Bill GATES', 'Hi Bill! How are you?');
                         """        
             cursor.execute(statement)    
-            connection.commit()        
-		
+            connection.commit() 
+            
+    def articles(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS Articles CASCADE"
+            cursor.execute(query)		
+            
+            query = """CREATE TABLE Articles (
+                    ArticleId SERIAL PRIMARY KEY,
+                    ArticleName VARCHAR(400) UNIQUE NOT NULL,
+                    UserId INT NOT NULL,
+                    Name VARCHAR(90) NOT NULL,
+                    SurName VARCHAR(80) NOT NULL,
+                    ReleaseYear SMALLINT NOT NULL,
+                    Mail VARCHAR(100) NOT NULL                     
+                    )"""
+            cursor.execute(query)
+            
+            query = """INSERT INTO Articles(ArticleName, UserId, Name, SurName, ReleaseYear, Mail) VALUES
+              ('Efficient algorithms for the (weighted) minimum circle problem',20,'Donald','Hearn',1982,'Hearn@ise.ufl.edu'),
+              ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',10,'Uluğ','Bayazıt',2011,'ulugbayazit@itu.edu.tr'),
+              ('The minimum covering sphere problem',20,'Donald','Hearn',1972,'Hearn@ise.ufl.edu'),
+              ('An Ottoman response to Darwinism: İsmail Fennî on Islam and evolution',30,'Alper','Bilgili',2015,'Alper.Bilgili@acibadem.edu.tr');            
+              """
+            cursor.execute(query)         
+            connection.commit()               
+
 
