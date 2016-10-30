@@ -149,6 +149,7 @@ class INIT:
     def channels(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS universities_info CASCADE"
             query = """CREATE TABLE channels (
                     id SERIAL PRIMARY KEY,
                     title VARCHAR(40) UNIQUE NOT NULL
