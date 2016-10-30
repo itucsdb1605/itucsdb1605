@@ -88,6 +88,7 @@ def init_db():
     #initialize.All()
     initialize.universities()
     initialize.universities_info()
+    initialize.topics()
     return redirect(url_for('home_page'))
 
 
