@@ -185,8 +185,4 @@ class INIT:
                             """        
                 cursor.execute(statement)            
 		
-    def All(self):
-        self.universities()
-        self.universities_info()
-        self.topics()
-	self.channels()
+
