@@ -125,8 +125,28 @@ class INIT:
             cursor.execute(query)
             connection.commit()
 
-
+    def topics(self):
+		with dbapi2.connect(self.cp) as connection:
+			cursor = connection.cursor()
+			query = """CREATE TABLE topics (
+					id SERIAL PRIMARY KEY,
+					title VARCHAR(40) UNIQUE NOT NULL
+				)"""
+			cursor.execute(query)
+			
+			cursor.execute("""INSERT INTO topics (title) VALUES
+			('Careers'),
+			('Engineering'),
+			('Finance'),
+			('International'),
+			('Jobs'),
+			('Languages'),
+			('Miscellaneous'),
+			('Technology');
+			""")
+			connection.commit()
 
     def All(self):
         self.universities()
         self.universities_info()
+        self.topics()
