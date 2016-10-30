@@ -90,6 +90,7 @@ def init_db():
     initialize.universities_info()
     initialize.topics()
     initialize.messages()
+    initialize.channels()
     return redirect(url_for('home_page'))
 
 if __name__ == '__main__':
