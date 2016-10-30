@@ -49,7 +49,7 @@ Halit Uğurgelen: Influencers, topics and posts.
 
 Hasan Hüseyin Çağlar: Articles, connections and events.
 
-Aydoğdu Demirci: Aydoğdu Demirci: Partners, projects, helpdesk.
+Aydoğdu Demirci: Partners, projects, helpdesk.
 
 
 
