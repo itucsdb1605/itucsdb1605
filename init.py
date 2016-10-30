@@ -146,6 +146,29 @@ class INIT:
               """
             cursor.execute(query)
             connection.commit()
+    def channels(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = """CREATE TABLE channels (
+                    id SERIAL PRIMARY KEY,
+                    title VARCHAR(40) UNIQUE NOT NULL
+                    )"""
+            cursor.execute(query)
+
+            query = """INSERT INTO channels (title) VALUES
+              ('Yazılım'),
+              ('Eğlence'),
+              ('Ekonomi'),
+              ('Spor'),
+              ('Sosyal Medya'),
+              ('Liderlik'),
+              ('Mobil'),
+              ('Sinema'),
+              ('Eğitim'),
+              ('Müzik');
+              """
+            cursor.execute(query)
+            connection.commit()
     
     def messages(self):
         with dbapi2.connect(self.cp) as connection:
@@ -166,3 +189,4 @@ class INIT:
         self.universities()
         self.universities_info()
         self.topics()
+	self.channels()
