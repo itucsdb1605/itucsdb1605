@@ -146,6 +146,21 @@ class INIT:
               """
             cursor.execute(query)
             connection.commit()
+    
+    def messages(self):
+        with dbapi2.connect(self.cp) as connection:
+            with connection.cursor as cursor:
+                statement = """CREATE TABLE MESSAGES(
+                            ID SERIAL PRIMARY KEY,
+                            SenderName VARCHAR(40) NOT NULL,
+                            ReceiverName VARCHAR(40) NOT NULL,
+                            Text VARCHAR(200) NOT NULL
+                            )"""
+                cursor.execute(statement)
+                statement = """INSERT INTO MESSAGES(SenderName, ReceiverName, Text)
+                             VALUES ('Mustafa COBAN', 'Bill GATES', 'Hi Bill! How are you?')
+                            """        
+                cursor.execute(statement)            
 		
     def All(self):
         self.universities()

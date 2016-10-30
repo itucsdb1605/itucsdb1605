@@ -89,8 +89,8 @@ def init_db():
     initialize.universities()
     initialize.universities_info()
     initialize.topics()
+    initialize.messages()
     return redirect(url_for('home_page'))
-
 
 if __name__ == '__main__':
     VCAP_APP_PORT = os.getenv('VCAP_APP_PORT')
