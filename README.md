@@ -49,8 +49,7 @@ Halit Uğurgelen: Influencers, topics and posts.
 
 Hasan Hüseyin Çağlar: Articles, connections and events.
 
-Aydoğdu Demirci: New group member, not defined yet.
-
+Aydoğdu Demirci: Aydoğdu Demirci: Partners, projects, helpdesk.
 
 
 
