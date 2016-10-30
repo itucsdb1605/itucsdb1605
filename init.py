@@ -180,8 +180,8 @@ class INIT:
                             Text VARCHAR(200) NOT NULL
                             )"""
                 cursor.execute(statement)
-                statement = """INSERT INTO MESSAGES(SenderName, ReceiverName, Text)
-                             VALUES ('Mustafa COBAN', 'Bill GATES', 'Hi Bill! How are you?')
+                statement = """INSERT INTO MESSAGES(SenderName, ReceiverName, Text) VALUES 
+                            ('Mustafa COBAN', 'Bill GATES', 'Hi Bill! How are you?');
                             """        
                 cursor.execute(statement)            
 		
