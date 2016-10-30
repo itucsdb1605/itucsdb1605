@@ -176,17 +176,20 @@ class INIT:
     
     def messages(self):
         with dbapi2.connect(self.cp) as connection:
-            with connection.cursor as cursor:
-                statement = """CREATE TABLE MESSAGES(
-                            ID SERIAL PRIMARY KEY,
-                            SenderName VARCHAR(40) NOT NULL,
-                            ReceiverName VARCHAR(40) NOT NULL,
-                            Text VARCHAR(200) NOT NULL
-                            )"""
-                cursor.execute(statement)
-                statement = """INSERT INTO MESSAGES(SenderName, ReceiverName, Text) VALUES 
-                            ('Mustafa COBAN', 'Bill GATES', 'Hi Bill! How are you?');
-                            """        
-                cursor.execute(statement)            
+            cursor = connection.cursor()
+            statement = "DROP TABLE IF EXISTS Messages CASCADE"
+            cursor.execute(statement)
+            statement = """CREATE TABLE Messages (
+                        ID SERIAL PRIMARY KEY,
+                        Sender VARCHAR(40) NOT NULL,
+                        Receiver VARCHAR(40) NOT NULL,
+                        Text VARCHAR(200) NOT NULL
+                        )"""
+            cursor.execute(statement)
+            statement = """INSERT INTO MESSAGES(Sender, Receiver, Text) VALUES 
+                        ('Mustafa COBAN', 'Bill GATES', 'Hi Bill! How are you?');
+                        """        
+            cursor.execute(statement)    
+            connection.commit()        
 		
 
