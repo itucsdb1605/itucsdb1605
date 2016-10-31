@@ -198,7 +198,7 @@ class INIT:
             query = "DROP TABLE IF EXISTS partners CASCADE"
             cursor.execute(query)
             query = """CREATE TABLE partners (
-                     id SERIAL PRIMARY KEY,
+                    id SERIAL PRIMARY KEY,
                     title VARCHAR(40) UNIQUE NOT NULL
                     )"""
             cursor.execute(query)
