@@ -91,6 +91,7 @@ def init_db():
     initialize.topics()
     initialize.messages()
     initialize.channels()
+    initialize.partners()
     initialize.articles()
     return redirect(url_for('home_page'))
 
