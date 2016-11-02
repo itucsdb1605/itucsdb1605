@@ -29,6 +29,14 @@ def get_elephantsql_dsn(vcap_services):
 @app.route('/')
 def home_page():
     now = datetime.datetime.now()
+    initialize = INIT(app.config['dsn'])
+    initialize.universities()
+    initialize.universities_info()
+    initialize.topics()
+    initialize.messages()
+    initialize.channels()
+    initialize.partners()
+    initialize.articles()
     return render_template('home.html', current_time=now.ctime())
 
 @app.route('/isilanlari')
