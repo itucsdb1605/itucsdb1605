@@ -39,10 +39,129 @@ def home_page():
     initialize.articles()
     return render_template('home.html', current_time=now.ctime())
 
+##Following 5 methods define select-add-delete-update operations
+##on JOBS table
+
 @app.route('/isilanlari')
-def jobs_page():
+def job_view():
+    jobs = ()
+    connection = dbapi2.connect(app.config['dsn'])
+    try:
+        cursor = connection.cursor()
+        statement = """CREATE TABLE JOBS (
+                    ID SERIAL PRIMARY KEY,
+                    CompanyName VARCHAR(40) NOT NULL,
+                    Position VARCHAR(40) NOT NULL,
+                    Salary INT NOT NULL
+                    )
+                    """
+        cursor.execute(statement)
+    except Exception:
+        connection.rollback()
+    finally:
+        connection.close()
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()       
+        statement = """SELECT * FROM JOBS"""
+        cursor.execute(statement)    
+        jobs = cursor.fetchall()
+        connection.commit()
+        connection.close()
     now = datetime.datetime.now()
-    return render_template('jobs.html', current_time=now.ctime())
+    return render_template('jobs.html',jobs=jobs, current_time=now.ctime())
+
+@app.route('/isilaniekle', methods=['GET', 'POST'])
+def job_add():
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        return render_template('job_add.html', current_time=now.ctime())
+    if request.method == 'POST':
+        company = request.form['company']
+        position = request.form['position']
+        salary = int(request.form['salary'])
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()       
+        statement = """INSERT INTO JOBS(CompanyName, Position, Salary) VALUES
+                        ( '{}', '{}', '{}' );
+                    """.format(company, position, salary)
+        cursor.execute(statement) 
+        connection.commit()
+        connection.close()  
+        return redirect(url_for('job_view'))
+ 
+@app.route('/isilanisil', methods=['GET','POST'])
+def job_delete():
+    if request.method == 'GET':
+        jobs = ()
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()       
+        statement = """SELECT * FROM JOBS"""
+        cursor.execute(statement)    
+        jobs = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        now = datetime.datetime.now()
+        return render_template('job_delete.html', jobs=jobs, current_time=now.ctime())
+    if request.method == 'POST':
+        ids = request.form.getlist('jobs_to_delete')
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()       
+        statement = """DELETE FROM JOBS WHERE ID = {};"""
+        for id in ids:
+            id = id.split('/', maxsplit=1)
+            id = id[0]
+            cursor.execute(statement.format(id))
+            connection.commit()
+        statement = """SELECT * FROM JOBS"""
+        cursor.execute(statement)    
+        jobs = cursor.fetchall()    
+        connection.commit()
+        connection.close()
+        now = datetime.datetime.now()
+        return render_template('job_delete.html', jobs=jobs, current_time=now.ctime())
+
+@app.route('/isilaniguncelle')
+def job_update():
+    jobs = ()
+    connection = dbapi2.connect(app.config['dsn'])
+    cursor = connection.cursor()       
+    statement = """SELECT * FROM JOBS"""
+    cursor.execute(statement)    
+    jobs = cursor.fetchall()
+    connection.commit()
+    connection.close()
+    now = datetime.datetime.now()
+    return render_template('job_update.html',jobs=jobs, current_time=now.ctime())
+
+@app.route('/isilaniguncelle/<int:id>', methods=['GET','POST'])
+def job_update_page(id):
+    if request.method == 'GET':
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()       
+        statement = """SELECT * FROM JOBS WHERE ID={}""".format(id)
+        cursor.execute(statement)    
+        job = cursor.fetchall()
+        connection.close()
+        now = datetime.datetime.now()
+        return render_template('job_edit.html',job=job, current_time=now.ctime())
+    
+    if request.method == 'POST':
+        connection = dbapi2.connect(app.config['dsn'])
+        company = request.form['company']
+        position = request.form['position']
+        salary = int(request.form['salary'])
+        cursor = connection.cursor()       
+        statement = """UPDATE JOBS
+                    SET  CompanyName='{}', Position='{}' ,Salary={}     
+                    WHERE ID={};""".format(company, position, salary, id)
+        cursor.execute(statement)    
+        connection.commit()
+        statement = """SELECT * FROM JOBS"""
+        cursor.execute(statement)    
+        jobs = cursor.fetchall()
+        connection.close()
+        now = datetime.datetime.now()
+        return render_template('jobs.html',jobs=jobs, current_time=now.ctime())
 
 @app.route('/baglantilar')
 def connections_page():
