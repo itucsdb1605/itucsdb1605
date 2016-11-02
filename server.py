@@ -37,6 +37,7 @@ def home_page():
     initialize.channels()
     initialize.partners()
     initialize.articles()
+    initialize.jobs()
     return render_template('home.html', current_time=now.ctime())
 
 ##Following 5 methods define select-add-delete-update operations
@@ -46,27 +47,12 @@ def home_page():
 def job_view():
     jobs = ()
     connection = dbapi2.connect(app.config['dsn'])
-    try:
-        cursor = connection.cursor()
-        statement = """CREATE TABLE JOBS (
-                    ID SERIAL PRIMARY KEY,
-                    CompanyName VARCHAR(40) NOT NULL,
-                    Position VARCHAR(40) NOT NULL,
-                    Salary INT NOT NULL
-                    )
-                    """
-        cursor.execute(statement)
-    except Exception:
-        connection.rollback()
-    finally:
-        connection.close()
-        connection = dbapi2.connect(app.config['dsn'])
-        cursor = connection.cursor()       
-        statement = """SELECT * FROM JOBS"""
-        cursor.execute(statement)    
-        jobs = cursor.fetchall()
-        connection.commit()
-        connection.close()
+    cursor = connection.cursor()       
+    statement = """SELECT * FROM JOBS"""
+    cursor.execute(statement)    
+    jobs = cursor.fetchall()
+    connection.commit()
+    connection.close()
     now = datetime.datetime.now()
     return render_template('jobs.html',jobs=jobs, current_time=now.ctime())
 
