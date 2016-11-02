@@ -1,0 +1,41 @@
+{% extends "logged_in_layout.html" %}
+{% block title %} İş İlanları - Sil {%endblock%}
+{% block content %}
+	<div class="container">
+		<ul class="nav nav-pills nav-justified">
+		  <li class="active"><a href="{{ url_for('job_view') }}">İş İlanlarını Görüntüle</a></li>
+		  <li><a href="{{ url_for('job_add') }}">İş İlanı Ekle</a></li>
+		  <li><a href="{{ url_for('job_update') }}">İş İlanı Güncelle</a></li>
+		  <li><a href="{{ url_for('job_delete') }}">İş İlanı Sil</a></li>
+		</ul>
+		<br><br>
+		<form method="POST">
+			<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th>İlan No</th>
+			      <th>Şirket</th>
+			      <th>Pozisyon</th>
+			      <th>Maaş($)</th>
+			      <th>Silinsin Mi?</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for job in jobs %}
+				  <tr>
+				    {% for i in range(4) %}
+				        <td>{{ job[i] }}</td>
+				    {% endfor %}
+				    	<td><input type="checkbox" name="jobs_to_delete" value= {{ job[0] }}/></td>
+				  </tr>  
+				{% endfor %}
+			  </tbody>		
+			</table>
+			
+			{% if jobs %}
+				<button type="submit" class="btn btn-danger">Sil</button>
+			{%endif%}
+		</form>
+
+	</div>
+{%endblock%}
