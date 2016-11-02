@@ -1,0 +1,23 @@
+{% extends "logged_in_layout.html" %}
+
+{% block title %} {{ University.Title }} {% endblock %}
+
+{% block content %}
+
+<h1> Üniversite Adı: {{ University.Title }} </h1>
+<div id = "UniInfo">
+  <p>
+    <a>{{ University.Title }}</a>'nin Bulunduğu Şehir: <a>{{ University.Local }}</a>
+  </p>
+  <p>
+    <a>{{ University.Title }}</a>'nin Öğrenci Sayısı: <a>{{ University.Population }}</a>
+  </p>
+   <p>
+    <a>{{ University.Title }}</a>'nin Türü: <a>{{ University.Type }}</a>
+   </p>
+</div>
+
+<br>
+
+
+{% endblock %}
