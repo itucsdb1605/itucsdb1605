@@ -191,6 +191,24 @@ class INIT:
                         """        
             cursor.execute(statement)    
             connection.commit() 
+    def jobs(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            statement = "DROP TABLE IF EXISTS JOBS CASCADE"
+            cursor.execute(statement)
+            statement = """CREATE TABLE JOBS (
+                    ID SERIAL PRIMARY KEY,
+                    CompanyName VARCHAR(40) NOT NULL,
+                    Position VARCHAR(40) NOT NULL,
+                    Salary INT NOT NULL
+                    )
+                    """
+            cursor.execute(statement)
+            statement = """INSERT INTO JOBS(CompanyName, Position, Salary) VALUES 
+                        ('Google', 'Software Engineer', 10000);
+                        """  
+            cursor.execute(statement)
+            connection.commit()
             
     def partners(self):
         with dbapi2.connect(self.cp) as connection:
