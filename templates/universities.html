@@ -17,21 +17,19 @@
     <div class="thumbnail">
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/QUB_090713_8728.jpg" alt="Company_add">
       <div class="caption">
-        <h3>Üniversite ekle</h3>
+        <h3>Üniversite Ekle</h3>
         <p>Üniversiteniz hakkında bilgiler ekleyerek katkı sağlayabilirsiniz</p>
-        <p><a href="#" class="btn btn-primary" role="button">Ekle</a></p>
-      </div>
-    </div>
-  </div>
+        <form id="fAdd" action="{{ url_for('uni_page') }}" method="post">
 
+         <b>Üniversite Adı:</b><br> <input type="text" name="title" size="20" required autofocus /><br>
+         <b>Yer:</b><br> <input type="text" name="local" size="20" required autofocus /><br>
+         <b>Öğrenci Sayısı:</b><br> <input type="text" name="population" size="20" required autofocus /><br>
+         <b>Türü:</b><br> <input type="text" name="type" size="20" required autofocus />
+       <br><br>
+      <input type="submit" value="Ekle" name="universities_to_add"/>
+    </form>
 
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="http://www.californiahomeschool.net/wp-content/uploads/2014/11/HIgh-School.jpg" alt="Company_delete">
-      <div class="caption">
-        <h3>Üniversite Sil</h3>
-        <p>Var olan bir üniversite bilgisini silmek için kullanabilirsiniz.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Sil</a></p>
+    <!-- <p><a href="#" class="btn btn-primary" role="button">Ekle</a></p>  -->
       </div>
     </div>
   </div>
@@ -41,41 +39,67 @@
     <div class="thumbnail">
       <img src="http://swiftpropel.com/wp-content/uploads/2015/03/TEAM_1b.jpg" alt="Company_search">
       <div class="caption">
-        <h3>Üniversite Ara</h3>
-        <p>Üniversite arayarak istediğiniz üniversite hakkında detaylı bilgiye erişebilirsiniz.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Ara</a></p>
+        <h3>Üniversite Güncelle</h3>
+        <p>Üniversite bilgilerini güncellemek için kullanabilirsiniz.</p>
+        <form id="fUpdate" action="{{ url_for('uni_page') }}" method="post">
+
+          <b>Üniversite ID:</b><br> <input type="text" name="id" size="20" required autofocus /><br>
+          <b>Yeni Üniversite Adı:</b><br> <input type="text" name="title" size="20" required autofocus /><br>
+          <b>Yer:</b><br> <input type="text" name="local" size="20" required autofocus /><br>
+          <b>Öğrenci Sayısı:</b><br> <input type="text" name="population" size="20" required autofocus /><br>
+          <b>Türü:</b><br> <input type="text" name="type" size="20" required autofocus /><br>
+          <br><br>
+      <input type="submit" value="Güncelle" name="universities_to_update"/>
+    </form>
+
+       <!--<p><a href="#" class="btn btn-primary" role="button">Ara</a></p>  -->
       </div>
     </div>
   </div>
+  </div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://www.gscarchitects.com/wp-content/uploads/2016/02/UMHB-VAC-9.jpg" alt="Company_select">
+      <div class="caption">
+        <h3>Üniversite Seç</h3>
+        <p>Üniversite arayarak seçtiğiniz üniversite hakkında detaylı bilgiye erişebilirsiniz.</p>
+        <form id="fSelect" action="{{ url_for('uni_page')}}" method="post">
+
+         <b>Üniversite ID:</b><br>
+         <input type="text" name="id" required autofocus />
+      	 <br><br>
+     	 <input type="submit" value="Seç" name="universities_to_select"/>
+    	</form>
+       <!--<p><a href="#" class="btn btn-primary" role="button">Ara</a></p>  -->
+      </div>
+    </div>
+  </div>
+
+    <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://www.californiahomeschool.net/wp-content/uploads/2014/11/HIgh-School.jpg" alt="Company_delete">
+      <div class="caption">
+        <h3>Üniversite Sil</h3>
+        <p>Var olan bir üniversite bilgisini silmek için kullanabilirsiniz.</p>
+
+    <form id="fDelete" action="{{ url_for('uni_page') }}" method="post">
+     		<b>Üniversite ID:</b><br>
+     		<input type="text" name="id" required autofocus />
+        	<br><br>
+      		<input type="submit" value="Sil" name="universities_to_delete"/>
+    </form>
+      <!--<p><a href="#" class="btn btn-primary" role="button">Sil</a></p>  -->
+      </div>
+    </div>
+  </div>
+
 </div>
 </div>
 
-	<div class="container text-center">
-		<br>
-		<br>
-		<h3>Üniversiteler</h3>
-		<br>
-<div class="panel panel-default">
-  <div class="panel-heading">Üniversiteler</div>
-  <table class="table">
-  <tr>
-    <th>Üniversite Adı</th>
-    <th>Konumu</th>
-    <th>Öğrenci Sayısı</th>
-  </tr>
-  <tr>
-    <td>İTÜ</td>
-    <td>İstanbul</td>
-    <td>50.000</td>
-  </tr>
-  <tr>
-    <td>ODTÜ</td>
-    <td>Ankara</td>
-    <td>35.000</td>
-  </tr>
-</table>
-</div>
-</div>
+
 
 
 {%endblock%}
+
