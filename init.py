@@ -205,7 +205,16 @@ class INIT:
                     """
             cursor.execute(statement)
             statement = """INSERT INTO JOBS(CompanyName, Position, Salary) VALUES 
-                        ('Google', 'Software Engineer', 10000);
+                        ('Google', 'Software Engineer', 10000),
+                        ('Microsoft', 'Industrial Engineer', 7500),
+                        ('Apple', 'Software Engineer', 12000),
+                        ('Vodafone', 'Android Developer', 9700),
+                        ('Turkcell', 'Software Engineer', 7400),
+                        ('Apple', 'iOS Developer', 14000),
+                        ('Turkcell', 'Software Engineer', 5000),
+                        ('Avea', 'Server Maintainer', 4000),
+                        ('Airties', 'Network Engineer', 5000),
+                        ('NVIDIA', 'Electronics Engineer', 15000);
                         """  
             cursor.execute(statement)
             connection.commit()
