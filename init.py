@@ -70,7 +70,7 @@ class INIT:
 
             query = """CREATE TABLE universities_info (
                     uni_id INTEGER NOT NULL REFERENCES universities
-                        ON DELETE RESTRICT
+                        ON DELETE CASCADE
                         ON UPDATE CASCADE,
                     local VARCHAR(40) NOT NULL,
                     population NUMERIC(10),
