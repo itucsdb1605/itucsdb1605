@@ -10,6 +10,8 @@ from flask import render_template
 from flask.helpers import url_for
 from flask import request
 from init import INIT
+from universities import Universities
+from func import Func
 
 app = Flask(__name__)
 
@@ -48,10 +50,36 @@ def groups_page():
     now = datetime.datetime.now()
     return render_template('groups.html', current_time=now.ctime())
 
-@app.route('/universiteler')
+@app.route('/universiteler', methods=['GET', 'POST'])
 def uni_page():
+    unis = Universities(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        ulist = unis.get_universitylist()
+        return render_template('universities.html', UniversityList = ulist, current_time = now.ctime())
+    elif 'universities_to_delete' in request.form:
+        unis.delete_university(request.form['id'])
+        return redirect(url_for('uni_page'))
+    elif 'universities_to_add' in request.form:
+        unis.add_university(request.form['title'],request.form['local'],request.form['population'],request.form['type'])
+        return redirect(url_for('uni_page'))
+    elif 'universities_to_update' in request.form:
+        unis.update_a_university(request.form['id'], request.form['title'],request.form['local'],request.form['population'],request.form['type'])
+        return redirect(url_for('uni_page'))
+    elif 'universities_to_select' in request.form:
+        Uni_Index=request.form['id']
+        return redirect(url_for('a_uni_page',uni_index=Uni_Index))
+
+@app.route('/universiteler/<uni_index>', methods=['GET', 'POST'])
+def a_uni_page(uni_index):
     now = datetime.datetime.now()
-    return render_template('universities.html', current_time=now.ctime())
+    fn = Func(app.config['dsn'])
+    uni = Universities(app.config['dsn'])
+    univ = uni.get_a_university(uni_index)
+    if univ is None:
+        return render_template('404.html', current_time = now.ctime())
+    return render_template('a_university.html', University = univ, current_time = now.ctime())
 
 @app.route('/sirketler')
 def company_page():
