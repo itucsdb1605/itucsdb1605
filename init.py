@@ -205,9 +205,9 @@ class INIT:
                     """
             cursor.execute(statement)
             statement = """INSERT INTO JOBS(CompanyName, Position, Salary) VALUES 
+                        ('Apple', 'Software Engineer', 12000),
                         ('Google', 'Software Engineer', 10000),
                         ('Microsoft', 'Industrial Engineer', 7500),
-                        ('Apple', 'Software Engineer', 12000),
                         ('Vodafone', 'Android Developer', 9700),
                         ('Turkcell', 'Software Engineer', 7400),
                         ('Apple', 'iOS Developer', 14000),
