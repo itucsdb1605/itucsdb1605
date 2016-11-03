@@ -245,10 +245,10 @@ class INIT:
     def articles(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "DROP TABLE IF EXISTS Articles CASCADE"
+            query = "DROP TABLE IF EXISTS articles CASCADE"
             cursor.execute(query)		
             
-            query = """CREATE TABLE Articles (
+            query = """CREATE TABLE articles (
                     ArticleId SERIAL PRIMARY KEY,
                     ArticleName VARCHAR(400) UNIQUE NOT NULL,
                     UserId INT NOT NULL,
@@ -259,7 +259,7 @@ class INIT:
                     )"""
             cursor.execute(query)
             
-            query = """INSERT INTO Articles(ArticleName, UserId, Name, SurName, ReleaseYear, Mail) VALUES
+            query = """INSERT INTO articles(ArticleName, UserId, Name, SurName, ReleaseYear, Mail) VALUES
               ('Efficient algorithms for the (weighted) minimum circle problem',20,'Donald','Hearn',1982,'Hearn@ise.ufl.edu'),
               ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',10,'Uluğ','Bayazıt',2011,'ulugbayazit@itu.edu.tr'),
               ('The minimum covering sphere problem',20,'Donald','Hearn',1972,'Hearn@ise.ufl.edu'),

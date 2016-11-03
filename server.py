@@ -11,7 +11,7 @@ from flask.helpers import url_for
 from flask import request
 from init import INIT
 from universities import Universities
-from articles import  Articles
+from articles import Articles
 from func import Func
 
 app = Flask(__name__)
@@ -208,19 +208,22 @@ def activities_page():
 @app.route('/makaleler', methods=['GET', 'POST'])
 def articles_page():
     arts = Articles(app.config['dsn'])
+    fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
         alist = arts.get_articlelist()
         return render_template('articles.html', ArticleList = alist, current_time = now.ctime())
     elif 'articles_to_delete' in request.form:
-        arts.delete_article(request.form['ArticleId'])
-        return redirect(url_for('article_page'))
+        articleids = request.form.getlist('articles_to_delete')
+        for ArticleId in articleids:
+            arts.delete_article(ArticleId)
+        return redirect(url_for('articles_page'))
     elif 'articles_to_add' in request.form:
         arts.add_article(request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'])
-        return redirect(url_for('article_page'))
+        return redirect(url_for('articles_page'))
     elif 'articles_to_update' in request.form:
-        arts.update_article(request.form['ArticleId'], request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['Surname'],request.form['ReleaseYear'],request.form['Mail'])
-        return redirect(url_for('article_page'))
+        arts.update_article(request.form['ArticleId'], request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'])
+        return redirect(url_for('articles_page'))
 @app.route('/kanallar')
 def kanal_page():
     now = datetime.datetime.now()

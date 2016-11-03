@@ -1,18 +1,11 @@
 import psycopg2 as dbapi2
+
 class Articles:
-     def __init__(self, cp):
+    def __init__(self, cp):
         self.cp = cp
         return
-""" def __init__(self, ArticleName, UserId, Name, SurName, ReleaseYear, Mail):
-        self.ArticleName=ArticleName
-        self.UserId = UserId
-        self.Name = Name
-        self.SurName = SurName
-        self.ReleaseYear=ReleaseYear
-        self.Mail=Mail
-        return"""
 
-def get_articlelist(self):
+    def get_articlelist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = "SELECT * FROM articles"
@@ -20,7 +13,7 @@ def get_articlelist(self):
             rows = cursor.fetchall()
             return rows
 
-def delete_article(self, ArticleId):
+    def delete_article(self, ArticleId):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = "DELETE FROM articles WHERE ArticleId = '%s'" % (ArticleId)
@@ -28,7 +21,7 @@ def delete_article(self, ArticleId):
             connection.commit()
             return
 
-def add_article(self, ArticleName, UserId, Name, SurName, ReleaseYear, Mail):
+    def add_article(self, ArticleName, UserId, Name, SurName, ReleaseYear, Mail):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query =  "INSERT INTO articles (ArticleName, UserId, Name, SurName, ReleaseYear, Mail) VALUES ('%s','%s','%s','%s','%s','%s')" % (ArticleName, UserId, Name, SurName, ReleaseYear, Mail)
@@ -36,10 +29,10 @@ def add_article(self, ArticleName, UserId, Name, SurName, ReleaseYear, Mail):
             connection.commit()
             return
 
-def update_article(self, ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail):
+    def update_article(self, ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query =  "UPDATE articles SET ArticleName = '%s', UserId='%s', Name='%s', SurName = '%s', ReleaseYear='%s', Mail='%s' WHERE ArticleId='%s'"% (ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail)
+            query =  "UPDATE articles SET ArticleName = '%s', UserId='%s', Name='%s', SurName = '%s', ReleaseYear='%s', Mail='%s' WHERE ArticleId='%s'" % (ArticleName, UserId, Name, SurName, ReleaseYear, Mail, ArticleId)
             cursor.execute(query)
             connection.commit()
             return

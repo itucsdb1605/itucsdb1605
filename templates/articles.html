@@ -3,68 +3,101 @@
 {% block content %}
 	<div class="container text-center" style="background-color:LightGray ;">
 		<h2>Bu sayfa kişi, grup ve kurumlara ait makaleler hakkında tüm detayları içerecek...</h2>
+  <h3>Makale Listesi</h3>
+  <form action="{{ url_for('articles_page') }}" method="post">
+    <table>
+    	<tr>
+    		<th>Delete</th>
+    		<th>ArticleId</th>
+    		<th>ArticleName</th>
+    		<th>UserId</th>
+    		<th>Name</th>
+    		<th>SurName</th>
+    		<th>ReleaseYear</th>
+    		<th>Mail</th>
+    	</tr>
+
+    	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail in ArticleList %}
+    	<tr>
+    		<td><input type="checkbox" name="articles_to_delete" value="{{ ArticleId }}" /></td>
+    		<td>{{ ArticleId }}</td>
+    		<th>{{ ArticleName }}</th>
+    		<th>{{ UserId }}</th>
+    		<th>{{ Name }}</th>
+    		<th>{{ SurName }}</th>
+    		<th>{{ ReleaseYear }}</th>
+    		<th>{{ Mail }}</th>
+    	</tr>
+    	{% endfor %}
+
+    </table>
+    <input type="submit" value="Seçili Makaleleri Sil" name="delete" /> 
+  </form>
+  </br>
+  <span style="float:left;">
+  <form action="{{ url_for('articles_page') }}" method="post"> 
+    <table>
+      <tr> 
+        <th>ArticleName:</th> 
+        <td><input type="text" name="ArticleName" required autofocus /> </td>
+      </tr>
+      <tr> 
+        <th>UserId:</th> 
+        <td><input type="text" name="UserId" required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>Name:</th> 
+        <td><input type="text" name="Name" required autofocus /> </td>
+     </tr>
+      <tr> 
+        <th>SurName:</th> 
+        <td><input type="text" name="SurName" required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>ReleaseYear:</th> 
+        <td><input type="text" name="ReleaseYear" required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>Mail:</th> 
+        <td><input type="text" name="Mail" required autofocus /> </td>
+      </tr> 
+    </table>
+    <input type="submit" value="Makale Ekle" name="articles_to_add"/>
+  </form>
+  </span>
+<span style="float:right;">
+  <form action="{{ url_for('articles_page') }}" method="post"> 
+    <table>
+      <tr> 
+        <th>ArticleId:</th> 
+        <td><input type="text" name="ArticleId" required autofocus /> </td>
+      </tr>  
+        <th>ArticleName:</th> 
+        <td><input type="text" name="ArticleName" required autofocus /> </td>
+      </tr>
+      <tr> 
+        <th>UserId:</th> 
+        <td><input type="text" name="UserId" required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>Name:</th> 
+        <td><input type="text" name="Name" required autofocus /> </td>
+     </tr>
+      <tr> 
+        <th>SurName:</th> 
+        <td><input type="text" name="SurName" required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>ReleaseYear:</th> 
+        <td><input type="text" name="ReleaseYear" required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>Mail:</th> 
+        <td><input type="text" name="Mail" required autofocus /> </td>
+      </tr> 
+    </table>
+    <input type="submit" value="Makale Güncelle" name="articles_to_update"/>
+</form> 
+</span>
 	</div>
-	<div class= "container">
-   <div class="row">
-   	<div class="container text-center">
-		<br>
-		<br>
-		<h3>Makaleler</h3>
-		<br>
-<div class="panel panel-default">
-  <div class="panel-heading">Makaleler</div>
-  <table class="table">
-  <tr>
-    <th>Makale Adı</th>
-    <th>Ad</th>
-    <th>Soyad</th>
-    <th>Yayınlanma Yılı</th>
-    <th>E-mail</th>
-  </tr>
-  <tr>
-    <td>Efficient algorithms for the (weighted) minimum circle problem</td>
-    <td>Donald</td>
-    <td>Hearn</td>
-    <td>1982</td>
-    <td>Hearn@ise.ufl.edu</td>
-  </tr>
-  <tr>
-    <td>The minimum covering sphere problem</td>
-    <td>Donald</td>
-    <td>Hearn</td>
-    <td>1972</td>
-    <td>Hearn@ise.ufl.edu</td>
-  </tr>
-</table>
-</div>
-</div>
-   
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <h3>Makale ekle</h3>
-        <p><a href="#" class="btn btn-primary" role="button">Ekle</a></p>
-      </div>
-    </div>
-  </div>
-	
-	
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <h3>Makale Sil</h3>
-        <p><a href="#" class="btn btn-primary" role="button">Sil</a></p>
-      </div>
-    </div>
-  </div>
-  
-  	
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <h3>Makale Güncelle</h3>
-        <p><a href="#" class="btn btn-primary" role="button">Güncelle</a></p>
-      </div>
-    </div>
-  </div>
 {%endblock%}
