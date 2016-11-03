@@ -236,8 +236,23 @@ def partners_page():
 
 @app.route('/konular')
 def topics_page():
-    now = datetime.datetime.now()
-    return render_template('topics.html', current_time=now.ctime())
+    tops = topics(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        tlist = tops.get_topics()
+        return render_template('topics.html', topics = tlist, current_time = now.ctime())
+    elif 'delete_selected' in request.form:
+        topicids = request.form.getlist('delete_selected')
+        for topicID in topicids:
+            tops.delete(topicID)
+        return redirect(url_for('topics_page'))
+    elif 'add' in request.form:
+        arts.add(request.form['topic'],request.form['desc'])
+        return redirect(url_for('topics_page'))
+    elif 'update' in request.form:
+        arts.update(request.form['topicID'], request.form['topic'],request.form['desc'])
+        return redirect(url_for('topics_page'))
 
 @app.route('/initdb')
 def init_db():
