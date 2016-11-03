@@ -21,18 +21,18 @@ class topics:
             connection.commit()
             return
             
-    def add_topic(self, topic, desc):
+    def add_topic(self, topic, description):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query =  "INSERT INTO topics (topic, desc) VALUES ('%s','%s')" % (topic, desc)
+            query =  "INSERT INTO topics (topic, description) VALUES ('%s','%s')" % (topic, description)
             cursor.execute(query)
             connection.commit()
             return
             
-    def update_topic(self, topicID, topic, desc):
+    def update_topic(self, topicID, topic, description):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query =  "UPDATE topics SET topic = '%s', desc = '%s' WHERE topicID='%s'" % (topic, desc, topicID)
+            query =  "UPDATE topics SET topic = '%s', description = '%s' WHERE topicID='%s'" % (topic, description, topicID)
             cursor.execute(query)
             connection.commit()
             return
