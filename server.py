@@ -240,18 +240,18 @@ def topics_page():
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
-        tlist = tops.get_topics()
+        tlist = tops.get_topiclist()
         return render_template('topics.html', topics = tlist, current_time = now.ctime())
     elif 'delete_selected' in request.form:
         topicids = request.form.getlist('delete_selected')
         for topicID in topicids:
-            tops.delete(topicID)
+            tops.delete_topic(topicID)
         return redirect(url_for('topics_page'))
     elif 'add' in request.form:
-        arts.add(request.form['topic'],request.form['desc'])
+        arts.add_topic(request.form['topic'],request.form['desc'])
         return redirect(url_for('topics_page'))
     elif 'update' in request.form:
-        arts.update(request.form['topicID'], request.form['topic'],request.form['desc'])
+        arts.update_topic(request.form['topicID'], request.form['topic'],request.form['desc'])
         return redirect(url_for('topics_page'))
 
 @app.route('/initdb')
