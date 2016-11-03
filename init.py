@@ -129,11 +129,11 @@ class INIT:
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = "DROP TABLE IF EXISTS topics CASCADE"
-            cursor.execute(query)		
+            cursor.execute(query)
             query = """CREATE TABLE topics (
                     topicID SERIAL PRIMARY KEY,
                     topic VARCHAR(40) UNIQUE NOT NULL,
-                    desc VARCHAR(80) NOT NULL                   
+                    desc VARCHAR(80) NOT NULL
                     )"""
             cursor.execute(query)
 
