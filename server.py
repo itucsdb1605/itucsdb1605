@@ -248,10 +248,10 @@ def topics_page():
             tops.delete_topic(topicID)
         return redirect(url_for('topics_page'))
     elif 'add' in request.form:
-        arts.add_topic(request.form['topic'],request.form['desc'])
+        tops.add_topic(request.form['topic'],request.form['desc'])
         return redirect(url_for('topics_page'))
     elif 'update' in request.form:
-        arts.update_topic(request.form['topicID'], request.form['topic'],request.form['desc'])
+        tops.update_topic(request.form['topicID'], request.form['topic'],request.form['desc'])
         return redirect(url_for('topics_page'))
 
 @app.route('/initdb')
