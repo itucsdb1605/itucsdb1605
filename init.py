@@ -131,23 +131,25 @@ class INIT:
             query = "DROP TABLE IF EXISTS topics CASCADE"
             cursor.execute(query)		
             query = """CREATE TABLE topics (
-                    id SERIAL PRIMARY KEY,
-                    title VARCHAR(40) UNIQUE NOT NULL
+                    topicID SERIAL PRIMARY KEY,
+                    topic VARCHAR(40) UNIQUE NOT NULL,
+                    desc VARCHAR(80) NOT NULL                   
                     )"""
             cursor.execute(query)
 
-            query = """INSERT INTO topics (title) VALUES
-              ('Careers'),
-              ('Engineering'),
-              ('Finance'),
-              ('International'),
-              ('Jobs'),
-              ('Languages'),
-              ('Miscellaneous'),
-              ('Technology');
+            query = """INSERT INTO topics (topic, desc) VALUES
+              ('Careers','Talk about careers here!'),
+              ('Engineering','Talk about engineering here!'),
+              ('Finance','Talk about finance here!'),
+              ('International','Talk about international topics here!'),
+              ('Jobs','Talk about jobs here!'),
+              ('Languages','Talk about languages here!'),
+              ('Miscellaneous','Talk about various stuff here!'),
+              ('Technology','Talk about technology here!');
               """
             cursor.execute(query)
             connection.commit()
+
     def channels(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
