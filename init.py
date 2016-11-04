@@ -133,11 +133,11 @@ class INIT:
             query = """CREATE TABLE topics (
                     topicID SERIAL PRIMARY KEY,
                     topic VARCHAR(40) UNIQUE NOT NULL,
-                    desc VARCHAR(80) NOT NULL
+                    description VARCHAR(80) NOT NULL
                     )"""
             cursor.execute(query)
 
-            query = """INSERT INTO topics (topic, desc) VALUES
+            query = """INSERT INTO topics (topic, description) VALUES
               ('Careers','Talk about careers here!'),
               ('Engineering','Talk about engineering here!'),
               ('Finance','Talk about finance here!'),
