@@ -171,7 +171,8 @@ def uni_page():
     if request.method == 'GET':
         now = datetime.datetime.now()
         ulist = unis.get_universitylist()
-        return render_template('universities.html', UniversityList = ulist, current_time = now.ctime())
+        ilist= unis.get_a_universitylist()
+        return render_template('universities.html', UniversityList = ulist, InfoList=ilist, current_time = now.ctime())
     elif 'universities_to_delete' in request.form:
         unis.delete_university(request.form['id'])
         return redirect(url_for('uni_page'))
