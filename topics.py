@@ -1,6 +1,6 @@
 import psycopg2 as dbapi2
 
-class topics:
+class Topics:
     def __init__(self, cp):
         self.cp = cp
         return
