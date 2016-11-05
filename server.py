@@ -13,6 +13,7 @@ from init import INIT
 from universities import Universities
 from articles import Articles
 from func import Func
+from topics import Topics
 
 app = Flask(__name__)
 
