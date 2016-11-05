@@ -97,6 +97,37 @@
 
 </div>
 </div>
+<br>
+		<br>
+		<h3>Üniversiteler</h3>
+		<br>
+
+<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th>ID</th>
+		      <th>Adı</th>
+		      <th>Yeri</th>
+		      <th>Öğrenci Sayısı</th>
+		      <th>Türü</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+
+		  	{% for i in range(0,UniversityList|count) %}
+			  <tr>
+			  {% for j in range(0,2) %}
+			  		<td>{{UniversityList[i][j]}}</td>
+				{% endfor %}
+ 				{% for k in range(1,4) %}
+					<td>{{InfoList[i][k]}}</td>
+				{% endfor %}
+			  </tr>
+			{% endfor %}
+
+
+		  </tbody>
+		</table>
 
 
 
