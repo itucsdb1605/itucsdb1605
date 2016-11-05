@@ -14,6 +14,14 @@ class Universities:
             rows = cursor.fetchall()
             return rows
 
+    def get_a_universitylist(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "SELECT * FROM universities_info ORDER BY uni_id ASC"
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            return rows
+        
     def delete_university(self, id):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
