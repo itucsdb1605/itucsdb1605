@@ -8,7 +8,7 @@ class Func:
     def get_id(self, tablename, value):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "SELECT * FROM {0} WHERE title = '{0}' ".format(tablename, value)
+            query = "SELECT * FROM {0} WHERE city = '{0}' ".format(tablename, value)
             #query += "title = '{0}'".format(value)
             cursor.execute(query)
             row = cursor.fetchone()
