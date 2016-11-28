@@ -24,7 +24,7 @@ class INIT:
               ('Orta Doğu Teknik Üniversitesi'),
               ('Ege Üniversitesi '),
               ('Dokuz Eylül Üniversitesi'),
-              ('Kocaeli Üniversitesi'),
+              ('KocaeliUniversitesi'),
               ('Sakarya Üniversitesi'),
               ('Boğaziçi Üniversitesi'),
               ('Yıldız Teknik Üniversitesi'),
@@ -62,6 +62,107 @@ class INIT:
             """)
             connection.commit()
 
+
+
+    def locations(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS locations CASCADE"
+            cursor.execute(query)
+
+            query = """CREATE TABLE locations (
+                    loc_id INTEGER PRIMARY KEY,
+                    city VARCHAR(40) NOT NULL,
+                    country VARCHAR(40),
+                    UNIQUE (loc_id)
+                )"""
+            cursor.execute(query)
+            query = """INSERT INTO locations VALUES
+              (1, 'Adana','Türkiye'),
+              (2, 'Adıyaman', 'Türkiye'),
+              (3, 'Afyon', 'Türkiye'),
+              (4, 'Ağrı', 'Türkiye'),
+              (5, 'Amasya', 'Türkiye'),
+              (6, 'Ankara', 'Türkiye'),
+              (7, 'Antalya', 'Türkiye'),
+              (8, 'Artvin', 'Türkiye'),
+              (9, 'Aydın', 'Türkiye'),
+              (10, 'Balıkesir','Türkiye'),
+              (11, 'Bilecik', 'Türkiye'),
+              (12, 'Bingöl', 'Türkiye'),
+              (13, 'Bitlis', 'Türkiye'),
+              (14, 'Bolu', 'Türkiye'),
+              (15, 'Burdur', 'Türkiye'),
+              (16, 'Bursa', 'Türkiye'),
+              (17, 'Çanakkale', 'Türkiye'),
+              (18, 'Çankırı', 'Türkiye'),
+              (19, 'Çorum', 'Türkiye'),
+              (20, 'Denizli', 'Türkiye'),
+              (21, 'Diyarbakır','Türkiye'),
+              (22, 'Edirne', 'Türkiye'),
+              (23, 'Elazığ', 'Türkiye'),
+              (24, 'Erzincan', 'Türkiye'),
+              (25, 'Erzurum', 'Türkiye'),
+              (26, 'Eskişehir', 'Türkiye'),
+              (27, 'Gaziantep', 'Türkiye'),
+              (28, 'Giresun', 'Türkiye'),
+              (29, 'Gümüşhane', 'Türkiye'),
+              (30, 'Hakkari', 'Türkiye'),
+              (31, 'Hatay', 'Türkiye'),
+              (32, 'Isparta', 'Türkiye'),
+              (33, 'Mersin', 'Türkiye'),
+              (34, 'İstanbul', 'Türkiye'),
+              (35, 'İzmir', 'Türkiye'),
+              (36, 'Kars', 'Türkiye'),
+              (37, 'Kastamonu', 'Türkiye'),
+              (38, 'Kayseri', 'Türkiye'),
+              (39, 'Kırklareli','Türkiye'),
+              (40, 'Kırşehir', 'Türkiye'),
+              (41, 'Kocaeli', 'Türkiye'),
+              (42, 'Konya', 'Türkiye'),
+              (43, 'Kütahya', 'Türkiye'),
+              (44, 'Malatya', 'Türkiye'),
+              (45, 'Manisa', 'Türkiye'),
+              (46, 'Kahramanmaraş', 'Türkiye'),
+              (47, 'Mardin', 'Türkiye'),
+              (48, 'Muğla','Türkiye'),
+              (49, 'Muş', 'Türkiye'),
+              (50, 'Nevşehir', 'Türkiye'),
+              (51, 'Niğde', 'Türkiye'),
+              (52, 'Ordu', 'Türkiye'),
+              (53, 'Rize', 'Türkiye'),
+              (54, 'Sakarya', 'Türkiye'),
+              (55, 'Samsun', 'Türkiye'),
+              (56, 'Siirt', 'Türkiye'),
+              (57, 'Sinop','Türkiye'),
+              (58, 'Sivas', 'Türkiye'),
+              (59, 'Tekirdağ', 'Türkiye'),
+              (60, 'Tokat', 'Türkiye'),
+              (61, 'Trabzon', 'Türkiye'),
+              (62, 'Tunceli', 'Türkiye'),
+              (63, 'Şanlıurfa', 'Türkiye'),
+              (64, 'Uşak', 'Türkiye'),
+              (65, 'Van', 'Türkiye'),
+              (66, 'Yozgat', 'Türkiye'),
+              (67, 'Zonguldak', 'Türkiye'),
+              (68, 'Aksaray', 'Türkiye'),
+              (69, 'Bayburt', 'Türkiye'),
+              (70, 'Karaman', 'Türkiye'),
+              (71, 'Kırıkkale', 'Türkiye'),
+              (72, 'Batman', 'Türkiye'),
+              (73, 'Şırnak', 'Türkiye'),
+              (74, 'Bartın', 'Türkiye'),
+              (75, 'Ardahan', 'Türkiye'),
+              (76, 'Iğdır', 'Türkiye'),
+              (77, 'Yalova','Türkiye'),
+              (78, 'Karabük', 'Türkiye'),
+              (79, 'Kilis', 'Türkiye'),
+              (80, 'Osmaniye', 'Türkiye'),
+              (81, 'Düzce', 'Türkiye');
+            """
+            cursor.execute(query)
+            connection.commit()
+
     def universities_info(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
@@ -69,61 +170,64 @@ class INIT:
             cursor.execute(query)
 
             query = """CREATE TABLE universities_info (
-                    uni_id INTEGER NOT NULL REFERENCES universities
+                    uni_id INTEGER NOT NULL REFERENCES universities(id)
                         ON DELETE CASCADE
                         ON UPDATE CASCADE,
-                    local VARCHAR(40) NOT NULL,
+                    local INTEGER NOT NULL REFERENCES locations(loc_id)
+                        ON DELETE CASCADE
+                        ON UPDATE CASCADE,
                     population NUMERIC(10),
                     type VARCHAR(10),
                     UNIQUE (uni_id)
                 )"""
             cursor.execute(query)
             query = """INSERT INTO universities_info VALUES
-              (1, 'Ankara', 15020,'Devlet'),
-              (2, 'Ankara', 25010,'Devlet'),
-              (3, 'Ankara', 21008,'Özel'),
-              (4, 'Ankara', 12504,'Devlet'),
-              (5, 'Ankara', 27500,'Devlet'),
-              (6, 'İzmir', 25412,'Devlet'),
-              (7, 'İzmir', 10997,'Devlet'),
-              (8, 'Kocaeli', 17627,'Devlet'),
-              (9, 'Sakarya', 6570,'Devlet'),
-              (10, 'İstanbul', 8879, 'Devlet'),
-              (11, 'İstanbul', 8690, 'Devlet'),
-              (12, 'İstanbul', 11994, 'Devlet'),
-              (13, 'İstanbul', 33424, 'Özel'),
-              (14, 'İstanbul', 11586, 'Devlet'),
-              (15, 'İstanbul', 17215, 'Devlet'),
-              (16, 'İstanbul', 15990,'Özel'),
-              (17, 'İstanbul', 3944,'Özel'),
-              (18, 'İstanbul', 3338, 'Özel'),
-              (19, 'Tunceli', 1330,'Devlet'),
-              (20, 'Kocaeli', 1219, 'Devlet'),
-              (21, 'Trabzon', 8879, 'Devlet'),
-              (22, 'İstanbul', 8600, 'Özel'),
-              (23, 'İstanbul', 11994,'Özel'),
-              (24, 'Bursa', 3384, 'Devlet'),
-              (25, 'Elazığ', 11586,'Devlet'),
-              (26, 'Eskişehir', 17615,'Devlet'),
-              (27, 'Kırıkkale', 5110, 'Devlet'),
-              (28, 'Sinop', 3774,'Devlet'),
-              (29, 'Ankara', 3338,'Özel'),
-              (30, 'Erzincan', 2030, 'Devlet'),
-              (31, 'Van', 1439,'Devlet'),
-              (32, 'Eskişehir', 38424,'Devlet'),
-              (33, 'Antalya', 11586,'Devlet'),
-              (34, 'Ankara', 17215, 'Özel'),
-              (35, 'İstanbul', 24190,'Özel'),
-              (36, 'Erzurum', 7944, 'Devlet'),
-              (37, 'İstanbul', 3338,'Özel'),
-              (38, 'İstanbul', 9030,'Devlet'),
-              (39, 'Bursa', 4139,'Devlet'),
-              (40, 'Düzce', 2558, 'Devlet'),
-              (41, 'Edirne', 9030,'Devlet'),
-              (42, 'İstanbul', 4239, 'Özel');
+              (1, 6, 15020,'Devlet'),
+              (2, 6, 25010,'Devlet'),
+              (3, 6, 21008,'Özel'),
+              (4, 6, 12504,'Devlet'),
+              (5, 6, 27500,'Devlet'),
+              (6, 35, 25412,'Devlet'),
+              (7, 35, 10997,'Devlet'),
+              (8, 41, 17627,'Devlet'),
+              (9, 54, 6570,'Devlet'),
+              (10, 34, 8879, 'Devlet'),
+              (11, 34, 8690, 'Devlet'),
+              (12, 34, 11994, 'Devlet'),
+              (13, 34, 33424, 'Özel'),
+              (14, 34, 11586, 'Devlet'),
+              (15, 34, 17215, 'Devlet'),
+              (16, 34, 15990,'Özel'),
+              (17, 34, 3944,'Özel'),
+              (18, 34, 3338, 'Özel'),
+              (19, 62, 1330,'Devlet'),
+              (20, 41, 1219, 'Devlet'),
+              (21, 61, 8879, 'Devlet'),
+              (22, 34, 8600, 'Özel'),
+              (23, 34, 11994,'Özel'),
+              (24, 16, 3384, 'Devlet'),
+              (25, 23, 11586,'Devlet'),
+              (26, 26, 17615,'Devlet'),
+              (27, 71, 5110, 'Devlet'),
+              (28, 57, 3774,'Devlet'),
+              (29, 6, 3338,'Özel'),
+              (30, 24, 2030, 'Devlet'),
+              (31, 65, 1439,'Devlet'),
+              (32, 26, 38424,'Devlet'),
+              (33, 7, 11586,'Devlet'),
+              (34, 6, 17215, 'Özel'),
+              (35, 34, 24190,'Özel'),
+              (36, 25, 7944, 'Devlet'),
+              (37, 34, 3338,'Özel'),
+              (38, 34, 9030,'Devlet'),
+              (39, 16, 4139,'Devlet'),
+              (40, 81, 2558, 'Devlet'),
+              (41, 22, 9030,'Devlet'),
+              (42, 34, 4239, 'Özel');
             """
             cursor.execute(query)
             connection.commit()
+
 
     def topics(self):
         with dbapi2.connect(self.cp) as connection:
