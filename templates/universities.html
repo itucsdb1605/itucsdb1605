@@ -22,10 +22,13 @@
         <form id="fAdd" action="{{ url_for('uni_page') }}" method="post">
 
          <b>Üniversite Adı:</b><br> <input type="text" name="title" size="20" required autofocus /><br>
-         <b>Yer:</b><br> <input type="text" name="local" size="20" required autofocus /><br>
+         <b>Şehir:</b><br> <input type="text" name="local" size="20" required autofocus /><br>
          <b>Öğrenci Sayısı:</b><br> <input type="text" name="population" size="20" required autofocus /><br>
-         <b>Türü:</b><br> <input type="text" name="type" size="20" required autofocus />
-       <br><br>
+        <!--   <b>Türü:</b><br> <input type="text" name="type" size="20" required autofocus />-->
+         <b>Türü:</b><br>
+		<input type="radio" name="type" value="Devlet" checked> Devlet<br>
+		<input type="radio" name="type" value="Özel"> Özel<br>
+       <br>
       <input type="submit" value="Ekle" name="universities_to_add"/>
     </form>
 
@@ -34,24 +37,22 @@
     </div>
   </div>
 
-
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="http://swiftpropel.com/wp-content/uploads/2015/03/TEAM_1b.jpg" alt="Company_search">
+      <img src="http://www.gscarchitects.com/wp-content/uploads/2016/02/UMHB-VAC-9.jpg" alt="Company_select">
       <div class="caption">
-        <h3>Üniversite Güncelle</h3>
-        <p>Üniversite bilgilerini güncellemek için kullanabilirsiniz.</p>
-        <form id="fUpdate" action="{{ url_for('uni_page') }}" method="post">
-
-          <b>Üniversite ID:</b><br> <input type="text" name="id" size="20" required autofocus /><br>
-          <b>Yeni Üniversite Adı:</b><br> <input type="text" name="title" size="20" required autofocus /><br>
-          <b>Yer:</b><br> <input type="text" name="local" size="20" required autofocus /><br>
-          <b>Öğrenci Sayısı:</b><br> <input type="text" name="population" size="20" required autofocus /><br>
-          <b>Türü:</b><br> <input type="text" name="type" size="20" required autofocus /><br>
-          <br><br>
-      <input type="submit" value="Güncelle" name="universities_to_update"/>
-    </form>
-
+        <h3>Üniversite Seç</h3>
+        <p>Çeşitli kriterlere göre üniversite arayarak seçtiğiniz kriterlere uyan üniversiteleri görüntüleyebilirsiniz.</p>
+        <form id="fSelect" action="{{ url_for('uni_page')}}" method="post">
+ 		<b>Üniversite Şehri:</b><br>
+        <input type="text" name="city" required autofocus /><br>
+        <b>Devlet:</b>
+		<input type="checkbox" checked name="unis_to_select" value= "Devlet"/><br>
+		<b>Özel:</b>
+		<input type="checkbox" name="unis_to_select" value= "Özel"/><br>
+      	 <br><br>
+     	 <input type="submit" value="Seç" name="universities_to_select"/>
+    	</form>
        <!--<p><a href="#" class="btn btn-primary" role="button">Ara</a></p>  -->
       </div>
     </div>
@@ -59,19 +60,12 @@
   </div>
 
 <div class="row">
-  <div class="col-sm-6 col-md-4">
+<div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="http://www.gscarchitects.com/wp-content/uploads/2016/02/UMHB-VAC-9.jpg" alt="Company_select">
+      <img src="http://swiftpropel.com/wp-content/uploads/2015/03/TEAM_1b.jpg" alt="Company_search">
       <div class="caption">
-        <h3>Üniversite Seç</h3>
-        <p>Üniversite arayarak seçtiğiniz üniversite hakkında detaylı bilgiye erişebilirsiniz.</p>
-        <form id="fSelect" action="{{ url_for('uni_page')}}" method="post">
-
-         <b>Üniversite ID:</b><br>
-         <input type="text" name="id" required autofocus />
-      	 <br><br>
-     	 <input type="submit" value="Seç" name="universities_to_select"/>
-    	</form>
+        <h3>Üniversite Güncelle</h3>
+        <p>İstediğiniz bir üniversitenin bilgilerini güncellemek için tablodaki o üniversitenin satırında bulunan "Güncelle" yazısını kullanabilirsiniz.</p>
        <!--<p><a href="#" class="btn btn-primary" role="button">Ara</a></p>  -->
       </div>
     </div>
@@ -82,14 +76,7 @@
       <img src="http://www.californiahomeschool.net/wp-content/uploads/2014/11/HIgh-School.jpg" alt="Company_delete">
       <div class="caption">
         <h3>Üniversite Sil</h3>
-        <p>Var olan bir üniversite bilgisini silmek için kullanabilirsiniz.</p>
-
-    <form id="fDelete" action="{{ url_for('uni_page') }}" method="post">
-     		<b>Üniversite ID:</b><br>
-     		<input type="text" name="id" required autofocus />
-        	<br><br>
-      		<input type="submit" value="Sil" name="universities_to_delete"/>
-    </form>
+        <p>Var olan bir üniversite bilgisini silmek için tabloda ilgili üniversiteleri işaretlerek daha sonra sayfanın altında bulunan "Sil" butonunu kullanabilirsiniz.</p>
       <!--<p><a href="#" class="btn btn-primary" role="button">Sil</a></p>  -->
       </div>
     </div>
@@ -101,27 +88,31 @@
 		<br>
 		<h3>Üniversiteler</h3>
 		<br>
-
+<form method="POST">
 <table class="table table-hover">
 		  <thead>
 		    <tr>
-		      <th>ID</th>
 		      <th>Adı</th>
-		      <th>Yeri</th>
+		      <th>Şehir</th>
+		      <th>Ülke</th>
 		      <th>Öğrenci Sayısı</th>
 		      <th>Türü</th>
+		      <th>Güncellensin Mi?</th>
+		      <th>Silinsin Mi?</th>
 		    </tr>
 		  </thead>
 		  <tbody>
 
 		  	{% for i in range(0,UniversityList|count) %}
 			  <tr>
-			  {% for j in range(0,2) %}
+			  {% for j in range(1,2) %}
 			  		<td>{{UniversityList[i][j]}}</td>
 				{% endfor %}
- 				{% for k in range(1,4) %}
+ 				{% for k in range(1,5) %}
 					<td>{{InfoList[i][k]}}</td>
 				{% endfor %}
+			    <td><a href="{{request.path}}/{{InfoList[i][0]}}" class="text-info" name="unis_to_update">Güncelle</a></td>
+				<td><input type="checkbox" name="unis_to_delete" value= {{UniversityList[i][0]}}/></td>
 			  </tr>
 			{% endfor %}
 
@@ -129,8 +120,8 @@
 		  </tbody>
 		</table>
 
-
-
-
+			{% if UniversityList %}
+				<button type="submit" class="btn btn-danger">Sil</button>
+			{%endif%}
+</form>
 {%endblock%}
-
