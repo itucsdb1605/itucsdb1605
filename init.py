@@ -24,7 +24,7 @@ class INIT:
               ('Orta Doğu Teknik Üniversitesi'),
               ('Ege Üniversitesi '),
               ('Dokuz Eylül Üniversitesi'),
-              ('KocaeliUniversitesi'),
+              ('Kocaeli Üniversitesi'),
               ('Sakarya Üniversitesi'),
               ('Boğaziçi Üniversitesi'),
               ('Yıldız Teknik Üniversitesi'),
