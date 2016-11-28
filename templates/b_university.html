@@ -1,0 +1,31 @@
+{% extends "logged_in_layout.html" %}
+
+{% block title %}Bulunan Üniversiteler{% endblock %}
+
+{% block content %}
+<h3>Bulunan Üniversiteler</h3>
+<br>
+<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th>Adı</th>
+		      <th>Öğrenci Sayısı</th>
+		      <th>Türü</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+
+		  	{% for i in range(0,UniversityList|count) %}
+			  <tr>
+			  {% for j in range(0,3) %}
+			  		<td>{{UniversityList[i][j]}}</td>
+				{% endfor %}
+			  </tr>
+			{% endfor %}
+
+
+		  </tbody>
+		</table>
+
+
+{% endblock %}
