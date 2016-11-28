@@ -207,6 +207,11 @@ def activities_page():
     now = datetime.datetime.now()
     return render_template('activities.html', current_time=now.ctime())
 
+@app.route('/projects')
+def projects_page():
+    now = datetime.datetime.now()
+    return render_template('projects.html', current_time=now.ctime())
+
 @app.route('/makaleler', methods=['GET', 'POST'])
 def articles_page():
     arts = Articles(app.config['dsn'])
