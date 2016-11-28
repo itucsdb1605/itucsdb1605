@@ -1,23 +1,38 @@
 {% extends "logged_in_layout.html" %}
-
-{% block title %} {{ University.Title }} {% endblock %}
-
+{% block title %} Üniversite Güncelle {%endblock%}
 {% block content %}
+	<div class="container">
+		<form method="POST">
+     	  <div class="form-group">
+			<label for="uni">Üniversite İsmi:</label>
+			<input type="text" class="form-control" name="uni" value={{UniversityList[0][1]}}></input>
+		  </div>
 
-<h1> Üniversite Adı: {{ University.Title }} </h1>
-<div id = "UniInfo">
-  <p>
-    <a>{{ University.Title }}</a>'nin Bulunduğu Şehir: <a>{{ University.Local }}</a>
-  </p>
-  <p>
-    <a>{{ University.Title }}</a>'nin Öğrenci Sayısı: <a>{{ University.Population }}</a>
-  </p>
-   <p>
-    <a>{{ University.Title }}</a>'nin Türü: <a>{{ University.Type }}</a>
-   </p>
-</div>
+		  <div class="form-group">
+			<label for="city">Şehir:</label>
+			<input type="text" class="form-control" name="city" value={{InfoList[0][1]}}></input>
+		  </div>
 
-<br>
+		   <div class="form-group">
+			<label for="number">Öğrenci Sayısı:</label>
+			<input type="text" class="form-control" name="number" value={{InfoList[0][3]}}></input>
+		  </div>
 
+		   <div class="form-group">
+			<label for="type">Türü:</label><br>
+			{% if InfoList[0][4]=="Devlet" %}
+			<input type="radio" name="type" value="Devlet" checked> Devlet<br>
+			<input type="radio" name="type" value="Özel"> Özel<br>
+			{%endif%}
+			{% if InfoList[0][4]=="Özel" %}
+			<input type="radio" name="type" value="Devlet"> Devlet<br>
+			<input type="radio" name="type" value="Özel" checked> Özel<br>
+			{%endif%}
+			<!--  <input type="text" class="form-control" name="type" value={{InfoList[0][4]}}></input>-->
+		  </div>
 
-{% endblock %}
+		  <input type="submit" value="Güncelle" name="universities_to_update"/>
+</form>
+
+	</div>
+{%endblock%}
