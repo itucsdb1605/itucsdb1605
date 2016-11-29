@@ -16,6 +16,7 @@ from func import Func
 from topics import Topics
 from job import Job
 from users import users
+from partners import Partners
 
 app = Flask(__name__)
 
@@ -310,10 +311,25 @@ def kanal_page():
     now = datetime.datetime.now()
     return render_template('kanallar.html', current_time=now.ctime())
 
-@app.route('/partners')
+@app.route('/partners', methods=['GET', 'POST'])
 def partners_page():
-    now = datetime.datetime.now()
-    return render_template('partners.html', current_time=now.ctime())
+    prtnrs = Partners(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        plist = prtnrs.get_partnerlist()
+        return render_template('partners.html', PartnerList = plist, current_time = now.ctime())
+    elif 'partners_to_delete' in request.form:
+        partnerids = request.form.getlist('partners_to_delete')
+        for PartnerId in partnerids:
+            prtnrs.delete_partner(PartnerId)
+        return redirect(url_for('partners_page'))
+    elif 'partners_to_add' in request.form:
+        prtnrs.add_partner(request.form['PartnerName'],request.form['FoundationYear'],request.form['Country'])
+        return redirect(url_for('partners_page'))
+    elif 'partners_to_update' in request.form:
+        prtnrs.update_partner(request.form['PartnerId'], request.form['PartnerName'],request.form['FoundationYear'],request.form['Country'])
+        return redirect(url_for('partners_page'))
 
 @app.route('/konular')
 def topics_page():
