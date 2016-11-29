@@ -23,7 +23,7 @@ class Articles:
     def select_article(self, ArticleId):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "SELECT FROM articles WHERE ArticleId = '%s'" % (ArticleId)
+            query = "SELECT * FROM articles WHERE ArticleId = '%s'" % (ArticleId)
             cursor.execute(query)
             rows=cursor.fetchall()
             return rows
