@@ -21,7 +21,7 @@
     	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail in ArticleList %}
     	<tr>
     		<td><input type="checkbox" name="articles_to_delete" value="{{ ArticleId }}" /></td>
-    		<td><input type="submit" value="{{ ArticleId }}" name="select_record" /></td>
+    		<td><input type="radio" value="{{ ArticleId }}" name="select_record" /></td>
     		<td>{{ ArticleId }}</td>
     		<th>{{ ArticleName }}</th>
     		<th>{{ UserId }}</th>
@@ -33,6 +33,7 @@
     	{% endfor %}
     </table>
     <input type="submit" value="Seçili Makaleleri Sil" name="delete" /> 
+    <input type="submit" value="Seçili Makaleyi Güncelle" name="update" />
   </form>
   </br>
   <span style="float:left;">

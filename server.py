@@ -281,8 +281,9 @@ def articles_page():
             arts.delete_article(ArticleId)
         return redirect(url_for('articles_page'))
     elif 'select_record' in request.form:
-        slist=arts.select_article(request.form['ArticleId'])
+        articleids = request.form.getlist('select_record')
         alist = arts.get_articlelist()
+        slist=arts.select_article(articleids[0])
         return render_template('articles.html', ArticleList = alist, article=slist, current_time=now.ctime())
     elif 'articles_to_add' in request.form:
         arts.add_article(request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'])
