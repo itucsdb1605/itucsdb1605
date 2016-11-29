@@ -42,6 +42,7 @@ def home_page():
     initialize.partners()
     initialize.articles()
     initialize.jobs()
+    initialize.users()
     return render_template('home.html', current_time=now.ctime())
 
 ##Following 5 methods define select-add-delete-update operations
@@ -332,6 +333,7 @@ def init_db():
     initialize.channels()
     initialize.partners()
     initialize.articles()
+    initialize.users()
     return redirect(url_for('home_page'))
 
 if __name__ == '__main__':
