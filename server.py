@@ -273,17 +273,17 @@ def articles_page():
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
-        alist = arts.get_articlelist()
-        article=alist
+        article = arts.get_articlelist()
         article[0]=list(article[0])
-        article[0][0]=" "
-        article[0][1]=" "
-        article[0][2]=" "
-        article[0][3]=" "
-        article[0][4]=" "
-        article[0][5]=" "
-        article[0][6]=" "
+        article[0][0]="kayıt seçiniz"
+        article[0][1]="kayıt seçiniz"
+        article[0][2]="kayıt seçiniz"
+        article[0][3]="kayıt seçiniz"
+        article[0][4]="kayıt seçiniz"
+        article[0][5]="kayıt seçiniz"
+        article[0][6]="kayıt seçiniz"
         article[0]=tuple(article[0])
+        alist = arts.get_articlelist()
         return render_template('articles.html', ArticleList = alist, article= article, current_time = now.ctime())
     elif 'articles_to_delete' in request.form:
         articleids = request.form.getlist('articles_to_delete')
