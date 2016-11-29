@@ -8,7 +8,7 @@ class Articles:
     def get_articlelist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "SELECT articles.ArticleName, articles.UserId, articles.Name, articles.SurName,articles.ReleaseYear, articles.Mail, universities.title FROM articles JOIN universities ON articles.uni_id = universities.uni_id ORDER BY ArticleId ASC"
+            query = "SELECT articles.ArticleName, articles.UserId, articles.Name, articles.SurName,articles.ReleaseYear, articles.Mail, universities.title FROM articles JOIN universities ON articles.uni_id = universities.id ORDER BY ArticleId ASC"
             cursor.execute(query)
             rows = cursor.fetchall()
             return rows
