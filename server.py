@@ -45,6 +45,7 @@ def home_page():
     initialize.partners()
     initialize.articles()
     initialize.jobs()
+    initialize.groups()
     initialize.users()
     return render_template('home.html', current_time=now.ctime())
 
