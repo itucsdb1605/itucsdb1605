@@ -1,42 +1,73 @@
 {% extends "logged_in_layout.html" %}
 {% block title %}Is Ortaklari{% endblock %}
-{% block content  %}
-	<div class="container text-center" style="background-color:red;">
-		<h2 style="color:white">Is ortaklari bu sayfada gosterilecek.</h2>
+{% block content %}
+	<div class="container text-center" style="background-color:#e4edff;">
+		<h2></h2>
+  <h3></h3>
+  <form action="{{ url_for('partners_page') }}" method="post">
+    <table>
+    	<tr>
+    		<th>Delete</th>
+    		<th>PartnerId</th>
+    		<th>PartnerName</th>
+    		<th>FoundationYear</th>
+    		<th>Country</th>
+    	</tr>
+
+    	{% for PartnerId, PartnerName, FoundationYear, Country in PartnerList %}
+    	<tr>
+    		<td><input type="checkbox" name="partners_to_delete" value="{{ PartnerId }}" /></td>
+    		<td>{{ PartnerId }}</td>
+    		<th>{{ PartnerName }}</th>
+    		<th>{{ FoundationYear }}</th>
+    		<th>{{ Country }}</th>
+    	</tr>
+    	{% endfor %}
+
+    </table>
+    <input type="submit" value="İşaretli İş Ortağını Sil" name="delete" /> 
+  </form>
+  </br>
+  <span style="float:left;">
+  <form action="{{ url_for('partners_page') }}" method="post"> 
+    <table>
+      <tr> 
+        <th>PartnerName:</th> 
+        <td><input type="text" name="PartnerName" required autofocus /> </td>
+      </tr>
+      <tr> 
+        <th>FoundationYear:</th> 
+        <td><input type="text" name="FoundationYear" required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>Country:</th> 
+        <td><input type="text" name="Country" required autofocus /> </td>
+     </tr>
+    </table>
+    <input type="submit" value="İş Ortağı Ekle" name="partners_to_add"/>
+  </form>
+  </span>
+<span style="float:right;">
+  <form action="{{ url_for('partners_page') }}" method="post"> 
+    <table>
+      <tr> 
+        <th>PartnerId:</th> 
+        <td><input type="text" name="PartnerId" required autofocus /> </td>
+      </tr>  
+        <th>PartnerName:</th> 
+        <td><input type="text" name="PartnerName" required autofocus /> </td>
+      </tr>
+      <tr> 
+        <th>FoundationYear:</th> 
+        <td><input type="text" name="FoundationYear" required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>Country:</th> 
+        <td><input type="text" name="Country" required autofocus /> </td>
+     </tr>
+    </table>
+    <input type="submit" value="İş Ortağını Güncelle" name="partners_to_update"/>
+</form> 
+</span>
 	</div>
-
-	<div id="mImageSlider" class="carousel slide" data-ride="carousel" style="width:60%; margin-top:60px;">
-
-	  <ol class="carousel-indicators">
-	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-	    <li data-target="#myCarousel" data-slide-to="1"></li>
-	    <li data-target="#myCarousel" data-slide-to="2"></li>
-	  </ol>
-
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">
-	    <div class="item active">
-	      <img src="http://az616578.vo.msecnd.net/files/2016/03/27/635946376813517119-500312339_tesla.jpg" alt="Tesla Motors">
-	    </div>
-
-	    <div class="item">
-	      <img src="https://d3t9tbp0ekvj58.cloudfront.net/themes/site_theme/images/technology/rocket-v29/capsule_side_white.jpg" alt="Blue Origin">
-	    </div>
-
-	    <div class="item">
-	      <img src="http://vignette3.wikia.nocookie.net/wikiality/images/6/65/Bite.jpg/revision/latest?cb=20070525172137" alt="Firefox">
-	    </div>
-	  </div>
-
-	  <!-- Left and right controls -->
-	  <a class="left carousel-control" href="#mImageSlider" role="button" data-slide="prev">
-	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-	    <span class="sr-only">Previous</span>
-	  </a>
-	  <a class="right carousel-control" href="#mImageSlider" role="button" data-slide="next">
-	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-	    <span class="sr-only">Next</span>
-	  </a>
-	</div>
-
 {%endblock%}
