@@ -1,18 +1,10 @@
 import psycopg2 as dbapi2
 
 class Articles:
-    def __init__(self, cp, ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail):
+    def __init__(self, cp):
         self.cp = cp
-        self.ArticleId=ArticleId
-        self.ArticleName=ArticleName
-        self.UserId=UserId
-        self.Name=Name
-        self.SurName=SurName
-        self.ReleaseYear=ReleaseYear
-        self.Mail=Mail
-        
-    def set_id(self, ArticleId):
-        self.ArticleId = ArticleId
+        return
+
     def get_articlelist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
