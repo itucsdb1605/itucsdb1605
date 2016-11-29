@@ -324,6 +324,25 @@ class INIT:
                         """  
             cursor.execute(statement)
             connection.commit()
+    
+    def groups(self):
+        with dbapi2.connect(self.cp) as connection:
+            with connection.cursor() as cursor:
+                cursor.execute("DROP TABLE IF EXISTS GROUPS CASCADE")
+                statement = """CREATE TABLE GROUPS (
+                        ID SERIAL PRIMARY KEY,
+                        GroupName VARCHAR(40) NOT NULL,
+                        JobId INT REFERENCES JOBS(ID) ON DELETE RESTRICT
+                        )
+                        """
+                cursor.execute(statement)
+                statement = """INSERT INTO GROUPS(GroupName) VALUES 
+                            ('Turkcell'),
+                            ('İstanbul Teknik Üniversitesi Mezunları'),
+                            ('Silicon Valley'),
+                            ('Apple')
+                            """  
+                cursor.execute(statement)
             
     def partners(self):
         with dbapi2.connect(self.cp) as connection:
