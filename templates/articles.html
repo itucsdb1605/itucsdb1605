@@ -1,22 +1,22 @@
 {% extends "logged_in_layout.html" %}
 {% block title %}Makaleler{% endblock %}
 {% block content %}
-	<div class="container text-center" style="background-color:LightGray ;">
+	<div class="container text-center" style="background-color:LightSteelBlue;">
 		<h2>Bu sayfa kişi, grup ve kurumlara ait makaleler hakkında tüm detayları içerecek...</h2>
   <h3>Makale Listesi</h3>
   <form action="{{ url_for('articles_page') }}" method="post">
     <table>
     	<tr>
-    		<th>Sil </th>
-    		<th> Güncelle </th>
-    		<th>Makale No</th>
-    		<th>Makale Adı</th>
-    		<th>Kullanıcı No</th>
-    		<th>Ad</th>
-    		<th>Soyad</th>
-    		<th>Yayın yılı</th>
-    		<th>E-Posta Adresi</th>
-    		<th>Yayınlandığı Üniversite</th>
+    		<th><b><ins>Sil</b></ins></th>
+    		<th><b><ins> Güncelle</b></ins></th>
+    		<th><b><ins>Makale No</b></ins></th>
+    		<th><b><ins>Makale Adı</b></ins></th>
+    		<th><b><ins>Kullanıcı No</b></ins></th>
+    		<th><b><ins>Ad</b></ins></th>
+    		<th><b><ins>Soyad</b></ins></th>
+    		<th><b><ins>Yayın yılı</b></ins></th>
+    		<th><b><ins>E-Posta Adresi</b></ins></th>
+    		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
     	</tr>
 
     	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
