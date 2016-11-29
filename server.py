@@ -282,6 +282,7 @@ def articles_page():
         return redirect(url_for('articles_page'))
     elif 'select_record' in request.form:
         articleids = request.form.getlist('select_record')
+        now = datetime.datetime.now()
         alist = arts.get_articlelist()
         slist=arts.select_article(articleids[0])
         return render_template('articles.html', ArticleList = alist, article=slist, current_time=now.ctime())
