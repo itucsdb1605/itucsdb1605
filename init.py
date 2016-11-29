@@ -374,4 +374,27 @@ class INIT:
             cursor.execute(query)         
             connection.commit()               
 
+    def users(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS users CASCADE"
+            cursor.execute(query)
+            query = """CREATE TABLE users (
+                uni_id INTEGER NOT NULL REFERENCES universities(id)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE,
+                UserId SERIAL PRIMARY KEY,
+                Firstname VARCHAR (80) NOT NULL,
+                Lastname VARCHAR (80) NOT NULL ,
+                Email_adress VARCHAR (100) NOT NULL UNİQUE,
+                password VARCHAR(10) NOT NULL
 
+            )"""
+            cursor.execute(query)
+            query = """INSERT INTO users(Firstname, Lastname, Email_adress,uni_id,password) VALUES
+              ('Sevket','Cerit','cerits@itu.er',2,'sevko'),
+              ('Mert','Yıldız','yildiz@itu.edr',4,'mert'),
+              ('Halit','Ugurgelen','ugurgelen@itu.edu.tr',5,'halit');
+            """
+            cursor.execute(query)
+            connection.commit()
