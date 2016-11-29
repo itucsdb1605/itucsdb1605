@@ -7,19 +7,21 @@
   <form action="{{ url_for('articles_page') }}" method="post">
     <table>
     	<tr>
-    		<th>Delete</th>
-    		<th>ArticleId</th>
-    		<th>ArticleName</th>
-    		<th>UserId</th>
-    		<th>Name</th>
-    		<th>SurName</th>
-    		<th>ReleaseYear</th>
-    		<th>Mail</th>
+    		<th>Sil</th>
+    		<th>Guncelle</th>
+    		<th>Makale No</th>
+    		<th>Makale Adı</th>
+    		<th>Kullanıcı No</th>
+    		<th>Ad</th>
+    		<th>Soyad</th>
+    		<th>Yayın yılı</th>
+    		<th>E-Posta Adresi</th>
     	</tr>
 
     	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail in ArticleList %}
     	<tr>
     		<td><input type="checkbox" name="articles_to_delete" value="{{ ArticleId }}" /></td>
+    		<td><input type="submit" value="{{ ArticleId }}" name="select_record" /></td>
     		<td>{{ ArticleId }}</td>
     		<th>{{ ArticleName }}</th>
     		<th>{{ UserId }}</th>
@@ -29,7 +31,6 @@
     		<th>{{ Mail }}</th>
     	</tr>
     	{% endfor %}
-
     </table>
     <input type="submit" value="Seçili Makaleleri Sil" name="delete" /> 
   </form>
@@ -38,28 +39,28 @@
   <form action="{{ url_for('articles_page') }}" method="post"> 
     <table>
       <tr> 
-        <th>ArticleName:</th> 
-        <td><input type="text" name="ArticleName" required autofocus /> </td>
+        <th>Makale Adı:</th> 
+        <td><input type="text" name="ArticleName" value={{ article[0][1] }} required autofocus /> </td>
       </tr>
       <tr> 
-        <th>UserId:</th> 
-        <td><input type="text" name="UserId" required autofocus /> </td>
+        <th>Kullanıcı No:</th> 
+        <td><input type="text" name="UserId"  value={{ article[0][2] }} required autofocus /> </td>
       </tr>
       <tr> 
-         <th>Name:</th> 
-        <td><input type="text" name="Name" required autofocus /> </td>
+         <th>Ad:</th> 
+        <td><input type="text" name="Name"  value={{ article[0][3] }} required autofocus /> </td>
      </tr>
       <tr> 
-        <th>SurName:</th> 
-        <td><input type="text" name="SurName" required autofocus /> </td>
+        <th>Soyad:</th> 
+        <td><input type="text" name="SurName"  value={{ article[0][4] }} required autofocus /> </td>
       </tr>
       <tr> 
-         <th>ReleaseYear:</th> 
-        <td><input type="text" name="ReleaseYear" required autofocus /> </td>
+         <th>Yayın Yılı:</th> 
+        <td><input type="text" name="ReleaseYear"  value={{ article[0][5] }} required autofocus /> </td>
       </tr>
       <tr> 
-         <th>Mail:</th> 
-        <td><input type="text" name="Mail" required autofocus /> </td>
+         <th>E-Posta Adresi:</th> 
+        <td><input type="text" name="Mail"  value={{ article[0][6] }} required autofocus /> </td>
       </tr> 
     </table>
     <input type="submit" value="Makale Ekle" name="articles_to_add"/>
@@ -69,30 +70,30 @@
   <form action="{{ url_for('articles_page') }}" method="post"> 
     <table>
       <tr> 
-        <th>ArticleId:</th> 
-        <td><input type="text" name="ArticleId" required autofocus /> </td>
+        <th>Makale No:</th> 
+        <td><input type="text" name="ArticleId" disabled required autofocus /> </td>
       </tr>  
-        <th>ArticleName:</th> 
+        <th>Makale Adı:</th> 
         <td><input type="text" name="ArticleName" required autofocus /> </td>
       </tr>
       <tr> 
-        <th>UserId:</th> 
+        <th>Kullanıcı No:</th> 
         <td><input type="text" name="UserId" required autofocus /> </td>
       </tr>
       <tr> 
-         <th>Name:</th> 
+         <th>Ad:</th> 
         <td><input type="text" name="Name" required autofocus /> </td>
      </tr>
       <tr> 
-        <th>SurName:</th> 
+        <th>Soyad:</th> 
         <td><input type="text" name="SurName" required autofocus /> </td>
       </tr>
       <tr> 
-         <th>ReleaseYear:</th> 
+         <th>Yayın Yılı:</th> 
         <td><input type="text" name="ReleaseYear" required autofocus /> </td>
       </tr>
       <tr> 
-         <th>Mail:</th> 
+         <th>E-Posta Adresi:</th> 
         <td><input type="text" name="Mail" required autofocus /> </td>
       </tr> 
     </table>

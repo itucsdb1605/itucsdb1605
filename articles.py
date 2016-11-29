@@ -20,7 +20,13 @@ class Articles:
             cursor.execute(query)
             connection.commit()
             return
-
+    def select_article(self, ArticleId):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "SELECT FROM articles WHERE ArticleId = '%s'" % (ArticleId)
+            cursor.execute(query)
+            rows=cursor.fetchall()
+            return rows
     def add_article(self, ArticleName, UserId, Name, SurName, ReleaseYear, Mail):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
