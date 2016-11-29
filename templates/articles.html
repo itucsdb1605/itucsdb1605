@@ -2,7 +2,11 @@
 {% block title %}Makaleler{% endblock %}
 {% block content %}
 	<div class="container text-center" style="background-color:LightSteelBlue;">
-		<h2>Bu sayfa kişi, grup ve kurumlara ait makaleler hakkında tüm detayları içerecek...</h2>
+		<h3>-Ekrana makaleler listesi getirilir
+		<br>-Checkbox ile seçilen kayıtlar topluca silinebilir
+		<br>-Radio ile güncellenecek kayıdın bilgileri update alanına bir sorgu ile getirilir 
+		<br>-Checkbox ve radio bileşenleri submit butonuyla çalıştırılır
+		<br>-İstediğimiz kayıtı makale ekle alanından ekleyebiliriz</h3>
   <h3>Makale Listesi</h3>
   <form action="{{ url_for('articles_page') }}" method="post">
     <table>
