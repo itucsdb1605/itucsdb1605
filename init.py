@@ -361,15 +361,16 @@ class INIT:
                     Name VARCHAR(90) NOT NULL,
                     SurName VARCHAR(80) NOT NULL,
                     ReleaseYear SMALLINT NOT NULL,
-                    Mail VARCHAR(100) NOT NULL                     
+                    Mail VARCHAR(100) NOT NULL,
+                    uni_id INTEGER NOT NULL REFERENCES universities(id)                    
                     )"""
             cursor.execute(query)
             
-            query = """INSERT INTO articles(ArticleName, UserId, Name, SurName, ReleaseYear, Mail) VALUES
-              ('Efficient algorithms for the (weighted) minimum circle problem',20,'Donald','Hearn',1982,'Hearn@ise.ufl.edu'),
-              ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',10,'Uluğ','Bayazıt',2011,'ulugbayazit@itu.edu.tr'),
-              ('The minimum covering sphere problem',20,'Donald','Hearn',1972,'Hearn@ise.ufl.edu'),
-              ('An Ottoman response to Darwinism: İsmail Fennî on Islam and evolution',30,'Alper','Bilgili',2015,'Alper.Bilgili@acibadem.edu.tr');            
+            query = """INSERT INTO articles(ArticleName, UserId, Name, SurName, ReleaseYear, Mail, uni_id) VALUES
+              ('Efficient algorithms for the (weighted) minimum circle problem',20,'Donald','Hearn',1982,'Hearn@ise.ufl.edu',24),
+              ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',10,'Uluğ','Bayazıt',2011,'ulugbayazit@itu.edu.tr',34),
+              ('The minimum covering sphere problem',20,'Donald','Hearn',1972,'Hearn@ise.ufl.edu',24),
+              ('An Ottoman response to Darwinism: İsmail Fennî on Islam and evolution',30,'Alper','Bilgili',2015,'Alper.Bilgili@acibadem.edu.tr',36);            
               """
             cursor.execute(query)         
             connection.commit()               

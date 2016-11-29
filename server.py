@@ -282,6 +282,7 @@ def articles_page():
         article[0][4]="kayıt seçiniz"
         article[0][5]="kayıt seçiniz"
         article[0][6]="kayıt seçiniz"
+        article[0][7]="kayıt seçiniz"
         article[0]=tuple(article[0])
         alist = arts.get_articlelist()
         return render_template('articles.html', ArticleList = alist, article= article, current_time = now.ctime())
@@ -297,10 +298,10 @@ def articles_page():
         slist=arts.select_article(articleids[0])
         return render_template('articles.html', ArticleList = alist, article=slist, current_time=now.ctime())
     elif 'articles_to_add' in request.form:
-        arts.add_article(request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'])
+        arts.add_article(request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'],request.form['uni_id'])
         return redirect(url_for('articles_page'))
     elif 'articles_to_update' in request.form:
-        arts.update_article(request.form['ArticleId'], request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'])
+        arts.update_article(request.form['ArticleId'], request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'],request.form['uni_id'])
         return redirect(url_for('articles_page'))
 @app.route('/kanallar')
 def kanal_page():

@@ -16,9 +16,10 @@
     		<th>Soyad</th>
     		<th>Yayın yılı</th>
     		<th>E-Posta Adresi</th>
+    		<th>Yayınlandığı Üniversite</th>
     	</tr>
 
-    	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail in ArticleList %}
+    	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
     	<tr>
     		<td><input type="checkbox" name="articles_to_delete" value="{{ ArticleId }}" /></td>
     		<td><input type="radio" value="{{ ArticleId }}" name="select_record" /></td>
@@ -29,6 +30,7 @@
     		<th>{{ SurName }}</th>
     		<th>{{ ReleaseYear }}</th>
     		<th>{{ Mail }}</th>
+    		<th>{{ title }}</th>
     	</tr>
     	{% endfor %}
     </table>
@@ -63,6 +65,10 @@
          <th>E-Posta Adresi:</th> 
         <td><input type="text" name="Mail" required autofocus /> </td>
       </tr> 
+      <tr> 
+         <th>Üniversite No:</th> 
+        <td><input type="text" name="uni_id" required autofocus /> </td>
+      </tr>
     </table>
     <input type="submit" value="Makale Ekle" name="articles_to_add"/>
   </form>
@@ -97,6 +103,10 @@
          <th>E-Posta Adresi:</th> 
         <td><input type="text" name="Mail"  value={{ article[0][6] }} required autofocus /> </td>
       </tr> 
+      <tr> 
+         <th>Üniversite No:</th> 
+        <td><input type="text" name="uni_id"  value={{ article[0][7] }} required autofocus /> </td>
+      </tr>
     </table>
     <input type="submit" value="Makale Güncelle" name="articles_to_update"/>
 </form> 
