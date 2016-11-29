@@ -7,8 +7,8 @@
   <form action="{{ url_for('articles_page') }}" method="post">
     <table>
     	<tr>
-    		<th>Sil</th>
-    		<th>Guncelle</th>
+    		<th>Sil </th>
+    		<th> Güncelle </th>
     		<th>Makale No</th>
     		<th>Makale Adı</th>
     		<th>Kullanıcı No</th>
@@ -71,7 +71,7 @@
     <table>
       <tr> 
         <th>Makale No:</th> 
-        <td><input type="text" name="ArticleId"  value={{ article[0][0] }} disabled required autofocus /> </td>
+        <td><input type="text" name="ArticleId"  value={{ article[0][0] }} required autofocus /> </td>
       </tr>  
         <th>Makale Adı:</th> 
         <td><input type="text" name="ArticleName"  value={{ article[0][1] }} required autofocus /> </td>
