@@ -329,23 +329,26 @@ class INIT:
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = "DROP TABLE IF EXISTS partners CASCADE"
-            cursor.execute(query)
+            cursor.execute(query)		
+            
             query = """CREATE TABLE partners (
-                    id SERIAL PRIMARY KEY,
-                    title VARCHAR(40) UNIQUE NOT NULL
+                    PartnerId SERIAL PRIMARY KEY,
+                    PartnerName VARCHAR(40) UNIQUE NOT NULL,
+                    FoundationYear INT NOT NULL,
+                    Country VARCHAR(40) NOT NULL                    
                     )"""
             cursor.execute(query)
-
-            query = """INSERT INTO partners (title) VALUES
-              ('Tesla Motors'),
-              ('New Horizons'),
-              ('Gigafactory'),
-              ('SpaceX'),
-              ('Foxconn'),
-              ('Panasonic'),
-              ('LG Electronics');
+            
+            query = """INSERT INTO partners(PartnerName, FoundationYear, Country) VALUES
+              ('Tesla Motors', 1998, 'USA' ),
+              ('New Horizons', 1999, 'Spain' ),
+              ('Gigafactory', 1985, 'Italy' ),
+              ('SpaceX', 1996, 'China' ),
+              ('Foxconn', 2005, 'Brasil' ),
+              ('Panasonic', 2001, 'Korea' ),
+              ('LG Electronics', 1945, 'Turkey' );
               """
-            cursor.execute(query)
+            cursor.execute(query)         
             connection.commit()
             
     def articles(self):
