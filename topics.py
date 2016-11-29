@@ -3,6 +3,8 @@ import psycopg2 as dbapi2
 class Topics:
     def __init__(self, cp):
         self.cp = cp
+        self.id = topicID
+        self.description = description
         return
 
     def get_topiclist(self):
