@@ -274,7 +274,14 @@ def articles_page():
     if request.method == 'GET':
         now = datetime.datetime.now()
         alist = arts.get_articlelist()
-        return render_template('articles.html', ArticleList = alist, article= alist, current_time = now.ctime())
+        article[0][0]=" "
+        article[0][1]=" "
+        article[0][2]=" "
+        article[0][3]=" "
+        article[0][4]=" "
+        article[0][5]=" "
+        article[0][6]=" "
+        return render_template('articles.html', ArticleList = alist, article= article, current_time = now.ctime())
     elif 'articles_to_delete' in request.form:
         articleids = request.form.getlist('articles_to_delete')
         for ArticleId in articleids:
