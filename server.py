@@ -345,10 +345,10 @@ def topics_page():
             tops.delete_topic(topicID)
         return redirect(url_for('topics_page'))
     elif 'add' in request.form:
-        tops.add_topic(request.form['topic'],request.form['desc'])
+        tops.add_topic(request.form['topic'],request.form['description'])
         return redirect(url_for('topics_page'))
     elif 'update' in request.form:
-        tops.update_topic(request.form['topicID'], request.form['topic'],request.form['desc'])
+        tops.update_topic(request.form['topicID'], request.form['topic'],request.form['description'])
         return redirect(url_for('topics_page'))
 @app.route('/user_view')
 def user_view():
