@@ -274,6 +274,7 @@ def articles_page():
     if request.method == 'GET':
         now = datetime.datetime.now()
         alist = arts.get_articlelist()
+        article=alist
         article[0][0]=" "
         article[0][1]=" "
         article[0][2]=" "
