@@ -1,61 +1,75 @@
 {% extends "logged_in_layout.html" %}
 {% block title %}Konular{% endblock %}
 {% block content %}
-<div class="container text-center" style="background-color:LightGray ;">
-    <h1>Konular</h1>
+<div class="container text-center">
+	<h1>Konular</h1>
 </div>
 <form action="{{ url_for('topics_page') }}" method="post">
-    <table>
-        <tr>
-            <th>Seç</th>
-            <th>Numara</th>
-            <th>Konu</th>
-            <th>Açıklama</th>
-        </tr>
-        
-        {% for topicID, topic, desc in topics %}
-        <tr>
-            <td><input type="checkbox" name="delete_selected" value="{{ topicID }}" /></td>
-            <td>{{ topicID }}</td>
-            <th>{{ topic }}</th>
-            <th>{{ desc }}</th>
-        </tr>
-        {% endfor %}
-        
-    </table>
-    <input type="submit" value="Sil" name="delete" /> 
+	<table>
+		<tr>
+			<th>Seç</th>
+			<th>Numara</th>
+			<th>Konu</th>
+			<th>Açıklama</th>
+		</tr>
+		
+		{% for topicID, topic, description in topics %}
+		<tr>
+			<td><input type="checkbox" name="delete_selected" value="{{ topicID }}" /></td>
+			<td>{{ topicID }}</td>
+			<th>{{ topic }}</th>
+			<th>{{ description }}</th>
+		</tr>
+		{% endfor %}
+		
+	</table>
+	<input type="submit" value="Sil" name="delete" />
 </form>
+<h2>Konu ekle</h2>
 <span style="float:left;">
-    <form action="{{ url_for('topics_page') }}" method="post"> 
-        <table>
-            <tr> 
-                <th>topic:</th> 
-                <td><input type="text" name="Konu: " required autofocus /> </td>
-            </tr>
-            <tr> 
-                <th>desc:</th> 
-                <td><input type="text" name="Açıklama: " required autofocus /> </td>
-            </tr>
-        </table>
-        <input type="submit" value="Ekle" name="add"/>
-    </form>
+	<form action="{{ url_for('topics_page') }}" method="post">
+		<table>
+			<tr>
+				<th>topic:</th>
+				<td><input type="text" name="Konu: " required autofocus /> </td>
+			</tr>
+			<tr>
+				<th>description:</th>
+				<td><input type="text" name="Açıklama: " required autofocus /> </td>
+			</tr>
+		</table>
+		<input type="submit" value="Ekle" name="add"/>
+	</form>
 </span>
-<span style="float:right;">
-    <form action="{{ url_for('topics_page') }}" method="post"> 
-        <table>
-            <tr>
-                <th>topicID:</th>
-                <td><input type="text" name="Konu Numarası: " required autofocus /> </td>
-            </tr>
-            <th>topic:</th> 
-            <td><input type="text" name="Konu: " required autofocus /> </td>
-            <tr>
-                <th>desc:</th>
-                <td><input type="text" name="Açıklama: " required autofocus /> </td>
-            </tr>
-        </table>
-        <input type="submit" value="Güncelle" name="update"/>
-    </form>
+<h2>Konu güncelle</h2>
+<span style="float:left;">
+	<form action="{{ url_for('topics_page') }}" method="post">
+		<table>
+			<tr>
+				<th>topicID:</th>
+				<td><input type="text" name="Konu Numarası: " required autofocus /> </td>
+			</tr>
+			<th>topic:</th>
+			<td><input type="text" name="Konu: " required autofocus /> </td>
+			<tr>
+				<th>description:</th>
+				<td><input type="text" name="Açıklama: " required autofocus /> </td>
+			</tr>
+		</table>
+		<input type="submit" value="Güncelle" name="update"/>
+	</form>
+</span>
+<h2>Konu sil</h2>
+<span style="float:left;">
+	<form action="{{ url_for('topics_page') }}" method="post">
+		<table>
+			<tr>
+				<th>topicID:</th>
+				<td><input type="text" name="Konu Numarası: " required autofocus /> </td>
+			</tr>
+		</table>
+		<input type="submit" value="Sil" name="delete"/>
+	</form>
 </span>
 
 {%endblock%}
