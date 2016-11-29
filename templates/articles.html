@@ -40,7 +40,41 @@
     <table>
       <tr> 
         <th>Makale Adı:</th> 
-        <td><input type="text" name="ArticleName" value={{ article[0][1] }} required autofocus /> </td>
+        <td><input type="text" name="ArticleName" required autofocus /> </td>
+      </tr>
+      <tr> 
+        <th>Kullanıcı No:</th> 
+        <td><input type="text" name="UserId" required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>Ad:</th> 
+        <td><input type="text" name="Name" required autofocus /> </td>
+     </tr>
+      <tr> 
+        <th>Soyad:</th> 
+        <td><input type="text" name="SurName"   required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>Yayın Yılı:</th> 
+        <td><input type="text" name="ReleaseYear"  required autofocus /> </td>
+      </tr>
+      <tr> 
+         <th>E-Posta Adresi:</th> 
+        <td><input type="text" name="Mail" required autofocus /> </td>
+      </tr> 
+    </table>
+    <input type="submit" value="Makale Ekle" name="articles_to_add"/>
+  </form>
+  </span>
+<span style="float:right;">
+  <form action="{{ url_for('articles_page') }}" method="post"> 
+    <table>
+      <tr> 
+        <th>Makale No:</th> 
+        <td><input type="text" name="ArticleId"  value={{ article[0][0] }} disabled required autofocus /> </td>
+      </tr>  
+        <th>Makale Adı:</th> 
+        <td><input type="text" name="ArticleName"  value={{ article[0][1] }} required autofocus /> </td>
       </tr>
       <tr> 
         <th>Kullanıcı No:</th> 
@@ -61,40 +95,6 @@
       <tr> 
          <th>E-Posta Adresi:</th> 
         <td><input type="text" name="Mail"  value={{ article[0][6] }} required autofocus /> </td>
-      </tr> 
-    </table>
-    <input type="submit" value="Makale Ekle" name="articles_to_add"/>
-  </form>
-  </span>
-<span style="float:right;">
-  <form action="{{ url_for('articles_page') }}" method="post"> 
-    <table>
-      <tr> 
-        <th>Makale No:</th> 
-        <td><input type="text" name="ArticleId" disabled required autofocus /> </td>
-      </tr>  
-        <th>Makale Adı:</th> 
-        <td><input type="text" name="ArticleName" required autofocus /> </td>
-      </tr>
-      <tr> 
-        <th>Kullanıcı No:</th> 
-        <td><input type="text" name="UserId" required autofocus /> </td>
-      </tr>
-      <tr> 
-         <th>Ad:</th> 
-        <td><input type="text" name="Name" required autofocus /> </td>
-     </tr>
-      <tr> 
-        <th>Soyad:</th> 
-        <td><input type="text" name="SurName" required autofocus /> </td>
-      </tr>
-      <tr> 
-         <th>Yayın Yılı:</th> 
-        <td><input type="text" name="ReleaseYear" required autofocus /> </td>
-      </tr>
-      <tr> 
-         <th>E-Posta Adresi:</th> 
-        <td><input type="text" name="Mail" required autofocus /> </td>
       </tr> 
     </table>
     <input type="submit" value="Makale Güncelle" name="articles_to_update"/>
