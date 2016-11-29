@@ -387,7 +387,7 @@ class INIT:
                 UserId SERIAL PRIMARY KEY,
                 Firstname VARCHAR (80) NOT NULL,
                 Lastname VARCHAR (80) NOT NULL ,
-                Email_adress VARCHAR (100) NOT NULL UNİQUE,
+                Email_adress VARCHAR (100) NOT NULL UNIQUE,
                 password VARCHAR(10) NOT NULL
 
             )"""
