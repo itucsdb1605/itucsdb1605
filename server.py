@@ -15,6 +15,7 @@ from articles import Articles
 from func import Func
 from topics import Topics
 from job import Job
+from users import users
 
 app = Flask(__name__)
 
@@ -42,6 +43,7 @@ def home_page():
     initialize.partners()
     initialize.articles()
     initialize.jobs()
+    initialize.users()
     return render_template('home.html', current_time=now.ctime())
 
 ##Following 5 methods define select-add-delete-update operations
@@ -332,6 +334,37 @@ def topics_page():
     elif 'update' in request.form:
         tops.update_topic(request.form['topicID'], request.form['topic'],request.form['desc'])
         return redirect(url_for('topics_page'))
+@app.route('/user_view')
+def user_view():
+    user = users(app.config['dsn'])
+    user_list = user.get_user()
+    now = datetime.datetime.now()
+    return render_template('userlist.html', users=user_list, current_time=now.ctime())
+
+@app.route('/user_add', methods=['GET', 'POST'])
+def user_add():
+    user = users(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        return render_template('signup.html', current_time=now.ctime())
+    if request.method == 'POST':
+        user.set_mail(request.form['email'])
+        user.set_name(request.form['firstname'])
+        user.set_lastname(request.form['lastname'])
+        user.set_uni_id(request.form['uni'])
+        user.set_password(request.form['password'])
+        user.add_user()
+        now = datetime.datetime.now()
+        return redirect(url_for('user_view'))
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signin_up():
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        return render_template('signup.html', current_time=now.ctime())
+    if request.method == 'POST':
+        return redirect(url_for('user_view'))
 
 @app.route('/initdb')
 def init_db():
