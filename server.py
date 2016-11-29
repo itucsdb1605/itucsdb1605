@@ -16,6 +16,7 @@ from func import Func
 from topics import Topics
 from job import Job
 from users import users
+from group import Group
 from partners import Partners
 
 app = Flask(__name__)
@@ -122,9 +123,71 @@ def messages_page():
     return render_template('messages.html', current_time=now.ctime())
 
 @app.route('/gruplar')
-def groups_page():
+def group_view():
+    groups = Group(app.config['dsn'])
+    group_list = groups.get_groups()
     now = datetime.datetime.now()
-    return render_template('groups.html', current_time=now.ctime())
+    return render_template('groups.html', groups = group_list, current_time=now.ctime())
+
+@app.route('/grupsil', methods=['GET','POST'])
+def group_delete():
+    group = Group(app.config['dsn'])
+    groups = ()
+    if request.method == 'GET':
+        groups = group.get_groups()
+        now = datetime.datetime.now()
+        return render_template('group_delete.html', groups=groups, current_time=now.ctime())
+    if request.method == 'POST':
+        ids = request.form.getlist('groups_to_delete')
+        group.delete_groups(ids)
+        groups = group.get_groups()
+        now = datetime.datetime.now()
+        return render_template('group_delete.html', groups=groups, current_time=now.ctime())
+
+@app.route('/grupguncelle')
+def group_update():
+    group = Group(app.config['dsn'])
+    groups = group.get_groups()
+    now = datetime.datetime.now()
+    return render_template('group_update.html',groups=groups, current_time=now.ctime())
+
+@app.route('/grupguncelle/<int:id>', methods=['GET','POST'])
+def group_update_page(id):
+    group = Group(app.config['dsn'])
+    if request.method == 'GET':
+        group.set_id(id)
+        group = group.get_groups()
+        now = datetime.datetime.now()
+        return render_template('group_edit.html',group = group, current_time=now.ctime())
+    
+    if request.method == 'POST':
+        group.set_name(request.form['groupname'])
+        group.set_id(id)
+        group.update_group()        
+        groups = group.get_groups()
+        now = datetime.datetime.now()
+        return render_template('groups.html',groups=groups, current_time=now.ctime())
+
+
+@app.route('/gruplar/<int:id>', methods=['GET','POST'])
+def group_jobs_page(id):
+    group = Group(app.config['dsn'])
+    groupName = group.find_group_name(id)
+    jobs = group.get_jobs(groupName)
+    now = datetime.datetime.now()
+    return render_template('group_jobs_view.html',groupName = groupName, jobs = jobs, current_time=now.ctime())
+
+
+@app.route('/grupolustur', methods=['GET', 'POST'])
+def group_create():
+    group = Group(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        return render_template('group_add.html', current_time=now.ctime())
+    if request.method == 'POST':
+       group.set_name(request.form['groupName']) 
+       group.create_group()
+       return redirect(url_for('group_view'))
 
 @app.route('/universiteler', methods=['GET', 'POST'])
 def uni_page():
