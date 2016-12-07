@@ -22,7 +22,7 @@
         <form id="fAdd" action="{{ url_for('uni_page') }}" method="post">
 
          <b>Üniversite Adı:</b><br> <input type="text" name="title" size="20" required autofocus /><br>
-         <b>Şehir:</b><br> <input type="text" name="local" size="20" required autofocus /><br>
+         <b>Şehir:</b><br> <input type="text" name="local" size="20" placeholder="Ilk harfini buyuk giriniz" required autofocus /><br>
          <b>Öğrenci Sayısı:</b><br> <input type="text" name="population" size="20" required autofocus /><br>
         <!--   <b>Türü:</b><br> <input type="text" name="type" size="20" required autofocus />-->
          <b>Türü:</b><br>
@@ -45,7 +45,7 @@
         <p>Çeşitli kriterlere göre üniversite arayarak seçtiğiniz kriterlere uyan üniversiteleri görüntüleyebilirsiniz.</p>
         <form id="fSelect" action="{{ url_for('uni_page')}}" method="post">
  		<b>Üniversite Şehri:</b><br>
-        <input type="text" name="city" required autofocus /><br>
+        <input type="text" name="city" placeholder="Ilk harfini buyuk giriniz" required autofocus /><br>
         <b>Devlet:</b>
 		<input type="checkbox" checked name="unis_to_select" value= "Devlet"/><br>
 		<b>Özel:</b>
