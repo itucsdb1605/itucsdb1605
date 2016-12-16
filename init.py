@@ -4,6 +4,39 @@ class INIT:
     def __init__(self, cp):
         self.cp = cp
         return
+    def companies(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS companies CASCADE"
+            cursor.execute(query)
+
+            query = """CREATE TABLE companies (
+                    id SERIAL PRIMARY KEY,
+                    title VARCHAR(40) UNIQUE NOT NULL,
+                    local2 INTEGER NOT NULL REFERENCES locations(loc_id)
+                        ON DELETE CASCADE
+                        ON UPDATE CASCADE,
+                    population NUMERIC(10)
+                )"""
+            cursor.execute(query)
+
+            cursor.execute("""INSERT INTO companies(title,local2,population) VALUES
+              ('Apple', 34, 1200),
+              ('Turkcell', 34, 4500),
+              ('Vodafone', 34, 2100),
+              ('Airties', 34, 800),
+              ('Microsoft', 34, 6800),
+              ('Google', 34, 1700),
+              ('Avea', 34, 1700),
+              ('Akbank', 41, 2700),
+              ('Tüpraş', 41, 5800),
+              ('Arkas', 35, 900),
+              ('Logosoft', 6, 1700),
+              ('NVIDIA', 34, 360);
+            """)
+            connection.commit()
+
+    
     def universities(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
