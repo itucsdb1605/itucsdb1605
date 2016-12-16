@@ -31,22 +31,25 @@ def get_elephantsql_dsn(vcap_services):
              dbname='{}'""".format(user, password, host, port, dbname)
     return dsn
 
+isInitialized = False
 
 @app.route('/')
 def home_page():
+    global isInitialized
     now = datetime.datetime.now()
-    initialize = INIT(app.config['dsn'])
-    initialize.universities()
-    initialize.locations()
-    initialize.universities_info()
-    initialize.topics()
-    initialize.messages()
-    initialize.channels()
-    initialize.partners()
-    initialize.articles()
-    initialize.jobs()
-    initialize.groups()
-    initialize.users()
+    if isInitialized == False:
+        initialize = INIT(app.config['dsn'])
+        initialize.universities()
+        initialize.locations()
+        initialize.universities_info()
+        initialize.topics()
+        initialize.messages()
+        initialize.channels()
+        initialize.partners()
+        initialize.articles()
+        initialize.jobs()
+        initialize.groups()
+        initialize.users()
     return render_template('home.html', current_time=now.ctime())
 
 ##Following 5 methods define select-add-delete-update operations
@@ -66,12 +69,12 @@ def job_add():
         now = datetime.datetime.now()
         return render_template('job_add.html', current_time=now.ctime())
     if request.method == 'POST':
-       job.set_company(request.form['company']) 
+       job.set_company(request.form['company'])
        job.set_position(request.form['position'])
        job.set_salary(request.form['salary'])
        job.add_job()
        return redirect(url_for('job_view'))
- 
+
 @app.route('/isilanisil', methods=['GET','POST'])
 def job_delete():
     job = Job(app.config['dsn'])
@@ -102,14 +105,14 @@ def job_update_page(id):
         job = job.get_jobs()
         now = datetime.datetime.now()
         return render_template('job_edit.html',job = job, current_time=now.ctime())
-    
+
     if request.method == 'POST':
         job.set_company(request.form['company'])
         job.set_position(request.form['position'])
         job.set_salary(int(request.form['salary']))
         job.set_id(id)
         job.update_job()
-        job.set_id(None)        
+        job.set_id(None)
         jobs = job.get_jobs()
         now = datetime.datetime.now()
         return render_template('jobs.html',jobs=jobs, current_time=now.ctime())
@@ -160,11 +163,11 @@ def group_update_page(id):
         group = group.get_groups()
         now = datetime.datetime.now()
         return render_template('group_edit.html',group = group, current_time=now.ctime())
-    
+
     if request.method == 'POST':
         group.set_name(request.form['groupname'])
         group.set_id(id)
-        group.update_group()        
+        group.update_group()
         groups = group.get_groups()
         now = datetime.datetime.now()
         return render_template('groups.html',groups=groups, current_time=now.ctime())
@@ -186,7 +189,7 @@ def group_create():
         now = datetime.datetime.now()
         return render_template('group_add.html', current_time=now.ctime())
     if request.method == 'POST':
-       group.set_name(request.form['groupName']) 
+       group.set_name(request.form['groupName'])
        group.create_group()
        return redirect(url_for('group_view'))
 
