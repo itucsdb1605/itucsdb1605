@@ -50,6 +50,7 @@ def home_page():
         initialize.jobs()
         initialize.groups()
         initialize.users()
+        isInitialized = True
     return render_template('home.html', current_time=now.ctime())
 
 ##Following 5 methods define select-add-delete-update operations
