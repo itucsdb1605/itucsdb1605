@@ -11,6 +11,7 @@ from flask.helpers import url_for
 from flask import request
 from init import INIT
 from universities import Universities
+from companies import Companies
 from articles import Articles
 from func import Func
 from topics import Topics
@@ -39,6 +40,7 @@ def home_page():
     now = datetime.datetime.now()
     if isInitialized == False:
         initialize = INIT(app.config['dsn'])
+        initialize.companies()
         initialize.universities()
         initialize.locations()
         initialize.universities_info()
@@ -238,7 +240,7 @@ def uni_page():
     elif 'universities_to_select' in request.form:
         vals = request.form.getlist('unis_to_select')
         City=request.form['city']
-        l_id=fn.get_id("locations",City)
+        #l_id=fn.get_id("locations",City)
         length=len(vals)
         if length==2:
             connection = dbapi2.connect(app.config['dsn'])
@@ -247,7 +249,8 @@ def uni_page():
             cursor.execute(statement)
             row = cursor.fetchone()
             if row is None:
-                return None
+                 now = datetime.datetime.now()
+                 return render_template('404.html', current_time = now.ctime())
             loca_id = row[0]
             statement = """SELECT universities.title, universities_info.population, universities_info.type FROM universities JOIN universities_info ON universities_info.uni_id = universities.id WHERE local ={}""".format(loca_id)
             cursor.execute(statement)
@@ -264,7 +267,8 @@ def uni_page():
             cursor.execute(statement)
             row = cursor.fetchone()
             if row is None:
-                return None
+                 now = datetime.datetime.now()
+                 return render_template('404.html', current_time = now.ctime())
             loca_id = row[0]
             statement = """SELECT universities.title, universities_info.population, universities_info.type FROM universities JOIN universities_info ON universities_info.uni_id = universities.id WHERE universities_info.local ={} AND universities_info.type='{}' """.format(loca_id,vals[0])
             cursor.execute(statement)
@@ -323,10 +327,111 @@ def uni_update_page(id):
         #return render_template('universities.html', UniversityList = ulist, InfoList=ilist, current_time=now.ctime())
         return redirect(url_for('uni_page'))
 
-@app.route('/sirketler')
+
+@app.route('/sirketler', methods=['GET', 'POST'])
 def company_page():
-    now = datetime.datetime.now()
-    return render_template('companies.html', current_time=now.ctime())
+    comps = Companies(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2 = locations.loc_id"""
+        cursor.execute(statement)
+        clist = cursor.fetchall()
+        connection.commit()
+        return render_template('companies.html', CompanyList = clist, current_time = now.ctime())
+    elif 'comps_to_delete' in request.form:
+        ids = request.form.getlist('comps_to_delete')
+
+        for id in ids:
+            id = id.split('/', maxsplit=1)
+            id = id[0]
+            comps.delete_company(id)
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2 = locations.loc_id"""
+        cursor.execute(statement)
+        clist = cursor.fetchall()
+        connection.commit()
+        now = datetime.datetime.now()
+        return render_template('companies.html', CompanyList = clist, current_time = now.ctime())
+        #return redirect(url_for('uni_page'))
+    elif 'companies_to_add' in request.form:
+        comps.add_company(request.form['title'],request.form['local'],request.form['population'])
+        return redirect(url_for('company_page'))
+    elif 'companies_to_update' in request.form:
+        ids = int(request.form('companies_to_update'))
+        return redirect(url_for('a_company_page',id=ids))
+    elif 'companies_to_select' in request.form:
+        City=request.form['city']
+        #l_id=fn.get_id("locations",City)
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()
+        statement = """SELECT loc_id FROM locations WHERE city='{}';""".format(City)
+        cursor.execute(statement)
+        row = cursor.fetchone()
+        if row is None:
+            now = datetime.datetime.now()
+            return render_template('404.html', current_time = now.ctime())
+        loca_id = row[0]
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2 = locations.loc_id WHERE local2 ={}""".format(loca_id)
+        cursor.execute(statement)
+        clist = cursor.fetchall()
+        connection.commit()
+        now = datetime.datetime.now()
+        if clist is None:
+            return render_template('404.html', current_time = now.ctime())
+        return render_template('b_company.html', CompanyList = clist, current_time = now.ctime())
+    elif 'companies_to_select2' in request.form:
+        Title=request.form['title']
+        #l_id=fn.get_id("locations",City)
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2 = locations.loc_id WHERE title ='{}'""".format(Title)
+        cursor.execute(statement)
+        clist = cursor.fetchall()
+        connection.commit()
+        now = datetime.datetime.now()
+        if clist is None:
+            return render_template('404.html', current_time = now.ctime())
+        return render_template('b_company.html', CompanyList = clist, current_time = now.ctime())
+
+@app.route('/sirketler/<int:id>', methods=['GET','POST'])
+def comp_update_page(id):
+    comps = Companies(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2 = locations.loc_id"""
+        cursor.execute(statement)
+        clist = cursor.fetchall()
+        connection.close()
+        now = datetime.datetime.now()
+        return render_template('a_company.html',ID=id, CompanyList = clist, current_time=now.ctime())
+    #elif 'universities_to_update' in request.form:
+    if request.method == 'POST':
+        #unis.update_a_university(id,request.form['uni'], request.form['city'],request.form['cont'],request.form['number'],request.form['type'])
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()
+        statement ="""SELECT loc_id FROM locations WHERE city='{}';""".format(request.form['city'])
+        cursor.execute(statement)
+        row = cursor.fetchone()
+        if row is None:
+            return None
+        loca_id = row[0]
+        statement = """UPDATE companies
+                    SET title='{}', local2='{}', population='{}' WHERE id = {};""".format(request.form['comp'],loca_id,request.form['number'],id)
+        cursor.execute(statement)
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2 = locations.loc_id"""
+        cursor.execute(statement)
+        clist = cursor.fetchall()
+        connection.commit()
+        now = datetime.datetime.now()
+        #return render_template('universities.html', UniversityList = ulist, InfoList=ilist, current_time=now.ctime())
+        return redirect(url_for('company_page'))
+
 
 @app.route('/etkinlikler')
 def activities_page():
@@ -454,6 +559,7 @@ def signin_up():
 def init_db():
     initialize = INIT(app.config['dsn'])
     #initialize.All()
+    initialize.companies()
     initialize.universities()
     initialize.locations()
     initialize.universities_info()
