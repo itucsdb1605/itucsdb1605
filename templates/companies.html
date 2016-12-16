@@ -19,62 +19,101 @@
       <div class="caption">
         <h3>Şirket ekle</h3>
         <p>Şirketinizi ekleyerek yeni bağlantılar kurabilir ve dünyaya açılabilirsiniz.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Ekle</a></p>
+        <form id="fAdd" action="{{ url_for('company_page') }}" method="post">
+
+         <b>Şirket Adı:</b><br> <input type="text" name="title" size="20" required autofocus /><br>
+         <b>Şehir:</b><br> <input type="text" name="local" size="20" placeholder="Ilk harfini buyuk giriniz" required autofocus /><br>
+         <b>Çalışan Sayısı:</b><br> <input type="text" name="population" size="20" required autofocus /><br>
+        <!--   <b>Türü:</b><br> <input type="text" name="type" size="20" required autofocus />-->
+      <input type="submit" value="Ekle" name="companies_to_add"/>
+    </form>
+
+    <!-- <p><a href="#" class="btn btn-primary" role="button">Ekle</a></p>  -->
       </div>
     </div>
   </div>
-
-
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="http://www.opalcapitalltd.co.uk/wp-content/uploads/2014/07/Home-page-1-1.jpg" alt="Company_delete">
-      <div class="caption">
-        <h3>Şirket Sil</h3>
-        <p>Var olan şirketinizi silmek için kullanabilirsiniz.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Sil</a></p>
-      </div>
-    </div>
-  </div>
-
 
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <img src="http://www.ourdunya.com/wp-content/uploads/2015/07/153054548.jpg" alt="Company_search">
       <div class="caption">
-        <h3>Şirket Ara</h3>
-        <p>Şirket arayarak istediğiniz şirket hakkında detaylı bilgiye erişebilirsiniz.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Ara</a></p>
+        <h3>Şirket Seç</h3>
+        <p>Çeşitli kriterlere göre şirket arayarak seçtiğiniz kriterlere uyan şirketleri görüntüleyebilirsiniz.</p>
+        <form id="fSelect" action="{{ url_for('company_page')}}" method="post">
+        <b>Şirketin ismine göre ara:</b><br>
+        <input type="text" name="title" placeholder="Ilk harfini buyuk giriniz"  />
+        <input type="submit" value="Seç" name="companies_to_select2"/>
+        <br><br><b>YADA</b><br><br>
+ 		<b>Şirketin Şehrine göre ara:</b><br>
+        <input type="text" name="city" placeholder="Ilk harfini buyuk giriniz"  />
+     	<input type="submit" value="Seç" name="companies_to_select"/>
+    	</form>
+       <!--<p><a href="#" class="btn btn-primary" role="button">Ara</a></p>  -->
       </div>
     </div>
   </div>
-</div>
-</div>
+  </div>
 
-	<div class="container text-center">
-		<br>
+<div class="row">
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://ringsidetalent.com/wp-content/uploads/2016/08/shutterstock_302958509.jpg" alt="Company_update">
+      <div class="caption">
+        <h3>Şirket Güncelle</h3>
+        <p>İstediğiniz bir şirketin bilgilerini güncellemek için tablodaki o şirketin satırında bulunan "Güncelle" yazısını kullanabilirsiniz.</p>
+       <!--<p><a href="#" class="btn btn-primary" role="button">Ara</a></p>  -->
+      </div>
+    </div>
+  </div>
+
+    <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://www.opalcapitalltd.co.uk/wp-content/uploads/2014/07/Home-page-1-1.jpg" alt="Company_delete">
+      <div class="caption">
+        <h3>Şirket Sil</h3>
+        <p>Var olan bir şirket bilgisini silmek için tabloda ilgili şirketleri işaretlerek daha sonra sayfanın altında bulunan "Sil" butonunu kullanabilirsiniz.</p>
+      <!--<p><a href="#" class="btn btn-primary" role="button">Sil</a></p>  -->
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+<br>
 		<br>
 		<h3>Şirketler</h3>
 		<br>
-<div class="panel panel-default">
-  <div class="panel-heading">Şirketler</div>
-  <table class="table">
-  <tr>
-    <th>Şirket Adı</th>
-    <th>Konumu</th>
-    <th>Çalışan Sayısı</th>
-  </tr>
-  <tr>
-    <td>XYZ Company</td>
-    <td>İstanbul</td>
-    <td>500</td>
-  </tr>
-  <tr>
-    <td>ABC Company</td>
-    <td>Ankara</td>
-    <td>300</td>
-  </tr>
-</table>
-</div>
-</div>
+<form method="POST">
+<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th>Adı</th>
+		      <th>Şehir</th>
+		      <th>Ülke</th>
+		      <th>Çalışan Sayısı</th>
+		      <th>Güncellensin Mi?</th>
+		      <th>Silinsin Mi?</th>
+		    </tr>
+		  </thead>
+		  <tbody>
 
+		  	{% for i in range(0,CompanyList|count) %}
+			  <tr>
+ 				{% for k in range(1,5) %}
+					<td>{{CompanyList[i][k]}}</td>
+				{% endfor %}
+			    <td><a href="{{request.path}}/{{CompanyList[i][0]}}" class="text-info" name="comps_to_update">Güncelle</a></td>
+				<td><input type="checkbox" name="comps_to_delete" value= {{CompanyList[i][0]}}/></td>
+			  </tr>
+			{% endfor %}
+
+
+		  </tbody>
+		</table>
+
+			{% if CompanyList %}
+				<button type="submit" class="btn btn-danger">Sil</button>
+			{%endif%}
+</form>
 {%endblock%}
+
