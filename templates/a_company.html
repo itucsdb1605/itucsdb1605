@@ -1,0 +1,25 @@
+{% extends "logged_in_layout.html" %}
+{% block title %} Şirket Güncelle {%endblock%}
+{% block content %}
+	<div class="container">
+		<form method="POST">
+     	  <div class="form-group">
+			<label for="uni">Şirket İsmi:</label>
+			<input type="text" class="form-control" name="comp" value={{CompanyList[0][1]}}></input>
+		  </div>
+
+		  <div class="form-group">
+			<label for="city">Çalışan Sayısı:</label>
+			<input type="text" class="form-control" name="number" value={{CompanyList[0][4]}}></input>
+		  </div>
+
+		   <div class="form-group">
+			<label for="number">Şehir:</label>
+			<input type="text" class="form-control" name="city" value={{CompanyList[0][2]}}></input>
+		  </div>
+
+		  <input type="submit" value="Güncelle" name="companies_to_update"/>
+</form>
+
+	</div>
+{%endblock%}
