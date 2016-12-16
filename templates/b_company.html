@@ -1,0 +1,32 @@
+{% extends "logged_in_layout.html" %}
+
+{% block title %}Bulunan Şirketler{% endblock %}
+
+{% block content %}
+<h3>Bulunan Şirketler</h3>
+<br>
+<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th>Adı</th>
+		      <th>Çalışan Sayısı</th>
+		      <th>Şehir</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+
+		  	{% for i in range(0,CompanyList|count) %}
+			  <tr>
+			  		<td>{{CompanyList[i][1]}}</td>
+			  		<td>{{CompanyList[i][4]}}</td>
+			  		<td>{{CompanyList[i][2]}}</td>
+
+			  </tr>
+			{% endfor %}
+
+
+		  </tbody>
+		</table>
+
+
+{% endblock %}
