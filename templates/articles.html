@@ -1,35 +1,65 @@
 {% extends "logged_in_layout.html" %}
 {% block title %}Makaleler{% endblock %}
 {% block content %}
-	<div class="container text-center" style="background-color:LightSteelBlue;">
-		<h3>-Ekrana makaleler listesi getirilir
-		<br>-Checkbox ile seçilen kayıtlar topluca silinebilir
-		<br>-Radio ile güncellenecek kayıdın bilgileri update alanına bir sorgu ile getirilir 
-		<br>-Checkbox ve radio bileşenleri submit butonuyla çalıştırılır
-		<br>-İstediğimiz kayıtı makale ekle alanından ekleyebiliriz</h3>
-  <h3>Makale Listesi</h3>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Makaleler</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      position: relative; 
+  }
+  #section1 {padding-top:50px;height:1000px;color: #000; background-color:#85e085;}
+  #section2 {padding-top:50px;height:1000px;color: #000; background-color:#85e085;}
+  #section3 {padding-top:50px;height:1000px;color: #000; background-color:#85e085;}
+  #section4 {padding-top:50px;height:1000px;color: #000; background-color:#85e085;}
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1">Makaleleri Listele</a></li>
+          <li><a href="#section2">Makale Ekle</a></li>
+          <li><a href="#section3">Makale Sil</a></li>
+          <li><a href="#section4">Makale Güncelle</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>    
+
+<div id="section1" class="container-fluid">
+ <h1>Makale Listesi</h1>
   <form action="{{ url_for('articles_page') }}" method="post">
     <table>
     	<tr>
-    		<th><b><ins>Sil</b></ins></th>
-    		<th><b><ins> Güncelle</b></ins></th>
-    		<th><b><ins>Makale No</b></ins></th>
     		<th><b><ins>Makale Adı</b></ins></th>
-    		<th><b><ins>Kullanıcı No</b></ins></th>
     		<th><b><ins>Ad</b></ins></th>
     		<th><b><ins>Soyad</b></ins></th>
     		<th><b><ins>Yayın yılı</b></ins></th>
     		<th><b><ins>E-Posta Adresi</b></ins></th>
     		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
     	</tr>
-
-    	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
+    	{% for ArticleName, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
     	<tr>
-    		<td><input type="checkbox" name="articles_to_delete" value="{{ ArticleId }}" /></td>
-    		<td><input type="radio" value="{{ ArticleId }}" name="select_record" /></td>
-    		<td>{{ ArticleId }}</td>
     		<th>{{ ArticleName }}</th>
-    		<th>{{ UserId }}</th>
     		<th>{{ Name }}</th>
     		<th>{{ SurName }}</th>
     		<th>{{ ReleaseYear }}</th>
@@ -38,11 +68,12 @@
     	</tr>
     	{% endfor %}
     </table>
-    <input type="submit" value="Seçili Makaleleri Sil" name="delete" /> 
-    <input type="submit" value="Seçili Makaleyi Güncelle" name="update" />
   </form>
   </br>
-  <span style="float:left;">
+</div>
+<div id="section2" class="container-fluid">
+<h1>Makale Ekle</h1>
+</br>
   <form action="{{ url_for('articles_page') }}" method="post"> 
     <table>
       <tr> 
@@ -76,8 +107,67 @@
     </table>
     <input type="submit" value="Makale Ekle" name="articles_to_add"/>
   </form>
+</div>
+<div id="section3" class="container-fluid">
+  <h1>Makale Sil</h1>
+  <form action="{{ url_for('articles_page') }}" method="post">
+    <table>
+    	<tr>
+    		<th><b><ins>Sil</b></ins></th>
+    		<th><b><ins>Makale Adı</b></ins></th>
+    		<th><b><ins>Ad</b></ins></th>
+    		<th><b><ins>Soyad</b></ins></th>
+    		<th><b><ins>Yayın yılı</b></ins></th>
+    		<th><b><ins>E-Posta Adresi</b></ins></th>
+    		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
+    	</tr>
+
+    	{% for ArticleName, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
+    	<tr>
+    		<td><input type="checkbox" name="articles_to_delete" value="{{ ArticleId }}" /></td>
+    		<th>{{ ArticleName }}</th>
+    		<th>{{ Name }}</th>
+    		<th>{{ SurName }}</th>
+    		<th>{{ ReleaseYear }}</th>
+    		<th>{{ Mail }}</th>
+    		<th>{{ title }}</th>
+    	</tr>
+    	{% endfor %}
+    </table>
+    <input type="submit" value="Seçili Makaleleri Sil" name="delete" /> 
+  </form>
+</div>
+<div id="section4" class="container-fluid">
+  <h1>Makale Güncelle</h1>
+   <span style="float:left;">
+    <form action="{{ url_for('articles_page') }}" method="post">
+    <table>
+    	<tr>
+    		<th><b><ins> Güncelle</b></ins></th>
+    		<th><b><ins>Makale Adı</b></ins></th>
+    		<th><b><ins>Ad</b></ins></th>
+    		<th><b><ins>Soyad</b></ins></th>
+    		<th><b><ins>Yayın yılı</b></ins></th>
+    		<th><b><ins>E-Posta Adresi</b></ins></th>
+    		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
+    	</tr>
+
+    	{% for ArticleName, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
+    	<tr>
+    		<td><input type="radio" value="{{ ArticleId }}" name="select_record" /></td>
+    		<th>{{ ArticleName }}</th>
+    		<th>{{ Name }}</th>
+    		<th>{{ SurName }}</th>
+    		<th>{{ ReleaseYear }}</th>
+    		<th>{{ Mail }}</th>
+    		<th>{{ title }}</th>
+    	</tr>
+    	{% endfor %}
+    </table>
+    <input type="submit" value="Seçili Makaleyi Güncelle" name="update" />
+  </form>
   </span>
-<span style="float:right;">
+  <span style="float:right;">
   <form action="{{ url_for('articles_page') }}" method="post"> 
     <table>
       <tr> 
@@ -109,11 +199,14 @@
       </tr> 
       <tr> 
          <th>Üniversite No:</th> 
-        <td><input type="text" name="uni_id"  value={{ article[0][7] }} required autofocus /> </td>
+        <td><input type="text" name="uni_id" placeholder="1-42 arasi bir deger" value={{ article[0][7] }} required autofocus /> </td>
       </tr>
     </table>
     <input type="submit" value="Makale Güncelle" name="articles_to_update"/>
-</form> 
+</form>
 </span>
-	</div>
+</div>
+</body>
+</html>
+
 {%endblock%}

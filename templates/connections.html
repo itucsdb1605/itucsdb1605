@@ -1,25 +1,68 @@
 {% extends "logged_in_layout.html" %}
 {% block title %}Bağlantılar{% endblock %}
 {% block content %}
-	<div class="container text-center" style="background-color:LightGray ;">
-		<h2>Bu sayfa hesaba ait bağlantıları listeleme, bağlantı ekleme ve arama gibi pek çok 
-		işlemin yapılmasını sağlayacak...</h2>
+<head>
+  <title>Bağlantılar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      position: relative; 
+  }
+  #section1 {padding-top:50px;height:1000px;color: #000; background-color: #85e085;}
+  #section2 {padding-top:50px;height:1000px;color: #000; background-color:#85e085;}
+  #section3 {padding-top:50px;height:1000px;color: #000; background-color: #85e085;}
+  #section4 {padding-top:50px;height:1000px;color: #000; background-color: #85e085;}
+  #section5 {padding-top:50px;height:1000px;color: #000; background-color: #85e085;}
 
-  <ul class="nav nav-pills" role="tablist">
-  <li role="presentation"><a href="#">Tüm Bağlantılar<span class="badge">83</span></a></li>
-  <li role="presentation"  class="active"><a href="#">Üniversite Arkadaşları<span class="badge">35</span></a></li>
-  <li role="presentation" ><a href="#">Lise Arkadaşları<span class="badge">25</span></a></li>
-  <li role="presentation" ><a href="#">Filtre 1<span class="badge">13</span></a></li>
-  <li role="presentation" ><a href="#">Filtre 2<span class="badge">10</span></a></li>
-  		<br></br>
-  		<br> </br>
-  		<br> </br>
-  		<br> </br>
-  		<br> </br>
-  		<br> </br>
-  
-</ul>
-                    
-                    
-	</div>
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1">Tüm Bağlantılarım</a></li>
+          <li><a href="#section2">Üniversite Bağlantılarım</a></li>
+          <li><a href="#section3">İş Bağlantılarım</a></li>
+          <li><a href="#section4">Bağlantı Ekle</a></li>
+          <li><a href="#section5">Bağlantı Sil</a></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>    
+
+<div id="section1" class="container-fluid">
+  <h1>Tüm Bağlantılarım</h1>
+</div>
+<div id="section2" class="container-fluid">
+  <h1>Üniversite Bağlantılarım</h1>
+</div>
+<div id="section3" class="container-fluid">
+  <h1>İş Bağlantılarım</h1>
+</div>
+<div id="section4" class="container-fluid">
+  <h1>Bağlantı Ekle</h1>
+</div>
+
+<div id="section5" class="container-fluid">
+  <h1>Bağlantı Sil</h1>
+</div>
+p>
+</div>
+</body>
 {%endblock%}
