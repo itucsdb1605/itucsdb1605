@@ -1,0 +1,170 @@
+
+{% extends "logged_in_layout.html" %}
+{% block title %}profile{% endblock %}
+{% block content %}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>User profile form requirement</title>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
+    <!-- Bootstrap Core CSS -->
+<!--     <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+
+    .othertop{margin-top:10px;}
+    </style>
+
+    
+</head>
+
+<body>
+
+   <div class="container">
+<div class="row">
+<div class="col-md-10 ">
+<form class="form-horizontal"  method="POST" action="{{ url_for('user_update') }}">
+<fieldset>
+
+<!-- Form Name -->
+<legend>kullanıcı profili</legend>
+
+<!-- Text input-->
+
+
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Name">Name</label>
+  <div class="col-md-4">
+ <div class="input-group">
+       <div class="input-group-addon">
+        <i class="fa fa-user">
+        </i>
+       </div>
+       <input id="Name" name="firstname" type="text" placeholder="Name " value="{{users[3][0]}}" class="form-control">
+      </div>
+
+
+  </div>
+
+
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="LastName ">lastname</label>
+  <div class="col-md-4">
+ <div class="input-group">
+       <div class="input-group-addon">
+        <i class="fa fa-user">
+        </i>
+       </div>
+       <input id="lastName " name="lastname " type="text" placeholder="lastName" value="{{users[3][1]}}" class="form-control">
+      </div>
+
+
+  </div>
+
+
+</div>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Skills">üniversite</label>
+  <div class="col-md-4">
+  <div class="input-group">
+       <div class="input-group-addon">
+     <i class="fa fa-graduation-cap"></i>
+
+       </div>
+     <input id="Skills" name="uni" type="text" placeholder="üniversite" class="form-control input-md" value="{{users[3][3]}}">
+      </div>
+
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Phone number ">Phone number </label>
+  <div class="col-md-4">
+  <div class="input-group">
+       <div class="input-group-addon">
+     <i class="fa fa-phone"></i>
+
+       </div>
+    <input id="Phone number " name="phone" type="text" placeholder="Primary Phone number " class="form-control input-md">
+
+      </div>
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Email Address">Email Address</label>
+  <div class="col-md-4">
+  <div class="input-group">
+       <div class="input-group-addon">
+     <i class="fa fa-envelope-o"></i>
+
+       </div>
+    <input id="Email Address" name="email" type="text" placeholder="Email Address" class="form-control input-md" value={{users[3][2]}}>
+
+      </div>
+
+  </div>
+</div>
+
+
+<!-- Multiple Checkboxes -->
+
+
+<!-- Text input-->
+<!-- Multiple Radios -->
+
+
+<!-- Text input-->
+
+<!-- Textarea -->
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" ></label>
+  <div class="col-md-4">
+  <button id="btn-success" type="submit"  class="btn btn-info"><i class="icon-hand-right"></i>  submit</button>
+  <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
+
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+<div class="col-md-2 hidden-xs">
+<img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail ">
+  </div>
+
+
+</div>
+   </div>
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+{%endblock%}
+
