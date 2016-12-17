@@ -404,7 +404,7 @@ def comp_update_page(id):
     if request.method == 'GET':
         connection = dbapi2.connect(app.config['dsn'])
         cursor = connection.cursor()
-        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2 = locations.loc_id"""
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2 = locations.loc_id WHERE id={}""".format(id)
         cursor.execute(statement)
         clist = cursor.fetchall()
         connection.close()
