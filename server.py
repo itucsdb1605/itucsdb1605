@@ -53,7 +53,7 @@ def home_page():
         initialize.groups()
         initialize.users()
         isInitialized = True
-    return render_template('home.html', current_time=now.ctime())
+    return page_login()
 
 ##Following 5 methods define select-add-delete-update operations
 ##on JOBS table
@@ -528,7 +528,7 @@ def user_view():
     user = users(app.config['dsn'])
     user_list = user.get_user()
     now = datetime.datetime.now()
-    return render_template('userlist.html', users=user_list, current_time=now.ctime())
+    return render_template('profile.html', users=user_list, current_time=now.ctime())
 
 @app.route('/user_add', methods=['GET', 'POST'])
 def user_add():
@@ -540,21 +540,59 @@ def user_add():
         user.set_mail(request.form['email'])
         user.set_name(request.form['firstname'])
         user.set_lastname(request.form['lastname'])
-        user.set_uni_id(request.form['uni'])
+        user.set_uni(request.form['uni'])
         user.set_password(request.form['password'])
         user.add_user()
         now = datetime.datetime.now()
-        return redirect(url_for('user_view'))
+        return redirect(url_for('page_login'))
 
-
-@app.route('/signup', methods=['GET', 'POST'])
-def signin_up():
+@app.route('/user_update', methods=['GET', 'POST'])
+def user_update():
+    user = users(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
         return render_template('signup.html', current_time=now.ctime())
     if request.method == 'POST':
-        return redirect(url_for('user_view'))
+        name = request.form['firstname']
+        mail = request.form['email']
+        uni = request.form['uni']
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()
+        statement = """UPDATE users
+                    SET  Firstname='%s',uni='%s'
+                    WHERE Email_adress='%s'""" % (name, uni, mail)
+        cursor.execute(statement)
+        connection.commit()
+        now = datetime.datetime.now()
+        return redirect(url_for('page_profile'))
 
+@app.route('/profil', methods = ['POST', 'GET'])
+
+def page_profile():
+    user = users(app.config['dsn'])
+    userlist=user.get_user()
+    now = datetime.datetime.now()
+    return render_template('profile.html', users=userlist, current_time=now.ctime())
+
+@app.route('/home', methods = ['POST', 'GET'])
+def page_login():
+    with dbapi2.connect(app.config['dsn']) as connection:
+        cursor = connection.cursor()
+        if request.method == 'POST':
+            mailentered = request.form['mail']
+            passentered = request.form['password']
+            query = """SELECT Firstname,Lastname,Email_adress FROM users WHERE Email_adress='%s' AND password='%s' """ % (mailentered, passentered)
+            cursor.execute(query)
+            global allusers
+            allusers = cursor.fetchall()
+            x = len(allusers)
+            if x == 1:
+
+                return render_template('home.html')
+            else:
+                return render_template('signup.html')
+        elif request.method == 'GET':
+            return render_template('signup.html')
 @app.route('/initdb')
 def init_db():
     initialize = INIT(app.config['dsn'])
