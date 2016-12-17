@@ -11,7 +11,7 @@ class users:
     def set_id(self, uid):
         self.UserId = uid
 
-    def set_uni_id(self, unid):
+    def set_uni(self, unid):
         self.uni_id = unid
     def set_name(self, name):
         self.Firstname = name
@@ -29,7 +29,7 @@ class users:
         if self.UserId is None:
             with dbapi2.connect(self.cp) as connection:
                 with connection.cursor() as cursor:
-                    cursor.execute("""SELECT uni_id, Firstname, Lastname,Email_adress,universities.title FROM users JOIN universities ON universities.id = users.UserId""")
+                    cursor.execute("""SELECT Firstname,Lastname,Email_adress,uni FROM users""")
                     user_list = cursor.fetchall()
                     return user_list
         else:
@@ -42,19 +42,20 @@ class users:
     def add_user(self):
         with dbapi2.connect(self.cp) as connection:
             with connection.cursor() as cursor:
-                statement = """INSERT INTO users(Firstname, Lastname,Email_adress,password,uni_id) VALUES
+                statement = """INSERT INTO users(Firstname, Lastname,Email_adress,password,uni) VALUES
                         ( '{}', '{}', '{}','{}','{}' );
                     """.format(self.Firstname, self.Lastname, self.mail_address, self.password, self.uni_id)
                 cursor.execute(statement)
 
 
-    def update_user(self):
+    def update_user(self, email):
         with dbapi2.connect(self.cp) as connection:
-            with connection.cursor() as cursor:
-                statement = """UPDATE users
-                    SET  Email_adress='{}'
-                    WHERE ID={};""".format(self.mail_address,self.UserId)
-                cursor.execute(statement)
+            cursor = connection.cursor()
+            query = "UPDATE users SET Email_adress = '%s' WHERE Email_adress='%s'" % (email)
+            cursor.execute(query)
+            connection.commit()
+            return
+
 
 
     def search_user(self):
