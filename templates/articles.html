@@ -63,7 +63,7 @@ div.panel.show {
     		<th><b><ins>E-Posta Adresi</b></ins></th>
     		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
     	</tr>
-    	{% for ArticleName, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
+    	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
     	<tr>
     		<th>{{ ArticleName }}</th>
     		<th>{{ Name }}</th>
@@ -130,7 +130,7 @@ div.panel.show {
     		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
     	</tr>
 
-    	{% for ArticleName, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
+    	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
     	<tr>
     		<td><input type="checkbox" name="articles_to_delete" value="{{ ArticleId }}" /></td>
     		<th>{{ ArticleName }}</th>
@@ -162,7 +162,7 @@ div.panel.show {
     		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
     	</tr>
 
-    	{% for ArticleName, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
+    	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
     	<tr>
     		<td><input type="radio" value="{{ ArticleId }}" name="select_record" /></td>
     		<th>{{ ArticleName }}</th>
