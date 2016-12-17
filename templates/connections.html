@@ -1,68 +1,62 @@
 {% extends "logged_in_layout.html" %}
 {% block title %}Bağlantılar{% endblock %}
 {% block content %}
-<head>
-  <title>Bağlantılar</title>
-  <meta charset="utf-8">
+<body>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-  body {
-      position: relative; 
-  }
-  #section1 {padding-top:50px;height:1000px;color: #000; background-color: #85e085;}
-  #section2 {padding-top:50px;height:1000px;color: #000; background-color:#85e085;}
-  #section3 {padding-top:50px;height:1000px;color: #000; background-color: #85e085;}
-  #section4 {padding-top:50px;height:1000px;color: #000; background-color: #85e085;}
-  #section5 {padding-top:50px;height:1000px;color: #000; background-color: #85e085;}
 
-  </style>
-</head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-      </button>
-    </div>
-    <div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="#section1">Tüm Bağlantılarım</a></li>
-          <li><a href="#section2">Üniversite Bağlantılarım</a></li>
-          <li><a href="#section3">İş Bağlantılarım</a></li>
-          <li><a href="#section4">Bağlantı Ekle</a></li>
-          <li><a href="#section5">Bağlantı Sil</a></li>
-          </li>
-        </ul>
+<div class="container">
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Tüm Bağlantılarım</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+        <h1>Tüm Bağlantılarım</h1>
+        </div>
       </div>
     </div>
-  </div>
-</nav>    
-
-<div id="section1" class="container-fluid">
-  <h1>Tüm Bağlantılarım</h1>
-</div>
-<div id="section2" class="container-fluid">
-  <h1>Üniversite Bağlantılarım</h1>
-</div>
-<div id="section3" class="container-fluid">
-  <h1>İş Bağlantılarım</h1>
-</div>
-<div id="section4" class="container-fluid">
-  <h1>Bağlantı Ekle</h1>
-</div>
-
-<div id="section5" class="container-fluid">
-  <h1>Bağlantı Sil</h1>
-</div>
-p>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Üniversite Bağlantılarım</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+        <h1>Üniversite Bağlantılarım </h1></div>
+      </div>
+    </div>
+        <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Bağlantı Ekle</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+        <h1> Bağlantı Ekle</h1>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Bağlantı Sil</a>
+        </h4>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <div class="panel-body">
+        <h1>Bağlantı Sil</h1>
+        </div>
+      </div>
+    </div>
+  </div> 
 </div>
 </body>
 {%endblock%}
