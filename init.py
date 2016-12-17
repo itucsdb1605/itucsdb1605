@@ -436,7 +436,7 @@ class INIT:
             query = "DROP TABLE IF EXISTS users CASCADE"
             cursor.execute(query)
             query = """CREATE TABLE users (
-                uni_id INTEGER NOT NULL REFERENCES universities(id)
+                uni VARCHAR (100) NOT NULL REFERENCES universities(title)
                 ON DELETE CASCADE
                 ON UPDATE CASCADE,
                 UserId SERIAL PRIMARY KEY,
@@ -445,12 +445,13 @@ class INIT:
                 Email_adress VARCHAR (100) NOT NULL UNIQUE,
                 password VARCHAR(10) NOT NULL
 
+
             )"""
             cursor.execute(query)
-            query = """INSERT INTO users(Firstname, Lastname, Email_adress,uni_id,password) VALUES
-              ('Sevket','Cerit','cerits@itu.er',2,'sevko'),
-              ('Mert','Yıldız','yildiz@itu.edr',4,'mert'),
-              ('Halit','Ugurgelen','ugurgelen@itu.edu.tr',5,'halit');
+            query = """INSERT INTO users(Firstname, Lastname, Email_adress,uni,password) VALUES
+              ('Sevket','Cerit','cerits@itu.er','Ankara Üniversitesi','sevko'),
+              ('Mert','Yıldız','yildiz@itu.edr','İstanbul Üniversitesi','mert'),
+              ('Halit','Ugurgelen','ugurgelen@itu.edu.tr','Boğaziçi Üniversitesi','halit');
             """
             cursor.execute(query)
             connection.commit()
