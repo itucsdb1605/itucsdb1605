@@ -331,7 +331,8 @@ class INIT:
                         (2, 1, 'Hi!'),
                         (1, 4, 'Hello'),
                         (3, 2, 'Mert nerelerdesin?!'),
-                        (5, 3, 'Just wanted to say hi!')
+                        (5, 3, 'Hasan where have you been!'),
+                        (3, 6, 'Hocam merhaba, müsait olduğunuz bir zamanda görüşebilir miyiz?')
                         """
             cursor.execute(statement)
             connection.commit()
