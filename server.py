@@ -449,7 +449,6 @@ def articles_page():
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
-        university=arts.get_universitylist()
         article = arts.get_articlelist()
         article[0]=list(article[0])
         article[0][0]="kayıt seçiniz"
@@ -462,7 +461,8 @@ def articles_page():
         article[0][7]="kayıt seçiniz"
         article[0]=tuple(article[0])
         alist = arts.get_articlelist()
-        return render_template('articles.html', ArticleList = alist, article= article, current_time = now.ctime())
+        unilist=arts.get_universitylist()
+        return render_template('articles.html', ArticleList = alist, UniversityList=unilist, article= article, current_time = now.ctime())
     elif 'articles_to_delete' in request.form:
         articleids = request.form.getlist('articles_to_delete')
         for ArticleId in articleids:
@@ -472,8 +472,9 @@ def articles_page():
         articleids = request.form.getlist('select_record')
         now = datetime.datetime.now()
         alist = arts.get_articlelist()
+        unilist=arts.get_universitylist()
         slist=arts.select_article(articleids[0])
-        return render_template('articles.html', ArticleList = alist, article=slist, current_time=now.ctime())
+        return render_template('articles.html', ArticleList = alist, UniversityList=unilist, article=slist, current_time=now.ctime())
     elif 'articles_to_add' in request.form:
         arts.add_article(request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'],request.form['uni_id'])
         return redirect(url_for('articles_page'))

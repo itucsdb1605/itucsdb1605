@@ -37,7 +37,6 @@ button.accordion.active:after {
 div.panel {
     padding: 0 18px;
     display: none;
-    background: #e6ffcc;
 }
 
 div.panel.show {
@@ -46,7 +45,7 @@ div.panel.show {
 
 </style>
 </head>
-<body bgcolor="#e6ffcc" style="color:#264d00;">
+<body style="color:#264d00;">
 
 <h1>MAKALELER</h1>
 
@@ -110,8 +109,8 @@ div.panel.show {
          <th>Üniversite No:</th> 
         <!--<td><input type="text" name="uni_id" placeholder="1-42 arasi bir deger" required autofocus /> </td>-->
          <td><select name="uni_id">
-           	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
-         	<option value={{ ArticleId }}>{{ ArticleName }}</option>
+           	{% for id, title in UniversityList %}
+         	<option value={{ id }}>{{ title }}</option>
          	{% endfor %}
           </select></td>
       </tr>
@@ -214,7 +213,12 @@ div.panel.show {
       </tr> 
       <tr> 
          <th>Üniversite No:</th> 
-        <td><input type="text" name="uni_id" placeholder="1-42 arasi bir deger" value={{ article[0][7] }} required autofocus /> </td>
+        <!--<td><input type="text" name="uni_id" placeholder="1-42 arasi bir deger" value={{ article[0][7] }} required autofocus /> </td>-->
+             <td><select name="uni_id">
+           	{% for id, title in UniversityList %}
+         	<option value={{ id }}>{{ title }}</option>
+         	{% endfor %}
+          </select></td>
       </tr>
     </table>
     <input type="submit" value="Makale Güncelle" name="articles_to_update"/>
@@ -251,6 +255,9 @@ for (i = 0; i < acc.length; i++) {
 
 </script>
 </body>
+<br>
+<br><br>
+<br><br>
 <br>
 <br><br>
 <br><br>
