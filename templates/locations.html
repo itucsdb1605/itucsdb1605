@@ -1,0 +1,64 @@
+{% extends "logged_in_layout.html" %}
+
+{% block title %}Sistemde Bulunan Yerler{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+ <div class="container">
+  <h1>Sistemde Kayıtlı Olarak Bulunan Yerler!</h1>
+  <p>Sitede işlem yaparken yerler bilgisi kullanıldığından, sistemde bulunan yerleri görmeniz için hazırlanmış bir sayfadır.  </p>
+  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Arama Ekranına Geç</a></p> -->
+ </div>
+</div>
+
+
+<div class= "container">
+ <div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://gezipgordum.com/wp-content/uploads/2015/09/Amsterdam-gezilecek-yerler.jpg" alt="Company_add">
+      <div class="caption">
+        <h3>Yer ekle</h3>
+        <form id="fAdd" action="{{ url_for('location_page') }}" method="post">
+
+         <b>Yer Numarası:</b><br> <input type="text" name="no" size="20" required autofocus /><br>
+         <b>Şehir:</b><br> <input type="text" name="city" size="20" placeholder="Ilk harfini buyuk giriniz" required autofocus /><br>
+         <b>Ülke:</b><br> <input type="text" name="country" size="20" placeholder="Ilk harfini buyuk giriniz" required autofocus /><br>
+      <input type="submit" value="Ekle" name="locations_to_add"/>
+    </form>
+
+      </div>
+    </div>
+  </div>
+      </div>
+  </div>
+
+
+<h3>Sistemde Bulunan Yerler</h3>
+<br>
+<form method="POST">
+<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th>Numarası</th>
+		      <th>Şehir</th>
+		      <th>Ülke</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+
+		  	{% for i in range(0,LocationList|count) %}
+			  <tr>
+			  		<td>{{LocationList[i][0]}}</td>
+			  		<td>{{LocationList[i][1]}}</td>
+			  		<td>{{LocationList[i][2]}}</td>
+			  </tr>
+			{% endfor %}
+
+
+		  </tbody>
+		</table>
+
+</form>
+{% endblock %}
