@@ -10,8 +10,9 @@ class Myconnections:
             cursor = connection.cursor()
             query = """SELECT u1.FirstName AS Mfname, u1.LastName AS Mlname,
              u2.FirstName AS Ffname, u2.LastName AS Flname 
-             FROM myconnections JOIN users u1 ON myconnections.MainUserId = u1.UserId 
-             JOIN users u2 ON myconnections.FriendUserId = u2.UserId"""
+             FROM myconnections 
+             LEFT JOIN users u1 ON myconnections.MainUserId = u1.UserId 
+             LEFT JOIN users u2 ON myconnections.FriendUserId = u2.UserId"""
             cursor.execute(query)
             rows = cursor.fetchall()
             return rows
