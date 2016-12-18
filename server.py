@@ -743,8 +743,6 @@ def init_db():
     initialize.channels()
     initialize.partners()
     initialize.articles()
-    initialize.myconnections()
-    initialize.myevents()
     return redirect(url_for('home_page'))
 
 if __name__ == '__main__':

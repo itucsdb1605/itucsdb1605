@@ -10,9 +10,9 @@ class Myconnections:
             cursor = connection.cursor()
             query = """SELECT u1.FirstName AS Mfname, u1.LastName AS Mlname,
              u2.FirstName AS Ffname, u2.LastName AS Flname 
-             FROM myconnections 
-             LEFT JOIN users u1 ON myconnections.MainUserId = u1.UserId 
-             LEFT JOIN users u2 ON myconnections.FriendUserId = u2.UserId"""
+             FROM connections 
+             LEFT JOIN users u1 ON connections.MainUserId = u1.UserId 
+             LEFT JOIN users u2 ON connections.FriendUserId = u2.UserId"""
             cursor.execute(query)
             rows = cursor.fetchall()
             return rows
@@ -28,14 +28,14 @@ class Myconnections:
     def delete_connection(self, ConnectionId):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "DELETE FROM myconnections WHERE ConnectionId = '%s'" % (ConnectionId)
+            query = "DELETE FROM connections WHERE ConnectionId = '%s'" % (ConnectionId)
             cursor.execute(query)
             connection.commit()
             return
     def add_connection(self, MainUserId, FriendUserId):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query =  "INSERT INTO myconnections (MainUserId, FriendUserId) VALUES ('%s','%s')" % (MainUserId, FriendUserId)
+            query =  "INSERT INTO connections (MainUserId, FriendUserId) VALUES ('%s','%s')" % (MainUserId, FriendUserId)
             cursor.execute(query)
             connection.commit()
             return
