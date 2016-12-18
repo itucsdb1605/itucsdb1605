@@ -449,6 +449,7 @@ def articles_page():
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
+        university=arts.get_universitylist()
         article = arts.get_articlelist()
         article[0]=list(article[0])
         article[0][0]="kayıt seçiniz"

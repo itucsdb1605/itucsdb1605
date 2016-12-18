@@ -108,10 +108,15 @@ div.panel.show {
       </tr> 
       <tr> 
          <th>Üniversite No:</th> 
-        <td><input type="text" name="uni_id" placeholder="1-42 arasi bir deger" required autofocus /> </td>
+        <!--<td><input type="text" name="uni_id" placeholder="1-42 arasi bir deger" required autofocus /> </td>-->
+         <td><select name="uni_id">
+           	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
+         	<option value={{ ArticleId }}>{{ ArticleName }}</option>
+         	{% endfor %}
+          </select></td>
       </tr>
     </table>
-    <input type="submit" value="Makale Ekle" name="articles_to_add"/>
+    <input type="submit" value="Makale Ekle" name="articles_to_add" />
   </form>
 </div>
 
@@ -231,6 +236,22 @@ for (i = 0; i < acc.length; i++) {
     this.nextElementSibling.classList.toggle("show");
   }
 }
+
+(function() {
+    var elm = document.getElementById('university'),
+        df = document.createDocumentFragment();
+    for (var i = 1; i <= 42; i++) {
+        var option = document.createElement('option');
+        option.value = i;
+        option.appendChild(document.createTextNode(i));
+        df.appendChild(option);
+    }
+    elm.appendChild(df);
+}())
+
 </script>
 </body>
+<br>
+<br><br>
+<br><br>
 {%endblock%}
