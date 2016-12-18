@@ -326,9 +326,14 @@ class INIT:
                         Text VARCHAR(200) NOT NULL
                         )"""
             cursor.execute(statement)
-            statement = """INSERT INTO MESSAGES(Sender, Receiver, Text) VALUES 
-                        ('Mustafa COBAN', 'Bill GATES', 'Hi Bill! How are you?');
-                        """        
+            statement = """INSERT INTO MESSAGES(SenderID, ReceiverID, Text) VALUES
+                        (1, 3, 'Hi! How are you?'),
+                        (2, 1, 'Hi!'),
+                        (1, 4, 'Hello'),
+                        (4, 3, 'Merhaba!'),
+                        (3, 2, 'Heey Deneme!'),
+                        (3, 5, 'Naber?')
+                        """   
             cursor.execute(statement)    
             connection.commit() 
     def jobs(self):
