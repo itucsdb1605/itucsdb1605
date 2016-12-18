@@ -490,7 +490,7 @@ def location_page():
         return redirect(url_for('location_page'))
 
 
-@app.route('/etkinlikler')
+@app.route('/etkinlikler', methods=['GET', 'POST'])
 def activities_page():
     evts = Events(app.config['dsn'])
     fn = Func(app.config['dsn'])
@@ -530,7 +530,7 @@ def projects_page():
     now = datetime.datetime.now()
     return render_template('projects.html', current_time=now.ctime())
 
-@app.route('/baglantilar')
+@app.route('/baglantilar', methods=['GET', 'POST'])
 def connections_page():
     cons = Connections(app.config['dsn'])
     fn = Func(app.config['dsn'])
