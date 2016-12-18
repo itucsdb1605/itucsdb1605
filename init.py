@@ -418,15 +418,15 @@ class INIT:
                     SurName VARCHAR(80) NOT NULL,
                     ReleaseYear SMALLINT NOT NULL,
                     Mail VARCHAR(100) NOT NULL,
+                    UserId INTEGER NOT NULL REFERENCES users(id),
                     uni_id INTEGER NOT NULL REFERENCES universities(id)                    
                     )"""
             cursor.execute(query)
             
             query = """INSERT INTO articles(ArticleName, UserId, Name, SurName, ReleaseYear, Mail, uni_id) VALUES
-              ('Efficient algorithms for the (weighted) minimum circle problem',20,'Donald','Hearn',1982,'Hearn@ise.ufl.edu',24),
-              ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',10,'Uluğ','Bayazıt',2011,'ulugbayazit@itu.edu.tr',34),
-              ('The minimum covering sphere problem',20,'Donald','Hearn',1972,'Hearn@ise.ufl.edu',24),
-              ('An Ottoman response to Darwinism: İsmail Fennî on Islam and evolution',30,'Alper','Bilgili',2015,'Alper.Bilgili@acibadem.edu.tr',36);            
+              ('Efficient algorithms for the (weighted) minimum circle problem',5,'Donald','Hearn',1982,'Hearn@ise.ufl.edu',24),
+              ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',6,'Uluğ','Bayazıt',2011,'ulugbayazit@itu.edu.tr',34),
+              ('The minimum covering sphere problem',5,'Donald','Hearn',1972,'Hearn@ise.ufl.edu',24);            
               """
             cursor.execute(query)         
             connection.commit()               
@@ -440,8 +440,8 @@ class INIT:
                     ConenctionId SERIAL PRIMARY KEY,
                     MainUserId INT NOT NULL,
                     FriendUserId INT NOT NULL,
-                    MainUserId INTEGER NOT NULL REFERENCES universities(id),
-                    FriendUserId INTEGER NOT NULL REFERENCES universities(id)                    
+                    MainUserId INTEGER NOT NULL REFERENCES users(id),
+                    FriendUserId INTEGER NOT NULL REFERENCES users(id)                    
                     )"""
             cursor.execute(query)
             
@@ -469,7 +469,7 @@ class INIT:
                     Date VARCHAR(20) NOT NULL,
                     Time VARCHAR(15) NOT NULL,
                     Detail VARCHAR(500) NOT NULL,
-                    OwnerId INTEGER NOT NULL REFERENCES universities(id),
+                    OwnerId INTEGER NOT NULL REFERENCES users(id),
                     CityId INTEGER NOT NULL REFERENCES locations(loc_id)                  
                     )"""
             cursor.execute(query)
@@ -503,6 +503,8 @@ class INIT:
               ('Mert','Yıldız','yildiz@itu.edr','İstanbul Üniversitesi','mert'),
               ('Halit','Ugurgelen','ugurgelen@itu.edu.tr','Boğaziçi Üniversitesi','halit'),
               ('Hasan','Caglar','caglarh@itu.edu','İstanbul Teknik Üniversitesi','hhc'),
+              ('Donald','Hearn','Hearn@ise.ufl.edu','Boğaziçi Üniversitesi','hearn'),
+              ('Ulug','Bayazit','ulugbayazit@itu.edu.tr','İstanbul Teknik Üniversitesi','ulug'),
               ('Fatih','Guler','gulerfa','İstanbul Teknik Üniversitesi','feg');
               """
             cursor.execute(query)

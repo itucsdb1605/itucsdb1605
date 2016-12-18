@@ -1,26 +1,30 @@
 import psycopg2 as dbapi2
 
-class Articles:
+class Events:
     def __init__(self, cp):
         self.cp = cp
         return
 
-    def get_articlelist(self):
+    def get_eventlist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "SELECT articles.ArticleId, articles.ArticleName, articles.UserId, articles.Name, articles.SurName, articles.ReleaseYear, articles.Mail, universities.title FROM articles JOIN universities ON articles.uni_id = universities.id ORDER BY ArticleId ASC"
+            query = """SELECT events.EventId, events.EventName, users.FirstName, users.LastName,
+             locations.city, events.Date, events.Time, events.Detail
+             FROM events
+             JOIN users ON events.OwnerId = users.id 
+             JOIN locations ON events.CityId = locations.loc_id
+             """
             cursor.execute(query)
             rows = cursor.fetchall()
             return rows
         
-    def get_universitylist(self):
+    def get_locationlist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "SELECT * FROM universities ORDER BY title ASC"
+            query = "SELECT * FROM locations ORDER BY title ASC"
             cursor.execute(query)
             rows = cursor.fetchall()
             return rows
-        
     def get_userlist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
@@ -28,32 +32,34 @@ class Articles:
             cursor.execute(query)
             rows = cursor.fetchall()
             return rows
-    def delete_article(self, ArticleId):
+    def delete_event(self, EventId):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "DELETE FROM articles WHERE ArticleId = '%s'" % (ArticleId)
+            query = "DELETE FROM events WHERE EventId = '%s'" % (EventId)
             cursor.execute(query)
             connection.commit()
             return
-    def select_article(self, ArticleId):
+    def select_event(self, EventId):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "SELECT ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, uni_id  FROM articles WHERE ArticleId = '%s' ORDER BY ArticleId ASC" % (ArticleId)
+            query = """SELECT EventId, EventName, OwnerId, CityId,
+             Date, Time, Detail WHERE EventId = '%s' ORDER BY EventId ASC
+             """ % (EventId)
             cursor.execute(query)
             rows=cursor.fetchall()
             return rows
-    def add_article(self, ArticleName, UserId, Name, SurName, ReleaseYear, Mail,uni_id):
+    def add_event(self, EventName, OwnerId, CityId, Date, Time, Detail):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query =  "INSERT INTO articles (ArticleName, UserId, Name, SurName, ReleaseYear, Mail, uni_id) VALUES ('%s','%s','%s','%s','%s','%s','%s')" % (ArticleName, UserId, Name, SurName, ReleaseYear, Mail, uni_id)
+            query =  "INSERT INTO events (EventName, OwnerId, CityId, Date, Time, Detail) VALUES ('%s','%s','%s','%s','%s','%s')" % (EventName, OwnerId, CityId, Date, Time, Detail)
             cursor.execute(query)
             connection.commit()
             return
 
-    def update_article(self, ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail,uni_id):
+    def update_event(self, EventId, EventName, OwnerId, CityId, Date, Time, Detail):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query =  "UPDATE articles SET ArticleName = '%s', UserId='%s', Name='%s', SurName = '%s', ReleaseYear='%s', Mail='%s', uni_id='%s' WHERE ArticleId='%s'" % (ArticleName, UserId, Name, SurName, ReleaseYear, Mail, uni_id, ArticleId)
+            query =  "UPDATE events SET EventName = '%s', OwnerId='%s', CityId='%s', Date = '%s', Time='%s', Detail='%s'WHERE EventId='%s'" % (EventName, OwnerId, CityId, Date, Time, Detail,EventId)
             cursor.execute(query)
             connection.commit()
             return
