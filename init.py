@@ -107,7 +107,8 @@ class INIT:
                     loc_id INTEGER PRIMARY KEY,
                     city VARCHAR(40) NOT NULL,
                     country VARCHAR(40),
-                    UNIQUE (loc_id)
+                    UNIQUE (loc_id),
+                    UNIQUE (city)
                 )"""
             cursor.execute(query)
             query = """INSERT INTO locations VALUES
