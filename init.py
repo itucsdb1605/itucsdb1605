@@ -36,7 +36,7 @@ class INIT:
             """)
             connection.commit()
 
-    
+
     def universities(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
@@ -313,7 +313,7 @@ class INIT:
               """
             cursor.execute(query)
             connection.commit()
-    
+
     def messages(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
@@ -321,8 +321,8 @@ class INIT:
             cursor.execute(statement)
             statement = """CREATE TABLE Messages (
                         ID SERIAL PRIMARY KEY,
-                        Sender VARCHAR(40) NOT NULL,
-                        Receiver VARCHAR(40) NOT NULL,
+                        SenderID INT REFERENCES USERS(UserId),
+                        ReceiverID INT REFERENCES USERS(UserId),
                         Text VARCHAR(200) NOT NULL
                         )"""
             cursor.execute(statement)
@@ -333,9 +333,9 @@ class INIT:
                         (4, 3, 'Merhaba!'),
                         (3, 2, 'Heey Deneme!'),
                         (3, 5, 'Naber?')
-                        """   
-            cursor.execute(statement)    
-            connection.commit() 
+                        """
+            cursor.execute(statement)
+            connection.commit()
     def jobs(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
@@ -349,7 +349,7 @@ class INIT:
                     )
                     """
             cursor.execute(statement)
-            statement = """INSERT INTO JOBS(CompanyName, Position, Salary) VALUES 
+            statement = """INSERT INTO JOBS(CompanyName, Position, Salary) VALUES
                         ('Apple', 'Software Engineer', 12000),
                         ('Google', 'Software Engineer', 10000),
                         ('Microsoft', 'Industrial Engineer', 7500),
@@ -360,10 +360,10 @@ class INIT:
                         ('Avea', 'Server Maintainer', 4000),
                         ('Airties', 'Network Engineer', 5000),
                         ('NVIDIA', 'Electronics Engineer', 15000);
-                        """  
+                        """
             cursor.execute(statement)
             connection.commit()
-    
+
     def groups(self):
         with dbapi2.connect(self.cp) as connection:
             with connection.cursor() as cursor:
@@ -375,28 +375,28 @@ class INIT:
                         )
                         """
                 cursor.execute(statement)
-                statement = """INSERT INTO GROUPS(GroupName) VALUES 
+                statement = """INSERT INTO GROUPS(GroupName) VALUES
                             ('Turkcell'),
                             ('İstanbul Teknik Üniversitesi Mezunları'),
                             ('Silicon Valley'),
                             ('Apple')
-                            """  
+                            """
                 cursor.execute(statement)
-            
+
     def partners(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = "DROP TABLE IF EXISTS partners CASCADE"
-            cursor.execute(query)		
-            
+            cursor.execute(query)
+
             query = """CREATE TABLE partners (
                     PartnerId SERIAL PRIMARY KEY,
                     PartnerName VARCHAR(40) UNIQUE NOT NULL,
                     FoundationYear INT NOT NULL,
-                    Country VARCHAR(40) NOT NULL                    
+                    Country VARCHAR(40) NOT NULL
                     )"""
             cursor.execute(query)
-            
+
             query = """INSERT INTO partners(PartnerName, FoundationYear, Country) VALUES
               ('Tesla Motors', 1998, 'USA' ),
               ('New Horizons', 1999, 'Spain' ),
@@ -406,15 +406,15 @@ class INIT:
               ('Panasonic', 2001, 'Korea' ),
               ('LG Electronics', 1945, 'Turkey' );
               """
-            cursor.execute(query)         
+            cursor.execute(query)
             connection.commit()
-            
+
     def articles(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = "DROP TABLE IF EXISTS articles CASCADE"
-            cursor.execute(query)		
-            
+            cursor.execute(query)
+
             query = """CREATE TABLE articles (
                     ArticleId SERIAL PRIMARY KEY,
                     ArticleName VARCHAR(400) UNIQUE NOT NULL,
@@ -423,48 +423,48 @@ class INIT:
                     SurName VARCHAR(80) NOT NULL,
                     ReleaseYear SMALLINT NOT NULL,
                     Mail VARCHAR(100) NOT NULL,
-                    uni_id INTEGER NOT NULL REFERENCES universities(id)                    
+                    uni_id INTEGER NOT NULL REFERENCES universities(id)
                     )"""
             cursor.execute(query)
-            
+
             query = """INSERT INTO articles(ArticleName, UserId, Name, SurName, ReleaseYear, Mail, uni_id) VALUES
               ('Efficient algorithms for the (weighted) minimum circle problem',5,'Donald','Hearn',1982,'Hearn@ise.ufl.edu',24),
               ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',6,'Uluğ','Bayazıt',2011,'ulugbayazit@itu.edu.tr',34),
-              ('The minimum covering sphere problem',5,'Donald','Hearn',1972,'Hearn@ise.ufl.edu',24);            
+              ('The minimum covering sphere problem',5,'Donald','Hearn',1972,'Hearn@ise.ufl.edu',24);
               """
-            cursor.execute(query)         
-            connection.commit()               
+            cursor.execute(query)
+            connection.commit()
     def connections(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = "DROP TABLE IF EXISTS connections CASCADE"
-            cursor.execute(query)        
-            
+            cursor.execute(query)
+
             query = """CREATE TABLE connections (
                     ConenctionId SERIAL PRIMARY KEY,
                     MainUserId INT NOT NULL,
                     FriendUserId INT NOT NULL,
                     MainUserId INTEGER NOT NULL REFERENCES users(UserId),
-                    FriendUserId INTEGER NOT NULL REFERENCES users(UserId)                    
+                    FriendUserId INTEGER NOT NULL REFERENCES users(UserId)
                     )"""
             cursor.execute(query)
-            
+
             query = """INSERT INTO connections(MainUserId, FriendUserId) VALUES
               (1,2),
               (1,3),
               (2,3),
               (4,5),
               (4,2),
-              (2,5);          
+              (2,5);
               """
-            cursor.execute(query)         
-            connection.commit()               
+            cursor.execute(query)
+            connection.commit()
     def events(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = "DROP TABLE IF EXISTS events CASCADE"
-            cursor.execute(query)        
-            
+            cursor.execute(query)
+
             query = """CREATE TABLE events (
                     EventId SERIAL PRIMARY KEY,
                     EventName VARCHAR(300) UNIQUE NOT NULL,
@@ -474,16 +474,16 @@ class INIT:
                     Time VARCHAR(15) NOT NULL,
                     Detail VARCHAR(500) NOT NULL,
                     OwnerId INTEGER NOT NULL REFERENCES users(UserId),
-                    CityId INTEGER NOT NULL REFERENCES locations(loc_id)                  
+                    CityId INTEGER NOT NULL REFERENCES locations(loc_id)
                     )"""
             cursor.execute(query)
-            
+
             query = """INSERT INTO events(EventName, OwnerId, CityId, Date, Time, Detail) VALUES
               ('İTÜ Arı-Çekirdek Proje Yarışması',4,34,'20.12.2016','13:30','2016 yılı proje yarışması sonuçları, İTÜ Ayazağa'),
-              ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017','16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');          
+              ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017','16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');
               """
-            cursor.execute(query)         
-            connection.commit() 
+            cursor.execute(query)
+            connection.commit()
     def users(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
