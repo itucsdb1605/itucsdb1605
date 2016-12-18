@@ -3,9 +3,9 @@
 {% block content %}
 	<div class="container">
 		<ul class="nav nav-pills nav-justified">
-		  <li class="active"><a href="{{ url_for('job_view') }}">İş İlanlarını Görüntüle</a></li>
+		  <li ><a href="{{ url_for('job_view') }}">İş İlanlarını Görüntüle</a></li>
 		  <li><a href="{{ url_for('job_add') }}">İş İlanı Ekle</a></li>
-		  <li><a href="{{ url_for('job_update') }}">İş İlanı Güncelle</a></li>
+		  <li class="active"><a href="{{ url_for('job_update') }}">İş İlanı Güncelle</a></li>
 		  <li><a href="{{ url_for('job_delete') }}">İş İlanı Sil</a></li>
 		</ul>
 		<br><br>

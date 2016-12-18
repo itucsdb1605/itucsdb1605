@@ -3,10 +3,10 @@
 {% block content %}
 	<div class="container">
 		<ul class="nav nav-pills nav-justified">
-		  <li class="active"><a href="{{ url_for('job_view') }}">İş İlanlarını Görüntüle</a></li>
+		  <li ><a href="{{ url_for('job_view') }}">İş İlanlarını Görüntüle</a></li>
 		  <li><a href="{{ url_for('job_add') }}">İş İlanı Ekle</a></li>
 		  <li><a href="{{ url_for('job_update') }}">İş İlanı Güncelle</a></li>
-		  <li><a href="{{ url_for('job_delete') }}">İş İlanı Sil</a></li>
+		  <li class="active"><a href="{{ url_for('job_delete') }}">İş İlanı Sil</a></li>
 		</ul>
 		<br><br>
 		<form method="POST">
@@ -27,11 +27,11 @@
 				        <td>{{ job[i] }}</td>
 				    {% endfor %}
 				    	<td><input type="checkbox" name="jobs_to_delete" value= {{ job[0] }}/></td>
-				  </tr>  
+				  </tr>
 				{% endfor %}
-			  </tbody>		
+			  </tbody>
 			</table>
-			
+
 			{% if jobs %}
 				<button type="submit" class="btn btn-danger">Sil</button>
 			{%endif%}
