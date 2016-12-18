@@ -429,6 +429,31 @@ class INIT:
               """
             cursor.execute(query)         
             connection.commit()               
+    def connections(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS connections CASCADE"
+            cursor.execute(query)        
+            
+            query = """CREATE TABLE connections (
+                    ConenctionId SERIAL PRIMARY KEY,
+                    MainUserId INT NOT NULL,
+                    FriendUserId INT NOT NULL,
+                    MainUserId INTEGER NOT NULL REFERENCES universities(id),
+                    FriendUserId INTEGER NOT NULL REFERENCES universities(id)                    
+                    )"""
+            cursor.execute(query)
+            
+            query = """INSERT INTO articles(MainUserId, FriendUserId) VALUES
+              (1,2),
+              (1,3),
+              (2,3),
+              (4,5),
+              (4,2),
+              (2,5);          
+              """
+            cursor.execute(query)         
+            connection.commit()               
 
     def users(self):
         with dbapi2.connect(self.cp) as connection:
@@ -451,7 +476,9 @@ class INIT:
             query = """INSERT INTO users(Firstname, Lastname, Email_adress,uni,password) VALUES
               ('Sevket','Cerit','cerits@itu.er','Ankara Üniversitesi','sevko'),
               ('Mert','Yıldız','yildiz@itu.edr','İstanbul Üniversitesi','mert'),
-              ('Halit','Ugurgelen','ugurgelen@itu.edu.tr','Boğaziçi Üniversitesi','halit');
+              ('Halit','Ugurgelen','ugurgelen@itu.edu.tr','Boğaziçi Üniversitesi','halit'),
+              ('Hasan','Caglar','caglarh@itu.edu','İstanbul Teknik Üniversitesi','hhc'),
+-             ('Fatih','Guler','gulerfa@itu.edu','İstanbul Teknik Üniversitesi','feg');
             """
             cursor.execute(query)
             connection.commit()
