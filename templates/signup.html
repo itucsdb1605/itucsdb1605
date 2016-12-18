@@ -17,15 +17,15 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="/"><img src="static/images/logo2.jpg" alt="button Home Logo"></a>
 	    </div>
     </div>
 
-	<br><br><br>
+	<br>
+	<br>
     {%block content%}{%endblock%}
-    <hr>
 
 
+	<a href="/"><img src="static/images/logo_bigger.png" class="img-responsive center-block" alt="button Home Logo"></a>
 
 
     <div class="container">
@@ -142,11 +142,6 @@
     </div>
 
 
-<footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2016 İşteSen, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      <div id="datetime">{{ current_time }}</div>
-    </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
