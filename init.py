@@ -413,12 +413,11 @@ class INIT:
             query = """CREATE TABLE articles (
                     ArticleId SERIAL PRIMARY KEY,
                     ArticleName VARCHAR(400) UNIQUE NOT NULL,
-                    UserId INT NOT NULL,
+                    UserId INTEGER NOT NULL REFERENCES users(UserId),
                     Name VARCHAR(90) NOT NULL,
                     SurName VARCHAR(80) NOT NULL,
                     ReleaseYear SMALLINT NOT NULL,
                     Mail VARCHAR(100) NOT NULL,
-                    UserId INTEGER NOT NULL REFERENCES users(UserId),
                     uni_id INTEGER NOT NULL REFERENCES universities(id)                    
                     )"""
             cursor.execute(query)
