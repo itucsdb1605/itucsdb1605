@@ -150,16 +150,25 @@ def sent_messages_page():
     return render_template('messages.html', user_role="Alıcı", messages = messages,current_time=now.ctime())
 
 
-@app.route('/yenimesaj')
+@app.route('/yenimesaj', methods=['GET','POST'])
 def new_message():
     now = datetime.datetime.now()
-    with dbapi2.connect(app.config['dsn']) as connection:
-        with connection.cursor() as cursor:
-            statement = """SELECT * FROM users"""
-            cursor.execute(statement)
-            users = cursor.fetchall()
-    return render_template('new_message.html', users = users, current_time=now.ctime())
+    if request.method == 'GET':
+        with dbapi2.connect(app.config['dsn']) as connection:
+            with connection.cursor() as cursor:
+                statement = """SELECT * FROM users"""
+                cursor.execute(statement)
+                users = cursor.fetchall()
+        return render_template('new_message.html', users = users, current_time=now.ctime())
+    else:
+        senderId = request.form['senderId'][0]
+        receiverId = request.form['receiverId'][0]
+        text = request.form['text']
+        message = Message(app.config['dsn'],senderId, receiverId, text)
+        message.send()
+        return redirect(url_for('sent_messages_page'))
 
+    
 @app.route('/gruplar')
 def group_view():
     groups = Group(app.config['dsn'])
