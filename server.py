@@ -126,18 +126,39 @@ def job_update_page(id):
 @app.route('/mesajlar')
 def inbox_page():
     now = datetime.datetime.now()
-    return render_template('messages.html', user_role="Gönderen", current_time=now.ctime())
+    with dbapi2.connect(app.config['dsn']) as connection:
+        with connection.cursor() as cursor:
+            statement = """SELECT ID, USERS.firstname AS senderName, USERS.lastname AS senderSurname, TEXT
+ FROM (SELECT * FROM MESSAGES WHERE RECEIVERID=3) AS T1
+ INNER JOIN USERS
+ ON T1.senderID=USERS.userid"""
+            cursor.execute(statement)
+            messages = cursor.fetchall()
+    return render_template('messages.html', user_role="Gönderen",messages = messages, current_time=now.ctime())
 
 @app.route('/gonderilenler')
 def sent_messages_page():
     now = datetime.datetime.now()
-    return render_template('messages.html', user_role="Alıcı", current_time=now.ctime())
+    with dbapi2.connect(app.config['dsn']) as connection:
+        with connection.cursor() as cursor:
+            statement = """SELECT ID, USERS.firstname AS senderName, USERS.lastname AS senderSurname, TEXT
+ FROM (SELECT * FROM MESSAGES WHERE SENDERID=3) AS T1
+ INNER JOIN USERS
+ ON T1.receiverID=USERS.userid"""
+            cursor.execute(statement)
+            messages = cursor.fetchall()
+    return render_template('messages.html', user_role="Alıcı", messages = messages,current_time=now.ctime())
 
 
 @app.route('/yenimesaj')
 def new_message():
     now = datetime.datetime.now()
-    return render_template('new_message.html',current_time=now.ctime())
+    with dbapi2.connect(app.config['dsn']) as connection:
+        with connection.cursor() as cursor:
+            statement = """SELECT * FROM users"""
+            cursor.execute(statement)
+            users = cursor.fetchall()
+    return render_template('new_message.html', users = users, current_time=now.ctime())
 
 @app.route('/gruplar')
 def group_view():
