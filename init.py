@@ -371,16 +371,24 @@ class INIT:
                 statement = """CREATE TABLE GROUPS (
                         ID SERIAL PRIMARY KEY,
                         GroupName VARCHAR(40) NOT NULL,
-                        JobId INT REFERENCES JOBS(ID) ON DELETE RESTRICT
+                        Description VARCHAR(200)
                         )
                         """
                 cursor.execute(statement)
-                statement = """INSERT INTO GROUPS(GroupName) VALUES
-                            ('Turkcell'),
-                            ('İstanbul Teknik Üniversitesi Mezunları'),
-                            ('Silicon Valley'),
-                            ('Apple')
-                            """
+                statement = """INSERT INTO GROUPS(GroupName, Description) VALUES
+                             ('İstanbul Teknik Üniversitesi Mezunları', 'İTÜ Mezunlarının buluşma noktası'),
+                              ('Silicon Valley','You have brilliant ideas? Why not join our group! There are lots of startup founders and angel investors in this group!'),
+                               ('Database Proje Grubu', 'Bu grup 1605 takımının paylaşım grubudur')
+                                """
+                cursor.execute(statement)
+                cursor.execute("DROP TABLE IF EXISTS MEMBERSHIP CASCADE")
+                statement = """CREATE TABLE MEMBERSHIP (
+                        GROUPID INT NOT NULL REFERENCES GROUPS(ID),
+                        MemberID INT NOT NULL REFERENCES USERS(USERID),
+                        Role VARCHAR(10) NOT NULL,
+                        PRIMARY KEY(GROUPID, MEMBERID)
+                        )
+                        """
                 cursor.execute(statement)
 
     def partners(self):
