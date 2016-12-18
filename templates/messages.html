@@ -15,16 +15,16 @@
 		  <thead>
 		    <tr>
 		      <th></th>
-		      <th>{{user_role}}</th>
+		      <th>{{user_role}} Adı</th>
+		      <th>Soyadı</th>
 		      <th>Mesaj</th>
-		      <th>Zaman</th>
 		    </tr>
 		  </thead>
 		  <tbody>
 		  	{% for message in messages %}
 			  <tr>
 			  	   <td><input type="checkbox" name="messages_to_delete" value= {{ message[0] }}/></td>
-			    {% for i in range(3) %}
+			    {% for i in (1,2,3) %}
 			       <td>{{ message[i] }}</td>
 			    {% endfor %}
 			  </tr>
