@@ -452,8 +452,9 @@ class INIT:
               ('Sevket','Cerit','cerits@itu.er','Ankara Üniversitesi','sevko'),
               ('Mert','Yıldız','yildiz@itu.edr','İstanbul Üniversitesi','mert'),
               ('Halit','Ugurgelen','ugurgelen@itu.edu.tr','Boğaziçi Üniversitesi','halit');
-              ('Huseyin','Caglar','caglarh@itu.edu.tr','İstanbul Teknik Üniversitesi','hhc');
-              ('Fatih','Guler','gulerfa@itu.edu.tr','İstanbul Teknik Üniversitesi','feg');
+              ('Mert','Cerit','mert@itu.edu','İstanbul Teknik Üniversitesi','mece'),
+              ('Hasan','Caglar','caglarh@itu.edu','İstanbul Teknik Üniversitesi','hhc');
+              ('Fatih','Guler','gulerfa@itu.edu','İstanbul Teknik Üniversitesi','feg');
             """
             cursor.execute(query)
             connection.commit()
