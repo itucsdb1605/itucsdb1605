@@ -11,7 +11,7 @@ class Events:
             query = """SELECT events.EventId, events.EventName, users.FirstName, users.LastName,
              locations.city, events.Date, events.Time, events.Detail
              FROM events
-             JOIN users ON events.OwnerId = users.id 
+             JOIN users ON events.OwnerId = users.UserId 
              JOIN locations ON events.CityId = locations.loc_id
              """
             cursor.execute(query)

@@ -418,7 +418,7 @@ class INIT:
                     SurName VARCHAR(80) NOT NULL,
                     ReleaseYear SMALLINT NOT NULL,
                     Mail VARCHAR(100) NOT NULL,
-                    UserId INTEGER NOT NULL REFERENCES users(id),
+                    UserId INTEGER NOT NULL REFERENCES users(UserId),
                     uni_id INTEGER NOT NULL REFERENCES universities(id)                    
                     )"""
             cursor.execute(query)
@@ -440,8 +440,8 @@ class INIT:
                     ConenctionId SERIAL PRIMARY KEY,
                     MainUserId INT NOT NULL,
                     FriendUserId INT NOT NULL,
-                    MainUserId INTEGER NOT NULL REFERENCES users(id),
-                    FriendUserId INTEGER NOT NULL REFERENCES users(id)                    
+                    MainUserId INTEGER NOT NULL REFERENCES users(UserId),
+                    FriendUserId INTEGER NOT NULL REFERENCES users(UserId)                    
                     )"""
             cursor.execute(query)
             
@@ -469,7 +469,7 @@ class INIT:
                     Date VARCHAR(20) NOT NULL,
                     Time VARCHAR(15) NOT NULL,
                     Detail VARCHAR(500) NOT NULL,
-                    OwnerId INTEGER NOT NULL REFERENCES users(id),
+                    OwnerId INTEGER NOT NULL REFERENCES users(UserId),
                     CityId INTEGER NOT NULL REFERENCES locations(loc_id)                  
                     )"""
             cursor.execute(query)

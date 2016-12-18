@@ -10,8 +10,8 @@ class Connections:
             cursor = connection.cursor()
             query = """SELECT connections.ConnectionId, connections.MainUserId, u1.FirstName, u1.LastName,
                   connections.FriendUserId, u2.FirstName, u2.LastName
-                  FROM articles JOIN users  u1 ON connections.MainUserId = u1.id
-                  JOIN users u2 ON connections.FriendUserId = u2.id
+                  FROM articles JOIN users  u1 ON connections.MainUserId = u1.UserId
+                  JOIN users u2 ON connections.FriendUserId = u2.UserId
                   """
             cursor.execute(query)
             rows = cursor.fetchall()
