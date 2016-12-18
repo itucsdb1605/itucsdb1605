@@ -6,15 +6,6 @@
 		<br><br>
 		<form method="POST">
 
-		  <div class="form-group">
-			<label for="sender">Gönderen Kullanıcı Adı:</label>
-			  <select name="senderId" class="form-control">
-				{% for user in users %}
-			       <option>{{ user[1]|string() + "-) " + user[2] + " " + user[3] }}</option>
-			    {% endfor %}
-			  </select>
-		  </div>
-
      	  <div class="form-group">
 
 			<label for="receiver">Alıcının Kullanıcı Adı:</label>

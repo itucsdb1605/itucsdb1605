@@ -22,6 +22,7 @@ from job import Job
 from users import users
 from group import Group
 from partners import Partners
+from message import Message
 
 app = Flask(__name__)
 
@@ -197,7 +198,7 @@ def new_message():
         message.send()
         return redirect(url_for('sent_messages_page'))
 
-    
+
 @app.route('/gruplar')
 def group_view():
     groups = Group(app.config['dsn'])
@@ -500,7 +501,7 @@ def comp_update_page(id):
         now = datetime.datetime.now()
         #return render_template('universities.html', UniversityList = ulist, InfoList=ilist, current_time=now.ctime())
         return redirect(url_for('company_page'))
-    
+
 @app.route('/yerler', methods=['GET', 'POST'])
 def location_page():
     locs = Locations(app.config['dsn'])
@@ -735,7 +736,7 @@ def init_db():
     #initialize.All()
     initialize.locations()
     initialize.companies()
-    initialize.universities()    
+    initialize.universities()
     initialize.universities_info()
     initialize.topics()
     initialize.messages()
