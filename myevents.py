@@ -8,7 +8,10 @@ class Myevents:
     def get_eventlist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "SELECT myevents.EventId, myevents.EventName, users.FirstName, users.LastName, locations.city, myevents.Date, myevents.Time, myevents.Detail FROM myevents JOIN users ON myevents.OwnerId = users.UserId JOIN locations ON myevents.CityId = locations.loc_id "
+            query = """SELECT myevents.EventId, myevents.EventName, users.FirstName, users.LastName,
+            locations.city, myevents.Date, myevents.Time, myevents.Detail
+            FROM myevents JOIN users ON myevents.OwnerId = users.UserId 
+            JOIN locations ON myevents.CityId = locations.loc_id """
             cursor.execute(query)
             rows = cursor.fetchall()
             return rows

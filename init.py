@@ -472,10 +472,8 @@ class INIT:
 
             query = """CREATE TABLE myconnections (
                     ConnectionId SERIAL PRIMARY KEY,
-                    MainUserId INT NOT NULL,
-                    FriendUserId INT NOT NULL,
-                    MainUserId INTEGER NOT NULL REFERENCES users(UserId),
-                    FriendUserId INTEGER NOT NULL REFERENCES users(UserId)
+                    MainUserId INT NOT NULL REFERENCES users(UserId),
+                    FriendUserId INT NOT NULL REFERENCES users(UserId)
                     )"""
             cursor.execute(query)
 
@@ -498,13 +496,11 @@ class INIT:
             query = """CREATE TABLE myevents (
                     EventId SERIAL PRIMARY KEY,
                     EventName VARCHAR(300) UNIQUE NOT NULL,
-                    OwnerId INT NOT NULL,
-                    CityId INT NOT NULL,
+                    OwnerId INTEGER NOT NULL REFERENCES users(UserId),
+                    CityId INTEGER NOT NULL REFERENCES locations(loc_id),
                     Date VARCHAR(20) NOT NULL,
                     Time VARCHAR(15) NOT NULL,
-                    Detail VARCHAR(500) NOT NULL,
-                    OwnerId INTEGER NOT NULL REFERENCES users(UserId),
-                    CityId INTEGER NOT NULL REFERENCES locations(loc_id)
+                    Detail VARCHAR(500) NOT NULL
                     )"""
             cursor.execute(query)
 
