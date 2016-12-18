@@ -52,6 +52,24 @@ div.panel.show {
 <button class="accordion"><strong>TÜM BAĞLANTILARIM</strong></button>
 <div class="panel">
 <h1>Tüm Bağlantılarım</h1>
+<form action="{{ url_for('connections_page') }}" method="post">
+    <table>
+    	<tr>
+    		<th><b><ins>Kullanıcı Adı</b></ins></th>
+    		<th><b><ins>Soyadı</b></ins></th>
+    		<th><b><ins>Bağlantı Adı</b></ins></th>
+    		<th><b><ins>Soyadı</b></ins></th>
+    	</tr>
+    	{% for Mfname, Mlname, Ffname, Flname in ArticleList %}
+    	<tr>
+    		<th>{{ Mfname }}</th>
+    		<th>{{ Mlname }}</th>
+    		<th>{{ Ffname }}</th>
+    		<th>{{ Flname }}</th>
+    	</tr>
+    	{% endfor %}
+    </table>
+  </form>
 </div>
 
 <button class="accordion"><strong>ÜNİVERSİTE BAĞLANTILARIM</strong></button>

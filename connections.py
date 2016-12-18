@@ -8,8 +8,8 @@ class Connections:
     def get_connectionlist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = """SELECT connections.ConnectionId, connections.MainUserId, u1.FirstName, u1.LastName,
-                  connections.FriendUserId, u2.FirstName, u2.LastName
+            query = """SELECT u1.FirstName AS Mfname, u1.LastName AS Mlname,
+                  u2.FirstName AS Ffname, u2.LastName AS Flname
                   FROM articles JOIN users  u1 ON connections.MainUserId = u1.UserId
                   JOIN users u2 ON connections.FriendUserId = u2.UserId
                   """
