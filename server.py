@@ -472,21 +472,21 @@ def projects_page():
 
 @app.route('/baglantilar')
 def connections_page():
-    connections = Connections(app.config['dsn'])
+    cons = Connections(app.config['dsn'])
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
-        clist = connections.get_connectionlist()
-        ulist=connections.get_userlist()
+        clist = cons.get_connectionlist()
+        ulist=cons.get_userlist()
         return render_template('connections.html', ConnectionList = clist, UserList=ulist, current_time = now.ctime())
     elif 'connections_to_delete' in request.form:
         connectionids = request.form.getlist('connections_to_delete')
         for ConnectionId in connectionids:
-            connections.delete_connect(ConnectionId)
+            cons.delete_connect(ConnectionId)
         return redirect(url_for('connections_page'))
-    elif 'conenctions_to_add' in request.form:
-        arts.add_article(request.form['MainUserId'],request.form['FriendUserId'])
-        return redirect(url_for('articles_page'))
+    elif 'connections_to_add' in request.form:
+        cons.add_article(request.form['MainUserId'],request.form['FriendUserId'])
+        return redirect(url_for('connections_page'))
 
 @app.route('/makaleler', methods=['GET', 'POST'])
 def articles_page():
