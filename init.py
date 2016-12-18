@@ -441,7 +441,7 @@ class INIT:
             cursor.execute(query)
 
             query = """CREATE TABLE connections (
-                    ConenctionId SERIAL PRIMARY KEY,
+                    ConnectionId SERIAL PRIMARY KEY,
                     MainUserId INT NOT NULL,
                     FriendUserId INT NOT NULL,
                     MainUserId INTEGER NOT NULL REFERENCES users(UserId),
