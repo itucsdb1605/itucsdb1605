@@ -12,6 +12,7 @@ from flask import request
 from init import INIT
 from universities import Universities
 from companies import Companies
+from locations import Locations
 from articles import Articles
 from func import Func
 from topics import Topics
@@ -40,9 +41,9 @@ def home_page():
     now = datetime.datetime.now()
     if isInitialized == False:
         initialize = INIT(app.config['dsn'])
+        initialize.locations()
         initialize.companies()
         initialize.universities()
-        initialize.locations()
         initialize.universities_info()
         initialize.topics()
         initialize.messages()
@@ -442,6 +443,23 @@ def comp_update_page(id):
         now = datetime.datetime.now()
         #return render_template('universities.html', UniversityList = ulist, InfoList=ilist, current_time=now.ctime())
         return redirect(url_for('company_page'))
+    
+@app.route('/yerler', methods=['GET', 'POST'])
+def location_page():
+    locs = Locations(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        connection = dbapi2.connect(app.config['dsn'])
+        cursor = connection.cursor()
+        statement = """SELECT loc_id, city, country FROM locations"""
+        cursor.execute(statement)
+        llist = cursor.fetchall()
+        connection.commit()
+        return render_template('locations.html', LocationList = llist, current_time = now.ctime())
+    elif 'locations_to_add' in request.form:
+        locs.add_location(request.form['no'],request.form['city'],request.form['country'])
+        return redirect(url_for('location_page'))
 
 
 @app.route('/etkinlikler')
@@ -610,9 +628,9 @@ def page_login():
 def init_db():
     initialize = INIT(app.config['dsn'])
     #initialize.All()
-    initialize.companies()
-    initialize.universities()
     initialize.locations()
+    initialize.companies()
+    initialize.universities()    
     initialize.universities_info()
     initialize.topics()
     initialize.messages()
