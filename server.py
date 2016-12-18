@@ -14,8 +14,8 @@ from universities import Universities
 from companies import Companies
 from locations import Locations
 from articles import Articles
-from myevents import Events
-from myconnections import Connections
+from myevents import Myevents
+from myconnections import Myconnections
 from func import Func
 from topics import Topics
 from job import Job
@@ -492,7 +492,7 @@ def location_page():
 
 @app.route('/etkinlikler', methods=['GET', 'POST'])
 def activities_page():
-    evts = Events(app.config['dsn'])
+    evts = Myevents(app.config['dsn'])
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
@@ -532,7 +532,7 @@ def projects_page():
 
 @app.route('/baglantilar', methods=['GET', 'POST'])
 def connections_page():
-    cons = Connections(app.config['dsn'])
+    cons = Myconnections(app.config['dsn'])
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
