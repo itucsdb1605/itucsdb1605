@@ -123,33 +123,63 @@ def job_update_page(id):
         now = datetime.datetime.now()
         return render_template('jobs.html',jobs=jobs, current_time=now.ctime())
 
-@app.route('/mesajlar')
+@app.route('/mesajlar', methods=['GET','POST'])
 def inbox_page():
-    now = datetime.datetime.now()
-    with dbapi2.connect(app.config['dsn']) as connection:
-        with connection.cursor() as cursor:
-            statement = """SELECT ID, USERS.firstname AS senderName, USERS.lastname AS senderSurname, TEXT
- FROM (SELECT * FROM MESSAGES WHERE RECEIVERID=3) AS T1
- INNER JOIN USERS
- ON T1.senderID=USERS.userid"""
-            cursor.execute(statement)
-            messages = cursor.fetchall()
-    return render_template('messages.html', user_role="Gönderen",messages = messages, current_time=now.ctime())
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        with dbapi2.connect(app.config['dsn']) as connection:
+            with connection.cursor() as cursor:
+                statement = """SELECT ID, USERS.firstname AS senderName, USERS.lastname AS senderSurname, TEXT
+     FROM (SELECT * FROM MESSAGES WHERE RECEIVERID=3) AS T1
+     INNER JOIN USERS
+     ON T1.senderID=USERS.userid"""
+                cursor.execute(statement)
+                messages = cursor.fetchall()
+        return render_template('messages.html', user_role="Gönderen",header = "Gelen Kutusu",messages = messages, current_time=now.ctime())
 
-@app.route('/gonderilenler')
+    else:
+        ids = request.form.getlist('messages_to_delete')
+        message = Message(app.config['dsn'])
+        message.delete_messages(ids)
+        now = datetime.datetime.now()
+        with dbapi2.connect(app.config['dsn']) as connection:
+            with connection.cursor() as cursor:
+                statement = """SELECT ID, USERS.firstname AS senderName, USERS.lastname AS senderSurname, TEXT
+     FROM (SELECT * FROM MESSAGES WHERE RECEIVERID=3) AS T1
+     INNER JOIN USERS
+     ON T1.senderID=USERS.userid"""
+                cursor.execute(statement)
+                messages = cursor.fetchall()
+        return render_template('messages.html', user_role="Gönderen",header = "Gelen Kutusu",messages = messages, current_time=now.ctime())
+
+
+@app.route('/gonderilenler', methods=['GET','POST'])
 def sent_messages_page():
-    now = datetime.datetime.now()
-    with dbapi2.connect(app.config['dsn']) as connection:
-        with connection.cursor() as cursor:
-            statement = """SELECT ID, USERS.firstname AS senderName, USERS.lastname AS senderSurname, TEXT
- FROM (SELECT * FROM MESSAGES WHERE SENDERID=3) AS T1
- INNER JOIN USERS
- ON T1.receiverID=USERS.userid"""
-            cursor.execute(statement)
-            messages = cursor.fetchall()
-    return render_template('messages.html', user_role="Alıcı", messages = messages,current_time=now.ctime())
-
-
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        with dbapi2.connect(app.config['dsn']) as connection:
+            with connection.cursor() as cursor:
+                statement = """SELECT ID, USERS.firstname AS senderName, USERS.lastname AS senderSurname, TEXT
+                             FROM (SELECT * FROM MESSAGES WHERE SENDERID=3) AS T1
+                             INNER JOIN USERS
+                             ON T1.receiverID=USERS.userid"""
+                cursor.execute(statement)
+                messages = cursor.fetchall()
+        return render_template('messages.html', user_role="Alıcı", header = "Gönderilen Mesajlar", messages = messages,current_time=now.ctime())
+    else:
+        ids = request.form.getlist('messages_to_delete')
+        message = Message(app.config['dsn'])
+        message.delete_messages(ids)
+        now = datetime.datetime.now()
+        with dbapi2.connect(app.config['dsn']) as connection:
+            with connection.cursor() as cursor:
+                statement = """SELECT ID, USERS.firstname AS senderName, USERS.lastname AS senderSurname, TEXT
+                             FROM (SELECT * FROM MESSAGES WHERE SENDERID=3) AS T1
+                             INNER JOIN USERS
+                             ON T1.receiverID=USERS.userid"""
+                cursor.execute(statement)
+                messages = cursor.fetchall()
+        return render_template('messages.html', user_role="Alıcı",header = "Gönderilen Mesajlar", messages = messages, current_time=now.ctime())
 @app.route('/yenimesaj', methods=['GET','POST'])
 def new_message():
     now = datetime.datetime.now()
@@ -161,10 +191,9 @@ def new_message():
                 users = cursor.fetchall()
         return render_template('new_message.html', users = users, current_time=now.ctime())
     else:
-        senderId = request.form['senderId'][0]
         receiverId = request.form['receiverId'][0]
         text = request.form['text']
-        message = Message(app.config['dsn'],senderId, receiverId, text)
+        message = Message(app.config['dsn'],3, receiverId, text)
         message.send()
         return redirect(url_for('sent_messages_page'))
 
