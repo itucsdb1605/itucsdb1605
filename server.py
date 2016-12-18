@@ -483,8 +483,38 @@ def location_page():
 
 @app.route('/etkinlikler')
 def activities_page():
-    now = datetime.datetime.now()
-    return render_template('activities.html', current_time=now.ctime())
+    evts = Events(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        event = evts.get_eventlist()
+        event[0]=list(article[0])
+        event[0][0]="kayıt seçiniz"
+        event[0][1]="kayıt seçiniz"
+        event[0][2]="kayıt seçiniz"
+        event[0][3]="kayıt seçiniz"
+        event[0][4]="kayıt seçiniz"
+        event[0][5]="kayıt seçiniz"
+        event[0][6]="kayıt seçiniz"
+        event[0][7]="kayıt seçiniz"
+        event[0]=tuple(event[0])
+        elist = evts.get_eventlist()
+        loclist=evts.get_locationlist()
+        ulist=evts.get_userlist()
+        return render_template('activities.html', EventList = elist, LocationList=loclist, UserList=ulist, event = event, current_time = now.ctime())
+    elif 'events_to_delete' in request.form:
+        eventids = request.form.getlist('events_to_delete')
+        for EventId in eventids:
+            evts.delete_event(EventId)
+        return redirect(url_for('events_page'))
+    elif 'select_record' in request.form:
+        eventids = request.form.getlist('select_record')
+        now = datetime.datetime.now()
+        elist = evts.get_eventlist()
+        ulist=evts.get_userlist()
+        loclist=evts.get_locationlist()
+        slist=evts.select_event(eventids[0])
+        return render_template('activities.html', EventList = elist, LocationList=loclist,UserList=ulist, event=slist, current_time=now.ctime())
 
 @app.route('/projects')
 def projects_page():
