@@ -14,6 +14,8 @@ from universities import Universities
 from companies import Companies
 from locations import Locations
 from articles import Articles
+from events import Events
+from connections import Connections
 from func import Func
 from topics import Topics
 from job import Job
@@ -121,10 +123,6 @@ def job_update_page(id):
         now = datetime.datetime.now()
         return render_template('jobs.html',jobs=jobs, current_time=now.ctime())
 
-@app.route('/baglantilar')
-def connections_page():
-    now = datetime.datetime.now()
-    return render_template('connections.html', current_time=now.ctime())
 @app.route('/mesajlar')
 def inbox_page():
     now = datetime.datetime.now()
@@ -472,6 +470,11 @@ def projects_page():
     now = datetime.datetime.now()
     return render_template('projects.html', current_time=now.ctime())
 
+@app.route('/baglantilar')
+def connections_page():
+    now = datetime.datetime.now()
+    return render_template('connections.html', current_time=now.ctime())
+
 @app.route('/makaleler', methods=['GET', 'POST'])
 def articles_page():
     arts = Articles(app.config['dsn'])
@@ -637,6 +640,8 @@ def init_db():
     initialize.channels()
     initialize.partners()
     initialize.articles()
+    initialize.connections()
+    initialize.events()
     return redirect(url_for('home_page'))
 
 if __name__ == '__main__':
