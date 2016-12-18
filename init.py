@@ -444,7 +444,7 @@ class INIT:
                     )"""
             cursor.execute(query)
             
-            query = """INSERT INTO articles(MainUserId, FriendUserId) VALUES
+            query = """INSERT INTO connections(MainUserId, FriendUserId) VALUES
               (1,2),
               (1,3),
               (2,3),
