@@ -14,8 +14,8 @@ from universities import Universities
 from companies import Companies
 from locations import Locations
 from articles import Articles
-from events import Events
-from connections import Connections
+from myevents import Events
+from myconnections import Connections
 from func import Func
 from topics import Topics
 from job import Job

@@ -434,56 +434,7 @@ class INIT:
               """
             cursor.execute(query)
             connection.commit()
-    def connections(self):
-        with dbapi2.connect(self.cp) as connection:
-            cursor = connection.cursor()
-            query = "DROP TABLE IF EXISTS connections CASCADE"
-            cursor.execute(query)
 
-            query = """CREATE TABLE connections (
-                    ConnectionId SERIAL PRIMARY KEY,
-                    MainUserId INT NOT NULL,
-                    FriendUserId INT NOT NULL,
-                    MainUserId INTEGER NOT NULL REFERENCES users(UserId),
-                    FriendUserId INTEGER NOT NULL REFERENCES users(UserId)
-                    )"""
-            cursor.execute(query)
-
-            query = """INSERT INTO connections(MainUserId, FriendUserId) VALUES
-              (1,2),
-              (1,3),
-              (2,3),
-              (4,5),
-              (4,2),
-              (2,5);
-              """
-            cursor.execute(query)
-            connection.commit()
-    def events(self):
-        with dbapi2.connect(self.cp) as connection:
-            cursor = connection.cursor()
-            query = "DROP TABLE IF EXISTS events CASCADE"
-            cursor.execute(query)
-
-            query = """CREATE TABLE events (
-                    EventId SERIAL PRIMARY KEY,
-                    EventName VARCHAR(300) UNIQUE NOT NULL,
-                    OwnerId INT NOT NULL,
-                    CityId INT NOT NULL,
-                    Date VARCHAR(20) NOT NULL,
-                    Time VARCHAR(15) NOT NULL,
-                    Detail VARCHAR(500) NOT NULL,
-                    OwnerId INTEGER NOT NULL REFERENCES users(UserId),
-                    CityId INTEGER NOT NULL REFERENCES locations(loc_id)
-                    )"""
-            cursor.execute(query)
-
-            query = """INSERT INTO events(EventName, OwnerId, CityId, Date, Time, Detail) VALUES
-              ('İTÜ Arı-Çekirdek Proje Yarışması',4,34,'20.12.2016','13:30','2016 yılı proje yarışması sonuçları, İTÜ Ayazağa'),
-              ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017','16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');
-              """
-            cursor.execute(query)
-            connection.commit()
     def users(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
@@ -510,6 +461,56 @@ class INIT:
               ('Donald','Hearn','Hearn@ise.ufl.edu','Boğaziçi Üniversitesi','hearn'),
               ('Ulug','Bayazit','ulugbayazit@itu.edu.tr','İstanbul Teknik Üniversitesi','ulug'),
               ('Fatih','Guler','gulerfa','İstanbul Teknik Üniversitesi','feg');
+              """
+            cursor.execute(query)
+            connection.commit()
+    def myconnections(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS myconnections CASCADE"
+            cursor.execute(query)
+
+            query = """CREATE TABLE myconnections (
+                    ConnectionId SERIAL PRIMARY KEY,
+                    MainUserId INT NOT NULL,
+                    FriendUserId INT NOT NULL,
+                    MainUserId INTEGER NOT NULL REFERENCES users(UserId),
+                    FriendUserId INTEGER NOT NULL REFERENCES users(UserId)
+                    )"""
+            cursor.execute(query)
+
+            query = """INSERT INTO myconnections(MainUserId, FriendUserId) VALUES
+              (1,2),
+              (1,3),
+              (2,3),
+              (4,5),
+              (4,2),
+              (2,5);
+              """
+            cursor.execute(query)
+            connection.commit()
+    def myevents(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS myevents CASCADE"
+            cursor.execute(query)
+
+            query = """CREATE TABLE myevents (
+                    EventId SERIAL PRIMARY KEY,
+                    EventName VARCHAR(300) UNIQUE NOT NULL,
+                    OwnerId INT NOT NULL,
+                    CityId INT NOT NULL,
+                    Date VARCHAR(20) NOT NULL,
+                    Time VARCHAR(15) NOT NULL,
+                    Detail VARCHAR(500) NOT NULL,
+                    OwnerId INTEGER NOT NULL REFERENCES users(UserId),
+                    CityId INTEGER NOT NULL REFERENCES locations(loc_id)
+                    )"""
+            cursor.execute(query)
+
+            query = """INSERT INTO myevents(EventName, OwnerId, CityId, Date, Time, Detail) VALUES
+              ('İTÜ Arı-Çekirdek Proje Yarışması',4,34,'20.12.2016','13:30','2016 yılı proje yarışması sonuçları, İTÜ Ayazağa'),
+              ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017','16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');
               """
             cursor.execute(query)
             connection.commit()
