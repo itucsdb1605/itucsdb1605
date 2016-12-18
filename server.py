@@ -125,9 +125,20 @@ def connections_page():
     now = datetime.datetime.now()
     return render_template('connections.html', current_time=now.ctime())
 @app.route('/mesajlar')
-def messages_page():
+def inbox_page():
     now = datetime.datetime.now()
-    return render_template('messages.html', current_time=now.ctime())
+    return render_template('messages.html', user_role="Gönderen", current_time=now.ctime())
+
+@app.route('/gonderilenler')
+def sent_messages_page():
+    now = datetime.datetime.now()
+    return render_template('messages.html', user_role="Alıcı", current_time=now.ctime())
+
+
+@app.route('/yenimesaj')
+def new_message():
+    now = datetime.datetime.now()
+    return render_template('new_message.html',current_time=now.ctime())
 
 @app.route('/gruplar')
 def group_view():
