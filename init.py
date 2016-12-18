@@ -454,7 +454,31 @@ class INIT:
               """
             cursor.execute(query)         
             connection.commit()               
-
+    def events(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS events CASCADE"
+            cursor.execute(query)        
+            
+            query = """CREATE TABLE events (
+                    EventId SERIAL PRIMARY KEY,
+                    EventName VARCHAR(300) UNIQUE NOT NULL,
+                    OwnerId INT NOT NULL,
+                    CityId INT NOT NULL,
+                    Date VARCHAR(20) NOT NULL,
+                    Time VARCHAR(15) NOT NULL,
+                    Detail VARCHAR(500) NOT NULL,
+                    OwnerId INTEGER NOT NULL REFERENCES universities(id),
+                    CityId INTEGER NOT NULL REFERENCES locations(loc_id)                  
+                    )"""
+            cursor.execute(query)
+            
+            query = """INSERT INTO events(EventName, OwnerId, CityId, Date, Time, Detail) VALUES
+              ('İTÜ Arı-Çekirdek Proje Yarışması',4,34,'20.12.2016','13:30','2016 yılı proje yarışması sonuçları, İTÜ Ayazağa'),
+              ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017','16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');          
+              """
+            cursor.execute(query)         
+            connection.commit() 
     def users(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
