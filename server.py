@@ -22,6 +22,7 @@ from job import Job
 from users import users
 from group import Group
 from partners import Partners
+from projects import Projects
 from message import Message
 
 app = Flask(__name__)
@@ -52,6 +53,7 @@ def home_page():
         initialize.messages()
         initialize.channels()
         initialize.partners()
+        initialize.projects()
         initialize.articles()
         initialize.jobs()
         initialize.groups()
@@ -725,25 +727,28 @@ def partners_page():
         prtnrs.update_partner(request.form['PartnerId'], request.form['PartnerName'],request.form['FoundationYear'],request.form['Country'])
         return redirect(url_for('partners_page'))
 
-@app.route('/konular')
-def topics_page():
-    tops = topics(app.config['dsn'])
+    
+@app.route('/projects', methods=['GET', 'POST'])
+def projects_page():
+    prjcts = Projects(app.config['dsn'])
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
-        tlist = tops.get_topiclist()
-        return render_template('topics.html', topics = tlist, current_time = now.ctime())
-    elif 'delete_selected' in request.form:
-        topicids = request.form.getlist('delete_selected')
-        for topicID in topicids:
-            tops.delete_topic(topicID)
-        return redirect(url_for('topics_page'))
-    elif 'add' in request.form:
-        tops.add_topic(request.form['topic'],request.form['description'])
-        return redirect(url_for('topics_page'))
-    elif 'update' in request.form:
-        tops.update_topic(request.form['topicID'], request.form['topic'],request.form['description'])
-        return redirect(url_for('topics_page'))
+        prlist = prjcts.get_projectlist()
+        return render_template('projects.html', ProjectList = prlist, current_time = now.ctime())
+    elif 'projects_to_delete' in request.form:
+        projectids = request.form.getlist('projects_to_delete')
+        for ProjectId in projectids:
+            prjcts.delete_project(ProjectId)
+        return redirect(url_for('projects_page'))
+    elif 'projects_to_add' in request.form:
+        prjcts.add_project(request.form['ProjectName'],request.form['ProjectYear'],request.form['ProjectPartner'])
+        return redirect(url_for('projects_page'))
+    elif 'projects_to_update' in request.form:
+        prjcts.update_project(request.form['ProjectId'], request.form['ProjectName'],request.form['ProjectYear'],request.form['ProjectPartner'])
+        return redirect(url_for('projects_page'))
+    
+    
 @app.route('/user_view')
 def user_view():
     user = users(app.config['dsn'])
@@ -826,6 +831,7 @@ def init_db():
     initialize.messages()
     initialize.channels()
     initialize.partners()
+    initialize.projects()
     initialize.articles()
     return redirect(url_for('home_page'))
 
