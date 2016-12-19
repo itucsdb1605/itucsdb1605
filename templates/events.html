@@ -55,12 +55,12 @@ div.panel.show {
  <form action="{{ url_for('events_page') }}" method="post">
     <table>
     	<tr>
-    		<th><b><ins>Etkinlik Adı</b></ins></th>
+    		<th><b>Etkinlik Adı</b></th>
     		<th><b><ins>Etkinlik Sahibi Adı</b></ins></th>
     		<th><b><ins>Etkinlik Sahibi Soyadı</b></ins></th>
     		<th><b><ins>Mekan</b></ins></th>
-    		<th><b><ins>Tarih - Saat</b></ins></th>
-    		<th><b><ins>Diğer Detaylar</b></ins></th>
+    		<th><b>Tarih - Saat</b></th>
+    		<th><b>Diğer Detaylar</b></th>
     	</tr>
     	{% for EventId, EventName, FirstName, LastName, city, DateWithTime, Detail in EventList %}
     	<tr>
@@ -120,13 +120,13 @@ div.panel.show {
   <form action="{{ url_for('events_page') }}" method="post">
     <table>
     	<tr>
-    		<th><b><ins>Sil</b></ins></th>
-    		<th><b><ins>Etkinlik Adı</b></ins></th>
+    		<th><b>Sil</b></th>
+    		<th><b>Etkinlik Adı</b></th>
     		<th><b><ins>Etkinlik Sahibi Adı</b></ins></th>
     		<th><b><ins>Etkinlik Sahibi Soyadı</b></ins></th>
     		<th><b><ins>Mekan</b></ins></th>
-    		<th><b><ins>Tarih - Saat</b></ins></th>
-    		<th><b><ins>Diğer Detaylar</b></ins></th>
+    		<th><b>Tarih - Saat</b></th>
+    		<th><b>Diğer Detaylar</b></th>
     	</tr>
 
     	{% for EventId, EventName, FirstName, LastName, city, DateWithTime, Detail in EventList  %}
@@ -152,13 +152,13 @@ div.panel.show {
     <form action="{{ url_for('events_page') }}" method="post">
     <table>
     	<tr>
-    		<th><b><ins> Güncelle</b></ins></th>
-    		<th><b><ins>Etkinlik Adı</b></ins></th>
+    		<th><b>Güncelle</b></th>
+    		<th><b>Etkinlik Adı</b></th>
     		<th><b><ins>Etkinlik Sahibi Adı</b></ins></th>
     		<th><b><ins>Etkinlik Sahibi Soyadı</b></ins></th>
     		<th><b><ins>Mekan</b></ins></th>
-    		<th><b><ins>Tarih - Saat</b></ins></th>
-    		<th><b><ins>Diğer Detaylar</b></ins></th>
+    		<th><b>Tarih - Saat</b></th>
+    		<th><b>Diğer Detaylar</b></th>
     	</tr>
 
     	{% for EventId, EventName, FirstName, LastName, city, DateWithTime, Detail in EventList  %}
@@ -234,6 +234,9 @@ for (i = 0; i < acc.length; i++) {
 </script>
 
 </body>
+<br>
+<br><br>
+<br><br>
 <br>
 <br><br>
 <br><br>

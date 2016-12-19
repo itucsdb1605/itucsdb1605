@@ -55,12 +55,12 @@ div.panel.show {
   <form action="{{ url_for('articles_page') }}" method="post">
     <table>
     	<tr>
-    		<th><b><ins>Makale Adı</b></ins></th>
+    		<th><b>Makale Adı</b></th>
     		<th><b><ins>Ad</b></ins></th>
     		<th><b><ins>Soyad</b></ins></th>
-    		<th><b><ins>Yayın yılı</b></ins></th>
-    		<th><b><ins>E-Posta Adresi</b></ins></th>
-    		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
+    		<th><b>Yayın yılı</b></th>
+    		<th><b>E-Posta Adresi</b></th>
+    		<th><b><ins>Yayınlandığı Üniversite<ins></b></th>
     	</tr>
     	{% for ArticleId, ArticleName, UserId, Name, SurName, ReleaseYear, Mail, title in ArticleList %}
     	<tr>
@@ -120,12 +120,12 @@ div.panel.show {
   <form action="{{ url_for('articles_page') }}" method="post">
     <table>
     	<tr>
-    		<th><b><ins>Sil</b></ins></th>
-    		<th><b><ins>Makale Adı</b></ins></th>
+    		<th><b>Sil</b></th>
+    		<th><b>Makale Adı</th>
     		<th><b><ins>Ad</b></ins></th>
     		<th><b><ins>Soyad</b></ins></th>
-    		<th><b><ins>Yayın yılı</b></ins></th>
-    		<th><b><ins>E-Posta Adresi</b></ins></th>
+    		<th><b>Yayın Yılı</b></th>
+    		<th><b>E-Posta Adresi</b></th>
     		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
     	</tr>
 
@@ -153,11 +153,11 @@ div.panel.show {
     <table>
     	<tr>
     		<th><b><ins> Güncelle</b></ins></th>
-    		<th><b><ins>Makale Adı</b></ins></th>
+    		<th><b>Makale Adı</b></th>
     		<th><b><ins>Ad</b></ins></th>
     		<th><b><ins>Soyad</b></ins></th>
-    		<th><b><ins>Yayın yılı</b></ins></th>
-    		<th><b><ins>E-Posta Adresi</b></ins></th>
+    		<th><b>Yayın yılı</b></th>
+    		<th><b>E-Posta Adresi</b></th>
     		<th><b><ins>Yayınlandığı Üniversite</b></ins></th>
     	</tr>
 
@@ -245,6 +245,9 @@ for (i = 0; i < acc.length; i++) {
 
 </script>
 </body>
+<br>
+<br><br>
+<br><br>
 <br>
 <br><br>
 <br><br>
