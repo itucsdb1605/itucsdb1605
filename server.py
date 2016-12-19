@@ -250,7 +250,8 @@ def group_update_page(id):
 def group_members_page(id):
     group = Group(app.config['dsn'])
     groupName = group.find_group_name(id)
-    members= group.get_members(id);
+    members= group.get_members(id)
+    print(members)
     now = datetime.datetime.now()
     return render_template('group_members_view.html',groupName = groupName, members = members, current_time=now.ctime())
 
