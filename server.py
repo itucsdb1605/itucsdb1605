@@ -239,6 +239,7 @@ def group_update_page(id):
 
     if request.method == 'POST':
         group.set_name(request.form['groupname'])
+        group.set_description(request.form['groupDescription'])
         group.set_id(id)
         group.update_group()
         groups = group.get_groups()
@@ -264,6 +265,7 @@ def group_create():
         return render_template('group_add.html', current_time=now.ctime())
     if request.method == 'POST':
        group.set_name(request.form['groupName'])
+       group.set_description(request.form['groupDescription'])
        group.create_group()
        return redirect(url_for('group_view'))
 

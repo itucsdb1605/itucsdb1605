@@ -383,7 +383,7 @@ class INIT:
                 cursor.execute(statement)
                 cursor.execute("DROP TABLE IF EXISTS MEMBERSHIP CASCADE")
                 statement = """CREATE TABLE MEMBERSHIP (
-                        GROUPID INT NOT NULL REFERENCES GROUPS(ID),
+                        GROUPID INT NOT NULL REFERENCES GROUPS(ID) ON DELETE CASCADE,
                         MemberID INT NOT NULL REFERENCES USERS(USERID),
                         Role VARCHAR(10) NOT NULL,
                         PRIMARY KEY(GROUPID, MEMBERID)

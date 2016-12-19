@@ -13,8 +13,8 @@
 		<table class="table table-hover">
 		  <thead>
 		    <tr>
-		      <th>Grup No</th>
 		      <th>Grup Adı</th>
+		      <th>Grup Tanımı</th>
 		      <th>Güncellensin Mi?</th>
 		    </tr>
 		  </thead>
@@ -22,7 +22,7 @@
 		  	{% for group in groups %}
 			  <tr>
 			    {% for i in range(2) %}
-			       <td>{{ group[i] }}</td>
+			       <td>{{ group[i+1] }}</td>
 			    {% endfor %}
 			    <td><a href="{{request.path}}/{{group[0]}}" class="text-info">Güncelle</a></td>
 			  </tr>
