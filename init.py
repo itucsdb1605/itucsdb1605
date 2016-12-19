@@ -478,12 +478,12 @@ class INIT:
                     EventName VARCHAR(300) UNIQUE NOT NULL,
                     OwnerId INTEGER NOT NULL REFERENCES users(UserId),
                     CityId INTEGER NOT NULL REFERENCES locations(loc_id),
-                    DateTime VARCHAR(50) NOT NULL,
+                    DateWithTime VARCHAR(50) NOT NULL,
                     Detail VARCHAR(500) NOT NULL
                     )"""
             cursor.execute(query)
 
-            query = """INSERT INTO events(EventName, OwnerId, CityId, DateTime, Detail) VALUES
+            query = """INSERT INTO events(EventName, OwnerId, CityId, DateWithTime, Detail) VALUES
               ('İTÜ Arı-Çekirdek Proje Yarışması',4,34,'20.12.2016, 13:30','2016 yılı proje yarışması sonuçları, İTÜ Ayazağa'),
               ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017, 16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');
               """
