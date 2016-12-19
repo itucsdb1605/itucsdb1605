@@ -748,6 +748,25 @@ def projects_page():
         prjcts.update_project(request.form['ProjectId'], request.form['ProjectName'],request.form['ProjectYear'],request.form['ProjectPartner'])
         return redirect(url_for('projects_page'))
     
+@app.route('/konular')
+def topics_page():
+	tops = topics(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        tlist = tops.get_topiclist()
+    return render_template('topics.html', topics = tlist, current_time = now.ctime())
+    elif 'delete_selected' in request.form:
+        topicids = request.form.getlist('delete_selected')
+    for topicID in topicids:
+        tops.delete_topic(topicID)
+    return redirect(url_for('topics_page'))
+    elif 'add' in request.form:
+        tops.add_topic(request.form['topic'],request.form['description'])
+    return redirect(url_for('topics_page'))
+    elif 'update' in request.form:
+        tops.update_topic(request.form['topicID'], request.form['topic'],request.form['description'])
+    return redirect(url_for('topics_page'))
     
 @app.route('/user_view')
 def user_view():
