@@ -371,9 +371,8 @@ class INIT:
             statement = """CREATE TABLE JOBS (
                     ID SERIAL PRIMARY KEY,
                     Position VARCHAR(40) NOT NULL,
-                    Description VARCHAR(80) NOT NULL,
                     Salary INT NOT NULL,
-                    CompanyId INT REFERENCES COMPANY(id)
+                    CompanyId INT REFERENCES COMPANIES(id)
                     )
                     """
             cursor.execute(statement)
