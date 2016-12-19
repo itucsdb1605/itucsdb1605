@@ -412,13 +412,15 @@ class INIT:
             cursor.execute(query)
 
             query = """INSERT INTO partners(PartnerName, FoundationYear, Country) VALUES
-              ('Tesla Motors', 1998, 'USA' ),
-              ('New Horizons', 1999, 'Spain' ),
-              ('Gigafactory', 1985, 'Italy' ),
-              ('SpaceX', 1996, 'China' ),
-              ('Foxconn', 2005, 'Brasil' ),
-              ('Panasonic', 2001, 'Korea' ),
-              ('LG Electronics', 1945, 'Turkey' );
+              ('Tesla', 2003, 'USA' ),
+              ('Vestel', 1984, 'Turkey' ),
+              ('Gigafactory', 2014, 'USA' ),
+              ('SpaceX', 2002, 'USA' ),
+              ('Foxconn', 1974, 'China' ),
+              ('Panasonic', 1918, 'Japan' ),
+              ('Casper', 1991, 'Turkey'),
+              ('LG', 1947, 'Korea' ),
+              ('Airbus', 1970, 'France');
               """
             cursor.execute(query)
             connection.commit()
