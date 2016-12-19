@@ -49,10 +49,18 @@ div.panel.show {
 
 <h1>BAĞLANTILAR</h1>
 
-<button class="accordion"><strong>TÜM BAĞLANTILARIM</strong></button>
+<button class="accordion"><strong>KİŞİ BAZINDA BAĞLANTILAR</strong></button>
 <div class="panel">
-<h1>Tüm Bağlantılarım</h1>
+<br>
+<h1>Kişi Bazında Bağlantılar</h1>
 <form action="{{ url_for('connections_page') }}" method="post">
+          <th>Kullanıcı:</th> 
+         <td><select name="selectByUser">
+           	{% for UserId, name in UserList %}
+         	<option value={{ UserId }}>{{ name }}</option>
+         	{% endfor %}
+          </select></td>
+       <input type="submit" value="Kişiyi Seç" name="selectByUser" />
     <table>
     	<tr>
     		<th><b><ins>Kullanıcı Adı</b></ins></th>
@@ -60,7 +68,7 @@ div.panel.show {
     		<th><b><ins>Bağlantı Adı</b></ins></th>
     		<th><b><ins>Soyadı</b></ins></th>
     	</tr>
-    	{% for Mfname, Mlname, Ffname, Flname in ConnectionList %}
+    	{% for ConnectionId, Mfname, Mlname, Ffname, Flname in ConnectionList %}
     	<tr>
     		<th>{{ Mfname }}</th>
     		<th>{{ Mlname }}</th>
@@ -68,22 +76,84 @@ div.panel.show {
     		<th>{{ Flname }}</th>
     	</tr>
     	{% endfor %}
-    </table>
+     </table>
   </form>
 </div>
 
-<button class="accordion"><strong>ÜNİVERSİTE BAĞLANTILARIM</strong></button>
+<button class="accordion"><strong>ÜNİVERSİTE BAZINDA BAĞLANTILAR</strong></button>
 <div class="panel">
-<h1>Üniversite Bağlantılarım </h1>
+<br>
+<h1>Üniversite Bazında Bağlantılar</h1>
+<form action="{{ url_for('connections_page') }}" method="post">
+          <th>Üniversite:</th> 
+         <td><select name="selectByUniversity">
+           	{% for id, title in UniversityList %}
+         	<option value={{ id }}>{{ title }}</option>
+         	{% endfor %}
+          </select></td>
+       <input type="submit" value="Üniversiteyi Seç" name="selectByUniversity" />
+    <table>
+    	<tr>
+    		<th><b><ins>Üniversite Adı</b></ins></th>
+    		<th><b><ins>Kullanıcı Adı</b></ins></th>
+    		<th><b><ins>Kullanıcı Soyadı</b></ins></th>
+    	</tr>
+    	{% for uni ,FirstName, LastName in UniversityConnectionList %}
+    	<tr>
+    	    <th>{{ uni }}</th>
+    		<th>{{ FirstName }}</th>
+    		<th>{{ LastName }}</th>
+    	</tr>
+    	{% endfor %}
+     </table>
+  </form>
+
 </div>
 
 <button class="accordion"><strong>BAĞLANTI EKLE</strong></button>
 <div class="panel">
  <h1> Bağlantı Ekle</h1>
+ <form action="{{ url_for('connections_page') }}" method="post">
+  <th>Kullanıcı:</th> 
+         <td><select name="User">
+           	{% for UserId, name in UserList %}
+         	<option value={{ UserId }}>{{ name }}</option>
+         	{% endfor %}
+          </select></td>
+  <th>Eklenecek Bağlantı:</th> 
+         <td><select name="Connection">
+           	{% for UserId, name in UserList %}
+         	<option value={{ UserId }}>{{ name }}</option>
+         	{% endfor %}
+          </select></td>
+       <input type="submit" value="Bağlantıyı Onayla" name="Connect" />
+      </form>
 </div>
 <button class="accordion"><strong>BAĞLANTI SİL</strong></button>
 <div class="panel">
  <h1> Bağlantı Sil</h1>
+   <form action="{{ url_for('connections_page') }}" method="post">
+    <table>
+    	<tr>
+    		<th><b><ins>Sil</b></ins></th>
+    		<th><b><ins>Kullanıcı Adı</b></ins></th>
+    		<th><b><ins>Soyadı</b></ins></th>
+    		<th><b><ins>Bağlantı Adı</b></ins></th>
+    		<th><b><ins>Soyadı</b></ins></th>
+    	</tr>
+
+    	{% for ConnectionId, Mfname, Mlname, Ffname, Flname in ConnectionList%}
+    	<tr>
+    		<td><input type="checkbox" name="DeletedConnections" value="{{ ConnectionId }}" /></td>
+    		<th>{{ Mfname }}</th>
+    		<th>{{ Mlname }}</th>
+    		<th>{{ Ffname }}</th>
+    		<th>{{ Flname }}</th>
+    	</tr>
+    	{% endfor %}
+    </table>
+    <input type="submit" value="Seçili bağlantıları Sil" name="Delete" /> 
+  </form>
 </div>
 <script>
 var acc = document.getElementsByClassName("accordion");

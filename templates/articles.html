@@ -86,16 +86,12 @@ div.panel.show {
         <td><input type="text" name="ArticleName" required autofocus  /> </td>
       </tr>
       <tr> 
-        <th>Kullanıcı No:</th> 
-        <td><input type="text" name="UserId" required autofocus /> </td>
-      </tr>
-      <tr> 
-         <th>Ad:</th> 
-        <td><input type="text" name="Name" required autofocus /> </td>
-     </tr>
-      <tr> 
-        <th>Soyad:</th> 
-        <td><input type="text" name="SurName"   required autofocus /> </td>
+        <th>Kullanıcı:</th> 
+             <td><select name="UserId">
+           	{% for UserId, name in UserList %}
+         	<option value={{ UserId }}>{{ name }}</option>
+         	{% endfor %}
+          </select></td>
       </tr>
       <tr> 
          <th>Yayın Yılı:</th> 
@@ -107,7 +103,6 @@ div.panel.show {
       </tr> 
       <tr> 
          <th>Üniversite:</th> 
-        <!--<td><input type="text" name="uni_id" placeholder="1-42 arasi bir deger" required autofocus /> </td>-->
          <td><select name="uni_id">
            	{% for id, title in UniversityList %}
          	<option value={{ id }}>{{ title }}</option>
@@ -192,16 +187,12 @@ div.panel.show {
         <td><input type="text" name="ArticleName"  value={{ article[0][1] }} required autofocus /> </td>
       </tr>
       <tr> 
-        <th>Kullanıcı No:</th> 
-        <td><input type="text" name="UserId"  value={{ article[0][2] }} required autofocus readonly /> </td>
-      </tr>
-      <tr> 
-         <th>Ad:</th> 
-        <td><input type="text" name="Name"  value={{ article[0][3] }} required autofocus /> </td>
-     </tr>
-      <tr> 
-        <th>Soyad:</th> 
-        <td><input type="text" name="SurName"  value={{ article[0][4] }} required autofocus /> </td>
+        <th>Kullanıcı:</th> 
+             <td><select name="UserId">
+           	{% for UserId, name in UserList %}
+         	<option value={{ UserId }}>{{ name }}</option>
+         	{% endfor %}
+          </select></td>
       </tr>
       <tr> 
          <th>Yayın Yılı:</th> 
@@ -213,7 +204,6 @@ div.panel.show {
       </tr> 
       <tr> 
          <th>Üniversite:</th> 
-        <!--<td><input type="text" name="uni_id" placeholder="1-42 arasi bir deger" value={{ article[0][7] }} required autofocus /> </td>-->
              <td><select name="uni_id">
            	{% for id, title in UniversityList %}
          	<option value={{ id }}>{{ title }}</option>

@@ -566,16 +566,40 @@ def connections_page():
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
-        clist = cons.get_connectionlist()
-        ulist=cons.get_userlist()
-        return render_template('connections.html', ConnectionList = clist, UserList=ulist, current_time = now.ctime())
-    elif 'connections_to_delete' in request.form:
-        connectionids = request.form.getlist('connections_to_delete')
+        connectionlist = cons.get_connectionlist()
+        userlist=cons.get_userlist()
+        universitylist=cons.get_universitylist()
+        connectionlistbyuniversity=cons.get_universityconnectionlist()
+        return render_template('connections.html', ConnectionList = connectionlist,
+                                UserList=userlist, UniversityList=universitylist,
+                                UniversityConnectionList=connectionlistbyuniversity, current_time = now.ctime())
+    elif 'selectByUser' in request.form:
+        temp=request.form.getlist('selectByUser')
+        now = datetime.datetime.now()
+        connectionlist = cons.get_connectionlistbyuser(temp[0])
+        userlist=cons.get_userlist()
+        universitylist=cons.get_universitylist()
+        connectionlistbyuniversity=cons.get_universityconnectionlist()
+        return render_template('connections.html', ConnectionList = connectionlist,
+                                UserList=userlist, UniversityList=universitylist,
+                                UniversityConnectionList=connectionlistbyuniversity, current_time = now.ctime())
+    elif 'selectByUniversity' in request.form:
+        temp=request.form.getlist('selectByUniversity')
+        now = datetime.datetime.now()
+        connectionlist = cons.get_connectionlist()
+        userlist=cons.get_userlist()
+        universitylist=cons.get_universitylist()
+        connectionlistbyuniversity=cons.get_connectionlistbyuniversity(temp[0])
+        return render_template('connections.html', ConnectionList = connectionlist,
+                                UserList=userlist, UniversityList=universitylist,
+                                UniversityConnectionList=connectionlistbyuniversity, current_time = now.ctime())
+    elif 'Delete' in request.form:
+        connectionids = request.form.getlist('DeletedConnections')
         for ConnectionId in connectionids:
-            cons.delete_connect(ConnectionId)
+            cons.delete_connection(ConnectionId)
         return redirect(url_for('connections_page'))
-    elif 'connections_to_add' in request.form:
-        cons.add_article(request.form['MainUserId'],request.form['FriendUserId'])
+    elif 'Connect' in request.form:
+        cons.add_connection(request.form['User'],request.form['Connection'])
         return redirect(url_for('connections_page'))
 
 @app.route('/makaleler', methods=['GET', 'POST'])
@@ -597,7 +621,8 @@ def articles_page():
         article[0]=tuple(article[0])
         alist = arts.get_articlelist()
         unilist=arts.get_universitylist()
-        return render_template('articles.html', ArticleList = alist, UniversityList=unilist, article= article, current_time = now.ctime())
+        userlist=arts.get_userlist()
+        return render_template('articles.html', ArticleList = alist, UniversityList=unilist, UserList=userlist, article= article, current_time = now.ctime())
     elif 'articles_to_delete' in request.form:
         articleids = request.form.getlist('articles_to_delete')
         for ArticleId in articleids:
@@ -608,13 +633,14 @@ def articles_page():
         now = datetime.datetime.now()
         alist = arts.get_articlelist()
         unilist=arts.get_universitylist()
+        userlist=arts.get_userlist()
         slist=arts.select_article(articleids[0])
-        return render_template('articles.html', ArticleList = alist, UniversityList=unilist, article=slist, current_time=now.ctime())
+        return render_template('articles.html', ArticleList = alist, UniversityList=unilist, UserList=userlist, article=slist, current_time=now.ctime())
     elif 'articles_to_add' in request.form:
-        arts.add_article(request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'],request.form['uni_id'])
+        arts.add_article(request.form['ArticleName'],request.form['UserId'],request.form['ReleaseYear'],request.form['Mail'],request.form['uni_id'])
         return redirect(url_for('articles_page'))
     elif 'articles_to_update' in request.form:
-        arts.update_article(request.form['ArticleId'], request.form['ArticleName'],request.form['UserId'],request.form['Name'],request.form['SurName'],request.form['ReleaseYear'],request.form['Mail'],request.form['uni_id'])
+        arts.update_article(request.form['ArticleId'], request.form['ArticleName'],request.form['UserId'],request.form['ReleaseYear'],request.form['Mail'],request.form['uni_id'])
         return redirect(url_for('articles_page'))
 @app.route('/kanallar')
 def kanal_page():

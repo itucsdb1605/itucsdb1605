@@ -9,7 +9,7 @@ class Myevents:
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = """SELECT events.EventId, events.EventName, users.FirstName, users.LastName,
-            locations.city, events.Date, events.Time, events.Detail
+            locations.city, events.DateTime, events.Detail
             FROM events
             LEFT JOIN users ON events.OwnerId = users.UserId 
             LEFT JOIN locations ON events.CityId = locations.loc_id """
@@ -27,7 +27,7 @@ class Myevents:
     def get_userlist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "SELECT * FROM users ORDER BY FirstName ASC"
+            query = "SELECT UserId, concat(FirstName::text, LastName::text) AS name FROM users ORDER BY FirstName ASC"
             cursor.execute(query)
             rows = cursor.fetchall()
             return rows

@@ -419,18 +419,16 @@ class INIT:
                     ArticleId SERIAL PRIMARY KEY,
                     ArticleName VARCHAR(400) UNIQUE NOT NULL,
                     UserId INTEGER NOT NULL REFERENCES users(UserId),
-                    Name VARCHAR(90) NOT NULL,
-                    SurName VARCHAR(80) NOT NULL,
                     ReleaseYear SMALLINT NOT NULL,
                     Mail VARCHAR(100) NOT NULL,
                     uni_id INTEGER NOT NULL REFERENCES universities(id)
                     )"""
             cursor.execute(query)
 
-            query = """INSERT INTO articles(ArticleName, UserId, Name, SurName, ReleaseYear, Mail, uni_id) VALUES
-              ('Efficient algorithms for the (weighted) minimum circle problem',5,'Donald','Hearn',1982,'Hearn@ise.ufl.edu',24),
-              ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',6,'Uluğ','Bayazıt',2011,'ulugbayazit@itu.edu.tr',34),
-              ('The minimum covering sphere problem',5,'Donald','Hearn',1972,'Hearn@ise.ufl.edu',24);
+            query = """INSERT INTO articles(ArticleName, UserId,ReleaseYear, Mail, uni_id) VALUES
+              ('Efficient algorithms for the (weighted) minimum circle problem',5,1982,'Hearn@ise.ufl.edu',24),
+              ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',6,2011,'ulugbayazit@itu.edu.tr',34),
+              ('The minimum covering sphere problem',5,1972,'Hearn@ise.ufl.edu',24);
               """
             cursor.execute(query)
             connection.commit()
@@ -464,15 +462,14 @@ class INIT:
                     EventName VARCHAR(300) UNIQUE NOT NULL,
                     OwnerId INTEGER NOT NULL REFERENCES users(UserId),
                     CityId INTEGER NOT NULL REFERENCES locations(loc_id),
-                    Date VARCHAR(20) NOT NULL,
-                    Time VARCHAR(15) NOT NULL,
+                    DateTime VARCHAR(50) NOT NULL,
                     Detail VARCHAR(500) NOT NULL
                     )"""
             cursor.execute(query)
 
             query = """INSERT INTO events(EventName, OwnerId, CityId, Date, Time, Detail) VALUES
-              ('İTÜ Arı-Çekirdek Proje Yarışması',4,34,'20.12.2016','13:30','2016 yılı proje yarışması sonuçları, İTÜ Ayazağa'),
-              ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017','16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');
+              ('İTÜ Arı-Çekirdek Proje Yarışması',4,34,'20.12.2016, 13:30','2016 yılı proje yarışması sonuçları, İTÜ Ayazağa'),
+              ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017, 16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');
               """
             cursor.execute(query)
             connection.commit()
