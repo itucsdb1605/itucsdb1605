@@ -466,9 +466,10 @@ class INIT:
             cursor.execute(query)
 
             query = """INSERT INTO articles(ArticleName, UserId,ReleaseYear, Mail, uni_id) VALUES
-              ('Efficient algorithms for the (weighted) minimum circle problem',5,1982,'Hearn@ise.ufl.edu',24),
-              ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',6,2011,'ulugbayazit@itu.edu.tr',34),
-              ('The minimum covering sphere problem',5,1972,'Hearn@ise.ufl.edu',24);
+              ('Efficient algorithms for the (weighted) minimum circle problem',5,1982,'Hearn@ise.ufl.edu',5),
+              ('3-D Mesh Geometry Compression with Set Partitioning in the Spectral Domain',6,2011,'ulugbayazit@itu.edu.tr',15),
+              ('The minimum covering sphere problem',5,1972,'Hearn@ise.ufl.edu',5),
+              ('Otonom araçların geleceği',7,2015,'gulerfa@itu.edu.tr',3);
               """
             cursor.execute(query)
             connection.commit()
@@ -489,7 +490,9 @@ class INIT:
               (2,3),
               (4,5),
               (4,2),
-              (2,5);
+              (2,5),
+              (6,7),
+              (3,5);
               """
             cursor.execute(query)
             connection.commit()
@@ -509,7 +512,7 @@ class INIT:
 
             query = """INSERT INTO events(EventName, OwnerId, CityId, DateWithTime, Detail) VALUES
               ('İTÜ Arı-Çekirdek Proje Yarışması',4,34,'20.12.2016, 13:30','2016 yılı proje yarışması sonuçları, İTÜ Ayazağa'),
-              ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017, 16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');
+              ('Medikal alanda Görüntü İşleme Konferansı',2,34,'01.01.2017, 16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');
               """
             cursor.execute(query)
             connection.commit()

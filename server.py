@@ -583,7 +583,7 @@ def events_page():
     if request.method == 'GET':
         now = datetime.datetime.now()
         event = evts.get_eventlist()
-        event[0]=list(article[0])
+        event[0]=list(event[0])
         event[0][0]="kayıt seçiniz"
         event[0][1]="kayıt seçiniz"
         event[0][2]="kayıt seçiniz"
