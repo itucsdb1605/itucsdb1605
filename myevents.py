@@ -20,7 +20,7 @@ class Myevents:
     def get_locationlist(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = "SELECT * FROM locations ORDER BY title ASC"
+            query = "SELECT loc_id, city FROM locations ORDER BY title ASC"
             cursor.execute(query)
             rows = cursor.fetchall()
             return rows

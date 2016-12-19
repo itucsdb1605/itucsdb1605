@@ -51,20 +51,170 @@ div.panel.show {
 
 <button class="accordion"><strong>ETKİNLİKLER</strong></button>
 <div class="panel">
-<h1>Gelecek Etkinlikler</h1>
+<h1>Etkinlikler</h1>
+ <form action="{{ url_for('events_page') }}" method="post">
+    <table>
+    	<tr>
+    		<th><b><ins>Etkinlik Adı</b></ins></th>
+    		<th><b><ins>Etkinlik Sahibi Adı</b></ins></th>
+    		<th><b><ins>Etkinlik Sahibi Soyadı</b></ins></th>
+    		<th><b><ins>Mekan</b></ins></th>
+    		<th><b><ins>Tarih - Saat</b></ins></th>
+    		<th><b><ins>Diğer Detaylar</b></ins></th>
+    	</tr>
+    	{% for EventId, EventName, FirstName, LastName, city, DateWithTime, Detail in EventList %}
+    	<tr>
+    		<th>{{ EventName }}</th>
+    		<th>{{ FirstName }}</th>
+    		<th>{{ LastName }}</th>
+    		<th>{{ city }}</th>
+    		<th>{{ DateWithTime }}</th>
+    		<th>{{ Detail }}</th>
+    	</tr>
+    	{% endfor %}
+    </table>
+  </form>
+
 </div>
 
 <button class="accordion"><strong>ETKİNLİK OLUŞTUR</strong></button>
 <div class="panel">
  <h1>Etkinlik Oluştur</h1>
+ <form action="{{ url_for('events_page') }}" method="post"> 
+    <table>
+      <tr> 
+        <th>Etkinlik Adı:</th> 
+        <td><input type="text" name="EventName" required autofocus  /> </td>
+      </tr>
+      <tr> 
+        <th>Etkinliği Oluşturan:</th> 
+             <td><select name="OwnerId">
+           	{% for UserId, name in UserList %}
+         	<option value={{ UserId }}>{{ name }}</option>
+         	{% endfor %}
+          </select></td>
+      </tr>
+      <tr> 
+         <th>Mekan:</th> 
+             <td><select name="CityId">
+           	{% for loc_id, city in LocationList %}
+         	<option value={{ loc_id }}>{{ city }}</option>
+         	{% endfor %}
+          </select></td>
+      </tr>
+      <tr> 
+         <th>Tarih - Saat:</th> 
+        <td><input type="text" name="DateWithTime" required autofocus placeholder="gg-aa-yyyy, ss.dd" /> </td>
+      </tr> 
+      <tr> 
+         <th>Diğer Detaylar:</th> 
+        <td><textarea rows="4" cols="40" name="Detail"></textarea> </td>
+      </tr>
+    </table>
+    <input type="submit" value="Etkinliği Oluştur" name="events_to_add" />
+  </form>
 </div>
 <button class="accordion"><strong>ETKİNLİĞİ KALDIR</strong></button>
 <div class="panel">
  <h1>Etkinliği Kaldır</h1>
+  <form action="{{ url_for('events_page') }}" method="post">
+    <table>
+    	<tr>
+    		<th><b><ins>Sil</b></ins></th>
+    		<th><b><ins>Etkinlik Adı</b></ins></th>
+    		<th><b><ins>Etkinlik Sahibi Adı</b></ins></th>
+    		<th><b><ins>Etkinlik Sahibi Soyadı</b></ins></th>
+    		<th><b><ins>Mekan</b></ins></th>
+    		<th><b><ins>Tarih - Saat</b></ins></th>
+    		<th><b><ins>Diğer Detaylar</b></ins></th>
+    	</tr>
+
+    	{% for EventId, EventName, FirstName, LastName, city, DateWithTime, Detail in EventList  %}
+    	<tr>
+    		<td><input type="checkbox" name="events_to_delete" value="{{ EventId }}" /></td>
+    		<th>{{ EventName }}</th>
+    		<th>{{ FirstName }}</th>
+    		<th>{{ LastName }}</th>
+    		<th>{{ city }}</th>
+    		<th>{{ DateWithTime }}</th>
+    		<th>{{ Detail }}</th>
+    	</tr>
+    	{% endfor %}
+    </table>
+    <input type="submit" value="Seçili Etkinlikleri Kaldır" name="delete" /> 
+  </form>
+ 
 </div>
 <button class="accordion"><strong>ETKİNLİĞİ GÜNCELLE</strong></button>
 <div class="panel">
  <h1>Etkinliği Güncelle</h1>
+ <span style="float:left;">
+    <form action="{{ url_for('events_page') }}" method="post">
+    <table>
+    	<tr>
+    		<th><b><ins> Güncelle</b></ins></th>
+    		<th><b><ins>Etkinlik Adı</b></ins></th>
+    		<th><b><ins>Etkinlik Sahibi Adı</b></ins></th>
+    		<th><b><ins>Etkinlik Sahibi Soyadı</b></ins></th>
+    		<th><b><ins>Mekan</b></ins></th>
+    		<th><b><ins>Tarih - Saat</b></ins></th>
+    		<th><b><ins>Diğer Detaylar</b></ins></th>
+    	</tr>
+
+    	{% for EventId, EventName, FirstName, LastName, city, DateWithTime, Detail in EventList  %}
+    	<tr>
+    		<td><input type="radio" value="{{ EventId }}" name="select_record" /></td>
+    		<th>{{ EventName }}</th>
+    		<th>{{ FirstName }}</th>
+    		<th>{{ LastName }}</th>
+    		<th>{{ city }}</th>
+    		<th>{{ DateWithTime }}</th>
+    		<th>{{ Detail }}</th>
+    	</tr>
+    	{% endfor %}
+    </table>
+    <input type="submit" value="Seçili Etkinliği Güncelle" name="update" />
+  </form>
+  </span>
+  <span style="float:right;">
+  <form action="{{ url_for('events_page') }}" method="post"> 
+    <table>
+      <tr> 
+        <th>Etkinlik No:</th> 
+        <td><input type="text" name="EventId"  value={{ event[0][0] }} required autofocus readonly /> </td>
+      </tr>  
+        <th>Etkinlik Adı:</th> 
+        <td><input type="text" name="EventName"  value={{ event[0][1] }} required autofocus /> </td>
+      </tr>
+      <tr> 
+        <th>Etkinliği Oluşturan:</th> 
+             <td><select name="OwnerId">
+           	{% for UserId, name in UserList %}
+         	<option value={{ UserId }}>{{ name }}</option>
+         	{% endfor %}
+          </select></td>
+      </tr>
+      <tr> 
+         <th>Mekan:</th> 
+        <td><select name="CityId">
+           	{% for loc_id, city in LocationList %}
+         	<option value={{ loc_id }}>{{ city }}</option>
+         	{% endfor %}
+          </select></td>
+      </tr>
+      <tr> 
+         <th>Tarih - Saat:</th> 
+        <td><input type="text" name="DateWithTime"  value={{ event[0][4] }} required autofocus /> </td>
+      </tr> 
+      <tr> 
+         <th>Diğer Detaylar:</th> 
+             <td><textarea rows="4" cols="40" name="Detail" value={{ event[0][5] }} ></textarea> </td>
+      </tr>
+    </table>
+    <input type="submit" value="Etkinliği Güncelle" name="events_to_update"/>
+</form>
+</span>
+
 </div>
 <script>
 var acc = document.getElementsByClassName("accordion");

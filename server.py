@@ -569,10 +569,10 @@ def events_page():
         slist=evts.select_event(eventids[0])
         return render_template('events.html', EventList = eventlist, LocationList=locationlist, UserList=userlist, event=slist, current_time=now.ctime())
     elif 'events_to_add' in request.form:
-        evts.add_event(request.form['EventName'],request.form['OwnerId'],request.form['CıtyId'],request.form['DateWithTime'],request.form['Detail'])
+        evts.add_event(request.form['EventName'],request.form['OwnerId'],request.form['CityId'],request.form['DateWithTime'],request.form['Detail'])
         return redirect(url_for('events_page'))
     elif 'events_to_update' in request.form:
-        evts.update_event(request.form['EventId'],request.form['EventName'],request.form['OwnerId'],request.form['CıtyId'],request.form['DateWithTime'],request.form['Detail'])
+        evts.update_event(request.form['EventId'],request.form['EventName'],request.form['OwnerId'],request.form['CityId'],request.form['DateWithTime'],request.form['Detail'])
         return redirect(url_for('events_page'))
 @app.route('/projects')
 def projects_page():
