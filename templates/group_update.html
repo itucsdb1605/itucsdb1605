@@ -3,18 +3,18 @@
 {% block content %}
 	<div class="container">
 		<ul class="nav nav-pills nav-justified">
-		  <li class="active"><a href="{{ url_for('group_view') }}">Grupları Görüntüle</a></li>
+		  <li><a href="{{ url_for('group_view') }}">Grupları Görüntüle</a></li>
 		  <li><a href="{{ url_for('group_create') }}">Yeni Grup Oluştur</a></li>
 		  <li class="active"><a href="{{ url_for('group_update') }}">Grup Güncelle</a></li>
 		  <li><a href="{{ url_for('group_delete') }}">Grup Sil</a></li>
 		</ul>
 		<br><br>
-		
+
 		<table class="table table-hover">
 		  <thead>
 		    <tr>
-		      <th>Grup No</th>
 		      <th>Grup Adı</th>
+		      <th>Grup Tanımı</th>
 		      <th>Güncellensin Mi?</th>
 		    </tr>
 		  </thead>
@@ -22,15 +22,15 @@
 		  	{% for group in groups %}
 			  <tr>
 			    {% for i in range(2) %}
-			       <td>{{ group[i] }}</td>
+			       <td>{{ group[i+1] }}</td>
 			    {% endfor %}
 			    <td><a href="{{request.path}}/{{group[0]}}" class="text-info">Güncelle</a></td>
-			  </tr>  
+			  </tr>
 			{% endfor %}
-		  </tbody>		
+		  </tbody>
 		 </table>
-		
-		
-		
+
+
+
 	</div>
 {%endblock%}
