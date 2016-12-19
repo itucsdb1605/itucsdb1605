@@ -343,23 +343,20 @@ class INIT:
             cursor.execute(statement)
             statement = """CREATE TABLE JOBS (
                     ID SERIAL PRIMARY KEY,
-                    CompanyName VARCHAR(40) NOT NULL,
                     Position VARCHAR(40) NOT NULL,
-                    Salary INT NOT NULL
+                    Description VARCHAR(80) NOT NULL,
+                    Salary INT NOT NULL,
+                    CompanyId INT REFERENCES COMPANY(id)
                     )
                     """
             cursor.execute(statement)
-            statement = """INSERT INTO JOBS(CompanyName, Position, Salary) VALUES
-                        ('Apple', 'Software Engineer', 12000),
-                        ('Google', 'Software Engineer', 10000),
-                        ('Microsoft', 'Industrial Engineer', 7500),
-                        ('Vodafone', 'Android Developer', 9700),
-                        ('Turkcell', 'Software Engineer', 7400),
-                        ('Apple', 'iOS Developer', 14000),
-                        ('Turkcell', 'Software Engineer', 5000),
-                        ('Avea', 'Server Maintainer', 4000),
-                        ('Airties', 'Network Engineer', 5000),
-                        ('NVIDIA', 'Electronics Engineer', 15000);
+            statement = """INSERT INTO JOBS(CompanyId, Position, Salary) VALUES
+                        (2, 'Software Engineer', 12000),
+                        (1, 'Software Engineer', 10000),
+                        (3, 'Industrial Engineer', 7500),
+                        (2, 'Android Developer', 9700),
+                        (4, 'Software Engineer', 7400),
+                        (5, 'iOS Developer', 14000)
                         """
             cursor.execute(statement)
             connection.commit()
