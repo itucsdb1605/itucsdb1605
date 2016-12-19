@@ -54,7 +54,7 @@ def home_page():
         initialize.channels()
         initialize.partners()
         initialize.projects()
-        initialize.articles()
+        initialize.ArticleEventConnection()
         initialize.jobs()
         initialize.groups()
         initialize.users()
@@ -847,7 +847,7 @@ def init_db():
     initialize.channels()
     initialize.partners()
     initialize.projects()
-    initialize.articles()
+    initialize.ArticleEventConnection()
     return redirect(url_for('home_page'))
 
 if __name__ == '__main__':

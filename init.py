@@ -449,7 +449,7 @@ class INIT:
             cursor.execute(query)
             connection.commit()
 
-    def articles(self):
+    def ArticleEventConnection(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = "DROP TABLE IF EXISTS articles CASCADE"
