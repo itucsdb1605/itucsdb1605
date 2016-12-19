@@ -615,10 +615,6 @@ def events_page():
     elif 'events_to_update' in request.form:
         evts.update_event(request.form['EventId'],request.form['EventName'],request.form['OwnerId'],request.form['CityId'],request.form['DateWithTime'],request.form['Detail'])
         return redirect(url_for('events_page'))
-@app.route('/projects')
-def projects_page():
-    now = datetime.datetime.now()
-    return render_template('projects.html', current_time=now.ctime())
 
 @app.route('/baglantilar', methods=['GET', 'POST'])
 def connections_page():
