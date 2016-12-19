@@ -10,12 +10,9 @@
 		</ul>
 		<br><br>
 
-
-
 		 <table class="table table-hover">
 		  <thead>
 		    <tr>
-		      <th>İlan No</th>
 		      <th>Şirket</th>
 		      <th>Pozisyon</th>
 		      <th>Maaş($)</th>
@@ -25,9 +22,9 @@
 		  <tbody>
 		  	{% for job in jobs %}
 			  <tr>
-			    {% for i in range(4) %}
-			       <td>{{ job[i] }}</td>
-			    {% endfor %}
+			       <td>{{ job[1] }}</td>
+			       <td>{{ job[2] }} </td>
+			       <td>{{ job[3] }} </td>
 			    <td><a href="{{request.path}}/{{job[0]}}" class="text-info">Güncelle</a></td>
 			  </tr>
 			{% endfor %}
