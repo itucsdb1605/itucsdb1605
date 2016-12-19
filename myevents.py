@@ -42,7 +42,7 @@ class Myevents:
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query = """SELECT EventId, EventName, OwnerId, CityId,
-             Date, Time, Detail FROM events WHERE EventId = '%s' ORDER BY EventId ASC
+             DateTime, Detail FROM events WHERE EventId = '%s' ORDER BY EventId ASC
              """ % (EventId)
             cursor.execute(query)
             rows=cursor.fetchall()
@@ -50,7 +50,7 @@ class Myevents:
     def add_event(self, EventName, OwnerId, CityId, Date, Time, Detail):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query =  "INSERT INTO events (EventName, OwnerId, CityId, Date, Time, Detail) VALUES ('%s','%s','%s','%s','%s','%s')" % (EventName, OwnerId, CityId, Date, Time, Detail)
+            query =  "INSERT INTO events (EventName, OwnerId, CityId, DateTime, Detail) VALUES ('%s','%s','%s','%s','%s')" % (EventName, OwnerId, CityId, DateTime, Detail)
             cursor.execute(query)
             connection.commit()
             return
@@ -58,7 +58,7 @@ class Myevents:
     def update_event(self, EventId, EventName, OwnerId, CityId, Date, Time, Detail):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query =  "UPDATE events SET EventName = '%s', OwnerId='%s', CityId='%s', Date = '%s', Time='%s', Detail='%s'WHERE EventId='%s'" % (EventName, OwnerId, CityId, Date, Time, Detail,EventId)
+            query =  "UPDATE events SET EventName = '%s', OwnerId='%s', CityId='%s', DateTime='%s', Detail='%s'WHERE EventId='%s'" % (EventName, OwnerId, CityId, DateTime, Detail,EventId)
             cursor.execute(query)
             connection.commit()
             return
