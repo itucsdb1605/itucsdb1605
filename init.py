@@ -36,7 +36,34 @@ class INIT:
             """)
             connection.commit()
 
-
+    def projects(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS projects CASCADE"
+            cursor.execute(query)		
+            
+            query = """CREATE TABLE projects (
+                    ProjectId SERIAL PRIMARY KEY,
+                    ProjectName VARCHAR(40) UNIQUE NOT NULL,
+                    ProjectYear INT NOT NULL,
+                    ProjectPartner VARCHAR(40) NOT NULL                    
+                    )"""
+            cursor.execute(query)
+            
+            query = """INSERT INTO projects(ProjectName, ProjectYear, ProjectPartner) VALUES
+              ('ModelS', 2012, 'Tesla'),
+              ('Venus', 2014, 'Vestel'),
+              ('Solarcity', 2015, 'Gigafactory'),
+              ('Dragon', 2012, 'SpaceX'),
+              ('NanoPC', 2013, 'Foxconn'),
+              ('Panahome', 1999, 'Panasonic'),
+              ('Via', 2013, 'Casper'),
+              ('Giir', 1986, 'LG'),
+              ('A380', 2007, 'Airbus');
+              """
+            cursor.execute(query)         
+            connection.commit()
+            
     def universities(self):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
