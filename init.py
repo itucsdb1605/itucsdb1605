@@ -393,7 +393,8 @@ class INIT:
                 statement = """INSERT INTO MEMBERSHIP(GroupId, MemberId, Role) VALUES
                              (1,3,'Admin'),
                               (2,3,'Üye'),
-                               (1,4, 'Üye')
+                              (3,2,'Üye'),
+                               (1,1, 'Üye')
                                 """
                 cursor.execute(statement)
 

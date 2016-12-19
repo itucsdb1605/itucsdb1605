@@ -66,7 +66,7 @@ class Group:
     def add_member(self, userid, role):
         with dbapi2.connect(self.cp) as connection:
             with connection.cursor() as cursor:
-                statement = """INSERT INTO MEMBERSHIP(GroupID, UserId, role) VALUES
+                statement = """INSERT INTO MEMBERSHIP(GroupID, MemberId, role) VALUES
                         ( '{}', '{}' , '{}');
                     """.format(self.id, userid, role)
                 cursor.execute(statement)
