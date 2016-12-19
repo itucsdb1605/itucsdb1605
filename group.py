@@ -63,11 +63,23 @@ class Group:
                     """.format(self.name, self.description)
                 cursor.execute(statement)
 
-    def add_member(self, userid):
+    def add_member(self, userid, role):
         with dbapi2.connect(self.cp) as connection:
             with connection.cursor() as cursor:
-                statement = """INSERT INTO MEMBERSHIP(GroupID, UserId) VALUES
-                        ( '{}', '{}' );
-                    """.format(self.id, userid)
+                statement = """INSERT INTO MEMBERSHIP(GroupID, UserId, role) VALUES
+                        ( '{}', '{}' , '{}');
+                    """.format(self.id, userid, role)
                 cursor.execute(statement)
+
+    def get_members(self,id):
+        with dbapi2.connect(self.cp) as connection:
+            with connection.cursor() as cursor:
+                statement = """
+                SELECT T1.role, Users.firstname, Users.lastname, Users.uni, Users.UserID FROM (SELECT * FROM membership WHERE groupid={}) AS T1
+                    INNER JOIN USERS
+                    ON Users.UserID=T1.MemberId
+                """.format(id)
+                cursor.execute(statement)
+                users = cursor.fetchall()
+                return users
 

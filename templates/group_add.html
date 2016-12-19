@@ -3,22 +3,27 @@
 {% block content %}
 	<div class="container">
 		<ul class="nav nav-pills nav-justified">
-		  <li class="active"><a href="{{ url_for('group_view') }}">Grupları Görüntüle</a></li>
-		  <li><a href="{{ url_for('group_create') }}">Yeni Grup Oluştur</a></li>
-		  <li class="active"><a href="{{ url_for('group_update') }}">Grup Güncelle</a></li>
+		  <li ><a href="{{ url_for('group_view') }}">Grupları Görüntüle</a></li>
+		  <li class="active"><a href="{{ url_for('group_create') }}">Yeni Grup Oluştur</a></li>
+		  <li><a href="{{ url_for('group_update') }}">Grup Güncelle</a></li>
 		  <li><a href="{{ url_for('group_delete') }}">Grup Sil</a></li>
 		</ul>
 		<br><br>
-		
+
 		<form method="POST">
      	  <div class="form-group">
 			<label for="companyName">Grup İsmi:</label>
 			<input type="text" class="form-control" name="groupName"></input>
 		  </div>
 
+		  <div class="form-group">
+			<label for="companyName">Grup Tanımı:</label>
+			<input type="text" class="form-control" name="groupDefinition"></input>
+		  </div>
+
 		  <button type="submit" class="btn btn-success">Ekle</button>
 		</form>
-		
-		
+
+
 	</div>
 {%endblock%}
