@@ -747,7 +747,7 @@ def projects_page():
 @app.route('/konular')
 def topics_page():
 	tops = topics(app.config['dsn'])
-    	fn = Func(app.config['dsn'])
+    fn = Func(app.config['dsn'])
     if request.method == 'GET':
         now = datetime.datetime.now()
         tlist = tops.get_topiclist()
