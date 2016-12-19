@@ -199,12 +199,24 @@ def new_message():
         return redirect(url_for('sent_messages_page'))
 
 
-@app.route('/gruplar')
+@app.route('/gruplar', methods=['GET','POST'])
 def group_view():
-    groups = Group(app.config['dsn'])
-    group_list = groups.get_groups()
-    now = datetime.datetime.now()
-    return render_template('groups.html', groups = group_list, current_time=now.ctime())
+    group = Group(app.config['dsn'])
+    if request.method == 'GET':
+        groups = Group(app.config['dsn'])
+        group_list = groups.get_groups()
+        now = datetime.datetime.now()
+        return render_template('groups.html', groups = group_list, current_time=now.ctime())
+    else:
+        groupId = request.form['groupId']
+        group.set_id(groupId)
+        try:
+            group.add_member(4,'member')
+        except psycopg2.IntegrityError:
+            print("duplicate error catched")
+        finally:
+            now = datetime.datetime.now()
+            return redirect(url_for('group_view'))
 
 @app.route('/grupsil', methods=['GET','POST'])
 def group_delete():
