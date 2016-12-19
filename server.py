@@ -524,7 +524,7 @@ def location_page():
 
 
 @app.route('/etkinlikler', methods=['GET', 'POST'])
-def activities_page():
+def events_page():
     evts = Myevents(app.config['dsn'])
     fn = Func(app.config['dsn'])
     if request.method == 'GET':
@@ -538,12 +538,11 @@ def activities_page():
         event[0][4]="kayıt seçiniz"
         event[0][5]="kayıt seçiniz"
         event[0][6]="kayıt seçiniz"
-        event[0][7]="kayıt seçiniz"
         event[0]=tuple(event[0])
-        elist = evts.get_eventlist()
-        loclist=evts.get_locationlist()
-        ulist=evts.get_userlist()
-        return render_template('activities.html', EventList = elist, LocationList=loclist, UserList=ulist, event = event, current_time = now.ctime())
+        eventlist = evts.get_eventlist()
+        locationlist=evts.get_locationlist()
+        userlist=evts.get_userlist()
+        return render_template('events.html', EventList = eventlist, LocationList=locationlist, UserList=userlist, event = event, current_time = now.ctime())
     elif 'events_to_delete' in request.form:
         eventids = request.form.getlist('events_to_delete')
         for EventId in eventids:
@@ -552,12 +551,17 @@ def activities_page():
     elif 'select_record' in request.form:
         eventids = request.form.getlist('select_record')
         now = datetime.datetime.now()
-        elist = evts.get_eventlist()
-        ulist=evts.get_userlist()
-        loclist=evts.get_locationlist()
+        eventlist = evts.get_eventlist()
+        userlist=evts.get_userlist()
+        locationlist=evts.get_locationlist()
         slist=evts.select_event(eventids[0])
-        return render_template('activities.html', EventList = elist, LocationList=loclist,UserList=ulist, event=slist, current_time=now.ctime())
-
+        return render_template('events.html', EventList = eventlist, LocationList=locationlist, UserList=userlist, event=slist, current_time=now.ctime())
+    elif 'events_to_add' in request.form:
+        evts.add_event(request.form['EventName'],request.form['OwnerId'],request.form['CıtyId'],request.form['DateWithTime'],request.form['Detail'])
+        return redirect(url_for('events_page'))
+    elif 'events_to_update' in request.form:
+        evts.update_event(request.form['EventId'],request.form['EventName'],request.form['OwnerId'],request.form['CıtyId'],request.form['DateWithTime'],request.form['Detail'])
+        return redirect(url_for('events_page'))
 @app.route('/projects')
 def projects_page():
     now = datetime.datetime.now()

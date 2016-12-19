@@ -41,8 +41,12 @@ class Myevents:
     def select_event(self, EventId):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
-            query = """SELECT EventId, EventName, OwnerId, CityId,
-             DateWithTime, Detail FROM events WHERE EventId = '%s' ORDER BY EventId ASC
+            query = """SELECT events.EventId, events.EventName, users.FirstName, users.LastName,
+             locations.city, events.DateWithTime, events.Detail 
+             FROM events
+             LEFT JOIN users ON events.OwnerId = users.UserId 
+             LEFT JOIN locations ON events.CityId = locations.loc_id 
+             WHERE EventId = '%s' ORDER BY EventId ASC
              """ % (EventId)
             cursor.execute(query)
             rows=cursor.fetchall()
