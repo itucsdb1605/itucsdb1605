@@ -1,42 +1,134 @@
 {% extends "logged_in_layout.html" %}
-{% block title %}Projeler{% endblock %}
-{% block content  %}
-	<div class="container text-center" style="background-color:red;">
-		<h2 style="color:white">Projeler bu sayfada gosterilecek.</h2>
-	</div>
+{% block title %} Projeler{%endblock%}
+{% block content %}
 
-	<div id="mImageSlider" class="carousel slide" data-ride="carousel" style="width:60%; margin-top:60px;">
+<div class="page-header">
+  <h1>Projeler</h1>
+   <p>Projeler hakkındaki bilgilere bu sayfadan erişebilir ve bilgileri düzenleyebilirsiniz. </p>
+</div>
 
-	  <ol class="carousel-indicators">
-	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-	    <li data-target="#myCarousel" data-slide-to="1"></li>
-	    <li data-target="#myCarousel" data-slide-to="2"></li>
-	  </ol>
+<div class="container">       
+  <h2>Projeler Silme</h2>
+  <p>Kaydını silmek istediğiniz Projeleri işaretleyebilirsiniz.</p>
+  
+  <form action="{{ url_for('projects_page') }}" method="post">
+  
+  <table class="table">
+    
+    <thead>
+      <tr>
+        <th>Sil</th>
+    		<th>Adı </th>
+    		<th>Tamamlanma Tarihi </th>
+    		<th>Proje Ortağı </th>
+      </tr>
+    </thead>
+   
+    <tbody>
+      
+      {% for ProjectId, ProjectName, ProjectYear, ProjectPartner in ProjectList %}
+      
+      <tr>
+    		<td><input type="checkbox" name="projects_to_delete" value="{{ ProjectId }}" /></td>
+    		<th>{{ ProjectName }}</th>
+    		<th>{{ ProjectYear }}</th>
+    		<th>{{ ProjectPartner }}</th>
+      </tr>
+      
+      {% endfor %}
+      
+    </tbody>
 
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">
-	    <div class="item active">
-	      <img src="http://az616578.vo.msecnd.net/files/2016/03/27/635946376813517119-500312339_tesla.jpg" alt="Tesla Motors">
-	    </div>
+  </table>
+    
+  <input type="submit" class="btn btn-primary btn-block" value="İşaretli pProjenin kaydını sil" name="delete" /> 
 
-	    <div class="item">
-	      <img src="https://d3t9tbp0ekvj58.cloudfront.net/themes/site_theme/images/technology/rocket-v29/capsule_side_white.jpg" alt="Blue Origin">
-	    </div>
+  </form>
 
-	    <div class="item">
-	      <img src="http://vignette3.wikia.nocookie.net/wikiality/images/6/65/Bite.jpg/revision/latest?cb=20070525172137" alt="Firefox">
-	    </div>
-	  </div>
+</div>
 
-	  <!-- Left and right controls -->
-	  <a class="left carousel-control" href="#mImageSlider" role="button" data-slide="prev">
-	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-	    <span class="sr-only">Previous</span>
-	  </a>
-	  <a class="right carousel-control" href="#mImageSlider" role="button" data-slide="next">
-	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-	    <span class="sr-only">Next</span>
-	  </a>
-	</div>
+<br></br>
+
+<div class="container">       
+  
+  <h2>Proje Ekleme</h2>
+  <p>Yeni proje kaydı oluşturmak için gerekli alanları doldurunuz.</p>
+  
+  <form action="{{ url_for('projects_page') }}" method="post"> 
+    
+    <div class="form-group">
+      <label for="ProjectName">Adı:</label>
+      <input type="text" class="form-control" name="ProjectName">
+    </div>
+    
+    <div class="form-group">
+      <label for="ProjectYear">Tamamlanma Tarihi:</label>
+      <input type="text" class="form-control" name="ProjectYear">
+    </div>
+    
+    <div class="form-group">
+      <label for="ProjectPartner">Proje Ortağı:</label>
+      <input type="text" class="form-control" name="ProjectPartner">
+    </div>
+    
+    <input type="submit" class="btn btn-primary btn-block" value="Proje Ekle" name="projects_to_add" />
+    
+  </form>
+  
+</div>
+
+<br></br>
+
+<!--------------------------->
+
+<div class="container">       
+  <h2>Proje Güncelleme</h2>
+  <p>Kaydını Güncellemek istediğiniz projeye ait bilgileri düzenleyebilirsiniz.</p>
+
+  
+  
+	  <table class="table">
+
+	    <thead>
+	      <tr>
+			<th>ID</th>
+			<th>Adı </th>
+			<th>Tamamlanma Tarihi </th>
+			<th>Proje Ortağı </th>
+		        <th>Güncelle</th>
+
+	      </tr>
+	    </thead>
+
+	    <tbody>
+
+	      {% for ProjectId, ProjectName, ProjectYear, ProjectPartner in ProjectList %}
+		<form class="form-inline" action="{{ url_for('projects_page') }}" method="post">
+	      <tr>        
+		 <td><div class="form-group">
+		  <input type="text" class="form-control" value = {{ProjectId}} name="ProjectId" required autofocus readonly >
+		</div></td>   
+		<th><div class="form-group">
+		  <input type="text" class="form-control" value = {{ProjectName}} name="ProjectName" required autofocus >
+		</div></th>
+		<th><div class="form-group">
+		  <input type="text" class="form-control" value = {{ProjectYear}} name="ProjectYear" required autofocus >
+		</div></th>
+		<th><div class="form-group">
+		  <input type="text" class="form-control" value = {{ProjectPartner}} name="ProjectPartner" required autofocus >
+		</div></th>      
+		<th>
+		  <input type="submit" class="btn btn-primary" value="Güncelle" name="projects_to_update" />
+		 </th>    
+	      </tr>
+</form>
+	      {% endfor %}
+		
+	    </tbody>
+	  
+	  </table>
+
+
+
 
 {%endblock%}
