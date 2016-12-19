@@ -47,7 +47,7 @@ class Myevents:
             cursor.execute(query)
             rows=cursor.fetchall()
             return rows
-    def add_event(self, EventName, OwnerId, CityId, Date, Time, Detail):
+    def add_event(self, EventName, OwnerId, CityId, DateTime, Detail):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query =  "INSERT INTO events (EventName, OwnerId, CityId, DateTime, Detail) VALUES ('%s','%s','%s','%s','%s')" % (EventName, OwnerId, CityId, DateTime, Detail)
@@ -55,7 +55,7 @@ class Myevents:
             connection.commit()
             return
 
-    def update_event(self, EventId, EventName, OwnerId, CityId, Date, Time, Detail):
+    def update_event(self, EventId, EventName, OwnerId, CityId, DateTime, Detail):
         with dbapi2.connect(self.cp) as connection:
             cursor = connection.cursor()
             query =  "UPDATE events SET EventName = '%s', OwnerId='%s', CityId='%s', DateTime='%s', Detail='%s'WHERE EventId='%s'" % (EventName, OwnerId, CityId, DateTime, Detail,EventId)

@@ -481,7 +481,7 @@ class INIT:
                     )"""
             cursor.execute(query)
 
-            query = """INSERT INTO events(EventName, OwnerId, CityId, Date, Time, Detail) VALUES
+            query = """INSERT INTO events(EventName, OwnerId, CityId, DateTime, Detail) VALUES
               ('İTÜ Arı-Çekirdek Proje Yarışması',4,34,'20.12.2016, 13:30','2016 yılı proje yarışması sonuçları, İTÜ Ayazağa'),
               ('Medikal alanda Görüntü İşleme',2,34,'01.01.2017, 16:00','Bilgisayarla görüntü işlemenin sağlık alanında uygulamaları, Sabancı Üniversitesi Merkez Kampüsü');
               """
