@@ -7,8 +7,8 @@ Aydoğdu Demirci Tarafından Gerçeklenen Varlıklar
  
 .. figure:: images/aydogdu/partners_erisim.png
    :figclass: align-center
-
-   İş Ortakları Sayfasına Erişim
+   :alt: İş Ortakları Sayfasına Erişim
+   
 
 **Genel Görünüm:** "İş Ortakları" sayfası ziyaret edildiğinde ilk olarak, her bir iş ortağı ismi, kuruluş yılı ve ülkesi gibi bilgilerin yanı sıra kendisine ait bir seçim kutucuğu ile birlikte listelenmiş olarak görülür. 
 
