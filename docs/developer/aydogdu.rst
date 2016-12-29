@@ -40,14 +40,6 @@ Aydoğdu Demirci Tarafından Gerçeklenen İşlemler
 -------------------------
 İş Ortakları varlığının class yapısı *partners.py* konumunda tanımlanmıştır. Bu class yapısında listeleyen, kayıt ekleyen, kayıt silen ve kayıt güncelleyen fonksiyonlar tanımlıdır.
 
-Kullanılan Psycopg2 Metodları
---------------------------------
-
-| **cursor**: Python kodunun PostgreSQL komutlarını çalıştırmasını sağlar.
-| **execute**: Veritabanının çalışmasını sağlar.
-| **commit**: Bekleyen işlemi veritabanına işler.
-| **fetchall**: Sorgu sonuçlarının tüm satırlarını getirir.
-
 *Listeleme*
 -------------------------
  **get_partnerlist**: Veritabanından tüm iş ortağı kayıtlarını çekmek için bu fonksiyon tanımlanmıştır. Fonksiyon bu hali ile partners tablosundaki tüm kayıtları tüm bilgileri ile döndürmektedir. Farklı bir mekanizma istenirse sorgu değiştirilebilir.
@@ -105,3 +97,77 @@ Kullanılan Psycopg2 Metodları
             cursor.execute(query)
             connection.commit()
             return
+
+Kullanılan Psycopg2 Metodları
+------------------------------
+
+| **cursor**: Python kodunun PostgreSQL komutlarını çalıştırmasını sağlar.
+| **execute**: Veritabanının çalışmasını sağlar.
+| **commit**: Bekleyen işlemi veritabanına işler.
+| **fetchall**: Sorgu sonuçlarının tüm satırlarını getirir.
+Arayüz İşlemleri ve Veritabanı İlişkisi
+----------------------------------------
+
+Arayüz İşlemleri ve Veritabanı İlişkisi
+=======================================
+
+İş Ortakları arayüz Sayfasının Tanımlanması
+-------------------------------------------
+
+İş Ortakları sayfasına sitenin sol üst köşesindeki kategoriler sekmesinden erişebilmek için, *logged_in_layout.html* konumunda bir Bootstrap Glyphicon ile birlikte tıklandığında ilgili sayfaya yönlendiren bir buton tanımlanmıştır.
+
+.. code-block:: html
+
+ <li><a href="/partners"><span class="glyphicon glyphicon-signal"></span> İş Ortakları</a></li>
+
+Bu butona tıklandığında gelen sayfa *logged_in_layout.html* sayfasına bir extension'dır. 
+
+.. code-block:: html
+
+ {% extends "logged_in_layout.html" %}
+ {% block title %} İş Ortakları{%endblock%}
+ {% block content %}
+
+Sayfa ilk açıldığında her birine ait bir checkbox ile her bir İş Ortağı liste halinde gelir. Sayfada Bootstrap jumbotron, table ve buton stilleri kullanılmıştır. Sayfa yüklenirken veritabanına *partners_page* url'si ile bağlanılır ve veritabanından *PartnerList* istenir. Gelen bilgiler bootstrap stili bir tabloya ID değerleri bir checkbox olarak gözükecek şekilde form olarak hazırlanır. Bootstrap stili bir butona input görevi atanır ve arayüzde checkbox'ı işaretlenmiş olan kayıtların ID'leri butona tıklandığında sunucuya submit edilir.
+
+.. code-block:: html
+
+  <div class="page-header">
+  <h1>İş Ortakları</h1>
+   <p>İş ortaklarımız hakkındaki bilgilere bu sayfadan erişebilir ve bilgileri düzenleyebilirsiniz. </p>
+ </div>
+
+ <div class="container">       
+  <h2>İş Ortağı Silme</h2>
+  <p>Kaydını silmek istediğiniz İş Ortağı'nı işaretleyebilirsiniz.</p>
+  
+  <form action="{{ url_for('partners_page') }}" method="post">
+  
+  <table class="table">
+    
+    <thead>
+      <tr>
+          <th>Sil</th>
+    		<th>Adı </th>
+    		<th>Kuruluş Yılı </th>
+    		<th>Ülkesi </th>
+      </tr>
+    </thead>
+   
+    <tbody>
+      
+      {% for PartnerId, PartnerName, FoundationYear, Country in PartnerList %}
+      
+      <tr>
+    		<td><input type="checkbox" name="partners_to_delete" value="{{ PartnerId }}" />     </td>
+    		<th>{{ PartnerName }}</th>
+    		<th>{{ FoundationYear }}</th>
+    		<th>{{ Country }}</th>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+  <input type="submit" class="btn btn-primary btn-block" value="İşaretli İş Ortağını Sil" name="delete" /> 
+  </form>
+ </div>
