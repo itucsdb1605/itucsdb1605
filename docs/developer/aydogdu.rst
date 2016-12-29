@@ -1,6 +1,41 @@
 Aydoğdu Demirci Tarafından Gerçeklenen İşlemler
 ===============================================
 
+İş Ortakları Tablosu
+-------------------------
+
+İş Ortakları varlığı *partners* isimli tablo ile tanımlanmıştır. Bu tablo 4 kolondan oluşmaktadır. Bu kolonlar iş ortağı ID'si, ismi, kuruluş yılı ve ülkesini sırasıyla temsil eden PartnerId, PartnerName, FoundationYear ve Country anahtarlarından oluşmaktadır. Bunların arasından primary key olarak *PartnerId* belirlenmiştir. Veritabanı işlemleri sırasında hali hazırda zaten tablo oluşturulmuş ise hata almamak için *DROP TABLE IF EXISTS partners CASCADE* sorgusu kullanılmıştır. Tablonun niteliklerinden olan PartnerId primary key olarak tanımlanmıştır. PartnerName maksimum 40 uzunluğunda eşsiz bir katar olarak, FoundationYear bir tamsayı olarak ve Country ise yine maksimum 40 uzunluğunda bir katar olarak tanımlanmıştır. Tablo *init.py* konumunda tanımlanmış ve *insert into* komutu ile 9 adet iş ortağı kaydı başlangıç olarak tabloya eklenmiştir.
+
+.. code-block:: python
+
+ def partners(self):
+        with dbapi2.connect(self.cp) as connection:
+            cursor = connection.cursor()
+            query = "DROP TABLE IF EXISTS partners CASCADE"
+            cursor.execute(query)
+
+            query = """CREATE TABLE partners (
+                    PartnerId SERIAL PRIMARY KEY,
+                    PartnerName VARCHAR(40) UNIQUE NOT NULL,
+                    FoundationYear INT NOT NULL,
+                    Country VARCHAR(40) NOT NULL
+                    )"""
+            cursor.execute(query)
+
+            query = """INSERT INTO partners(PartnerName, FoundationYear, Country) VALUES
+              ('Tesla', 2003, 'USA' ),
+              ('Vestel', 1984, 'Turkey' ),
+              ('Gigafactory', 2014, 'USA' ),
+              ('SpaceX', 2002, 'USA' ),
+              ('Foxconn', 1974, 'China' ),
+              ('Panasonic', 1918, 'Japan' ),
+              ('Casper', 1991, 'Turkey'),
+              ('LG', 1947, 'Korea' ),
+              ('Airbus', 1970, 'France');
+              """
+            cursor.execute(query)
+            connection.commit()
+
 Kullanılan Psycopg2 Metodları
 --------------------------------
 
