@@ -1,7 +1,8 @@
-Hasan Hüseyin ÇAĞLAR tarafından gerçekleştirilen Bölümler
-================================
-MAKALELER, BAĞLANTILAR VE ETKİNLİKLER
-================================
+Hasan Hüseyin ÇAĞLAR (caglarh - 150110042)
+======
+
+Raporun bu bölümünde İşteSen adlı sosyal medya sitesinin Makaleler, Bağlantılar ve Etkinlikler sayfalarının (varlıklarının) yazılım geliştirmesi ve detayları hakkında bilgi edinebilirsiniz
+
 Veritabanı Tablolarını Hazırlama Metodu
 ----------------------------------
 İlgili tabloları oluşturmak ve ilk kayıtları eklemek için, **init.py** dosyasının **class INIT:** isimli sınıfı ve ona bağı olan **def ArticleEventConnection(self):** adlı metodu içerisinde işlemler gerçekleştirilmiştir, **init.py** dosyasının içerik yapısı:
