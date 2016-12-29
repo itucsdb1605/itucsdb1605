@@ -258,7 +258,50 @@ Sayfada üçüncü ana öğe olarak güncelleme arayüzü bulunur. Bu kısımda 
 	  
  </table>
 
+*İş Ortakları Sayfası Sunucu Bağlantısı*
+----------------------------------------
 
+*server.py* konumunda öncelikle Partners sınıfı için import işlemi yapılmıştır.
+
+.. code-block:: python
+
+ from partners import Partners
+
+Sonrasında partners tablosu initialize edilmiştir.
+
+.. code-block:: python
+
+ initialize.partners() 
+
+
+Arayüz sayfasından gelecek olan get_partnerlist, partners_to_delete, partners_to_add ve partners_to_update istemlerini işleyip ilgili Partners sınıfı fonsiyonunu yürütücek kodlar yazılmıştır. Her bir istem işlendikten sonra arayüzde güncel verilerin gözükmesi için *partners.html* gönderilerek arayüz sayfasının yenilenmesi sağlanmıştır.
+
+.. code-block:: python
+
+ @app.route('/partners', methods=['GET', 'POST'])
+ def partners_page():
+
+    prtnrs = Partners(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        plist = prtnrs.get_partnerlist()
+        return render_template('partners.html', PartnerList = plist, current_time = now.ctime())
+
+    elif 'partners_to_delete' in request.form:
+        partnerids = request.form.getlist('partners_to_delete')
+        for PartnerId in partnerids:
+            prtnrs.delete_partner(PartnerId)
+        return redirect(url_for('partners_page'))
+
+    elif 'partners_to_add' in request.form:
+  prtnrs.add_partner(request.form['PartnerName'],request.form['FoundationYear'],request.form['Country'])
+        return redirect(url_for('partners_page'))
+
+    elif 'partners_to_update' in request.form:
+        prtnrs.update_partner(request.form['PartnerId'], request.form['PartnerName'],request.form['FoundationYear'],request.form['Country'])
+        return redirect(url_for('partners_page'))
 
 
 
