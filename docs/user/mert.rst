@@ -6,7 +6,7 @@ Raporun bu kısımda projede Mert YILDIZ tarafından geliştirilen sayfalar ve b
 Altbilgi
 ----------------
 .. figure:: images/mert/footer.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
       
@@ -25,7 +25,7 @@ Altbilgi
 ---------------------
 
 .. figure:: images/mert/uni_logo.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
    
@@ -34,7 +34,7 @@ Altbilgi
 Sitenin "Kategoriler" bölümünden "Üniversiteler" seçeneğine tıklanarak sistemdeki üniversiteler hakkında çeşitli bilgilerin edinilebileceği ve kullanıcıların ekleme, güncelleme, silme ve seçme gibi işlemler yapabilecekleri bu sayfaya erişmeleri mümkündür.
 
 .. figure:: images/mert/uni_ekle_sec.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -53,7 +53,7 @@ Burada yeni bilgilerin girilmesi sırasında dikkat edilmesi gereken bir husus, 
 Bu kısımda da dikkat edilmesi gereken husus şehir yazılırken ilk harfinin büyük olması gerektiğidir.
 
 .. figure:: images/mert/uni_secilen.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
    
@@ -64,7 +64,7 @@ Bu kısımda da dikkat edilmesi gereken husus şehir yazılırken ilk harfinin b
 Herhangi bir üniversite güncellenmek istendiğinde sayfada yer alan üniversitelerin listelenmiş olduğu tabloda ilgili üniversitenin "Güncellensin mi?" sütunu altında bulunan "Güncelle" linkine tıklanmalıdır. 
 
 .. figure:: images/mert/uni_sil.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -73,7 +73,7 @@ Herhangi bir üniversite güncellenmek istendiğinde sayfada yer alan üniversit
 Bu şekilde güncellenmek istenen üniversitenin linkine tıklandıktan sonra seçilen üniversiteye ait bilgilerle dolu halde olan metin kutularının olduğu yeni bir güncelleme sayfası açılır. Burada üniversiteye ait istenen bilgiler yenileriyle istenilen şekilde değiştirildikten sonra sayfanın sonunda bulunan **Güncelle** butonu tıklanmalıdır. Bu işlemden sonra üniversiteler sayfasına geri dönülecek ve güncellenmek için seçilmiş olan üniversite yeni hali ile listenin sonunda görülebilecektir. 
 
 .. figure:: images/mert/uni_guncelleme.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -84,7 +84,7 @@ Bu şekilde güncellenmek istenen üniversitenin linkine tıklandıktan sonra se
 Herhangi bir üniversite silinmek istendiğinde sayfada yer alan üniversitelerin listelenmiş olduğu tabloda ilgili üniversitenin "Silinsin mi?" sütunu altında bulunan kontrol kutusu işaretlenmelidir. 
 
 .. figure:: images/mert/uni_sil.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
    
@@ -92,37 +92,32 @@ Herhangi bir üniversite silinmek istendiğinde sayfada yer alan üniversiteleri
 
 Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten sonra sayfanın sonunda bulunan **Sil** butonu tıklanmalıdır. Bu işlemden sonra sayfa yenilenecek ve işaretlenmiş olan üniversiteler sayfadan ve arka planda veri tabanından kaldırılmış olacaklardır.
 
-
 .. figure:: images/mert/uni_sil_buton.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
       Üniversite Silme İşlemi
 
-   
-
 **İstisnalar**
 
-* Seçme işlemi sırasında istenen özelliklere sahip üniversite yok ise boş sayfa açılır.
+*Seçme işlemi sırasında istenen özelliklere sahip üniversite yok ise boş sayfa açılır.
 
 .. figure:: images/mert/uni_secme_bos.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
   
       Üniversite Boş Seçme İşlemi
 
-
-* İşlemler için yanlış girdi değerleri girilirse, örneğin seçme işlemi için sistemde olmayan bir şehir girilirse, veya şehir hatalı girilirse, bu durumlar için hazırlanmış özel hata sayfası açılır.
+*İşlemler için yanlış girdi değerleri girilirse, örneğin seçme işlemi için sistemde olmayan bir şehir girilirse, veya şehir hatalı girilirse, bu durumlar için hazırlanmış özel hata sayfası açılır.
 
 .. figure:: images/mert/hata_sayfasi.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
       Hata Sayfası
-
 
 * Seçme işlemi için "Tür" kısmında "Devlet" ve/ya "Özel" seçeneklerinden en az biri seçilmiş olmalıdır, yoksa aynı şekilde sistem hata verir.
 
@@ -130,7 +125,7 @@ Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten 
 Şirketler Sayfası
 ---------------------
 .. figure:: images/mert/comp_logo.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -139,7 +134,7 @@ Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten 
 Sitenin "Kategoriler" bölümünden "Şirketler" seçeneğine tıklanarak sistemdeki şirketler hakkında çeşitli bilgilerin edinilebileceği ve kullanıcıların ekleme, güncelleme, silme ve seçme gibi işlemler yapabilecekleri bu sayfaya erişmeleri mümkündür.
 
 .. figure:: images/mert/comp_ekle_sec.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -158,7 +153,7 @@ Burada yeni bilgilerin girilmesi sırasında dikkat edilmesi gereken husus, şeh
 Bu kısımda da dikkat edilmesi gereken husus şehir yazılırken ilk harfinin büyük olması gerektiğidir.
 
 .. figure:: images/mert/comp_secilen.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -169,7 +164,7 @@ Bu kısımda da dikkat edilmesi gereken husus şehir yazılırken ilk harfinin b
 Herhangi bir şirket güncellenmek istendiğinde sayfada yer alan şirketlerin listelenmiş olduğu tabloda ilgili şirketin "Güncellensin mi?" sütunu altında bulunan "Güncelle" linkine tıklanmalıdır. 
 
 .. figure:: images/mert/comp_sil.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -178,7 +173,7 @@ Herhangi bir şirket güncellenmek istendiğinde sayfada yer alan şirketlerin l
 Bu şekilde güncellenmek istenen şirketin linkine tıklandıktan sonra seçilen şirkete ait bilgilerle dolu halde olan metin kutularının olduğu yeni bir güncelleme sayfası açılır. Burada şirkete ait istenen bilgiler yenileriyle istenilen şekilde değiştirildikten sonra sayfanın sonunda bulunan **Güncelle** butonu tıklanmalıdır. Bu işlemden sonra şirketler sayfasına geri dönülecek ve güncellenmek için seçilmiş olan şirket yeni hali ile listenin sonunda görülebilecektir. 
 
 .. figure:: images/mert/comp_guncelle.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -189,7 +184,7 @@ Bu şekilde güncellenmek istenen şirketin linkine tıklandıktan sonra seçile
 Herhangi bir şirket silinmek istendiğinde sayfada yer alan şirketlerin listelenmiş olduğu tabloda ilgili şirketin "Silinsin mi?" sütunu altında bulunan kontrol kutusu işaretlenmelidir. 
 
 .. figure:: images/mert/comp_sil.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -197,32 +192,28 @@ Herhangi bir şirket silinmek istendiğinde sayfada yer alan şirketlerin listel
 
 Bu şekilde silinmek istenen her şirketin kontrol kutusu işaretlendikten sonra sayfanın sonunda bulunan **Sil** butonu tıklanmalıdır. Bu işlemden sonra sayfa yenilenecek ve işaretlenmiş olan şirketler sayfadan ve arka planda veri tabanından kaldırılmış olacaklardır.
 
-
 .. figure:: images/mert/comp_sil_buton.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
       Şirket Silme İşlemi
-
-   
 
 **İstisnalar**
 
 * Seçme işlemi sırasında istenen özelliklere sahip şirket yok ise boş sayfa açılır.
 
 .. figure:: images/mert/comp_secme_bos.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
       Şirket Boş Seçme İşlemi
 
-
 * İşlemler için yanlış girdi değerleri girilirse, örneğin seçme işlemi için sistemde olmayan bir şehir girilirse, veya şehir hatalı girilirse, bu durumlar için hazırlanmış özel hata sayfası açılır.
 
 .. figure:: images/mert/hata_sayfasi.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
   
@@ -233,7 +224,7 @@ Yerler Sayfası
 ---------------------
 
 .. figure:: images/mert/yer_logo.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -242,7 +233,7 @@ Yerler Sayfası
 Sitenin "Altbilgi" bölümünden "Yerler" linkine tıklanarak sistemdeki yerler hakkında çeşitli bilgilerin edinilebileceği ve kullanıcıların çeşitli işlemler yapabilecekleri bu sayfaya erişmeleri mümkündür. 
 
 .. figure:: images/mert/yer_tablo.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -251,7 +242,7 @@ Sitenin "Altbilgi" bölümünden "Yerler" linkine tıklanarak sistemdeki yerler 
 Bu sayfada amaç sistemde kayıtlı olarak bulunan yerleri görüntüleyebilmek ve istenirse yeni yerler ekleyebilmektir. Çünkü bu bilgiler diğer sayfalarda bazı işlemleri yapabilmek için gerekli olabilmektedir. Hali hazırda Türkiye'nin tüm illeri plaka kodlarına göre sisteme eklenmiş haldedir.
 
 .. figure:: images/mert/yer_ekle.png
-      :scale: 50 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
