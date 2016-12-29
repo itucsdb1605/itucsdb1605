@@ -10,6 +10,7 @@ itucsdb1605 Proje Raporuna Hoşgeldiniz
    * Halit Uğurgelen
    * Aydoğdu Demirci
    * Mustafa Çoban
+   
 
 **İşteSen- Kariyer Odaklı Sosyal Medya Sitesi**
 
