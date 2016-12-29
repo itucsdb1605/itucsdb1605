@@ -6,9 +6,11 @@ Raporun bu kısımda projede Mert YILDIZ tarafından geliştirilen sayfalar ve b
 Altbilgi
 ----------------
 .. figure:: images/mert/footer.png
-   :figclass: align-center
-
-   Sayfalarda Bulunan Altbilgi Kısmı
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
+      
+      Sayfalarda Bulunan Altbilgi Kısmı
 
 **Altbilgide bulunan öğeler** 
 
@@ -23,16 +25,20 @@ Altbilgi
 ---------------------
 
 .. figure:: images/mert/uni_logo.png
-   :figclass: align-center
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
    
-   Üniversiteler Sayfasına Erişim 
+      Üniversiteler Sayfasına Erişim 
 
 Sitenin "Kategoriler" bölümünden "Üniversiteler" seçeneğine tıklanarak sistemdeki üniversiteler hakkında çeşitli bilgilerin edinilebileceği ve kullanıcıların ekleme, güncelleme, silme ve seçme gibi işlemler yapabilecekleri bu sayfaya erişmeleri mümkündür.
 
 .. figure:: images/mert/uni_ekle_sec.png
-   :figclass: align-center
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
 
-   Üniversiteler Sayfası Ekleme ve Seçme Fonksiyonları
+       Üniversiteler Sayfası Ekleme ve Seçme Fonksiyonları
 
 **Ekleme İşlemi**
 
@@ -47,42 +53,52 @@ Burada yeni bilgilerin girilmesi sırasında dikkat edilmesi gereken bir husus, 
 Bu kısımda da dikkat edilmesi gereken husus şehir yazılırken ilk harfinin büyük olması gerektiğidir.
 
 .. figure:: images/mert/uni_secilen.png
-   :figclass: align-center
-
-   Seçilen Üniversitelerin Gösterildiği Ekran
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
+   
+      Seçilen Üniversitelerin Gösterildiği Ekran
 
 **Güncelleme İşlemi**
 
 Herhangi bir üniversite güncellenmek istendiğinde sayfada yer alan üniversitelerin listelenmiş olduğu tabloda ilgili üniversitenin "Güncellensin mi?" sütunu altında bulunan "Güncelle" linkine tıklanmalıdır. 
 
 .. figure:: images/mert/uni_sil.png
-   :figclass: align-center
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
 
-   Üniversite Güncelleme
+      Üniversite Güncelleme
 
 Bu şekilde güncellenmek istenen üniversitenin linkine tıklandıktan sonra seçilen üniversiteye ait bilgilerle dolu halde olan metin kutularının olduğu yeni bir güncelleme sayfası açılır. Burada üniversiteye ait istenen bilgiler yenileriyle istenilen şekilde değiştirildikten sonra sayfanın sonunda bulunan **Güncelle** butonu tıklanmalıdır. Bu işlemden sonra üniversiteler sayfasına geri dönülecek ve güncellenmek için seçilmiş olan üniversite yeni hali ile listenin sonunda görülebilecektir. 
 
 .. figure:: images/mert/uni_guncelleme.png
-   :figclass: align-center
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
 
-   Üniversite Güncelleme Sayfası
+      Üniversite Güncelleme Sayfası
 
 **Silme İşlemi**
 
 Herhangi bir üniversite silinmek istendiğinde sayfada yer alan üniversitelerin listelenmiş olduğu tabloda ilgili üniversitenin "Silinsin mi?" sütunu altında bulunan kontrol kutusu işaretlenmelidir. 
 
 .. figure:: images/mert/uni_sil.png
-   :figclass: align-center
-
-   Üniversite Silmek için İşaretleme İşlemi
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
+   
+      Üniversite Silmek için İşaretleme İşlemi
 
 Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten sonra sayfanın sonunda bulunan **Sil** butonu tıklanmalıdır. Bu işlemden sonra sayfa yenilenecek ve işaretlenmiş olan üniversiteler sayfadan ve arka planda veri tabanından kaldırılmış olacaklardır.
 
 
 .. figure:: images/mert/uni_sil_buton.png
-   :figclass: align-center
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
 
-   Üniversite Silme İşlemi
+      Üniversite Silme İşlemi
 
    
 
@@ -92,17 +108,21 @@ Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten 
 * Seçme işlemi sırasında istenen özelliklere sahip üniversite yok ise boş sayfa açılır.
 
 .. figure:: images/mert/uni_secme_bos.png
-   :figclass: align-center
-
-   Üniversite Boş Seçme İşlemi
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
+  
+      Üniversite Boş Seçme İşlemi
 
 
 * İşlemler için yanlış girdi değerleri girilirse, örneğin seçme işlemi için sistemde olmayan bir şehir girilirse, veya şehir hatalı girilirse, bu durumlar için hazırlanmış özel hata sayfası açılır.
 
 .. figure:: images/mert/hata_sayfasi.png
-   :figclass: align-center
+      :scale: 50 %
+      :align: center
+      :alt: map to buried treasure
 
-   Hata Sayfası
+      Hata Sayfası
 
 
 * Seçme işlemi için "Tür" kısmında "Devlet" ve/ya "Özel" seçeneklerinden en az biri seçilmiş olmalıdır, yoksa aynı şekilde sistem hata verir.
