@@ -101,10 +101,10 @@ Aydoğdu Demirci Tarafından Gerçeklenen İşlemler
 Kullanılan Psycopg2 Metodları
 ------------------------------
 
-| **cursor**: Python kodunun PostgreSQL komutlarını çalıştırmasını sağlar.
-| **execute**: Veritabanının çalışmasını sağlar.
-| **commit**: Bekleyen işlemi veritabanına işler.
-| **fetchall**: Sorgu sonuçlarının tüm satırlarını getirir.
+ **cursor**: Python kodunun PostgreSQL komutlarını çalıştırmasını sağlar.
+ **execute**: Veritabanının çalışmasını sağlar.
+ **commit**: Bekleyen işlemi veritabanına işler.
+ **fetchall**: Sorgu sonuçlarının tüm satırlarını getirir.
 
 Arayüz İşlemleri ve Veritabanı İlişkisi
 =======================================
@@ -126,7 +126,9 @@ Bu butona tıklandığında gelen sayfa *logged_in_layout.html* sayfasına bir e
  {% block title %} İş Ortakları{%endblock%}
  {% block content %}
 
-Sayfa ilk açıldığında her birine ait bir checkbox ile her bir İş Ortağı liste halinde gelir. Sayfada Bootstrap jumbotron, table ve buton stilleri kullanılmıştır. Sayfa yüklenirken veritabanına *partners_page* url'si ile bağlanılır ve veritabanından *PartnerList* istenir. Gelen bilgiler bootstrap stili bir tabloya ID değerleri bir checkbox olarak gözükecek şekilde form olarak hazırlanır. Bootstrap stili bir butona input görevi atanır ve arayüzde checkbox'ı işaretlenmiş olan kayıtların ID'leri butona tıklandığında sunucuya submit edilir.
+*Silme*
+-------------------------
+Sayfa ilk açıldığında her birine ait bir checkbox ile her bir İş Ortağı liste halinde gelir. Sayfada Bootstrap jumbotron, table ve buton stilleri kullanılmıştır. Sayfa yüklenirken veritabanına *partners_page* url'si ile bağlanılır ve veritabanından *PartnerList* istenir. Gelen bilgiler bootstrap stili bir tabloya ID değerleri bir checkbox olarak gözükecek şekilde form olarak hazırlanır. Bootstrap stili bir butona input görevi atanır ve arayüzde checkbox'ı işaretlenmiş olan kayıtların ID'leri butona tıklandığında sunucuya *partners_to_delete* isteğiyle submit edilir. Yani işaretli checkboxlara ait id'ler silinmesi talimatı ile birlikte submit edilir.
 
 .. code-block:: html
 
@@ -169,3 +171,102 @@ Sayfa ilk açıldığında her birine ait bir checkbox ile her bir İş Ortağı
   <input type="submit" class="btn btn-primary btn-block" value="İşaretli İş Ortağını Sil" name="delete" /> 
   </form>
  </div>
+ 
+*Ekleme*
+-------------------------
+
+Sayfada ikinci ana öğe olarak kayıt ekleme arayüzü bulunur. Bu kısımda *partners_page* url'si ile sunucuya bağlanılır eklenmek istenen iş ortağının adı, kuruluş yılı ve ülkesi bilgilerinin girilmesi istenen Bootstrap stili 3 adet form kutucuğu ekrana verilir. Bootstrap stili bir butona *partners_to_add* istemiyle girilen verileri sunucuya aktarması işlevi atanır.
+
+.. code-block:: html
+
+ <h2>İş Ortağı Ekleme</h2>
+  <p>Yeni kayıt oluşturmak için gerekli alanları doldurunuz.</p>
+  
+  <form action="{{ url_for('partners_page') }}" method="post"> 
+    
+    <div class="form-group">
+      <label for="PartnerName">Adı:</label>
+      <input type="text" class="form-control" name="PartnerName">
+    </div>
+    
+    <div class="form-group">
+      <label for="FoundationYear">Kuruluş Yılı:</label>
+      <input type="text" class="form-control" name="FoundationYear">
+    </div>
+    
+    <div class="form-group">
+      <label for="Country">Ülkesi:</label>
+      <input type="text" class="form-control" name="Country">
+    </div>
+    
+    <input type="submit" class="btn btn-primary btn-block" value="İş Ortağı Ekle" name="partners_to_add" />
+  </form>
+ </div>
+ 
+*Güncelleme*
+-------------------------
+
+Sayfada üçüncü ana öğe olarak güncelleme arayüzü bulunur. Bu kısımda *partners_page* url'si ile sunucuya bağlanılır ve veritabanından istenen *PartnerList*'deki veriler bir for döngüsü ile Bootstrap stili form kutucuklarına yazılı olarak ekrana getirilir her bir satır sonuna Bootstrap stili bir buton eklenir. Kullanıcı form kutucuklarına hazır yazılı olarak verilerde bir değişiklik yaptığında o satıra ait güncelle butonuna tıklarsa form kutucuklarında veriler *partners_to_update* istemiyle sunucuya submit edilir.
+
+.. code-block:: html
+
+ <table class="table">
+
+	    <thead>
+	      <tr>
+			<th>ID</th>
+			<th>Adı </th>
+			<th>Kuruluş Yılı </th>
+			<th>Ülkesi </th>
+		    <th>Güncelle</th>
+	      </tr>
+	    </thead>
+		
+	    <tbody>
+		
+	      {% for PartnerId, PartnerName, FoundationYear, Country in PartnerList %}
+		  
+		<form class="form-inline" action="{{ url_for('partners_page') }}" method="post">
+		
+			  <tr>        
+				 <td><div class="form-group">
+				  <input type="text" class="form-control" value = {{PartnerId}} name="PartnerId" required autofocus readonly >
+				</div></td>  
+				
+				<th><div class="form-group">
+				  <input type="text" class="form-control" value = {{PartnerName}} name="PartnerName" required autofocus >
+				</div></th>
+				
+				<th><div class="form-group">
+				  <input type="text" class="form-control" value = {{FoundationYear}} name="FoundationYear" required autofocus >
+				</div></th>
+				
+				<th><div class="form-group">
+				  <input type="text" class="form-control" value = {{Country}} name="Country" required autofocus >
+				</div></th>   
+				
+				<th>
+				  <input type="submit" class="btn btn-primary" value="Güncelle" name="partners_to_update" />
+				</th>    
+			  </tr>
+			  
+		</form>
+		
+	      {% endfor %}
+		
+	    </tbody>
+	  
+ </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
