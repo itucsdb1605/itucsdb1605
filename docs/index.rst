@@ -1,22 +1,32 @@
-Welcome to itucsdb's documentation!
-===================================
-
-:Team: Team Name
+itucsdb1605 Proje Raporuna Hoşgeldiniz
+======================================
+:Team: İşteSen
 
 :Members:
 
-   * Member 1
-   * Member 2
-   * Member 3
-   * Member 4
-   * Member 5
+   * Mert Yıldız
+   * Hasan Hüseyin Çağlar
+   * Şevket Cerit
+   * Halit Uğurgelen
+   * Aydoğdu Demirci
+   * Mustafa Çoban
 
-**project description goes here (a few paragraphs)**
+**İşteSen- Kariyer Odaklı Sosyal Medya Sitesi**
 
-Contents:
+
+İnsanların, öğrencilerin, yeni mezunların, şirketlerin, üniversitelerin ve ilgili bağlantılarının kariyer bağlamında birbirleriyle etkileşim kurabilecekleri bir sosyal medya platformu olarak tasarlanmış bir sitedir. Bu sitenin veri tabanı konuyla alakalı olan varlıkların gerçeklendiği çok çeşitli tablolar içermekte olup, kullanıcılara da bu tablolar üzerinde ekleme, silme, seçme ve güncelleme gibi işlemler yapmasına izin vermektedir.
+
+.. figure:: main.png
+
+   İşteSen Giriş Sayfası
+
+
 
 .. toctree::
-   :maxdepth: 1
+	:maxdepth: 2
+	:caption: Contents:
 
-   user/index
-   developer/index
+	user/index
+	developer/index
+	installation/index
+  
