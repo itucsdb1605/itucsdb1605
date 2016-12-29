@@ -6,7 +6,7 @@ Veri Tabanı Tasarımı
 
 Bu proje kapsamında 15 tablo gerçeklenmiş olup, bu tablolar arasındaki ilişkiler aşağıdaki varlık-ilişki diagramı ile gösterilmiştir.
 
-.. figure:: er.png
+.. figure:: ../user/images/mert/er.png
    :figclass: align-center
 
    Varlık-İlişki Diagramı
