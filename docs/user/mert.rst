@@ -13,7 +13,7 @@ Altbilgi
 **Altbilgide bulunan öğeler** 
 
 	* Şirket ismi ve Kuruluş Yılı: 2016 İşteSen,Inc
-	* Gizlilik: Sitenin gizlilik politikasına ulaşmasyı sağlayan bir link
+	* Gizlilik: Sitenin gizlilik politikasına ulaşmayı sağlayan bir link
 	* İletişim : Site yöneticileri ile iletişime geçebilmek ve şirketin iletişim bilgilerini görüntülemek amacıyla oluşturulan sayfaya yönlendiren bir link
 	* Yerler : Sistemde kayıtlı olarak bulunan yerleri görüntülemek ve ekleme, seçme gibi işlemlerin yapılabildiği sayfaya yönlendiren bir link
 	* Back to top : Sayfanın en başına yönlendirmek için kullanılan bir link 
