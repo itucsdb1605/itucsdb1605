@@ -4,15 +4,15 @@ Mert YILDIZ Tarafından Yapılan Kısımlar
 Psycopg2 Metodunun Açıklaması
 ----------------------------------
 
-**con()** PostgreSQL veri tabanına bağlantı sağlanmasını halleder. 
+**con():** PostgreSQL veri tabanına bağlantı sağlanmasını halleder. 
 
-**cursor()** PostgreSQL komutlarının python kodunda çalıştırılmasını sağlar. 
+**cursor():** PostgreSQL komutlarının python kodunda çalıştırılmasını sağlar. 
 
-**execute()** Veri tabanı işleminin çalıştırılmasını sağlar.(Sorgu yada komutların)
+**execute():** Veri tabanı işleminin çalıştırılmasını sağlar.(Sorgu yada komutların)
 
-**commit()** bekleyen değişiklik yada işlemleri veri tabanına işler. 
+**commit():** bekleyen değişiklik yada işlemleri veri tabanına işler. 
 
-**fetchall()** Sorgu sonucunu alır ve satırlar halinde döner.
+**fetchall():** Sorgu sonucunu alır ve satırlar halinde döner.
 
 
 Üniversiteler
@@ -189,7 +189,7 @@ Sitenin arayüzünden girilen bilgileri kullanarak öncelikle "universities" tab
             cursor.execute(query)
             row = cursor.fetchone()
             loca_id = row[0]
-            query =  "INSERT INTO universities_info (uni_id,local,population,type) VALUES ('%s','%s','%s','%s')" %                                   (uni_id,loca_id,population,type)
+            query =  "INSERT INTO universities_info (uni_id,local,population,type) VALUES ('%s','%s','%s','%s')"%(uni_id,loca_id,population,type)
             cursor.execute(query)
             connection.commit()
             return
@@ -216,7 +216,7 @@ Arayüzdeki kontrol kutuları işaretlenen üniversitelerin id değerlerini alar
         statement = """SELECT * FROM universities"""
         cursor.execute(statement)
         ulist = cursor.fetchall()
-        statement = """SELECT uni_id, locations.city, locations.country, population, type FROM universities_info JOIN locations ON               universities_info.local = locations.loc_id"""
+        statement = """SELECT uni_id, locations.city, locations.country, population, type FROM universities_info JOIN locations ON universities_info.local = locations.loc_id"""
         cursor.execute(statement)
         ilist = cursor.fetchall()
         connection.commit()
@@ -248,18 +248,18 @@ Arayüzdeki kontrol kutuları işaretlenen üniversitelerin id değerlerini alar
 		  </thead>
 		  <tbody>
 
-		  	{% for i in range(0,UniversityList|count) %}
-			  <tr>
-			  {% for j in range(1,2) %}
-			  		<td>{{UniversityList[i][j]}}</td>
-				{% endfor %}
- 				{% for k in range(1,5) %}
-					<td>{{InfoList[i][k]}}</td>
-				{% endfor %}
-			    <td><a href="{{request.path}}/{{InfoList[i]			[0]}}" class="text-info" name="unis_to_update">Güncelle</a></td>
-				<td><input type="checkbox" 	name="unis_to_delete" value= {{UniversityList[i][0]}}/></td>
-			  </tr>
-			{% endfor %}
+		  {% for i in range(0,UniversityList|count) %}
+		  <tr>
+		  {% for j in range(1,2) %}
+			<td>{{UniversityList[i][j]}}</td>
+		  {% endfor %}
+ 		  {% for k in range(1,5) %}
+			<td>{{InfoList[i][k]}}</td>
+		  {% endfor %}
+		  <td><a href="{{request.path}}/{{InfoList[i][0]}}" class="text-info" name="unis_to_update">Güncelle</a></td>
+		  <td><input type="checkbox" name="unis_to_delete" value= {{UniversityList[i][0]}}/></td>
+		  </tr>
+		  {% endfor %}
 
 
 		  </tbody>
@@ -269,49 +269,46 @@ Buradan gelen id ile yeni açılan sayfaya ait server.py daki kod ise aşağıda
 
 .. code-block:: python
 	
-	@app.route('/universiteler/<int:id>', methods=		['GET','POST'])
+	@app.route('/universiteler/<int:id>', methods=['GET','POST'])
 	def uni_update_page(id):
     	unis = Universities(app.config['dsn'])
     	fn = Func(app.config['dsn'])
     	if request.method == 'GET':
         connection = dbapi2.connect(app.config['dsn'])
         cursor = connection.cursor()
-        statement = """SELECT * FROM universities WHERE id=	{}""".format(id)
+        statement = """SELECT * FROM universities WHERE id={}""".format(id)
         cursor.execute(statement)
         univ = cursor.fetchall()
-        statement = """SELECT uni_id, locations.city, 	locations.country, population, type FROM universities_info 	JOIN locations ON           universities_info.local = locations.loc_id 	WHERE uni_id={}""".format(id)
+        statement = """SELECT uni_id, locations.city, locations.country, population, type FROM universities_info JOIN locations ON universities_info.local = locations.loc_id WHERE uni_id={}""".format(id)
         cursor.execute(statement)
         infos = cursor.fetchall()
         connection.close()
         now = datetime.datetime.now()
-        return render_template('a_university.html',ID=id, 	UniversityList = univ, InfoList=infos, 	current_time=now.ctime())
+        return render_template('a_university.html',ID=id, UniversityList = univ, InfoList=infos, current_time=now.ctime())
     	#elif 'universities_to_update' in request.form:
     	if request.method == 'POST':
-        #unis.update_a_university(id,request.form['uni'], 	request.form['city'],request.form['cont'],request.form	                            ['number'],request.form['type'])
+        #unis.update_a_university(id,request.form['uni'],request.form['city'],request.form['cont'],request.form	                            ['number'],request.form['type'])
         connection = dbapi2.connect(app.config['dsn'])
         cursor = connection.cursor()
-        statement = """UPDATE universities
-                    SET  title ='{}'
-                    WHERE id={};""".format(request.form['uni'], 	id)
+        statement = """UPDATE universities SET  title ='{}' WHERE id={};""".format(request.form['uni'],id)
         cursor.execute(statement)
-        statement ="""SELECT loc_id FROM locations WHERE 	city='{}';""".format(request.form['city'])
+        statement ="""SELECT loc_id FROM locations WHERE city='{}';""".format(request.form['city'])
         cursor.execute(statement)
         row = cursor.fetchone()
         if row is None:
             return None
         loca_id = row[0]
         statement = """UPDATE universities_info
-                    SET local='{}', population='{}', type='{}' 	WHERE uni_id = {};""".format(loca_id,request.form	                              ['number'],request.form['type'],id)
+                    SET local='{}', population='{}', type='{}' 	WHERE uni_id = {};""".format(loca_id,request.form ['number'],request.form['type'],id)
         cursor.execute(statement)
         statement = """SELECT * FROM universities"""
         cursor.execute(statement)
         ulist = cursor.fetchall()
-        statement = """SELECT uni_id, locations.city, 	locations.country, population, type FROM universities_info 	JOIN locations ON           universities_info.local = 	locations.loc_id"""
+        statement = """SELECT uni_id, locations.city, 	locations.country, population, type FROM universities_info JOIN locations ON universities_info.local = locations.loc_id"""
         cursor.execute(statement)
         ilist = cursor.fetchall()
         connection.commit()
         now = datetime.datetime.now()
-        #return render_template('universities.html', 	UniversityList = ulist, InfoList=ilist, 	current_time=now.ctime())
      return redirect(url_for('uni_page'))
 
 
@@ -325,7 +322,6 @@ Arayüzde girilen belirli kriterlere göre üniversite bilgilerini seçme işlem
 	elif 'universities_to_select' in request.form:
         vals = request.form.getlist('unis_to_select')
         City=request.form['city']
-        #l_id=fn.get_id("locations",City)
         length=len(vals)
         if length==2:
             connection = dbapi2.connect(app.config['dsn'])
@@ -337,7 +333,7 @@ Arayüzde girilen belirli kriterlere göre üniversite bilgilerini seçme işlem
                  now = datetime.datetime.now()
                  return render_template('404.html', current_time = now.ctime())
             loca_id = row[0]
-            statement = """SELECT universities.title, universities_info.population, universities_info.type FROM universities JOIN                   universities_info ON universities_info.uni_id = universities.id WHERE local ={}""".format(loca_id)
+            statement = """SELECT universities.title, universities_info.population, universities_info.type FROM universities JOIN universities_info ON universities_info.uni_id = universities.id WHERE local ={}""".format(loca_id)
             cursor.execute(statement)
             ilist = cursor.fetchall()
             connection.commit()
@@ -355,7 +351,7 @@ Arayüzde girilen belirli kriterlere göre üniversite bilgilerini seçme işlem
                  now = datetime.datetime.now()
                  return render_template('404.html', current_time = now.ctime())
             loca_id = row[0]
-            statement = """SELECT universities.title, universities_info.population, universities_info.type FROM universities JOIN                   universities_info ON universities_info.uni_id = universities.id WHERE universities_info.local ={} AND                                   universities_info.type='{}' """.format(loca_id,vals[0])
+            statement = """SELECT universities.title, universities_info.population, universities_info.type FROM universities JOIN universities_info ON universities_info.uni_id = universities.id WHERE universities_info.local ={} AND universities_info.type='{}'""".format(loca_id,vals[0])
             cursor.execute(statement)
             ilist = cursor.fetchall()
             connection.commit()
@@ -481,31 +477,31 @@ Arayüzdeki kontrol kutuları işaretlenen şirketlerin id değerlerini alarak b
 
 Şirket güncellemek için önce arayüzde istenen şirketin yanındaki "Güncelle" linkine tıklanması ardından açılan yeni sayfada yeni bilgilerin girilerek "Güncelle" butonuna basılması gerekmektedir. İşte Html kodunda, istenen şirketin yanındaki linke tıklandığında bu şirketin id değerinin gönderilmesiyle "/sirketler/id" uzantılı yeni bir sayfa açılır. Daha sonra bu id değerine sahip şirket için yeni girilen bilgiler kullanılarak güncelleme işlemi yapılır. Html kısmındaki yeni sayfaya yönlendiren ve id değerini gönderen kod şu şekildedir.
 
-.. code-block:: python
+.. code-block:: html
 
 		<form method="POST">
     <table class="table table-hover">
-		  <thead>
-		    <tr>
-		      <th>Adı</th>
-		      <th>Şehir</th>
-		      <th>Ülke</th>
-		      <th>Çalışan Sayısı</th>
-		      <th>Güncellensin Mi?</th>
-		      <th>Silinsin Mi?</th>
-		    </tr>
-		  </thead>
-		  <tbody>
+	<thead>
+	<tr>
+	<th>Adı</th>
+	<th>Şehir</th>
+	<th>Ülke</th>
+	<th>Çalışan Sayısı</th>
+	<th>Güncellensin Mi?</th>
+	<th>Silinsin Mi?</th>
+	</tr>
+	</thead>
+	<tbody>
 
-		  	{% for i in range(0,CompanyList|count) %}
-			  <tr>
- 				{% for k in range(1,5) %}
-					<td>{{CompanyList[i][k]}}</td>
-				{% endfor %}
-			    <td><a href="{{request.path}}/{{CompanyList[i][0]}}" class="text-info" name="comps_to_update">Güncelle</a></td>
-				<td><input type="checkbox" name="comps_to_delete" value= {{CompanyList[i][0]}}/></td>
-			  </tr>
-			{% endfor %}
+       {% for i in range(0,CompanyList|count) %}
+       <tr>
+       {% for k in range(1,5) %}
+       <td>{{CompanyList[i][k]}}</td>
+       {% endfor %}
+       <td><a href="{{request.path}}/{{CompanyList[i][0]}}" class="text-info" name="comps_to_update">Güncelle</a></td>
+       <td><input type="checkbox" name="comps_to_delete" value= {{CompanyList[i][0]}}/></td>
+       </tr>
+       {% endfor %}
 
 
 		  </tbody>
@@ -522,15 +518,13 @@ Buradan gelen id ile yeni açılan sayfaya ait server.py daki kod ise aşağıda
     if request.method == 'GET':
         connection = dbapi2.connect(app.config['dsn'])
         cursor = connection.cursor()
-        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2         = locations.loc_id WHERE id={}""".format(id)
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2 = locations.loc_id WHERE id={}""".format(id)
         cursor.execute(statement)
         clist = cursor.fetchall()
         connection.close()
         now = datetime.datetime.now()
         return render_template('a_company.html',ID=id, CompanyList = clist, current_time=now.ctime())
-    #elif 'universities_to_update' in request.form:
     if request.method == 'POST':
-        #unis.update_a_university(id,request.form['uni'],                                                                                       request.form['city'],request.form['cont'],request.form['number'],request.form['type'])
         connection = dbapi2.connect(app.config['dsn'])
         cursor = connection.cursor()
         statement ="""SELECT loc_id FROM locations WHERE city='{}';""".format(request.form['city'])
@@ -542,12 +536,11 @@ Buradan gelen id ile yeni açılan sayfaya ait server.py daki kod ise aşağıda
         statement = """UPDATE companies
                     SET title='{}', local2='{}', population='{}' WHERE id =                                                                     {};""".format(request.form['comp'],loca_id,request.form['number'],id)
         cursor.execute(statement)
-        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2         = locations.loc_id"""
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2= locations.loc_id"""
         cursor.execute(statement)
         clist = cursor.fetchall()
         connection.commit()
         now = datetime.datetime.now()
-        #return render_template('universities.html', UniversityList = ulist, InfoList=ilist, current_time=now.ctime())
         return redirect(url_for('company_page'))
 
 
@@ -570,7 +563,7 @@ Arayüzde girilen belirli kriterlere göre şirket bilgilerini seçme işlemi ya
             now = datetime.datetime.now()
             return render_template('404.html', current_time = now.ctime())
         loca_id = row[0]
-        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2          = locations.loc_id WHERE local2 ={}""".format(loca_id)
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2= locations.loc_id WHERE local2 ={}""".format(loca_id)
         cursor.execute(statement)
         clist = cursor.fetchall()
         connection.commit()
@@ -583,7 +576,7 @@ Arayüzde girilen belirli kriterlere göre şirket bilgilerini seçme işlemi ya
         #l_id=fn.get_id("locations",City)
         connection = dbapi2.connect(app.config['dsn'])
         cursor = connection.cursor()
-        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2         = locations.loc_id WHERE title ='{}'""".format(Title)
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2= locations.loc_id WHERE title ='{}'""".format(Title)
         cursor.execute(statement)
         clist = cursor.fetchall()
         connection.commit()
@@ -612,7 +605,7 @@ Eğer kullanıcı seçme gibi işlemlerde yanlış yada sistemde olmayan veriler
         #l_id=fn.get_id("locations",City)
         connection = dbapi2.connect(app.config['dsn'])
         cursor = connection.cursor()
-        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2         = locations.loc_id WHERE title ='{}'""".format(Title)
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2= locations.loc_id WHERE title ='{}'""".format(Title)
         cursor.execute(statement)
         clist = cursor.fetchall()
         connection.commit()
@@ -833,7 +826,7 @@ Eğer kullanıcı seçme gibi işlemlerde yanlış yada sistemde olmayan veriler
         #l_id=fn.get_id("locations",City)
         connection = dbapi2.connect(app.config['dsn'])
         cursor = connection.cursor()
-        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2         = locations.loc_id WHERE title ='{}'""".format(Title)
+        statement = """SELECT id, title, locations.city, locations.country, population FROM companies JOIN locations ON companies.local2= locations.loc_id WHERE title ='{}'""".format(Title)
         cursor.execute(statement)
         clist = cursor.fetchall()
         connection.commit()

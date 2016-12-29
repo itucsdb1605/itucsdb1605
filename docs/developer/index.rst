@@ -1,31 +1,29 @@
-Developer Guide
+Geliştirici Kılavuzu
 ===============
 
-Database Design
+Veri Tabanı Tasarımı
 ---------------
 
-**explain the database design of your project**
+Bu proje kapsamında 15 tablo gerçeklenmiş olup, bu tablolar arasındaki ilişkiler aşağıdaki varlık-ilişki diagramı ile gösterilmiştir.
 
-**include the E/R diagram(s)**
+.. figure:: er.png
+   :figclass: align-center
+
+   Varlık-İlişki Diagramı
+
+
+Tablolar ve birbirleriyle ilişkileri hakkında daha detaylı bilgi her tasarımcının kendi kısmında ayrıca verilecektir. 
+
+**PK ve FK** sembolleri sırasıyla birincil ve dış anahtarları belirtir.
 
 Code
-----
-
-**explain the technical structure of your code**
-
-**to include a code listing, use the following example**::
-
-   .. code-block:: python
-
-      class Foo:
-
-         def __init__(self, x):
-            self.x = x
+-----
 
 .. toctree::
 
-   member1
-   member2
-   member3
-   member4
-   member5
+   Mert Yıldız
+   Hasan Hüseyin Çağlar
+   Şevket Cerit
+   Halit Uğurgelen
+   Aydoğdu Demirci
+   Mustafa Çoban
