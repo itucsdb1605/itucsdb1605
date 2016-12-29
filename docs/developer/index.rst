@@ -12,8 +12,9 @@ Bu proje kapsamında 15 tablo gerçeklenmiş olup, bu tablolar arasındaki iliş
    Varlık-İlişki Diagramı
 
 
-Tablolar ve birbirleriyle ilişkileri hakkında daha detaylı bilgi her tasarımcının kendi kısmında ayrıca verilecektir.
-| **PK ve FK** sembolleri sırasıyla birincil ve dış anahtarları belirtir.
+Tablolar ve birbirleriyle ilişkileri hakkında daha detaylı bilgi her tasarımcının kendi kısmında ayrıca verilecektir. 
+
+**PK ve FK** sembolleri sırasıyla birincil ve dış anahtarları belirtir.
 
 Code
 -----
