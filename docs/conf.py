@@ -197,7 +197,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'itucsdb.tex', 'itucsdb1605 IsteSen Documentation',
+  ('index', 'itucsdb.tex', 'itucsdb1605 IsteSen Proje Raporu',
    'itucsdb1605 IsteSen', 'manual'),
 ]
 
@@ -227,7 +227,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'itucsdb', 'itucsdb1605 IsteSen Documentation',
+    ('index', 'itucsdb', 'itucsdb1605 IsteSen Proje Raporu',
      ['itucsdb1605 IsteSen'], 1)
 ]
 
@@ -241,7 +241,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'itucsdb', 'itucsdb1605 IsteSen Documentation',
+  ('index', 'itucsdb', 'itucsdb1605 IsteSen Proje Raporu',
    'itucsdb1605 IsteSen', 'itucsdb1605', 'IsteSen',
    'Miscellaneous'),
 ]
