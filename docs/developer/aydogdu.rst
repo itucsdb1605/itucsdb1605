@@ -12,7 +12,7 @@ Kullanılan Psycopg2 Metodları
 
 İş Ortakları Class Yapısı
 -------------------------
-İş Ortakları varlığının class yapısı partners.py konumunda tanımlanmıştır. Bu class yapısında listeleyen, kayıt ekleyen, kayıt silen ve kayıt güncelleyen fonksiyonlar tanımlıdır.
+İş Ortakları varlığının class yapısı *partners.py* konumunda tanımlanmıştır. Bu class yapısında listeleyen, kayıt ekleyen, kayıt silen ve kayıt güncelleyen fonksiyonlar tanımlıdır.
 
 *Listeleme*
 -------------------------
