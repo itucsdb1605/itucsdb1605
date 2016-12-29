@@ -16,7 +16,7 @@ itucsdb1605 Proje Raporuna Hoşgeldiniz
 
 İnsanların, öğrencilerin, yeni mezunların, şirketlerin, üniversitelerin ve ilgili bağlantılarının kariyer bağlamında birbirleriyle etkileşim kurabilecekleri bir sosyal medya platformu olarak tasarlanmış bir sitedir. Bu sitenin veri tabanı konuyla alakalı olan varlıkların gerçeklendiği çok çeşitli tablolar içermekte olup, kullanıcılara da bu tablolar üzerinde ekleme, silme, seçme ve güncelleme gibi işlemler yapmasına izin vermektedir.
 
-.. figure:: main.png
+.. figure:: user/images/mert/main.png
 
    İşteSen Giriş Sayfası
 
