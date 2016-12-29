@@ -105,8 +105,6 @@ Kullanılan Psycopg2 Metodları
 | **execute**: Veritabanının çalışmasını sağlar.
 | **commit**: Bekleyen işlemi veritabanına işler.
 | **fetchall**: Sorgu sonuçlarının tüm satırlarını getirir.
-Arayüz İşlemleri ve Veritabanı İlişkisi
-----------------------------------------
 
 Arayüz İşlemleri ve Veritabanı İlişkisi
 =======================================
