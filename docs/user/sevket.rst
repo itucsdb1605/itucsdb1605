@@ -11,20 +11,24 @@ Giriş Sayfası
 .. figure:: images/sevket/giris.png
    :figclass: align-center
    
+   Kullanıcı Giriş Sayfası Ekranı
+   
 Siteye kayıtlı kullanıcıların mail adreslerini ve şifrelerini girerek giriş yapabilecekleri bölümdür.
 
 Kayıt Ol Sayfası
 ---------------------
 .. figure:: images/sevket/register.png
    :figclass: align-center
-
-**Kullanıcı Kayıt Sayfasına Erişim**
+   
+   Kullanıcı Kayıt Sayfasına Erişim Ekranı
 
 Siteye kayıt olmak isteyen kullanıcılar buradan kayıt olun linkine tıklayarak kullanıcı kayıt sayfasına geçiş yapabilirler.
 
 .. figure:: images/sevket/kayit2.png
    :figclass: align-center
-
+   
+   Kullanıcı Kayıt Ekranı
+   
 **Kayıt Ol Sayfası**
 
 Kayıt olmak isteyen kullanıcılar istenilen bilgilerini girerek siteye kayıt olabilirler.Tüm alanların doldurulması zorunludur.Üniversite bilgisi için sistemde kayıtlı üniversitelerden biri girilmelidir.
@@ -34,15 +38,19 @@ Kullanıcı Profil Sayfası
 
 .. figure:: images/sevket/profile1.png
    :figclass: align-center
-
+   
+   Kullanıcı Profil Sayfası Erişim Ekranı
+  
 **Kullanıcı profil Sayfasına Erişim**
 
 Kullanıcılar altındaki profil linkine tıklayarak kullanıcı profil sayfasına erişilebilir.
 
-**Kullanıcı profil Sayfası**
+Kullanıcı profil Sayfası
 
 .. figure:: images/sevket/profile2.png
    :figclass: align-center
-
+   
+   Kullanıcı Profil Sayfası Ekranı
+   
 Kullanıcı profil sayfasında kullanıcılar kayıtlı bilgilerini görüntüleyebilir.Değiştirmek istedikleri bilgileri girdikten sonra submit butonuyla yeni bilgilerini sisteme kayıt edebilirler.
 
