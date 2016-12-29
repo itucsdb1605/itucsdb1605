@@ -206,7 +206,7 @@ Sayfada ikinci ana öğe olarak kayıt ekleme arayüzü bulunur. Bu kısımda *p
 *Güncelleme*
 -------------------------
 
-Sayfada üçüncü ana öğe olarak güncelleme arayüzü bulunur. Bu kısımda *partners_page* url'si ile sunucuya bağlanılır ve veritabanından istenen *PartnerList*'deki veriler bir for döngüsü ile Bootstrap stili form kutucuklarına yazılı olarak ekrana getirilir her bir satır sonuna Bootstrap stili bir buton eklenir. Kullanıcı form kutucuklarına hazır yazılı olarak verilerde bir değişiklik yaptığında o satıra ait güncelle butonuna tıklarsa form kutucuklarında veriler *partners_to_update* istemiyle sunucuya submit edilir.
+Sayfada üçüncü ana öğe olarak güncelleme arayüzü bulunur. Bu kısımda *partners_page* url'si ile sunucuya bağlanılır ve veritabanından istenen *PartnerList*'deki veriler bir for döngüsü ile Bootstrap stili form kutucuklarına yazılı olarak ekrana getirilir ve her bir satır sonuna Bootstrap stili bir buton eklenir. Kullanıcı, form kutucuklarına yazılı olarak getirilmiş verilerde bir değişiklik yaptığında o satıra ait güncelle butonuna tıklar ve form kutucuklarındaki veriler *partners_to_update* istemiyle sunucuya submit edilir.
 
 .. code-block:: html
 
