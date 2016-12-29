@@ -1,22 +1,19 @@
-User Guide
+Kullanıcı Kılavuzu
 ==========
 
-**explain how your application works from the user perspective, use
-screenshots whereever appropriate**
+**İşteSen web sayfası her türlü kullanıcının kolayca kullanabileceği şekilde basit ve etkili bir tasarım yöntemi kullanılarak tasarlandı.**
 
-**to add a picture, use the following example**::
+.. figure:: ../main.png
+   :alt: map to buried treasure
+   :figclass: align-center
 
-   .. figure:: picture.png
-      :scale: 50 %
-      :alt: map to buried treasure
-
-      This is the caption of the figure (a simple paragraph).
+   Giriş Sayfası
 
 .. toctree::
 
-   member1
-   member2
-   member3
-   member4
-   member5
-   
+   Mert Yıldız
+   Hasan Hüseyin Çağlar
+   Şevket Cerit
+   Halit Uğurgelen
+   Aydoğdu Demirci
+   Mustafa Çoban
