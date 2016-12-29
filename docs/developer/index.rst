@@ -21,9 +21,9 @@ Code
 
 .. toctree::
 
-   Mert Yıldız
-   Hasan Hüseyin Çağlar
-   Şevket Cerit
-   Halit Uğurgelen
-   Aydoğdu Demirci
-   Mustafa Çoban
+   sevket
+   mert
+   caglarh
+   mustafa
+   halit
+   aydogdu
