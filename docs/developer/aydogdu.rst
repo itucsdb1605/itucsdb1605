@@ -36,6 +36,10 @@ Aydoğdu Demirci Tarafından Gerçeklenen İşlemler
             cursor.execute(query)
             connection.commit()
 
+İş Ortakları Class Yapısı
+-------------------------
+İş Ortakları varlığının class yapısı *partners.py* konumunda tanımlanmıştır. Bu class yapısında listeleyen, kayıt ekleyen, kayıt silen ve kayıt güncelleyen fonksiyonlar tanımlıdır.
+
 Kullanılan Psycopg2 Metodları
 --------------------------------
 
@@ -43,11 +47,6 @@ Kullanılan Psycopg2 Metodları
 | **execute**: Veritabanının çalışmasını sağlar.
 | **commit**: Bekleyen işlemi veritabanına işler.
 | **fetchall**: Sorgu sonuçlarının tüm satırlarını getirir.
-
-
-İş Ortakları Class Yapısı
--------------------------
-İş Ortakları varlığının class yapısı *partners.py* konumunda tanımlanmıştır. Bu class yapısında listeleyen, kayıt ekleyen, kayıt silen ve kayıt güncelleyen fonksiyonlar tanımlıdır.
 
 *Listeleme*
 -------------------------
