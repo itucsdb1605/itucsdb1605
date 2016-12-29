@@ -1,10 +1,13 @@
-İlgili alanlar Hasan Hüseyin ÇAĞLAR tarafından gerçekleştirilmiştir.
+Hasan Hüseyin ÇAĞLAR (caglarh - 150110042)
 ======
-Github ve İTÜ kullanıcı adı: caglarh
-------
-İTÜ Öğrenci No: 150110042
-------
 
-Bu rapor bölümünde İşteSen adlı sosyal medya sitesinin Makaleler, Bağlantılar ve Etkinlikler sayfalarının(varlıklarının) bilgilerini görebilirsiniz.
+Raporun bu bölümünde İşteSen adlı sosyal medya sitesinin Makaleler, Bağlantılar ve Etkinlikler sayfalarının(varlıklarının) ekran görüntülerini ve bilgilerini inceleyebilirsiniz.
 
-   Bağlantıları listeleme ekranı
+MAKALELER
+--------
+
+BAĞLANTILAR
+-----------
+
+ETKİNLİKLER
+---------
