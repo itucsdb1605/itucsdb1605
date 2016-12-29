@@ -87,12 +87,13 @@ Siteye kayıt olmak isteyen kullanıcılar email,ad,soyad,üniversite ve şifre 
         now = datetime.datetime.now()
         return redirect(url_for('page_login'))
 
-Kullanıcı Kayıt
+Kullanıcı Profil
 -------------------------
 
-Kullanıcı profil sayfasında bilgilerini güncelleyebilir.
+Kullanıcı profil sayfasında bilgilerini güncelleyebilir.Formda yer alan mail bilgisi veritabanında kontrol edilir ve eşlesen kullanıcının yeni girilen bilgileri veritabanına kaydedilir.
 
 .. code-block:: python
+
   @app.route('/user_update', methods=['GET', 'POST'])
   def user_update():
     user = users(app.config['dsn'])
@@ -111,4 +112,5 @@ Kullanıcı profil sayfasında bilgilerini güncelleyebilir.
         cursor.execute(statement)
         connection.commit()
         now = datetime.datetime.now()
-        return redirect(url_for('page_profile'))
+        return redirect(url_for('page_profile'))  
+        
