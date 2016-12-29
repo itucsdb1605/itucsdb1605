@@ -104,7 +104,7 @@ Bağlantı Ekle
    
 .. figure:: images/caglarh/baglantilar_4.PNG
    :figclass: align-center
- *Eklenen yeni bağlantı da listelenir*
+*Eklenen yeni bağlantı da listelenir*
    
 Bağlantı Sil
 ++++++++++++++++++++++++
