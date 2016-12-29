@@ -16,7 +16,7 @@ Tablolar ve birbirleriyle ilişkileri hakkında daha detaylı bilgi her tasarım
 
 **PK ve FK** sembolleri sırasıyla birincil ve dış anahtarları belirtir.
 
-Code
+Kod
 -----
 
 .. toctree::
