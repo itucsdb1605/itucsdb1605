@@ -131,7 +131,7 @@ Etkinlikler(Listeleme)
 
 Etkinlik Oluştur
 ++++++++++++++++++++++++
-.. figure:: images/caglarh/etkinlikler_2.PNG
+.. figure:: images/caglarh/etkinlikler_8.PNG
    :figclass: align-center
 *Yeni etkinliğin verileri girilir*
 
