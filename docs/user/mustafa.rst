@@ -82,9 +82,9 @@ GRUPLAR
 .. figure:: images/mustafa/gruplargoruntuleme1.png
    :figclass: align-center
    :scale: 75%
-   :alt: Grup Ekleme Sayfası Ekran Görüntüsü
+   :alt: Grup Görüntüleme Sayfası Ekran Görüntüsü
 
-   Grup Ekleme Sayfası
+   Grup Görüntüleme Sayfası
 
 Bu sayfada bütün gruplar tablo halinde listelenmektedir. Her grubun adı ve tanımı o grubun içeriğine yönlendiren linkler
 olarak kullanılmaktadır. Her grubun yanında bulunan *Üye ol* check boxı ile kullanıcı istediği gruba üye olabilmektedir.
