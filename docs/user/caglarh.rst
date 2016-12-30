@@ -10,10 +10,12 @@ Raporun bu bölümünde İşteSen adlı sosyal medya sitesinin Makaleler, Bağla
    
 MAKALELER
 -----------
+
 Makaleler sayfası kullanıcıların çoğunlukla akademik kariyerlerinde önemli yer tutan makale yayınlarının bilgileri tutulması amacıyla geliştirilmiştir. Kullacılar yeni makale ekleyebilir, var olan makaleleri güncelleyebilir veya onları silebilir. Kullanıcılar diledikleri zaman veritabanında var olan tüm makaleleri listeleyebilirler.
 
 Listeleme
 ++++++++++++
+
 Makaleleri Listele alanına tıklanır. Seçim sorguları kullanılarak varlığa ait bütün mevcut kayıtlar listelenir.
 
 .. figure:: images/caglarh/makaleler_1.PNG
@@ -23,6 +25,7 @@ Makaleleri Listele alanına tıklanır. Seçim sorguları kullanılarak varlığ
    
 Ekleme
 +++++++++
+
 Makale Ekle alanına tıklanır. Yeni veriler girilerek Makale ekle butonuyla onaylanır, eklenen kayıt tekrar listelenip tabloya kaydedildiği görülür.
 
 .. figure:: images/caglarh/makaleler_2.PNG
@@ -38,6 +41,7 @@ Makale Ekle alanına tıklanır. Yeni veriler girilerek Makale ekle butonuyla on
 
 Güncelleme
 +++++++++++++
+
 Makale Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile seçilip onay butonuna basılır. İlgili kayıda ait gelen  veriler tekrardan değiştirilip Makale Güncelle butonuna basılarak onaya gönderilir. En son olarak değişen veriler listeleme alanından gözlemlenir.
 
 .. figure:: images/caglarh/makaleler_4.PNG
@@ -58,6 +62,7 @@ Makale Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile seç
 
 Silme
 +++++++
+
 Makale Sil alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, sonra Seçili Makaleleri Sil onay butonuna basılarak silme işlemi yapılır. Listeleme ekranında artık silinen kayıtlar görülmez.
 
 .. figure:: images/caglarh/makaleler_7.PNG
@@ -78,6 +83,7 @@ Bağlantılar sayfası kullanıcıların birbirleriyle arkadaşlık ilişkilerin
 
 Kişi Bazında Listeleme
 ++++++++++++++++++++++++++++
+
 Kişi Bazında Listeleme alanına tıklanır. Kullanıcı seçimi yapılır ve Kişiyi Seç onay butonuna basılır. Seçilen kullanıcının  arkadaşları ekrana listelenir.
 
 .. figure:: images/caglarh/baglantilar_1.PNG
@@ -87,6 +93,7 @@ Kişi Bazında Listeleme alanına tıklanır. Kullanıcı seçimi yapılır ve K
 
 Üniversite Bazında Listeleme
 ++++++++++++++++++++++++++++++++++
+
 Üniversite Bazında Listeleme alanına tıklanır. Üniversite seçimi yapılır sonra Üniversiteyi Seç onay butonuna tıklanır. Seçilen üniversiteye bağlı kullanıcılar listelenir.
 
 .. figure:: images/caglarh/baglantilar_2.PNG
@@ -96,6 +103,7 @@ Kişi Bazında Listeleme alanına tıklanır. Kullanıcı seçimi yapılır ve K
  
 Bağlantı Ekle
 ++++++++++++++++++++++++
+
 Bağlantı Ekle alanına tıklanır. Seçilen kullanıcıya bağlantı olarak eklenmek isteyen arkadaş kullanıcı seçilir, sonra Bağlantıyı Onayla'ta basılır. Eklenen bağlantı Kişi Bazında Listeleme alanından kontrol edilir.
 
 .. figure:: images/caglarh/baglantilar_3.PNG
@@ -110,6 +118,7 @@ Bağlantı Ekle alanına tıklanır. Seçilen kullanıcıya bağlantı olarak ek
    
 Bağlantı Sil
 ++++++++++++++++++++++++
+
 Bağlantı Sil alanına basılır. 'CheckBox'lar ile seçilen kullanıcılar bağlantıdan çıkarılmak üzere Seçili Bağlantıları Sil Butonuna basılır. Silinen bağlantılar artık listeleme bölümünde görünmeyecektir.
 
 .. figure:: images/caglarh/baglantilar_5.PNG
@@ -124,10 +133,12 @@ Bağlantı Sil alanına basılır. 'CheckBox'lar ile seçilen kullanıcılar ba�
 
 ETKİNLİKLER
 ---------
+
 Etkinlikler sayfası kullanıcılar tarafından oluşturulan ve belli bir konu hakkında belli bir mekanda düzenlemeyi planladıkları aktiviteler için işlemlerin gerçekleştiği sayfadır. Tıpkı makalelerde olduğu gibi listeleme, ekleme, silme ve güncelleme işlemleri yapılır.
 
 Etkinlikler(Listeleme)
 ++++++++++++++++++++++++
+
 Etkinlikler alanına tıklanır. Seçim sorguları kullanılarak varlığa ait bütün mevcut kayıtlar listelenir.
 
 .. figure:: images/caglarh/etkinlikler_1.PNG
@@ -137,6 +148,7 @@ Etkinlikler alanına tıklanır. Seçim sorguları kullanılarak varlığa ait b
 
 Etkinlik Oluştur
 ++++++++++++++++++++++++
+
 Etkinlik Oluştur alanına tıklanır. Yeni veriler girilerek Etkinliği Oluştur butonuyla onaylanır, eklenen kayıt tekrar listelenip tabloya kaydedildiği görülür.
 
 .. figure:: images/caglarh/etkinlikler_8.PNG
@@ -151,6 +163,7 @@ Etkinlik Oluştur alanına tıklanır. Yeni veriler girilerek Etkinliği Oluştu
 
 Etkinliği Kaldır
 ++++++++++++++++++++++++
+
 Etkinliği Kaldır alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, sonra Seçili Etkinlikleri Kaldır onay butonuna basılarak silme işlemi yapılır. Listeleme ekranında artık silinen kayıtlar görülmez.
 
 .. figure:: images/caglarh/etkinlikler_6.PNG
@@ -165,6 +178,7 @@ Etkinliği Kaldır alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar se
 
 Etkinliği Güncelle
 ++++++++++++++++++++++++
+
 Etkinliği Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile seçilip onay butonuna basılır. İlgili kayıda ait gelen veriler tekrardan değiştirilip Etkinliği Güncelle butonuna basılarak onaya gönderilir. En son olarak değişen veriler listeleme yalanından gözlemlenir.
 
 .. figure:: images/caglarh/etkinlikler_3.PNG
