@@ -4,6 +4,7 @@ Raporun bu bölümünde İşteSen adlı sosyal medya sitesinin Makaleler, Bağla
 
 .. figure:: images/caglarh/kategoriler.PNG
     :figclass: align-center
+    :scale: 50 %
     
     Kategorilerden istenilen sayfalara erişim
    
@@ -17,6 +18,7 @@ Makaleleri Listele alanına tıklanır. Seçim sorguları kullanılarak varlığ
 
 .. figure:: images/caglarh/makaleler_1.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Tüm makaleler listelenir
    
@@ -26,11 +28,13 @@ Makale Ekle alanına tıklanır. Yeni veriler girilerek Makale ekle butonuyla on
 
 .. figure:: images/caglarh/makaleler_2.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Yeni oluşturulacak makalenin verileri girilir
 
 .. figure:: images/caglarh/makaleler_3.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Eklenen yeni makale listeleme alanında görülür
 
@@ -40,16 +44,19 @@ Makale Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile seç
 
 .. figure:: images/caglarh/makaleler_4.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Güncellenmek istenen makale seçilir
    
 .. figure:: images/caglarh/makaleler_5.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Yeni veriler girilir
 
 .. figure:: images/caglarh/makaleler_6.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Güncellenen kayıt listelenir
 
@@ -59,12 +66,14 @@ Makale Sil alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, 
 
 .. figure:: images/caglarh/makaleler_7.PNG
    :figclass: align-center
-
+   :scale: 50 %
+    
    Silme tekli veya çoklu olabilir
    
 .. figure:: images/caglarh/makaleler_8.PNG
    :figclass: align-center
-
+   :scale: 50 %
+   
    Silinen makaleler artık listelenemez
  
 BAĞLANTILAR
@@ -77,7 +86,8 @@ Kişi Bazında Listeleme alanına tıklanır. Kullanıcı seçimi yapılır ve K
 
 .. figure:: images/caglarh/baglantilar_1.PNG
    :figclass: align-center
-
+   :scale: 50 %
+   
    Seçilen Kişiye göre gelen kayıtlar
 
 Üniversite Bazında Listeleme
@@ -86,6 +96,7 @@ Kişi Bazında Listeleme alanına tıklanır. Kullanıcı seçimi yapılır ve K
 
 .. figure:: images/caglarh/baglantilar_2.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Seçilen üniversite altında bulunan bağlantılar
  
@@ -95,11 +106,13 @@ Bağlantı Ekle alanına tıklanır. Seçilen kullanıcıya bağlantı olarak ek
 
 .. figure:: images/caglarh/baglantilar_3.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Eklemek üzere yeni bir bağlantı seçilir
    
 .. figure:: images/caglarh/baglantilar_5.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Eklenen yeni bağlantı da listelenir
    
@@ -109,11 +122,13 @@ Bağlantı Sil alanına basılır. 'CheckBox'lar ile seçilen kullanıcılar ba�
 
 .. figure:: images/caglarh/baglantilar_4.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Silinecek bağlantılar seçilir
    
 .. figure:: images/caglarh/baglantilar_6.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Bağlantıların son hali de listelenir
 
@@ -127,6 +142,7 @@ Etkinlikler alanına tıklanır. Seçim sorguları kullanılarak varlığa ait b
 
 .. figure:: images/caglarh/etkinlikler_1.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Tüm etkinlikler listelenir
 
@@ -136,11 +152,13 @@ Etkinlik Oluştur alanına tıklanır. Yeni veriler girilerek Etkinliği Oluştu
 
 .. figure:: images/caglarh/etkinlikler_8.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Yeni etkinliğin verileri girilir
 
 .. figure:: images/caglarh/etkinlikler_2.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Eklenen etkinlik listelenir
 
@@ -150,11 +168,13 @@ Etkinliği Kaldır alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar se
 
 .. figure:: images/caglarh/etkinlikler_6.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Silinecek kayıtlar seçilir
 
 .. figure:: images/caglarh/etkinlikler_7.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Silinen veriler listeden kalkar
 
@@ -164,15 +184,18 @@ Etkinliği Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile 
 
 .. figure:: images/caglarh/etkinlikler_3.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Güncellenecek etkinlik seçilir
 
 .. figure:: images/caglarh/etkinlikler_4.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Yeni etkinlik verileri girlir
 
 .. figure:: images/caglarh/etkinlikler_5.PNG
    :figclass: align-center
+   :scale: 50 %
    
    Güncellenen veri listelenir
