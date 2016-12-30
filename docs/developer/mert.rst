@@ -421,7 +421,7 @@ Eğer yanlış değer girilirse hata sayfasına yönlendirilir.(404.html)
         self.Local = local
         self.Population = population
 
-Üniversiteler İçin Yazılan Fonksiyonlar
+Şşirketler İçin Yazılan Fonksiyonlar
 +++++++++++++++++++++++++++++++++++++++
  
 Bu varlığın tablolarına ekleme, silme, güncelleme ve seçme işlemlerinin yapılabilmesi için gerekli olan kodlar projede "companies.py" dosyasının altındadır.
