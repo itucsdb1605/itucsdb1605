@@ -21,9 +21,9 @@ Kod
 
 .. toctree::
 
-   sevket
+   halit
    mert
    caglarh
    mustafa
-   halit
    aydogdu
+   sevket
