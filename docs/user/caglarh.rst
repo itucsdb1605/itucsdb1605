@@ -8,7 +8,7 @@ tıkladıktan sonra Makaleler, Bağlantılar veya Etkinlikler seçeneklerine tı
 .. figure:: images/caglarh/kategoriler.PNG
     :figclass: align-center
     
-*Kategorilerden istenilen sayfalara erişim*
+    Kategorilerden istenilen sayfalara erişim
    
 MAKALELER
 -----------
@@ -18,63 +18,65 @@ Kullanıcılar diledikleri zaman veritabanında var olan tüm makaleleri listele
 
 Listeleme
 ++++++++++++
-Makaleleri Listele alanına basılır. Seçim sorguları kullanılarak varlığa ait bütün mevcut kayıtlar listelenir.
+Makaleleri Listele alanına tıklanır. Seçim sorguları kullanılarak varlığa ait bütün mevcut kayıtlar listelenir.
 
 .. figure:: images/caglarh/makaleler_1.PNG
    :figclass: align-center
    
-*Tümm makaleler listelenir*
+   Tüm makaleler listelenir
    
 Ekleme
 +++++++++
-Makale Ekle alanına basılır. Yeni veriler girilerek onaylanır, eklenen kayıt tekrar listelenip tabloya kaydedildiği görülür.
+Makale Ekle alanına tıklanır. Yeni veriler girilerek Makale ekle butonuyla onaylanır, eklenen kayıt tekrar listelenip tabloya
+kaydedildiği görülür.
 
 .. figure:: images/caglarh/makaleler_2.PNG
    :figclass: align-center
    
-*Yeni oluşturulacak makalenin verileri girilir*
+   Yeni oluşturulacak makalenin verileri girilir
 
 .. figure:: images/caglarh/makaleler_3.PNG
    :figclass: align-center
    
-*Eklenen yeni makale listeleme alanında görülür*
+   Eklenen yeni makale listeleme alanında görülür
 
 
 Güncelleme
 +++++++++++++
-Makale Güncelle alanona basılır. Listeden bir kayıt 'radiobutton' ile seçilip onay butonuna basılır. İlgili kayıda ait gelen 
-veriler tekrardan değiştirilip onaya gönderilir. En son olarak değişen veriler listeleme alanından gözlemlenir.
+Makale Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile seçilip onay butonuna basılır. İlgili kayıda ait gelen 
+veriler tekrardan değiştirilip Makale Güncelle butonuna basılarak onaya gönderilir. En son olarak değişen veriler listeleme
+alanından gözlemlenir.
 
 .. figure:: images/caglarh/makaleler_4.PNG
    :figclass: align-center
    
-*Güncellenmek istenen makale seçilir*
+   Güncellenmek istenen makale seçilir
    
 .. figure:: images/caglarh/makaleler_5.PNG
    :figclass: align-center
    
-*Yeni veriler girilir*
+   Yeni veriler girilir
 
 .. figure:: images/caglarh/makaleler_6.PNG
    :figclass: align-center
    
-*Güncellenen kayıt listelenir*
+   Güncellenen kayıt listelenir
 
 
 Silme
 +++++++
-Makale Sil alanına basılır. 'CheckBox'lar ile istenilen kayıtlar seçilir, sonra onay butonuna basılarak silme işlemi yapılır. 
-Listeleme ekranında artık silinen kayıtlar görülmez.
+Makale Sil alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, sonra Seçili Makaleleri Sil onay butonuna basılarak
+silme işlemi yapılır. Listeleme ekranında artık silinen kayıtlar görülmez.
 
 .. figure:: images/caglarh/makaleler_7.PNG
    :figclass: align-center
 
-*Silme tekli veya çoklu olabilir*
+   Silme tekli veya çoklu olabilir
    
 .. figure:: images/caglarh/makaleler_8.PNG
    :figclass: align-center
 
-*Silinen makaleler artık listelenemez*
+   Silinen makaleler artık listelenemez
 
    
 BAĞLANTILAR
@@ -87,45 +89,51 @@ bağlantılar tekli veya çoklu olarak silinebilir.
 
 Kişi Bazında Listeleme
 ++++++++++++++++++++++++++++
+Kişi Bazında Listeleme alanına tıklanır. Kullanıcı seçimi yapılır ve Kişiyi Seç onay butonuna basılır. Seçilen kullanıcının 
+arkadaşları ekrana listelenir.
 
 .. figure:: images/caglarh/baglantilar_1.PNG
    :figclass: align-center
 
-*Seçilen Kişiye göre gelen kayıtlar*
+   Seçilen Kişiye göre gelen kayıtlar
 
 Üniversite Bazında Listeleme
 ++++++++++++++++++++++++++++++++++
+Üniversite Bazında Listeleme alanına tıklanır. Üniversite seçimi yapılır sonra Üniversiteyi Seç onay butonuna tıklanır. Seçilen
+üniversiteye bağlı kullanıcılar listelenir.
 
 .. figure:: images/caglarh/baglantilar_2.PNG
    :figclass: align-center
    
-*Seçilen üniversite altında bulunan bağlantılar*
+   Seçilen üniversite altında bulunan bağlantılar
  
 Bağlantı Ekle
 ++++++++++++++++++++++++
+Bağlantı Ekle alanına tıklanır. Seçilen kullanıcıya bağlantı olarak eklenmek isteyen arkadaş kullanıcı seçilir, sonra Bağlantıyı Onayla'ta basılır. Eklenen bağlantı Kişi Bazında Listeleme alanından kontrol edilir.
 
 .. figure:: images/caglarh/baglantilar_3.PNG
    :figclass: align-center
    
-*Eklemek üzere yeni bir bağlantı seçilir*
+   Eklemek üzere yeni bir bağlantı seçilir
    
 .. figure:: images/caglarh/baglantilar_4.PNG
    :figclass: align-center
    
-*Eklenen yeni bağlantı da listelenir*
+   Eklenen yeni bağlantı da listelenir
    
 Bağlantı Sil
 ++++++++++++++++++++++++
+Bağlantı Sil alanına basılır. 'CheckBox'lar ile seçilen kullanıcılar bağlantıdan çıkarılmak üzere Seçili Bağlantıları Sil Butonuna basılır. Silinen bağlantılar artık listeleme bölümünde görünmeyecektir.
 
 .. figure:: images/caglarh/baglantilar_5.PNG
    :figclass: align-center
    
-*Silinecek bağlantılar seçilir*
+   Silinecek bağlantılar seçilir
    
 .. figure:: images/caglarh/baglantilar_6.PNG
    :figclass: align-center
    
-*Bağlantıların son hali de listelenir*
+   Bağlantıların son hali de listelenir
 
 ETKİNLİKLER
 ---------
@@ -135,52 +143,60 @@ işlemleri yapılır.
 
 Etkinlikler(Listeleme)
 ++++++++++++++++++++++++
+Etkinlikler alanına tıklanır. Seçim sorguları kullanılarak varlığa ait bütün mevcut kayıtlar listelenir.
 
 .. figure:: images/caglarh/etkinlikler_1.PNG
    :figclass: align-center
    
-*Tüm etkinlikler listelenir*
+   Tüm etkinlikler listelenir
 
 Etkinlik Oluştur
 ++++++++++++++++++++++++
+Etkinlik Oluştur alanına tıklanır. Yeni veriler girilerek Etkinliği Oluştur butonuyla onaylanır, eklenen kayıt tekrar listelenip
+tabloya kaydedildiği görülür.
 
 .. figure:: images/caglarh/etkinlikler_8.PNG
    :figclass: align-center
    
-*Yeni etkinliğin verileri girilir*
+   Yeni etkinliğin verileri girilir
 
 .. figure:: images/caglarh/etkinlikler_2.PNG
    :figclass: align-center
    
-*Eklenen etkinlik listelenir*
+   Eklenen etkinlik listelenir
 
 Etkinliği Kaldır
 ++++++++++++++++++++++++
+Etkinliği Kaldır alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, sonra Seçili Etkinlikleri Kaldır onay butonuna
+basılarak silme işlemi yapılır. Listeleme ekranında artık silinen kayıtlar görülmez.
 
 .. figure:: images/caglarh/etkinlikler_6.PNG
    :figclass: align-center
    
-*Silinecek kayıtlar seçilir*
+   Silinecek kayıtlar seçilir
 
 .. figure:: images/caglarh/etkinlikler_7.PNG
    :figclass: align-center
    
-*Silinen veriler listeden kalkar*
+   Silinen veriler listeden kalkar
 
 Etkinliği Güncelle
 ++++++++++++++++++++++++
+Etkinliği Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile seçilip onay butonuna basılır. İlgili kayıda ait
+gelen veriler tekrardan değiştirilip Etkinliği Güncelle butonuna basılarak onaya gönderilir. En son olarak değişen veriler
+listeleme yalanından gözlemlenir.
 
 .. figure:: images/caglarh/etkinlikler_3.PNG
    :figclass: align-center
    
-*Güncellenecek etkinlik seçilir*
+   Güncellenecek etkinlik seçilir
 
 .. figure:: images/caglarh/etkinlikler_4.PNG
    :figclass: align-center
    
-*Yeni etkinlik verileri girlir*
+   Yeni etkinlik verileri girlir
 
 .. figure:: images/caglarh/etkinlikler_5.PNG
    :figclass: align-center
    
-*Güncellenen veri listelenir*
+   Güncellenen veri listelenir
