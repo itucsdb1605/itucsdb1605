@@ -18,6 +18,7 @@ Kullanıcılar diledikleri zaman veritabanında var olan tüm makaleleri listele
 
 Listeleme
 ++++++++++++
+Makaleleri Listele alanına basılır. Seçim sorguları kullanılarak varlığa ait bütün mevcut kayıtlar listelenir.
 
 .. figure:: images/caglarh/makaleler_1.PNG
    :figclass: align-center
@@ -26,6 +27,7 @@ Listeleme
    
 Ekleme
 +++++++++
+Makale Ekle alanına basılır. Yeni veriler girilerek onaylanır, eklenen kayıt tekrar listelenip tabloya kaydedildiği görülür.
 
 .. figure:: images/caglarh/makaleler_2.PNG
    :figclass: align-center
@@ -40,6 +42,8 @@ Ekleme
 
 Güncelleme
 +++++++++++++
+Makale Güncelle alanona basılır. Listeden bir kayıt 'radiobutton' ile seçilip onay butonuna basılır. İlgili kayıda ait gelen 
+veriler tekrardan değiştirilip onaya gönderilir. En son olarak değişen veriler listeleme alanından gözlemlenir.
 
 .. figure:: images/caglarh/makaleler_4.PNG
    :figclass: align-center
@@ -59,6 +63,8 @@ Güncelleme
 
 Silme
 +++++++
+Makale Sil alanına basılır. 'CheckBox'lar ile istenilen kayıtlar seçilir, sonra onay butonuna basılarak silme işlemi yapılır. 
+Listeleme ekranında artık silinen kayıtlar görülmez.
 
 .. figure:: images/caglarh/makaleler_7.PNG
    :figclass: align-center
@@ -100,10 +106,12 @@ Bağlantı Ekle
 
 .. figure:: images/caglarh/baglantilar_3.PNG
    :figclass: align-center
+   
 *Eklemek üzere yeni bir bağlantı seçilir*
    
 .. figure:: images/caglarh/baglantilar_4.PNG
    :figclass: align-center
+   
 *Eklenen yeni bağlantı da listelenir*
    
 Bağlantı Sil
@@ -111,10 +119,12 @@ Bağlantı Sil
 
 .. figure:: images/caglarh/baglantilar_5.PNG
    :figclass: align-center
+   
 *Silinecek bağlantılar seçilir*
    
 .. figure:: images/caglarh/baglantilar_6.PNG
    :figclass: align-center
+   
 *Bağlantıların son hali de listelenir*
 
 ETKİNLİKLER
@@ -125,28 +135,36 @@ işlemleri yapılır.
 
 Etkinlikler(Listeleme)
 ++++++++++++++++++++++++
+
 .. figure:: images/caglarh/etkinlikler_1.PNG
    :figclass: align-center
+   
 *Tüm etkinlikler listelenir*
 
 Etkinlik Oluştur
 ++++++++++++++++++++++++
+
 .. figure:: images/caglarh/etkinlikler_8.PNG
    :figclass: align-center
+   
 *Yeni etkinliğin verileri girilir*
 
 .. figure:: images/caglarh/etkinlikler_2.PNG
    :figclass: align-center
+   
 *Eklenen etkinlik listelenir*
 
 Etkinliği Kaldır
 ++++++++++++++++++++++++
+
 .. figure:: images/caglarh/etkinlikler_6.PNG
    :figclass: align-center
+   
 *Silinecek kayıtlar seçilir*
 
 .. figure:: images/caglarh/etkinlikler_7.PNG
    :figclass: align-center
+   
 *Silinen veriler listeden kalkar*
 
 Etkinliği Güncelle
@@ -154,12 +172,15 @@ Etkinliği Güncelle
 
 .. figure:: images/caglarh/etkinlikler_3.PNG
    :figclass: align-center
+   
 *Güncellenecek etkinlik seçilir*
 
 .. figure:: images/caglarh/etkinlikler_4.PNG
    :figclass: align-center
+   
 *Yeni etkinlik verileri girlir*
 
 .. figure:: images/caglarh/etkinlikler_5.PNG
    :figclass: align-center
+   
 *Güncellenen veri listelenir*
