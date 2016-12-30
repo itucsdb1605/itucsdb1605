@@ -237,14 +237,12 @@ Sırasıyla fonksiyonların özellikleri şu şekilde özetlenebilir:
    - **set_name**: grup ismi bilgisini belirler
    - **set_description**: grup tanımı bilgisini belirler
    - **find_group_name**: parametre olarak verilen id'ye sahip grubun ismini dönderir
-   - **get_groups**: Eğer nesnenin id değeri *None* ise bütün grup bilgilerini, id değeri
-                     None değilse o idye sahip grubun bilgilerini dönderir
+   - **get_groups**: Eğer nesnenin id değeri *None* ise bütün grup bilgilerini, id değeri None değilse o idye sahip grubun bilgilerini dönderir
    - **delete_groups**: parametre olarak verilen idlere ait grupları *Groups* tablosundan siler
    - **update_group**: *Groups* tablosunda o nesnenin bilgilerini barındıran grubu günceller
    - **create_group**: *Groups* tablosunda o nesnenin bilgilerini barındıran bir grup oluşturur
    - **add_member**: parametre olarak verilen userid ve role'ü barındıran bir üyeyi *Membership* tablosuna ekler
-   - **get_members**: parametre olarak verilen idye sahip grubun üyelerinin bilgilerini *Membership*
-                      ve *User* tablolarından katma işlemiyle ulaşarak dönderir.
+   - **get_members**: parametre olarak verilen idye sahip grubun üyelerinin bilgilerini *Membership* ve *User* tablolarından katma işlemiyle ulaşarak dönderir.
 
 
 
@@ -281,7 +279,5 @@ Sırasıyla fonksiyonların özellikleri şu şekilde özetlenebilir:
                     cursor.execute(statement.format(id))
 
 Sırasıyla fonksiyonların özellikleri şu şekilde özetlenebilir:
-  - **send**: O mesaj nesnesine ait *senderId*, *receiverId* ve *text* değişkenlerini
-               kullanarak *Messages* tablosuna yeni bir mesaj ekler.
-  - **delete_messages**: parametre olarak verilen id'lere sahip mesajları
-                        *Messages* tablosundan siler.
+  - **send**: O mesaj nesnesine ait *senderId*, *receiverId* ve *text* değişkenlerini kullanarak *Messages* tablosuna yeni bir mesaj ekler.
+  - **delete_messages**: parametre olarak verilen id'lere sahip mesajları *Messages* tablosundan siler.
