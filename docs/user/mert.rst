@@ -85,7 +85,7 @@ Bu şekilde güncellenmek istenen üniversitenin linkine tıklandıktan sonra se
 Silme İşlemi
 ++++++++++++
 
-Herhangi bir üniversite silinmek istendiğinde sayfada yer alan üniversitelerin listelenmiş olduğu tabloda ilgili üniversitenin "Silinsin mi?" sütunu altında bulunan kontrol kutusu işaretlenmelidir. 
+Herhangi bir üniversite silinmek istendiğinde sayfada yer alan üniversitelerin listelenmiş olduğu tabloda ilgili üniversitenin "Silinsin mi?" sütunu altında bulunan kontrol kutusu işaretlenmelidir. Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten sonra sayfanın sonunda bulunan **Sil** butonu tıklanmalıdır. Bu işlemden sonra sayfa yenilenecek ve işaretlenmiş olan üniversiteler sayfadan ve arka planda veri tabanından kaldırılmış olacaklardır.
 
 .. figure:: images/mert/uni_sil.png
       :scale: 80 %
@@ -94,7 +94,7 @@ Herhangi bir üniversite silinmek istendiğinde sayfada yer alan üniversiteleri
    
       Üniversite Silmek için İşaretleme İşlemi
 
-Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten sonra sayfanın sonunda bulunan **Sil** butonu tıklanmalıdır. Bu işlemden sonra sayfa yenilenecek ve işaretlenmiş olan üniversiteler sayfadan ve arka planda veri tabanından kaldırılmış olacaklardır.
+
 
 .. figure:: images/mert/uni_sil_buton.png
       :scale: 80 %
