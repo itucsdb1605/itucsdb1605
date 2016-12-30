@@ -20,7 +20,7 @@ Makaleleri Listele alanına tıklanır. Seçim sorguları kullanılarak varlığ
 
 .. figure:: images/caglarh/makaleler_1.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Tüm makaleler listelenir
   
@@ -37,7 +37,7 @@ Makale Ekle alanına tıklanır. Yeni veriler girilerek Makale ekle butonuyla on
 
 .. figure:: images/caglarh/makaleler_3.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Eklenen yeni makale listeleme alanında görülür
 
@@ -54,13 +54,13 @@ Makale Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile seç
    
 .. figure:: images/caglarh/makaleler_5.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Yeni veriler girilir
 
 .. figure:: images/caglarh/makaleler_6.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Güncellenen kayıt listelenir
 
@@ -71,13 +71,13 @@ Makale Sil alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, 
 
 .. figure:: images/caglarh/makaleler_7.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
     
    Silme tekli veya çoklu olabilir
    
 .. figure:: images/caglarh/makaleler_8.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Silinen makaleler artık listelenemez
  
@@ -115,7 +115,7 @@ Bağlantı Ekle alanına tıklanır. Seçilen kullanıcıya bağlantı olarak ek
 
 .. figure:: images/caglarh/baglantilar_3.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Eklemek üzere yeni bir bağlantı seçilir
    
@@ -154,7 +154,7 @@ Etkinlikler alanına tıklanır. Seçim sorguları kullanılarak varlığa ait b
 
 .. figure:: images/caglarh/etkinlikler_1.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Tüm etkinlikler listelenir
 
@@ -171,7 +171,7 @@ Etkinlik Oluştur alanına tıklanır. Yeni veriler girilerek Etkinliği Oluştu
 
 .. figure:: images/caglarh/etkinlikler_2.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Eklenen etkinlik listelenir
 
@@ -182,7 +182,7 @@ Etkinliği Kaldır alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar se
 
 .. figure:: images/caglarh/etkinlikler_6.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Silinecek kayıtlar seçilir
 
@@ -205,12 +205,12 @@ Etkinliği Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile 
 
 .. figure:: images/caglarh/etkinlikler_4.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Yeni etkinlik verileri girlir
 
 .. figure:: images/caglarh/etkinlikler_5.PNG
    :figclass: align-center
-   :scale: 70 %
+   :scale: 80 %
    
    Güncellenen veri listelenir
