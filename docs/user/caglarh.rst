@@ -8,9 +8,12 @@ Raporun bu bölümünde İşteSen adlı sosyal medya sitesinin Makaleler, Bağla
     
     Kategorilerden istenilen sayfalara erişim
    
+   
+   
 MAKALELER
 ---------
 Makaleler sayfası kullanıcıların çoğunlukla akademik kariyerlerinde önemli yer tutan makale yayınlarının bilgileri tutulması amacıyla geliştirilmiştir. Kullacılar yeni makale ekleyebilir, var olan makaleleri güncelleyebilir veya onları silebilir. Kullanıcılar diledikleri zaman veritabanında var olan tüm makaleleri listeleyebilirler.
+
 
 Listeleme 
 +++++++++
@@ -21,7 +24,8 @@ Makaleleri Listele alanına tıklanır. Seçim sorguları kullanılarak varlığ
    :scale: 60 %
    
    Tüm makaleler listelenir
-   
+  
+  
 Ekleme
 ++++++
 Makale Ekle alanına tıklanır. Yeni veriler girilerek Makale ekle butonuyla onaylanır, eklenen kayıt tekrar listelenip tabloya kaydedildiği görülür. **(Fig. 1.25 ve 1.26'yı inceleyiniz.)**
@@ -37,6 +41,7 @@ Makale Ekle alanına tıklanır. Yeni veriler girilerek Makale ekle butonuyla on
    :scale: 60 %
    
    Eklenen yeni makale listeleme alanında görülür
+
 
 Güncelleme
 ++++++++++
@@ -60,6 +65,7 @@ Makale Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile seç
    
    Güncellenen kayıt listelenir
 
+
 Silme
 +++++
 Makale Sil alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, sonra Seçili Makaleleri Sil onay butonuna basılarak silme işlemi yapılır. Listeleme ekranında artık silinen kayıtlar görülmez. **(Fig. 1.30 ve 1.31'i inceleyiniz.)**
@@ -76,9 +82,12 @@ Makale Sil alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, 
    
    Silinen makaleler artık listelenemez
  
+ 
+ 
 BAĞLANTILAR
 -----------
 Bağlantılar sayfası kullanıcıların birbirleriyle arkadaşlık ilişkilerini  belirten ya da üniversite veya benzeri kurumsal    yapılar üzerinden ortaklık bağı bulunan kişilerle işlemlerin gerçekleştirildiği bölümdür. Kullanıcılar kişi bazında veya üniversite bazında filtrelemeler yaparak listemeleler yapabilir. Bir kişiye yeni bağlantı eklenebilir veya bir kişiye ait bağlantılar tekli veya çoklu olarak silinebilir.
+
 
 Kişi Bazında Listeleme
 ++++++++++++++++++++++
@@ -90,6 +99,7 @@ Kişi Bazında Listeleme alanına tıklanır. Kullanıcı seçimi yapılır ve K
    
    Seçilen Kişiye göre gelen kayıtlar
 
+
 Üniversite Bazında Listeleme
 ++++++++++++++++++++++++++++
 Üniversite Bazında Listeleme alanına tıklanır. Üniversite seçimi yapılır sonra Üniversiteyi Seç onay butonuna tıklanır. Seçilen üniversiteye bağlı kullanıcılar listelenir. **(Fig. 1.33'ü inceleyiniz.)**
@@ -99,6 +109,7 @@ Kişi Bazında Listeleme alanına tıklanır. Kullanıcı seçimi yapılır ve K
    :scale: 60 %
    
    Seçilen üniversite altında bulunan bağlantılar
+ 
  
 Bağlantı Ekle
 +++++++++++++
@@ -116,6 +127,7 @@ Bağlantı Ekle alanına tıklanır. Seçilen kullanıcıya bağlantı olarak ek
    
    Eklenen yeni bağlantı da listelenir
    
+   
 Bağlantı Sil
 ++++++++++++
 Bağlantı Sil alanına basılır. 'CheckBox'lar ile seçilen kullanıcılar bağlantıdan çıkarılmak üzere Seçili Bağlantıları Sil Butonuna basılır. Silinen bağlantılar artık listeleme bölümünde görünmeyecektir. **(Fig. 1.36 ve 1.37'yi inceleyiniz.)**
@@ -132,9 +144,12 @@ Bağlantı Sil alanına basılır. 'CheckBox'lar ile seçilen kullanıcılar ba�
    
    Bağlantıların son hali de listelenir
 
+
+
 ETKİNLİKLER
 -----------
 Etkinlikler sayfası kullanıcılar tarafından oluşturulan ve belli bir konu hakkında belli bir mekanda düzenlemeyi planladıkları aktiviteler için işlemlerin gerçekleştiği sayfadır. Tıpkı makalelerde olduğu gibi listeleme, ekleme, silme ve güncelleme işlemleri yapılır.
+
 
 Etkinlikler(Listeleme)
 ++++++++++++++++++++++
@@ -145,6 +160,7 @@ Etkinlikler alanına tıklanır. Seçim sorguları kullanılarak varlığa ait b
    :scale: 60 %
    
    Tüm etkinlikler listelenir
+
 
 Etkinlik Oluştur
 ++++++++++++++++
@@ -162,6 +178,7 @@ Etkinlik Oluştur alanına tıklanır. Yeni veriler girilerek Etkinliği Oluştu
    
    Eklenen etkinlik listelenir
 
+
 Etkinliği Kaldır
 ++++++++++++++++
 Etkinliği Kaldır alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, sonra Seçili Etkinlikleri Kaldır onay butonuna basılarak silme işlemi yapılır. Listeleme ekranında artık silinen kayıtlar görülmez. **(Fig. 1.41 ve 1.42'yi inceleyiniz.)**
@@ -177,6 +194,7 @@ Etkinliği Kaldır alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar se
    :scale: 60 %
    
    Silinen veriler listeden kalkar
+
 
 Etkinliği Güncelle
 ++++++++++++++++++++++++
@@ -199,3 +217,8 @@ Etkinliği Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile 
    :scale: 60 %
    
    Güncellenen veri listelenir
+
+
+
+
+
