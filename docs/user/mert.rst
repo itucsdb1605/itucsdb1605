@@ -25,7 +25,7 @@ Altbilgi
 ---------------------
 
 .. figure:: images/mert/uni_logo.png
-      :scale: 90 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
    
@@ -34,7 +34,7 @@ Altbilgi
 Sitenin "Kategoriler" bölümünden "Üniversiteler" seçeneğine tıklanarak sistemdeki üniversiteler hakkında çeşitli bilgilerin edinilebileceği ve kullanıcıların ekleme, güncelleme, silme ve seçme gibi işlemler yapabilecekleri bu sayfaya erişmeleri mümkündür.
 
 .. figure:: images/mert/uni_ekle_sec.png
-      :scale: 90 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -55,7 +55,7 @@ Seçme İşlemi
 Bu kısımda da dikkat edilmesi gereken husus şehir yazılırken ilk harfinin büyük olması gerektiğidir.
 
 .. figure:: images/mert/uni_secilen.png
-      :scale: 90 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
    
@@ -67,7 +67,7 @@ Güncelleme İşlemi
 Herhangi bir üniversite güncellenmek istendiğinde sayfada yer alan üniversitelerin listelenmiş olduğu tabloda ilgili üniversitenin "Güncellensin mi?" sütunu altında bulunan "Güncelle" linkine tıklanmalıdır. 
 
 .. figure:: images/mert/uni_sil.png
-      :scale: 90 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -76,7 +76,7 @@ Herhangi bir üniversite güncellenmek istendiğinde sayfada yer alan üniversit
 Bu şekilde güncellenmek istenen üniversitenin linkine tıklandıktan sonra seçilen üniversiteye ait bilgilerle dolu halde olan metin kutularının olduğu yeni bir güncelleme sayfası açılır. Burada üniversiteye ait istenen bilgiler yenileriyle istenilen şekilde değiştirildikten sonra sayfanın sonunda bulunan **Güncelle** butonu tıklanmalıdır. Bu işlemden sonra üniversiteler sayfasına geri dönülecek ve güncellenmek için seçilmiş olan üniversite yeni hali ile listenin sonunda görülebilecektir. 
 
 .. figure:: images/mert/uni_guncelleme.png
-      :scale: 90 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -88,7 +88,7 @@ Silme İşlemi
 Herhangi bir üniversite silinmek istendiğinde sayfada yer alan üniversitelerin listelenmiş olduğu tabloda ilgili üniversitenin "Silinsin mi?" sütunu altında bulunan kontrol kutusu işaretlenmelidir. 
 
 .. figure:: images/mert/uni_sil.png
-      :scale: 90 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
    
@@ -97,7 +97,7 @@ Herhangi bir üniversite silinmek istendiğinde sayfada yer alan üniversiteleri
 Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten sonra sayfanın sonunda bulunan **Sil** butonu tıklanmalıdır. Bu işlemden sonra sayfa yenilenecek ve işaretlenmiş olan üniversiteler sayfadan ve arka planda veri tabanından kaldırılmış olacaklardır.
 
 .. figure:: images/mert/uni_sil_buton.png
-      :scale: 90 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
@@ -109,7 +109,7 @@ Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten 
 * Seçme işlemi sırasında istenen özelliklere sahip üniversite yok ise boş sayfa açılır.
 
 .. figure:: images/mert/uni_secme_bos.png
-      :scale: 90 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
   
@@ -118,7 +118,7 @@ Bu şekilde silinmek istenen her üniversitenin kontrol kutusu işaretlendikten 
 * İşlemler için yanlış girdi değerleri girilirse, örneğin seçme işlemi için sistemde olmayan bir şehir girilirse, veya şehir hatalı girilirse, bu durumlar için hazırlanmış özel hata sayfası açılır.
 
 .. figure:: images/mert/hata_sayfasi.png
-      :scale: 90 %
+      :scale: 80 %
       :align: center
       :alt: map to buried treasure
 
