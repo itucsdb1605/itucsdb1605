@@ -9,7 +9,6 @@ Raporun bu bölümünde İşteSen adlı sosyal medya sitesinin Makaleler, Bağla
     Kategorilerden istenilen sayfalara erişim
    
    
-   
 MAKALELER
 ---------
 Makaleler sayfası kullanıcıların çoğunlukla akademik kariyerlerinde önemli yer tutan makale yayınlarının bilgileri tutulması amacıyla geliştirilmiştir. Kullacılar yeni makale ekleyebilir, var olan makaleleri güncelleyebilir veya onları silebilir. Kullanıcılar diledikleri zaman veritabanında var olan tüm makaleleri listeleyebilirler.
@@ -21,7 +20,7 @@ Makaleleri Listele alanına tıklanır. Seçim sorguları kullanılarak varlığ
 
 .. figure:: images/caglarh/makaleler_1.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Tüm makaleler listelenir
   
@@ -38,7 +37,7 @@ Makale Ekle alanına tıklanır. Yeni veriler girilerek Makale ekle butonuyla on
 
 .. figure:: images/caglarh/makaleler_3.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Eklenen yeni makale listeleme alanında görülür
 
@@ -55,13 +54,13 @@ Makale Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile seç
    
 .. figure:: images/caglarh/makaleler_5.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Yeni veriler girilir
 
 .. figure:: images/caglarh/makaleler_6.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Güncellenen kayıt listelenir
 
@@ -72,16 +71,15 @@ Makale Sil alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar seçilir, 
 
 .. figure:: images/caglarh/makaleler_7.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
     
    Silme tekli veya çoklu olabilir
    
 .. figure:: images/caglarh/makaleler_8.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Silinen makaleler artık listelenemez
- 
  
  
 BAĞLANTILAR
@@ -145,7 +143,6 @@ Bağlantı Sil alanına basılır. 'CheckBox'lar ile seçilen kullanıcılar ba�
    Bağlantıların son hali de listelenir
 
 
-
 ETKİNLİKLER
 -----------
 Etkinlikler sayfası kullanıcılar tarafından oluşturulan ve belli bir konu hakkında belli bir mekanda düzenlemeyi planladıkları aktiviteler için işlemlerin gerçekleştiği sayfadır. Tıpkı makalelerde olduğu gibi listeleme, ekleme, silme ve güncelleme işlemleri yapılır.
@@ -157,7 +154,7 @@ Etkinlikler alanına tıklanır. Seçim sorguları kullanılarak varlığa ait b
 
 .. figure:: images/caglarh/etkinlikler_1.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Tüm etkinlikler listelenir
 
@@ -174,7 +171,7 @@ Etkinlik Oluştur alanına tıklanır. Yeni veriler girilerek Etkinliği Oluştu
 
 .. figure:: images/caglarh/etkinlikler_2.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Eklenen etkinlik listelenir
 
@@ -185,7 +182,7 @@ Etkinliği Kaldır alanına tıklanır. 'CheckBox'lar ile istenilen kayıtlar se
 
 .. figure:: images/caglarh/etkinlikler_6.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Silinecek kayıtlar seçilir
 
@@ -208,17 +205,12 @@ Etkinliği Güncelle alanına tıklanır. Listeden bir kayıt 'radiobutton' ile 
 
 .. figure:: images/caglarh/etkinlikler_4.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Yeni etkinlik verileri girlir
 
 .. figure:: images/caglarh/etkinlikler_5.PNG
    :figclass: align-center
-   :scale: 60 %
+   :scale: 70 %
    
    Güncellenen veri listelenir
-
-
-
-
-
