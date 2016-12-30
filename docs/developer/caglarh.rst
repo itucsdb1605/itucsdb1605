@@ -52,7 +52,7 @@ Makaleler tablosu articles adıyla oluşturuldu. articles ikisi üniversities ve
               """
             cursor.execute(query)
 
-articles.py dosyasında arayüzde yapılacak işlemler için gerekli sorgu metodları yazıldı; seçim, çokluseçim, ekleme, silme, referans verilen üniversite ve kullanıcı tablolarının listelerini çekmek vs. için.
+articles.py dosyasında arayüzde yapılacak işlemler için gerekli sorgu metodları yazıldı; sırasıyla  tüm makale listesini çekme, referans verilen üniversite ve kullanıcı verilerini çekmek, makale silmek, güncellenecek veri için kullanılan tekli makale seçimi, makale ekleme ve makale güncelleme için yazıldı.
 
 .. code-block:: python
 
@@ -119,6 +119,68 @@ articles.py dosyasında arayüzde yapılacak işlemler için gerekli sorgu metod
             connection.commit()
             return
 
+Yukarıdaki metotlar **server.py** dosyasında articles'a bağlı metotlar tarafından **articles.html**'de gerekli işlemleri sağlayabilmesi amacıyla kullanılıyor. Örneğin articles.html'içindeki değişkenler, listeler bu şekilde belirleniyor. articles.html de dış anahtar ile referans verilen tablo verilerini checkbox'lara eklemek için user ve universities listeleri kullanıldı. Diğer metotlar klasik CRUD işlemlerini gerçekleştirmek için kullanıldı. **server.py**'ın **articles_page** metodu, **articles.html** ekranının ne şekilde hangi verilerle açılacağını kontrol eder.
+
+.. code-block:: python
+
+      def articles_page():
+    arts = Articles(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        article = arts.get_articlelist()
+        article[0]=list(article[0])
+        article[0][0]="kayıt seçiniz"
+        article[0][1]="kayıt seçiniz"
+        article[0][2]="kayıt seçiniz"
+        article[0][3]="kayıt seçiniz"
+        article[0][4]="kayıt seçiniz"
+        article[0][5]="kayıt seçiniz"
+        article[0][6]="kayıt seçiniz"
+        article[0][7]="kayıt seçiniz"
+        article[0]=tuple(article[0])
+        alist = arts.get_articlelist()
+        unilist=arts.get_universitylist()
+        userlist=arts.get_userlist()
+        return render_template('articles.html', ArticleList = alist, UniversityList=unilist, UserList=userlist, article= article, current_time = now.ctime())
+    elif 'articles_to_delete' in request.form:
+        articleids = request.form.getlist('articles_to_delete')
+        for ArticleId in articleids:
+            arts.delete_article(ArticleId)
+        return redirect(url_for('articles_page'))
+    elif 'select_record' in request.form:
+        articleids = request.form.getlist('select_record')
+        now = datetime.datetime.now()
+        alist = arts.get_articlelist()
+        unilist=arts.get_universitylist()
+        userlist=arts.get_userlist()
+        slist=arts.select_article(articleids[0])
+        return render_template('articles.html', ArticleList = alist, UniversityList=unilist, UserList=userlist, article=slist, current_time=now.ctime())
+    elif 'articles_to_add' in request.form:
+        arts.add_article(request.form['ArticleName'],request.form['UserId'],request.form['ReleaseYear'],request.form['Mail'],request.form['uni_id'])
+        return redirect(url_for('articles_page'))
+    elif 'articles_to_update' in request.form:
+        arts.update_article(request.form['ArticleId'], request.form['ArticleName'],request.form['UserId'],request.form['ReleaseYear'],request.form['Mail'],request.form['uni_id'])
+        return redirect(url_for('articles_page'))
+
+
+Metotlar aracılığıyla veri ve iş akışını şöyle sıralayabiliriz : init.py -> articles.py -> server.py -> articles.html
+
+**articles.html** dosyasında accordion button tasarımını gerçekleyen javascript kod parçası kullanıldı. Ekranlarda kullanılan bu buton yapısına göre ilgili alan butonuna tıklayınca alt bölmenin açılması, aynı yere tıklayınca ya da başka bir alanın tıklanarak aktif edilmesiylede eski alanın kapatılması html dosyası içinde bu kod yapısıyla sağlanıyor.
+
+.. code-block:: javascript
+
+      <script>
+      var acc = document.getElementsByClassName("accordion");
+      for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+        var active = document.querySelector(".accordion.active");
+    if (active && active != this) {
+      active.classList.remove("active");
+      active.nextElementSibling.classList.remove("show");
+    }
+    this.classList.toggle("active");
+    this.nextElementSibling.classList.toggle("show"); }}</script>
 
 Bağlantılar
 --------------
@@ -149,7 +211,7 @@ Bağlantılar tablosu connections adıyla oluşturuldu. connections ikisi users 
               """
             cursor.execute(query)
             
-myconnections.py dosyasında arayüzde yapılacak işlemler için gerekli sorgu metodları yazıldı; seçim, çokluseçim, üniversitenin bağlantıları, kullanıcının bağlantılarıi, ekleme, silme, referans verilen tablolarının listelerini çekmek vs. için.
+**myconnections.py** dosyasında arayüzde yapılacak işlemler için gerekli sorgu metodları yazıldı; tüm baağlantılar listesi, kullanıcı bazında bağlantılar listesi, seçili üniversite bazında bağlantılar listesi, tüm üniversiteler bazında bağlantı listesi, kullanıcı listesi, üniversite listesi,silme ve ekleme amaçları için kullanıldı.
 
 .. code-block:: python
 
@@ -228,9 +290,71 @@ myconnections.py dosyasında arayüzde yapılacak işlemler için gerekli sorgu 
             connection.commit()
             return
 
+Yukarıdaki metotlar **server.py** dosyasında connections'a bağlı metotlar tarafından **connectionss.html**'de gerekli işlemleri sağlayabilmesi amacıyla kullanılıyor. Örneğin **connections.html**'içindeki değişkenler, listeler bu şekilde belirleniyor. connections.html de dış anahtar ile referans verilen tablo verilerini checkboxlar'a eklemek için users tablosundan türetilen listeler kullanıldı. Diğer metotlar klasik CRUD işlemlerini gerçekleştirmek için kullanıldı(Güncelleme Hariç). **server.py**'nin **connections_page** metodu **connections.html** ekranının ne şekilde hangi verilerle açılacağını kontrol eder.
+
+.. code-block:: python
+      def connections_page():
+    cons = Myconnections(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        connectionlist = cons.get_connectionlist()
+        userlist=cons.get_userlist()
+        universitylist=cons.get_universitylist()
+        connectionlistbyuniversity=cons.get_universityconnectionlist()
+        return render_template('connections.html', ConnectionList = connectionlist,
+                                UserList=userlist, UniversityList=universitylist,
+                                UniversityConnectionList=connectionlistbyuniversity, current_time = now.ctime())
+    elif 'selectByUser' in request.form:
+        temp=request.form.getlist('selectByUser')
+        now = datetime.datetime.now()
+        connectionlist = cons.get_connectionlistbyuser(temp[0])
+        userlist=cons.get_userlist()
+        universitylist=cons.get_universitylist()
+        connectionlistbyuniversity=cons.get_universityconnectionlist()
+        return render_template('connections.html', ConnectionList = connectionlist,
+                                UserList=userlist, UniversityList=universitylist,
+                                UniversityConnectionList=connectionlistbyuniversity, current_time = now.ctime())
+    elif 'selectByUniversity' in request.form:
+        temp=request.form.getlist('selectByUniversity')
+        now = datetime.datetime.now()
+        connectionlist = cons.get_connectionlist()
+        userlist=cons.get_userlist()
+        universitylist=cons.get_universitylist()
+        connectionlistbyuniversity=cons.get_connectionlistbyuniversity(temp[0])
+        return render_template('connections.html', ConnectionList = connectionlist,
+                                UserList=userlist, UniversityList=universitylist,
+                                UniversityConnectionList=connectionlistbyuniversity, current_time = now.ctime())
+    elif 'Delete' in request.form:
+        connectionids = request.form.getlist('DeletedConnections')
+        for ConnectionId in connectionids:
+            cons.delete_connection(ConnectionId)
+        return redirect(url_for('connections_page'))
+    elif 'Connect' in request.form:
+        cons.add_connection(request.form['User'],request.form['Connection'])
+        return redirect(url_for('connections_page'))
+
+Metotlar aracılığıyla veri ve iş akışını şöyle sıralayabiliriz : init.py -> myconnections.py -> server.py -> connections.html
+
+**connections.html** dosyasında da articles gibi accordion button tasarımını gerçekleyen javascript kod parçası kullanıldı. Ekranlarda kullanılan bu buton yapısına göre ilgili alan butonuna tıklayınca alt bölmenin açılması, aynı yere tıklayınca ya da başka bir alanın tıklanarak aktif edilmesiylede eski alanın kapatılması html dosyası içinde bu kod yapısıyla sağlanıyor.
+
+.. code-block:: javascript
+
+      <script>
+      var acc = document.getElementsByClassName("accordion");
+      for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+        var active = document.querySelector(".accordion.active");
+    if (active && active != this) {
+      active.classList.remove("active");
+      active.nextElementSibling.classList.remove("show");
+    }
+    this.classList.toggle("active");
+    this.nextElementSibling.classList.toggle("show"); }}</script>
+
 Etkinlikler
 --------------
-Etkinlikler tablosu connections adıyla oluşturuldu. connections ikisi locations ve  users tablolarını referans veren sütunlar, biri birincil anahtar olmak üzere toplamda 6 sütundan oluşur. Etkinlikler tablosu bir kullanıcının bir yerde belli bir tarihte belli bir isimle ve belli detaylarla oluşturduğu etkinlik verilerini tutar.
+Etkinlikler tablosu events adıyla oluşturuldu. events ikisi locations ve  users tablolarını referans veren sütunlar, biri birincil anahtar olmak üzere toplamda 6 sütundan oluşur. Etkinlikler tablosu bir kullanıcının bir yerde belli bir tarihte belli bir isimle ve belli detaylarla oluşturduğu etkinlik verilerini tutar.
 
 .. code-block:: python
 
@@ -254,7 +378,7 @@ Etkinlikler tablosu connections adıyla oluşturuldu. connections ikisi location
               """
             cursor.execute(query)
             
-myevents.py dosyasında arayüzde yapılacak işlemler için gerekli sorgu metodları yazıldı; seçim, çokluseçim, ekleme, silme, referans verilen yerler ve kullanıcı tablolarının listelerini çekmek vs. için.
+**myevents.py** dosyasında arayüzde yapılacak işlemler için gerekli sorgu metodları yazıldı; sırasıyla tüm etkinlik listesini çekme, referans verilen yerler ve kullanıcı verilerini çekmek, etkinlik silmek, güncellenecek veri için kullanılan tekli etkinlik seçimi, etkinlik ekleme ve etkinlik güncelleme için yazıldı.
 
 .. code-block:: python
 
@@ -319,3 +443,64 @@ myevents.py dosyasında arayüzde yapılacak işlemler için gerekli sorgu metod
             cursor.execute(query)
             connection.commit()
             return
+            
+Yukarıdaki metotlar **server.py** dosyasında events'a bağlı metotlar tarafından **events.html**'de gerekli işlemleri sağlayabilmesi amacıyla kullanılıyor. Örneğin events.html'içindeki değişkenler, listeler bu şekilde belirleniyor. **events.html** de dış anahtar ile referans verilen tablo verilerini checkbox'a eklemek için users ve locations tablosundan oluşturulan listeler kullanıldı. Diğer metotlar klasik CRUD işlemlerini gerçekleştirmek için kullanıldı. **server.py**'nin **events_page()** metodu **events.html** ekranının ne şekilde hangi verilerle açılacağını kontrol eder.
+
+.. code-block:: python
+
+      def events_page():
+    evts = Myevents(app.config['dsn'])
+    fn = Func(app.config['dsn'])
+    if request.method == 'GET':
+        now = datetime.datetime.now()
+        event = evts.get_eventlist()
+        event[0]=list(event[0])
+        event[0][0]="kayıt seçiniz"
+        event[0][1]="kayıt seçiniz"
+        event[0][2]="kayıt seçiniz"
+        event[0][3]="kayıt seçiniz"
+        event[0][4]="kayıt seçiniz"
+        event[0][5]="kayıt seçiniz"
+        event[0][6]="kayıt seçiniz"
+        event[0]=tuple(event[0])
+        eventlist = evts.get_eventlist()
+        locationlist=evts.get_locationlist()
+        userlist=evts.get_userlist()
+        return render_template('events.html', EventList = eventlist, LocationList=locationlist, UserList=userlist, event = event, current_time = now.ctime())
+    elif 'events_to_delete' in request.form:
+        eventids = request.form.getlist('events_to_delete')
+        for EventId in eventids:
+            evts.delete_event(EventId)
+        return redirect(url_for('events_page'))
+    elif 'select_record' in request.form:
+        eventids = request.form.getlist('select_record')
+        now = datetime.datetime.now()
+        eventlist = evts.get_eventlist()
+        userlist=evts.get_userlist()
+        locationlist=evts.get_locationlist()
+        slist=evts.select_event(eventids[0])
+        return render_template('events.html', EventList = eventlist, LocationList=locationlist, UserList=userlist, event=slist, current_time=now.ctime())
+    elif 'events_to_add' in request.form:
+        evts.add_event(request.form['EventName'],request.form['OwnerId'],request.form['CityId'],request.form['DateWithTime'],request.form['Detail'])
+        return redirect(url_for('events_page'))
+    elif 'events_to_update' in request.form:
+        evts.update_event(request.form['EventId'],request.form['EventName'],request.form['OwnerId'],request.form['CityId'],request.form['DateWithTime'],request.form['Detail'])
+        return redirect(url_for('events_page'))
+   
+Metotlar aracılığıyla veri ve iş akışını şöyle sıralayabiliriz : init.py -> myevents.py -> server.py -> events.html
+
+**events.html** dosyasında da articles ve connections gibi accordion button tasarımını gerçekleyen javascript kod parçası kullanıldı. Ekranlarda kullanılan bu buton yapısına göre ilgili alan butonuna tıklayınca alt bölmenin açılması, aynı yere tıklayınca ya da başka bir alanın tıklanarak aktif edilmesiylede eski alanın kapatılması html dosyası içinde bu kod yapısıyla sağlanıyor.
+
+.. code-block:: javascript
+
+      <script>
+      var acc = document.getElementsByClassName("accordion");
+      for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+        var active = document.querySelector(".accordion.active");
+    if (active && active != this) {
+      active.classList.remove("active");
+      active.nextElementSibling.classList.remove("show");
+    }
+    this.classList.toggle("active");
+    this.nextElementSibling.classList.toggle("show"); }}</script>
